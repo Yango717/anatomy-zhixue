@@ -148,7 +148,27 @@ export default function useVoice({ lang = 'zh-CN', onResult, onError } = {}) {
     const speaker = getTtsAppId() || 'zh_female_xiaohe_uranus_bigtts';
     const reqid = `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
 
-    // Try direct Doubao V3 API first (no server hop = faster)
+    // 1st: Try server/Cloudflare Function proxy (consistent quality)
+    try {
+      const res = await fetch('/api/v1/ai/tts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text, ttsKey, ttsAppId: speaker }),
+      });
+      if (res.ok) {
+        const json = await res.json();
+        const audioBase64 = json.data?.audio;
+        if (audioBase64) {
+          const blob = new Blob(
+            [Uint8Array.from(atob(audioBase64), (c) => c.charCodeAt(0))],
+            { type: 'audio/mp3' }
+          );
+          return URL.createObjectURL(blob);
+        }
+      }
+    } catch { /* fall through */ }
+
+    // 2nd: Try direct Doubao V3 (faster, fallback if proxy unavailable)
     try {
       const res = await fetch('https://openspeech.bytedance.com/api/v3/tts/unidirectional', {
         method: 'POST',
@@ -183,24 +203,9 @@ export default function useVoice({ lang = 'zh-CN', onResult, onError } = {}) {
           return URL.createObjectURL(blob);
         }
       }
-    } catch { /* CORS or network error — fall through to server proxy */ }
+    } catch { /* fall through */ }
 
-    // Fallback: server proxy
-    const res = await fetch('/api/v1/ai/tts', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text, ttsKey, ttsAppId: speaker }),
-    });
-    if (!res.ok) throw new Error('TTS failed');
-    const json = await res.json();
-    const audioBase64 = json.data?.audio;
-    if (!audioBase64) throw new Error('No audio');
-
-    const blob = new Blob(
-      [Uint8Array.from(atob(audioBase64), (c) => c.charCodeAt(0))],
-      { type: 'audio/mp3' }
-    );
-    return URL.createObjectURL(blob);
+    throw new Error('All TTS paths failed');
   }
 
   // Prefetch audio into cache (call as soon as text appears, without playing)
