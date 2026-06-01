@@ -58,17 +58,40 @@ export default function ChatHomePage() {
     }
   }, [hasApiKey, activeThreadId]);
 
-  // Proactive check on mount
+  // 自我介绍：每次新对话（空线程），学姐主动自我介绍
   useEffect(() => {
     if (!hasApiKey) return;
+    if (threadMessages.length > 0) return; // Only for empty threads
     const apiKey = localStorage.getItem('deepseek_api_key');
     if (!apiKey) return;
+
+    // Try AI-generated intro with learning context
     api.get('/ai/proactive', { apiKey }).then((d) => {
-      if (d?.message && threadMessages.length === 0) {
-        tutor.setMessages([{ role: 'assistant', content: d.message }]);
-        saveThreadMessages(activeThreadId, [{ role: 'assistant', content: d.message }]);
+      const introMsg = d?.message;
+      if (introMsg) {
+        tutor.setMessages([{ role: 'assistant', content: introMsg }]);
+        saveThreadMessages(activeThreadId, [{ role: 'assistant', content: introMsg }]);
+      } else {
+        // Fallback: fixed introduction
+        const fallback = `嗨！我是妍学姐～你可以叫我「妍」😊
+
+我是大三临床医学专业的学姐，系统解剖学考了95分。我说话软软糯糯的啦～我的性格嘛，就是温柔耐心又带点幽默活泼，喜欢用俏皮话让枯燥的解剖学变有趣！
+
+我可以帮你：
+📖 解答任何解剖学问题
+📝 出题考你、帮你批改
+🔍 分析你的薄弱知识点
+📅 根据你的进度推荐学习计划
+
+虽然我是AI驱动的，但你就当我是你身边一个热心的学姐就好～有什么想知道的，直接问我吧！`;
+        tutor.setMessages([{ role: 'assistant', content: fallback }]);
+        saveThreadMessages(activeThreadId, [{ role: 'assistant', content: fallback }]);
       }
-    }).catch(() => {});
+    }).catch(() => {
+      const fallback = `嗨！我是妍学姐～叫我「妍」就好啦～😊\n\n大三临床医学生，解剖学95分，温柔又活泼。有什么解剖学问题尽管问，学姐帮你搞定！`;
+      tutor.setMessages([{ role: 'assistant', content: fallback }]);
+      saveThreadMessages(activeThreadId, [{ role: 'assistant', content: fallback }]);
+    });
   }, [hasApiKey, activeThreadId]);
 
   // Sync messages to thread
@@ -163,8 +186,12 @@ export default function ChatHomePage() {
 
   function handleSwitchThread(threadId) {
     switchThread(threadId);
-    // Messages will update via useAITutor(threadMessages)
     setShowThreads(false);
+    // Explicitly sync tutor messages to the selected thread
+    const target = threads.find((t) => t.id === threadId);
+    if (target) {
+      tutor.setMessages(target.messages || []);
+    }
   }
 
   const isEmpty = tutor.messages.length === 0;

@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import { api } from '../utils/api';
 
 const API_BASE = '/api/v1';
