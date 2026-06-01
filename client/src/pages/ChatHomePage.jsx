@@ -105,13 +105,17 @@ export default function ChatHomePage() {
   useEffect(() => {
     if (!autoPilotEnabled) return;
 
-    // Check if we already have a valid plan for today
+    // Check if we already have a valid plan for today AND it's been shown
     if (autoPilotPlan && autoPilotPlan.createdAt) {
       const planDate = new Date(autoPilotPlan.createdAt).toDateString();
       const today = new Date().toDateString();
-      if (planDate === today) {
-        console.log('[AutoPilot] 今日计划已存在，跳过生成');
+      if (planDate === today && threadMessages.length > 0) {
+        console.log('[AutoPilot] 今日计划已存在且有消息，跳过生成');
         return;
+      }
+      if (planDate === today && threadMessages.length === 0) {
+        console.log('[AutoPilot] 今日计划存在但消息为空，清除过期计划重新生成');
+        saveAutoPilotPlan(null);
       }
     }
 
