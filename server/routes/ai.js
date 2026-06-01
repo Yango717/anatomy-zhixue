@@ -180,6 +180,21 @@ router.post('/search', async (req, res) => {
   }
 });
 
+// Proactive check — what should 学姐 say on her own?
+router.get('/proactive', async (req, res) => {
+  try {
+    const apiKey = req.query.apiKey || req.body?.apiKey;
+    if (!apiKey) {
+      return res.json({ success: true, data: { triggers: [], message: null } });
+    }
+    const message = await aiService.generateProactiveMessage(apiKey);
+    const context = aiService.getProactiveContext(1);
+    res.json({ success: true, data: { message, triggers: context.triggers, context: context.context } });
+  } catch (err) {
+    res.json({ success: true, data: { triggers: [], message: null } });
+  }
+});
+
 // Get recent chat history (Layer 0 memory)
 router.get('/history', async (req, res) => {
   try {

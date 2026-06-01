@@ -196,6 +196,140 @@ function getDueErrorsCount(userId) {
   }
 }
 
+// ─── Proactive check: what should 学姐 say on her own? ───
+function getProactiveContext(userId) {
+  const triggers = [];
+  const context = {};
+
+  try {
+    // 1. Check last study time (开屏问候)
+    const lastStudy = db.getOne(
+      `SELECT unit_id, last_accessed_at FROM unit_progress
+       WHERE user_id = ? ORDER BY last_accessed_at DESC LIMIT 1`,
+      [userId || 1]
+    );
+    if (lastStudy) {
+      const hoursSince = (Date.now() - new Date(lastStudy.last_accessed_at).getTime()) / 3600000;
+      context.lastStudyUnit = lastStudy.unit_id;
+      context.hoursSinceLastStudy = Math.round(hoursSince);
+      if (hoursSince > 24) {
+        triggers.push('return_greeting'); // 超过1天没学
+      } else {
+        triggers.push('daily_greeting'); // 常规问候
+      }
+    } else {
+      triggers.push('first_time');
+    }
+  } catch {}
+
+  try {
+    // 2. Check due errors (错题到期)
+    const dueCount = getDueErrorsCount(userId || 1);
+    context.dueErrorCount = dueCount;
+    if (dueCount > 0) {
+      triggers.push('due_errors');
+      if (dueCount >= 5) triggers.push('many_due_errors');
+    }
+  } catch {}
+
+  try {
+    // 3. Check weak points (薄弱知识点)
+    const weakPoints = detectWeakPoints(userId || 1);
+    if (weakPoints.length > 0) {
+      context.weakPointCount = weakPoints.length;
+      context.topWeakPoint = weakPoints[0];
+      triggers.push('weak_points');
+    }
+  } catch {}
+
+  try {
+    // 4. Check recent completion (学后复盘)
+    const recentComplete = db.getOne(
+      `SELECT unit_id FROM unit_progress
+       WHERE user_id = ? AND current_phase >= 4
+       AND last_accessed_at > datetime('now', '-1 hour')
+       ORDER BY last_accessed_at DESC LIMIT 1`,
+      [userId || 1]
+    );
+    if (recentComplete) {
+      context.recentCompletedUnit = recentComplete.unit_id;
+      triggers.push('recent_completion');
+    }
+  } catch {}
+
+  try {
+    // 5. Overall progress
+    const progress = db.getOne(
+      `SELECT COUNT(*) as total,
+       SUM(CASE WHEN current_phase >= 4 THEN 1 ELSE 0 END) as tested
+       FROM unit_progress WHERE user_id = ?`,
+      [userId || 1]
+    );
+    if (progress?.total > 0) {
+      context.totalUnits = progress.total;
+      context.testedUnits = progress.tested || 0;
+      context.progressPct = Math.round(((progress.tested || 0) / progress.total) * 100);
+    }
+  } catch {}
+
+  return { triggers, context };
+}
+
+// ─── Generate proactive message ───
+async function generateProactiveMessage(apiKey) {
+  const { triggers, context } = getProactiveContext(1);
+
+  if (triggers.length === 0) return null;
+
+  let scenePrompt = '\n【主动触发场景】';
+  if (triggers.includes('first_time')) {
+    scenePrompt += '\n学生第一次打开App，请热情欢迎并引导开始学习。100字以内。';
+  } else if (triggers.includes('return_greeting')) {
+    scenePrompt += `\n学生${context.hoursSinceLastStudy}小时没学习了，请温柔地欢迎回归并提醒复习。100字以内。`;
+  } else if (triggers.includes('daily_greeting')) {
+    scenePrompt += '\n学生打开了App，请根据学习进度给一句问候和建议。80字以内。';
+  }
+  if (triggers.includes('due_errors')) {
+    scenePrompt += `\n学生有${context.dueErrorCount}道错题待复习，请俏皮地提醒他去错题本。`;
+  }
+  if (triggers.includes('weak_points') && context.topWeakPoint) {
+    scenePrompt += `\n学生薄弱点：「${context.topWeakPoint.stem}」答错${context.topWeakPoint.errorCount}次。可适当提及。`;
+  }
+  if (triggers.includes('recent_completion')) {
+    scenePrompt += '\n学生刚完成一个单元，请祝贺并建议下一步（测验或继续学习）。';
+  }
+
+  const systemPrompt = BASE_SYSTEM_PROMPT + scenePrompt + `\n\n【学习数据】进度${context.progressPct || 0}%（${context.testedUnits || 0}/${context.totalUnits || 0}单元）`;
+  if (context.dueErrorCount > 0) systemPrompt += `，待复习错题${context.dueErrorCount}道`;
+
+  const messages = [
+    { role: 'system', content: systemPrompt },
+    { role: 'user', content: '请给我一句主动的问候或提醒。（不要说"你问我答"，你要主动开口）' },
+  ];
+
+  const options = {
+    hostname: DEEPSEEK_BASE,
+    path: DEEPSEEK_PATH,
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${apiKey}`,
+    },
+  };
+
+  const body = {
+    model: MODEL,
+    messages,
+    stream: false,
+    max_tokens: 200,
+    temperature: 0.8,
+  };
+
+  const result = await makeRequest(options, body);
+  if (result.status !== 200) return null;
+  return result.data.choices?.[0]?.message?.content || null;
+}
+
 // ─── Context builder (3-layer memory) ───
 async function buildContext(unitId, scene, opts = {}) {
   const context = {};
@@ -765,6 +899,8 @@ module.exports = {
   getUserProfile,
   detectWeakPoints,
   getDueErrorsCount,
+  getProactiveContext,
+  generateProactiveMessage,
 
   // Search
   aiSearch,

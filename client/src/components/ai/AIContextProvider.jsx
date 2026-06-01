@@ -5,8 +5,10 @@ const AIContext = createContext(null);
 const CHAT_HISTORY_KEY = 'ai_chat_history';
 const GLOBAL_CHAT_KEY = 'ai_global_chat';
 const USER_PROFILE_KEY = 'ai_user_profile';
+const THREADS_KEY = 'ai_threads';
 const MAX_HISTORY = 50;
 const MAX_GLOBAL_MESSAGES = 100;
+const MAX_THREADS = 20;
 
 export function AIContextProvider({ children }) {
   const [apiKey, setApiKey] = useState(() => localStorage.getItem('deepseek_api_key') || '');
@@ -134,6 +136,97 @@ export function AIContextProvider({ children }) {
     });
   }, []);
 
+  // ─── Thread management ───
+  const [threads, setThreads] = useState(() => {
+    try {
+      const data = JSON.parse(localStorage.getItem(THREADS_KEY) || '{}');
+      return data.threads || [];
+    } catch { return []; }
+  });
+  const [activeThreadId, setActiveThreadId] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem(THREADS_KEY) || '{}').activeThreadId || null;
+    } catch { return null; }
+  });
+
+  const persistThreads = useCallback((newThreads, newActiveId) => {
+    setThreads(newThreads);
+    setActiveThreadId(newActiveId);
+    try {
+      localStorage.setItem(THREADS_KEY, JSON.stringify({ threads: newThreads, activeThreadId: newActiveId }));
+    } catch {}
+  }, []);
+
+  const createThread = useCallback(() => {
+    const id = 'thread_' + Date.now();
+    const newThread = {
+      id,
+      name: '新对话',
+      messages: [],
+      createdAt: Date.now(),
+      updatedAt: Date.now(),
+    };
+    const newThreads = [newThread, ...threads].slice(0, MAX_THREADS);
+    persistThreads(newThreads, id);
+    return id;
+  }, [threads, persistThreads]);
+
+  const switchThread = useCallback((threadId) => {
+    persistThreads(threads, threadId);
+  }, [threads, persistThreads]);
+
+  const saveThreadMessages = useCallback((threadId, messages) => {
+    setThreads((prev) => {
+      const updated = prev.map((t) => {
+        if (t.id === threadId) {
+          return { ...t, messages: messages.slice(-MAX_GLOBAL_MESSAGES), updatedAt: Date.now() };
+        }
+        return t;
+      });
+      try {
+        localStorage.setItem(THREADS_KEY, JSON.stringify({ threads: updated, activeThreadId }));
+      } catch {}
+      return updated;
+    });
+  }, [activeThreadId]);
+
+  const renameThread = useCallback((threadId, name) => {
+    setThreads((prev) => {
+      const updated = prev.map((t) => t.id === threadId ? { ...t, name } : t);
+      try {
+        localStorage.setItem(THREADS_KEY, JSON.stringify({ threads: updated, activeThreadId }));
+      } catch {}
+      return updated;
+    });
+  }, [activeThreadId]);
+
+  const deleteThread = useCallback((threadId) => {
+    setThreads((prev) => {
+      const updated = prev.filter((t) => t.id !== threadId);
+      const newActiveId = activeThreadId === threadId
+        ? (updated[0]?.id || null)
+        : activeThreadId;
+      setActiveThreadId(newActiveId);
+      try {
+        localStorage.setItem(THREADS_KEY, JSON.stringify({ threads: updated, activeThreadId: newActiveId }));
+      } catch {}
+      return updated;
+    });
+  }, [activeThreadId]);
+
+  const getActiveThread = useCallback(() => {
+    return threads.find((t) => t.id === activeThreadId) || null;
+  }, [threads, activeThreadId]);
+
+  // Auto-create first thread if none exist
+  useEffect(() => {
+    if (threads.length === 0) {
+      createThread();
+    } else if (!activeThreadId && threads.length > 0) {
+      setActiveThreadId(threads[0].id);
+    }
+  }, []);
+
   // Model info (for future multimodal support)
   const [modelInfo, setModelInfo] = useState({
     name: 'DeepSeek V4',
@@ -167,6 +260,15 @@ export function AIContextProvider({ children }) {
     userProfile,
     saveUserProfile,
     updateUserPreference,
+    // Thread management
+    threads,
+    activeThreadId,
+    createThread,
+    switchThread,
+    saveThreadMessages,
+    renameThread,
+    deleteThread,
+    getActiveThread,
     // Model info
     modelInfo,
     updateModelInfo,

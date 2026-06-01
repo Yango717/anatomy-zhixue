@@ -179,7 +179,7 @@ export default function GlobalAIChat() {
                     <div className="ai-message__text">
                       {msg.content || (msg.role === 'assistant' && tutor.isLoading ? '思考中...' : '')}
                     </div>
-                    {msg.role === 'assistant' && msg.content && voice.isSynthSupported && (
+                    {msg.role === 'assistant' && msg.content && (
                       <button
                         className={`ai-speak-btn ${voice.isSpeaking ? 'ai-speak-btn--active' : ''}`}
                         onClick={() => handleSpeakMessage(msg.content)}
