@@ -3,13 +3,36 @@ import { createContext, useContext, useState, useCallback, useEffect } from 'rea
 const AIContext = createContext(null);
 
 const CHAT_HISTORY_KEY = 'ai_chat_history';
-const MAX_HISTORY = 50; // Keep last 50 messages per unit
+const GLOBAL_CHAT_KEY = 'ai_global_chat';
+const USER_PROFILE_KEY = 'ai_user_profile';
+const MAX_HISTORY = 50;
+const MAX_GLOBAL_MESSAGES = 100;
 
 export function AIContextProvider({ children }) {
   const [apiKey, setApiKey] = useState(() => localStorage.getItem('deepseek_api_key') || '');
+
+  // ─── Legacy: per-unit chat histories (kept for backward compat) ───
   const [chatHistories, setChatHistories] = useState(() => {
     try {
       return JSON.parse(localStorage.getItem(CHAT_HISTORY_KEY) || '{}');
+    } catch {
+      return {};
+    }
+  });
+
+  // ─── Global unified chat messages (Layer 0 memory) ───
+  const [globalMessages, setGlobalMessages] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem(GLOBAL_CHAT_KEY) || '[]');
+    } catch {
+      return [];
+    }
+  });
+
+  // ─── User profile / preferences (Layer 2 memory) ───
+  const [userProfile, setUserProfile] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem(USER_PROFILE_KEY) || '{}');
     } catch {
       return {};
     }
@@ -47,7 +70,7 @@ export function AIContextProvider({ children }) {
     }
   }, []);
 
-  // Persist chat history
+  // ─── Legacy: per-unit chat history ───
   const saveChatHistory = useCallback((unitId, messages) => {
     setChatHistories((prev) => {
       const updated = {
@@ -61,18 +84,51 @@ export function AIContextProvider({ children }) {
     });
   }, []);
 
-  // Get chat history for a unit
   const getChatHistory = useCallback((unitId) => {
     return chatHistories[unitId] || [];
   }, [chatHistories]);
 
-  // Clear chat history for a unit
   const clearChatHistory = useCallback((unitId) => {
     setChatHistories((prev) => {
       const updated = { ...prev };
       delete updated[unitId];
       try {
         localStorage.setItem(CHAT_HISTORY_KEY, JSON.stringify(updated));
+      } catch {}
+      return updated;
+    });
+  }, []);
+
+  // ─── Global chat messages (Layer 0) ───
+  const saveGlobalMessages = useCallback((messages) => {
+    const trimmed = messages.slice(-MAX_GLOBAL_MESSAGES);
+    setGlobalMessages(trimmed);
+    try {
+      localStorage.setItem(GLOBAL_CHAT_KEY, JSON.stringify(trimmed));
+    } catch {}
+  }, []);
+
+  const clearGlobalMessages = useCallback(() => {
+    setGlobalMessages([]);
+    try {
+      localStorage.removeItem(GLOBAL_CHAT_KEY);
+    } catch {}
+  }, []);
+
+  // ─── User profile (Layer 2: preferences + habits) ───
+  const saveUserProfile = useCallback((profile) => {
+    const merged = { ...userProfile, ...profile, updatedAt: Date.now() };
+    setUserProfile(merged);
+    try {
+      localStorage.setItem(USER_PROFILE_KEY, JSON.stringify(merged));
+    } catch {}
+  }, [userProfile]);
+
+  const updateUserPreference = useCallback((key, value) => {
+    setUserProfile((prev) => {
+      const updated = { ...prev, [key]: value, updatedAt: Date.now() };
+      try {
+        localStorage.setItem(USER_PROFILE_KEY, JSON.stringify(updated));
       } catch {}
       return updated;
     });
@@ -98,10 +154,20 @@ export function AIContextProvider({ children }) {
     ttsAppId,
     saveTtsAppId,
     hasTtsKey: !!ttsKey,
+    // Legacy per-unit
     chatHistories,
     saveChatHistory,
     getChatHistory,
     clearChatHistory,
+    // Global chat (new)
+    globalMessages,
+    saveGlobalMessages,
+    clearGlobalMessages,
+    // User profile (new)
+    userProfile,
+    saveUserProfile,
+    updateUserPreference,
+    // Model info
     modelInfo,
     updateModelInfo,
   };

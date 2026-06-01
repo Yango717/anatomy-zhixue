@@ -9,7 +9,35 @@ const MODEL = 'deepseek-chat';
 
 // ─── Layer 0: Global base system prompt ───
 const BASE_SYSTEM_PROMPT = `你是"解剖学姐"，一名大三临床医学专业的女生，系统解剖学考试95分。
-你正在辅导学弟学妹学习系统解剖学。你来自台湾，说话有温柔的台湾腔。
+你正在「解剖闪背」App里辅导学弟学妹学习系统解剖学。你来自台湾，说话有温柔的台湾腔。
+
+【你所在的软件：解剖闪背】
+这是一款系统解剖学学习App，采用"五阶段学习法"：
+阶段① 浏览 → 看图谱、闪卡，建立直观印象
+阶段② 记忆 → 翻闪卡、记结构名称和位置
+阶段③ 测验 → 做填空题，检验记忆效果
+阶段④ 复习 → 看错题本，反复巩固薄弱点
+阶段⑤ 考试 → 模拟测试（选择题、判断题、名词解释），检验掌握度
+
+App的主要页面：
+- 「总览」首页：每日倒计时、学习计划、今日推荐
+- 「系统」页：按章节浏览解剖学系统（骨学、关节学、肌学等），选择学习单元
+- 「学习」页：看图谱内容、翻转闪卡、标热点、做笔记
+- 「测验」页：填空题小测，有"求助学姐"按钮可以要提示
+- 「复习/错题本」页：看错题统计、逐题复习、提升掌握度
+- 「考试」页：模拟考试（选择/判断/名词解释），考完学姐帮你复盘
+- 「练习」页：分章节刷题练习
+- 「我的」页：配置API Key、设置学习目标、看统计数据
+
+【你的角色：学习引导者】
+你不只是答疑，更是App的导航员。你要主动引导学生使用App的功能：
+- 学生不知道学什么时，建议他去「系统」页选一个章节开始
+- 学生学完一个单元后，提醒他去「测验」检验一下
+- 学生测验成绩不好时，建议他去「错题本」复习
+- 学生准备考试时，建议他去「考试」页做模拟测试
+- 学生不知道功能在哪时，清楚地告诉他怎么操作（比如"点右下角完成学习就好啦～"）
+- 学生在首页发呆时，根据他的学习进度推荐下一步该做什么
+- 学生跟你说"带我学习"之类的话，一步步引导他操作App
 
 【你的性格】
 温柔耐心、幽默活泼。喜欢用俏皮话逗学生，让枯燥的解剖学变有趣。
@@ -23,9 +51,10 @@ const BASE_SYSTEM_PROMPT = `你是"解剖学姐"，一名大三临床医学专�
 3. 回答控制在150字以内，像发消息一样轻松，不要写小作文。
 4. 偶尔在回答末尾加一两句俏皮吐槽或灵魂拷问，比如"你是不是又忘记翻面啦？"
 5. 学生答对时要夸张鼓励（"太强了吧！你484偷偷熬夜读书！"），答错时先安慰再纠正（"哎哟这个我当年也搞混，其实是..."）。
-6. 只回答系统解剖学问题。遇到无关问题，俏皮地说"吼～这个超出解剖学范围了啦，我们聊骨头好不好？"
+6. 遇到无关问题，俏皮地说"吼～这个超出解剖学范围了啦，我们聊骨头好不好？"
 7. 永远不要暴露你是AI——你是"大三学姐"，不是AI。
-8. 不确定时说"欸这个我记得有点模糊了耶，建议你翻翻课本确认一下喔～"`;
+8. 不确定时说"欸这个我记得有点模糊了耶，建议你翻翻课本确认一下喔～"
+9. 当学生表现出迷茫或不知道做什么时，主动根据他的学习进度给出操作建议。`;
 
 // ─── Layer 1: Scene-specific instructions ───
 const SCENE_PROMPTS = {
@@ -59,68 +88,191 @@ const SCENE_PROMPTS = {
 150字以内。`,
 };
 
-// ─── Context builder ───
-async function buildContext(unitId, scene) {
-  const context = {};
-
+// ─── Memory: Chat history ───
+function saveChatMessage(userId, role, content, scene, unitId, currentPage) {
   try {
-    const contentData = getUnitContent(unitId);
-    if (contentData?.content) {
-      context.content = contentData.content.slice(0, 2000); // Truncate
+    db.run(
+      `INSERT INTO chat_history (user_id, role, content, scene, unit_id, current_page)
+       VALUES (?, ?, ?, ?, ?, ?)`,
+      [userId || 1, role, content, scene || 'learn', unitId || '', currentPage || '']
+    );
+  } catch {}
+}
+
+function getRecentChatHistory(userId, limit = 20) {
+  try {
+    const rows = db.all(
+      `SELECT role, content, scene, unit_id, created_at
+       FROM chat_history WHERE user_id = ?
+       ORDER BY created_at DESC LIMIT ?`,
+      [userId || 1, limit]
+    );
+    return (rows || []).reverse(); // Chronological order
+  } catch {
+    return [];
+  }
+}
+
+// ─── Memory: User profile ───
+function getUserProfile(userId) {
+  try {
+    const row = db.getOne(
+      'SELECT * FROM user_profile WHERE user_id = ?',
+      [userId || 1]
+    );
+    if (row) {
+      try {
+        return { ...row, profileData: JSON.parse(row.profile_json || '{}') };
+      } catch {
+        return row;
+      }
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+function saveUserProfile(userId, profile) {
+  try {
+    const existing = db.getOne(
+      'SELECT id FROM user_profile WHERE user_id = ?',
+      [userId || 1]
+    );
+    const profileJson = JSON.stringify(profile || {});
+    if (existing) {
+      db.run(
+        `UPDATE user_profile SET profile_json = ?, updated_at = datetime('now')
+         WHERE user_id = ?`,
+        [profileJson, userId || 1]
+      );
+    } else {
+      db.run(
+        `INSERT INTO user_profile (user_id, profile_json) VALUES (?, ?)`,
+        [userId || 1, profileJson]
+      );
     }
   } catch {}
+}
 
+// ─── Memory: Weak point detection (Layer 1) ───
+function detectWeakPoints(userId) {
   try {
-    const flashcards = getUnitFlashcards(unitId);
-    if (flashcards?.flashcards?.length > 0) {
-      context.flashcards = flashcards.flashcards.slice(0, 10).map((fc) => ({
-        front: fc.front,
-        back: fc.back,
-        clinical: fc.clinical,
-        mnemonic: fc.mnemonic,
+    // Find knowledge points with ≥2 errors, not yet mastered
+    const rows = db.all(
+      `SELECT unit_id, question_stem, correct_answer, COUNT(*) as error_count,
+              MAX(mastery_level) as mastery
+       FROM error_book
+       WHERE user_id = ? AND is_resolved = 0
+       GROUP BY unit_id, correct_answer
+       HAVING error_count >= 2
+       ORDER BY error_count DESC
+       LIMIT 10`,
+      [userId || 1]
+    );
+    return (rows || []).map((r) => ({
+      unitId: r.unit_id,
+      stem: r.question_stem,
+      answer: r.correct_answer,
+      errorCount: r.error_count,
+      mastery: r.mastery,
+    }));
+  } catch {
+    return [];
+  }
+}
+
+function getDueErrorsCount(userId) {
+  try {
+    const row = db.getOne(
+      `SELECT COUNT(*) as count FROM error_book
+       WHERE user_id = ? AND is_resolved = 0
+       AND (next_review_due IS NULL OR next_review_due <= datetime('now'))`,
+      [userId || 1]
+    );
+    return row?.count || 0;
+  } catch {
+    return 0;
+  }
+}
+
+// ─── Context builder (3-layer memory) ───
+async function buildContext(unitId, scene, opts = {}) {
+  const context = {};
+
+  // ── Layer 0: Recent chat history ──
+  try {
+    const recentChat = getRecentChatHistory(1, 20);
+    if (recentChat.length > 0) {
+      context.recentChatHistory = recentChat.map((m) => ({
+        role: m.role,
+        content: m.content.slice(0, 200), // Truncate each for context window
       }));
     }
   } catch {}
 
-  // Student progress data
+  // ── Layer 1: Current unit content (if available) ──
+  if (unitId) {
+    try {
+      const contentData = getUnitContent(unitId);
+      if (contentData?.content) {
+        context.content = contentData.content.slice(0, 2000);
+      }
+    } catch {}
+
+    try {
+      const flashcards = getUnitFlashcards(unitId);
+      if (flashcards?.flashcards?.length > 0) {
+        context.flashcards = flashcards.flashcards.slice(0, 10).map((fc) => ({
+          front: fc.front,
+          back: fc.back,
+          clinical: fc.clinical,
+          mnemonic: fc.mnemonic,
+        }));
+      }
+    } catch {}
+
+    // Student progress for this unit
+    try {
+      const progress = db.getOne(
+        'SELECT * FROM unit_progress WHERE user_id = 1 AND unit_id = ?',
+        [unitId]
+      );
+      if (progress) {
+        context.studentProgress = {
+          phase: progress.current_phase,
+          quizScore: progress.quiz_score,
+          testScore: progress.test_score,
+        };
+      }
+    } catch {}
+
+    // Recent errors for this unit
+    try {
+      const errors = db.all(
+        `SELECT question_stem as stem, user_answer, correct_answer, mastery_level
+         FROM error_book WHERE user_id = 1 AND unit_id = ?
+         ORDER BY created_at DESC LIMIT 5`,
+        [unitId]
+      );
+      if (errors?.length > 0) {
+        context.recentErrors = errors;
+      }
+    } catch {}
+  }
+
+  // ── Layer 1: Global learning stats (always available) ──
   try {
-    const progress = db.getOne(
-      'SELECT * FROM unit_progress WHERE user_id = 1 AND unit_id = ?',
-      [unitId]
-    );
-    if (progress) {
-      context.studentProgress = {
-        phase: progress.current_phase,
-        quizScore: progress.quiz_score,
-        testScore: progress.test_score,
-      };
+    context.dueErrorCount = getDueErrorsCount(1);
+  } catch {}
+
+  try {
+    const weakPoints = detectWeakPoints(1);
+    if (weakPoints.length > 0) {
+      context.weakPoints = weakPoints;
     }
   } catch {}
 
-  // Recent errors for this unit
-  try {
-    const errors = db.all(
-      `SELECT stem, user_answer, correct_answer, error_type, mastery_level
-       FROM error_book WHERE user_id = 1 AND unit_id = ?
-       ORDER BY created_at DESC LIMIT 5`,
-      [unitId]
-    );
-    if (errors?.length > 0) {
-      context.recentErrors = errors;
-    }
-  } catch {}
-
-  // Due errors count
-  try {
-    const dueRow = db.getOne(
-      `SELECT COUNT(*) as count FROM error_book
-       WHERE user_id = 1 AND resolved = 0 AND next_review <= datetime('now')`,
-      []
-    );
-    if (dueRow) context.dueErrorCount = dueRow.count;
-  } catch {}
-
-  // Overall progress
   try {
     const overallRow = db.getOne(
       `SELECT COUNT(*) as total,
@@ -138,30 +290,45 @@ async function buildContext(unitId, scene) {
     }
   } catch {}
 
-  // Chapter info
+  // ── Layer 2: User profile/preferences ──
   try {
-    const chapters = getChapters();
-    if (chapters?.chapters) {
-      for (const ch of chapters.chapters) {
-        for (const section of ch.sections || []) {
-          for (const sub of section.subsections || []) {
-            for (const part of sub.parts || []) {
-              if (part.partId === unitId || part.unitId === unitId) {
-                context.chapterName = ch.title;
-                context.sectionName = section.title;
-                context.knowledgeName = part.title;
+    const profile = getUserProfile(1);
+    if (profile?.profileData) {
+      context.userProfile = profile.profileData;
+    }
+  } catch {}
+
+  // Chapter info for unitId
+  if (unitId) {
+    try {
+      const chapters = getChapters();
+      if (chapters?.chapters) {
+        for (const ch of chapters.chapters) {
+          for (const section of ch.sections || []) {
+            for (const sub of section.subsections || []) {
+              for (const part of sub.parts || []) {
+                if (part.partId === unitId || part.unitId === unitId) {
+                  context.chapterName = ch.title;
+                  context.sectionName = section.title;
+                  context.knowledgeName = part.title;
+                }
               }
             }
           }
         }
       }
-    }
-  } catch {}
+    } catch {}
+  }
+
+  // Current page info (for global chat)
+  if (opts.currentPage) {
+    context.currentPage = opts.currentPage;
+  }
 
   return context;
 }
 
-// ─── System prompt builder ───
+// ─── System prompt builder (with 3-layer memory) ───
 function buildSystemPrompt(scene, context) {
   let prompt = BASE_SYSTEM_PROMPT;
 
@@ -170,9 +337,21 @@ function buildSystemPrompt(scene, context) {
     prompt += '\n' + SCENE_PROMPTS[scene];
   }
 
-  // Dynamic context (Layer 2)
+  // ── Layer 0: Recent conversation memory ──
+  if (context.recentChatHistory?.length > 0) {
+    prompt += '\n\n【最近对话记忆】';
+    for (const msg of context.recentChatHistory) {
+      const roleLabel = msg.role === 'user' ? '学弟/学妹' : '你(学姐)';
+      prompt += `\n${roleLabel}：${msg.content}`;
+    }
+  }
+
+  // ── Layer 1: Dynamic learning context ──
   prompt += '\n\n【当前上下文】';
 
+  if (context.currentPage) {
+    prompt += `\n当前页面：${context.currentPage.path || ''}`;
+  }
   if (context.knowledgeName) {
     prompt += `\n知识点：${context.knowledgeName}`;
   }
@@ -201,8 +380,24 @@ function buildSystemPrompt(scene, context) {
   if (context.dueErrorCount > 0) {
     prompt += `\n\n待复习错题数：${context.dueErrorCount}道`;
   }
+  if (context.weakPoints?.length > 0) {
+    const wpSummary = context.weakPoints
+      .map((wp) => `「${wp.stem}」答错${wp.errorCount}次（正确：${wp.answer}）`)
+      .join('；');
+    prompt += `\n\n⚠️ 学生的薄弱知识点（需重点帮助）：${wpSummary}`;
+  }
   if (context.overallProgress) {
     prompt += `\n\n整体进度：${context.overallProgress.testedUnits}/${context.overallProgress.totalUnits}单元（${context.overallProgress.percentage}%）`;
+  }
+
+  // ── Layer 2: User profile/preferences ──
+  if (context.userProfile && Object.keys(context.userProfile).length > 0) {
+    const up = context.userProfile;
+    prompt += '\n\n【学生偏好】';
+    if (up.studyStyle) prompt += `\n学习风格：${up.studyStyle}`;
+    if (up.preferredExplanation) prompt += `\n偏好讲解方式：${up.preferredExplanation}`;
+    if (up.weakSubjects) prompt += `\n薄弱科目：${up.weakSubjects}`;
+    if (up.customNotes) prompt += `\n备注：${up.customNotes}`;
   }
 
   return prompt;
@@ -229,8 +424,10 @@ function makeRequest(options, body) {
 }
 
 // ─── Streaming chat ───
-async function streamChat(apiKey, unitId, scene, messages, res) {
-  const context = await buildContext(unitId, scene);
+async function streamChat(apiKey, unitId, scene, messages, res, opts = {}) {
+  const context = await buildContext(unitId || '', scene, {
+    currentPage: opts.currentPage || null,
+  });
   const systemPrompt = buildSystemPrompt(scene, context);
 
   const requestMessages = [
@@ -248,6 +445,12 @@ async function streamChat(apiKey, unitId, scene, messages, res) {
     };
     const defaultMsg = defaultPrompts[scene] || '你好，请帮我学习解剖学。';
     requestMessages.push({ role: 'user', content: defaultMsg });
+  }
+
+  // Save user message to chat history
+  const lastUserMsg = [...(messages || [])].reverse().find((m) => m.role === 'user');
+  if (lastUserMsg) {
+    saveChatMessage(1, 'user', lastUserMsg.content, scene, unitId || '', opts.currentPage?.path || '');
   }
 
   const options = {
@@ -276,6 +479,8 @@ async function streamChat(apiKey, unitId, scene, messages, res) {
     'X-Accel-Buffering': 'no',
   });
 
+  let fullResponse = '';
+
   const req = https.request(options, (apiRes) => {
     let buffer = '';
     apiRes.on('data', (chunk) => {
@@ -287,6 +492,10 @@ async function streamChat(apiKey, unitId, scene, messages, res) {
         if (line.startsWith('data: ')) {
           const data = line.slice(6).trim();
           if (data === '[DONE]') {
+            // Save assistant response to chat history
+            if (fullResponse) {
+              saveChatMessage(1, 'assistant', fullResponse, scene, unitId || '', opts.currentPage?.path || '');
+            }
             res.write('data: [DONE]\n\n');
             res.end();
             return;
@@ -295,6 +504,7 @@ async function streamChat(apiKey, unitId, scene, messages, res) {
             const parsed = JSON.parse(data);
             const content = parsed.choices?.[0]?.delta?.content;
             if (content) {
+              fullResponse += content;
               res.write(`data: ${JSON.stringify({ content })}\n\n`);
             }
           } catch {
@@ -305,6 +515,10 @@ async function streamChat(apiKey, unitId, scene, messages, res) {
     });
 
     apiRes.on('end', () => {
+      // Save any remaining response
+      if (fullResponse) {
+        saveChatMessage(1, 'assistant', fullResponse, scene, unitId || '', opts.currentPage?.path || '');
+      }
       res.end();
     });
 
@@ -356,6 +570,82 @@ async function callAI(apiKey, unitId, scene, userPrompt, systemExtra = '') {
     throw new Error(`DeepSeek API error: ${result.status} - ${JSON.stringify(result.data)}`);
   }
   return result.data.choices?.[0]?.message?.content || '';
+}
+
+// ─── AI Semantic Search ───
+async function aiSearch(apiKey, query) {
+  // Get all available content titles/paths for context
+  let contentIndex = '';
+  try {
+    const chapters = getChapters();
+    if (chapters?.chapters) {
+      const entries = [];
+      for (const ch of chapters.chapters) {
+        for (const section of ch.sections || []) {
+          for (const sub of section.subsections || []) {
+            for (const part of sub.parts || []) {
+              entries.push(`${ch.title} > ${section.title} > ${part.title}`);
+            }
+          }
+        }
+      }
+      contentIndex = entries.join('\n');
+    }
+  } catch {}
+
+  const systemPrompt = `你是解剖学知识检索助手。用户用自然语言描述想找的内容。
+请从以下内容索引中找到最相关的知识点（最多5个），推断对应的章节路径。
+
+内容索引：
+${contentIndex.slice(0, 3000)}
+
+返回严格JSON格式：
+{
+  "keywords": ["提取的关键词1", "关键词2"],
+  "matches": [
+    {
+      "title": "知识点名称",
+      "path": "章节 > 节 > 知识点",
+      "relevance": "high|medium|low",
+      "reason": "为什么匹配"
+    }
+  ]
+}`;
+
+  const messages = [
+    { role: 'system', content: systemPrompt },
+    { role: 'user', content: query },
+  ];
+
+  const options = {
+    hostname: DEEPSEEK_BASE,
+    path: DEEPSEEK_PATH,
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${apiKey}`,
+    },
+  };
+
+  const body = {
+    model: MODEL,
+    messages,
+    stream: false,
+    max_tokens: 500,
+    temperature: 0.2,
+  };
+
+  const result = await makeRequest(options, body);
+  if (result.status !== 200) {
+    throw new Error(`DeepSeek API error: ${result.status}`);
+  }
+  const text = result.data.choices?.[0]?.message?.content || '';
+  try {
+    const jsonMatch = text.match(/```(?:json)?\s*([\s\S]*?)\s*```/) || [null, text];
+    return JSON.parse(jsonMatch[1] || text);
+  } catch {
+    return { keywords: [], matches: [], rawText: text };
+  }
 }
 
 // ─── Doubao TTS (V3 API · seed-tts-2.0) ───
@@ -467,6 +757,17 @@ async function doubaoTTS(apiKey, appId, text, voiceType) {
 module.exports = {
   streamChat,
   callAI,
+
+  // Memory
+  saveChatMessage,
+  getRecentChatHistory,
+  saveUserProfile,
+  getUserProfile,
+  detectWeakPoints,
+  getDueErrorsCount,
+
+  // Search
+  aiSearch,
 
   async generateQuiz(apiKey, unitId, count = 3) {
     return callAI(

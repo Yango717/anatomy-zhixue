@@ -3,10 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import useAITutor from '../../hooks/useAITutor';
 import useVoice from '../../hooks/useVoice';
 import { useAIContext } from './AIContextProvider';
+import { api } from '../../utils/api';
 
 export default function AITutorBar() {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
+  const [alertData, setAlertData] = useState(null); // { dueCount, weakPoints }
   const { hasApiKey } = useAIContext();
   const tutor = useAITutor();
   const navigate = useNavigate();
@@ -15,11 +17,20 @@ export default function AITutorBar() {
   useEffect(() => {
     if (!hasApiKey) return;
     setLoading(true);
-    tutor.generateTodayRecommend()
-      .then((text) => {
-        if (text) setMessage(text);
-      })
-      .finally(() => setLoading(false));
+
+    // Fetch both proactive alerts and today's recommendation
+    Promise.all([
+      tutor.generateTodayRecommend(),
+      api.get('/errorbook/due').catch(() => null),
+      api.get('/errorbook/stats').catch(() => null),
+    ]).then(([text, dueData, statsData]) => {
+      if (text) setMessage(text);
+      const dueCount = dueData?.items?.length || dueData?.count || 0;
+      const weakCount = statsData?.lowMasteryCount || 0;
+      if (dueCount > 0 || weakCount > 0) {
+        setAlertData({ dueCount, weakCount });
+      }
+    }).finally(() => setLoading(false));
   }, [hasApiKey]);
 
   if (!hasApiKey) return null;
@@ -50,6 +61,15 @@ export default function AITutorBar() {
           </button>
         )}
       </div>
+
+      {/* Proactive alert */}
+      {alertData && alertData.dueCount > 0 && (
+        <div className="ai-tutor-bar__alert">
+          ⚠️ 你有 <strong>{alertData.dueCount}</strong> 道错题到期该复习啦！
+          {alertData.weakCount > 0 && ` 其中 ${alertData.weakCount} 道掌握度偏低。`}
+        </div>
+      )}
+
       <div className="ai-tutor-bar__body">
         {loading ? (
           <p className="ai-tutor-bar__text ai-tutor-bar__text--loading">正在分析你的学习数据...</p>

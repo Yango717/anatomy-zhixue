@@ -5,7 +5,7 @@ const aiService = require('../services/aiService');
 // Streaming AI chat
 router.post('/chat', async (req, res) => {
   try {
-    const { apiKey, unitId, scene, messages } = req.body;
+    const { apiKey, unitId, scene, messages, currentPage, userProfile } = req.body;
     if (!apiKey) {
       return res.status(400).json({
         success: false,
@@ -13,7 +13,16 @@ router.post('/chat', async (req, res) => {
         timestamp: new Date().toISOString(),
       });
     }
-    await aiService.streamChat(apiKey, unitId || '', scene || 'learn', messages || [], res);
+
+    // Save user profile if provided (Layer 2 memory)
+    if (userProfile && Object.keys(userProfile).length > 0) {
+      aiService.saveUserProfile(1, userProfile);
+    }
+
+    await aiService.streamChat(
+      apiKey, unitId || '', scene || 'learn', messages || [], res,
+      { currentPage: currentPage || null }
+    );
   } catch (err) {
     if (!res.headersSent) {
       res.status(500).json({
@@ -115,6 +124,72 @@ router.post('/tts', async (req, res) => {
     res.status(500).json({
       success: false,
       error: { code: 'TTS_ERROR', message: err.message },
+      timestamp: new Date().toISOString(),
+    });
+  }
+});
+
+// Save user profile (Layer 2 memory)
+router.post('/profile', async (req, res) => {
+  try {
+    const { profile } = req.body;
+    if (!profile) {
+      return res.status(400).json({
+        success: false,
+        error: { code: 'NO_PROFILE', message: '请提供用户偏好数据' },
+        timestamp: new Date().toISOString(),
+      });
+    }
+    aiService.saveUserProfile(1, profile);
+    res.json({ success: true, data: { saved: true }, timestamp: new Date().toISOString() });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      error: { code: 'PROFILE_ERROR', message: err.message },
+      timestamp: new Date().toISOString(),
+    });
+  }
+});
+
+// AI semantic search
+router.post('/search', async (req, res) => {
+  try {
+    const { apiKey, query } = req.body;
+    if (!apiKey) {
+      return res.status(400).json({
+        success: false,
+        error: { code: 'NO_API_KEY', message: '请先配置DeepSeek API Key' },
+        timestamp: new Date().toISOString(),
+      });
+    }
+    if (!query || query.trim().length < 2) {
+      return res.status(400).json({
+        success: false,
+        error: { code: 'INVALID_QUERY', message: '请提供有效的搜索内容' },
+        timestamp: new Date().toISOString(),
+      });
+    }
+    const result = await aiService.aiSearch(apiKey, query.trim());
+    res.json({ success: true, data: result, timestamp: new Date().toISOString() });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      error: { code: 'SEARCH_ERROR', message: err.message },
+      timestamp: new Date().toISOString(),
+    });
+  }
+});
+
+// Get recent chat history (Layer 0 memory)
+router.get('/history', async (req, res) => {
+  try {
+    const limit = parseInt(req.query.limit) || 20;
+    const history = aiService.getRecentChatHistory(1, limit);
+    res.json({ success: true, data: { messages: history }, timestamp: new Date().toISOString() });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      error: { code: 'HISTORY_ERROR', message: err.message },
       timestamp: new Date().toISOString(),
     });
   }

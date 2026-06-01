@@ -7,7 +7,6 @@ import ImageHotspotView from '../components/learn/ImageHotspotView';
 import FlashcardCarousel from '../components/learn/FlashcardCarousel';
 import { useLearningFlow } from '../hooks/useLearningFlow';
 import { resolveUnitAsset } from '../services/contentService';
-import AIChatPanel from '../components/ai/AIChatPanel';
 import { api } from '../utils/api';
 
 export default function LearnPage() {
@@ -156,7 +155,6 @@ export default function LearnPage() {
         </button>
       </div>
 
-      <AIChatPanel scene="learn" unitId={unitId} />
     </div>
   );
 }

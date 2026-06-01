@@ -74,10 +74,11 @@ async function localDispatch(method, s, body, rawPath) {
   if (s[0] === 'search') { const u = new URL(rawPath, 'http://x'); return b.search(u.searchParams.get('q') || ''); }
 
   // AI routes — call DeepSeek API directly from browser
-  if (s[0] === 'ai' && s[1] === 'chat') return b.aiChat(body.apiKey, body.unitId, body.scene, body.messages);
+  if (s[0] === 'ai' && s[1] === 'chat') return b.aiChat(body.apiKey, body.unitId, body.scene, body.messages, body.currentPage, body.userProfile);
   if (s[0] === 'ai' && s[1] === 'generate-quiz') return b.aiGenerateQuiz(body.apiKey, body.unitId, body.count);
   if (s[0] === 'ai' && s[1] === 'review-report') return b.aiReviewReport(body.apiKey, body.unitId);
   if (s[0] === 'ai' && s[1] === 'today-recommend') return b.aiTodayRecommend(body.apiKey);
+  if (s[0] === 'ai' && s[1] === 'search') throw { code: 'SERVER_REQUIRED', message: 'AI搜索需要服务端支持' };
 
   throw { code: 'NOT_FOUND', message: `Unknown: ${method} /${s.join('/')}` };
 }

@@ -1,4 +1,5 @@
 import TopBar from './TopBar';
+import GlobalAIChat from '../ai/GlobalAIChat';
 
 export default function AppLayout({ children }) {
   return (
@@ -7,6 +8,7 @@ export default function AppLayout({ children }) {
       <main className="app-main">
         {children}
       </main>
+      <GlobalAIChat />
     </div>
   );
 }

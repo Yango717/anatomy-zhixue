@@ -377,7 +377,7 @@ export async function updateCountdown(name, target) { await init(); if (name) ru
 
 // --- AI (local mode: direct DeepSeek API calls) ---
 import { aiChatLocal, aiGenerateQuizLocal, aiReviewReportLocal, aiTodayRecommendLocal } from '../utils/aiLocal';
-export async function aiChat(apiKey, unitId, scene, messages) { const text = await aiChatLocal(apiKey, unitId, scene, messages); return { reply: text }; }
+export async function aiChat(apiKey, unitId, scene, messages, currentPage, userProfile) { const text = await aiChatLocal(apiKey, unitId, scene, messages, { currentPage, userProfile }); return { reply: text }; }
 export async function aiGenerateQuiz(apiKey, unitId, count) { return aiGenerateQuizLocal(apiKey, unitId, count); }
 export async function aiReviewReport(apiKey, unitId) { const report = await aiReviewReportLocal(apiKey, unitId); return { report }; }
 export async function aiTodayRecommend(apiKey) { const recommendation = await aiTodayRecommendLocal(apiKey); return { recommendation };}

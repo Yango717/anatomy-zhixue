@@ -17,29 +17,35 @@ async function getCachedMode() {
   return cachedMode;
 }
 
-export default function useAITutor() {
-  const [messages, setMessages] = useState([]);
+export default function useAITutor(initialMessages) {
+  const [messages, setMessages] = useState(initialMessages || []);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const abortRef = useRef(null);
 
   // Determine scene from current route
-  function getScene() {
-    const path = window.location.pathname;
-    if (path === '/' || path === '') return 'home';
-    if (path.startsWith('/learn/')) return 'learn';
-    if (path.startsWith('/quiz/')) return 'quiz';
-    if (path.startsWith('/test/')) return 'review';
-    if (path.startsWith('/review') && path !== '/review') return 'review';
-    if (path === '/review') return 'errorbook';
+  function getScene(path) {
+    const p = path || window.location.pathname;
+    if (p === '/' || p === '') return 'home';
+    if (p.startsWith('/learn/')) return 'learn';
+    if (p.startsWith('/quiz/')) return 'quiz';
+    if (p.startsWith('/test/')) return 'review';
+    if (p.startsWith('/finalexam/')) return 'review';
+    if (p.startsWith('/review') && p !== '/review') return 'review';
+    if (p === '/review') return 'errorbook';
+    if (p.startsWith('/practice')) return 'quiz';
+    if (p.startsWith('/modules') || p.startsWith('/sections')) return 'learn';
+    if (p.startsWith('/exam')) return 'review';
+    if (p === '/me') return 'home';
     return 'learn';
   }
 
   // Extract unitId from current URL
-  function getUnitId() {
-    const path = window.location.pathname;
-    const match = path.match(/\/(learn|quiz|review|test|finalexam)\/(.+)/);
+  function getUnitId(path) {
+    const p = path || window.location.pathname;
+    const match = p.match(/\/(learn|quiz|review|test|finalexam|practice)\/(.+)/);
     if (match) return decodeURIComponent(match[2]);
+    // Try to get unitId from query or state
     return '';
   }
 
@@ -48,8 +54,27 @@ export default function useAITutor() {
     return localStorage.getItem('deepseek_api_key') || '';
   }
 
+  // Get current page info for global context
+  function getCurrentPageInfo() {
+    return {
+      path: window.location.pathname,
+      scene: getScene(),
+      unitId: getUnitId(),
+      title: document.title || '',
+    };
+  }
+
+  // Get user profile for memory context
+  function getUserProfile() {
+    try {
+      return JSON.parse(localStorage.getItem('ai_user_profile') || '{}');
+    } catch {
+      return {};
+    }
+  }
+
   // Streaming chat
-  async function sendMessage(text) {
+  async function sendMessage(text, opts = {}) {
     const apiKey = getApiKey();
     if (!apiKey) {
       setError('请先在"我的"页面配置DeepSeek API Key');
@@ -62,12 +87,16 @@ export default function useAITutor() {
     setIsLoading(true);
     setError(null);
 
-    const scene = getScene();
-    const unitId = getUnitId();
+    const scene = opts.scene || getScene();
+    const unitId = opts.unitId || getUnitId();
+    const currentPage = opts.currentPage || getCurrentPageInfo();
+    const userProfile = getUserProfile();
 
     try {
       const controller = new AbortController();
       abortRef.current = controller;
+
+      const allMessages = (opts.messages || messages).concat([userMsg]).map((m) => ({ role: m.role, content: m.content }));
 
       const res = await fetch(`${API_BASE}/ai/chat`, {
         method: 'POST',
@@ -76,13 +105,14 @@ export default function useAITutor() {
           apiKey,
           unitId,
           scene,
-          messages: messages.concat([userMsg]).map((m) => ({ role: m.role, content: m.content })),
+          currentPage,
+          userProfile,
+          messages: allMessages,
         }),
         signal: controller.signal,
       });
 
       if (!res.ok) {
-        // If server unavailable, fall back to local mode
         if (res.status === 0 || res.status >= 500) {
           throw new Error('SERVER_UNAVAILABLE');
         }
@@ -134,11 +164,14 @@ export default function useAITutor() {
       } else if (err.message === 'SERVER_UNAVAILABLE') {
         // Fall back to local mode (non-streaming)
         try {
+          const allMessages = (opts.messages || messages).concat([userMsg]).map((m) => ({ role: m.role, content: m.content }));
           const result = await api.post('/ai/chat', {
             apiKey,
             unitId,
             scene,
-            messages: messages.concat([userMsg]).map((m) => ({ role: m.role, content: m.content })),
+            currentPage,
+            userProfile,
+            messages: allMessages,
           });
           const replyText = result?.reply || result?.content || '';
           setMessages((prev) => {
@@ -190,10 +223,8 @@ export default function useAITutor() {
 
     try {
       const result = await api.post('/ai/generate-quiz', { apiKey, unitId, count });
-      // Try to parse JSON from AI response
       const text = typeof result === 'string' ? result : result.quiz || '';
       try {
-        // Extract JSON from possible markdown code block
         const jsonMatch = text.match(/```(?:json)?\s*([\s\S]*?)\s*```/) || [null, text];
         return JSON.parse(jsonMatch[1] || text);
       } catch {
@@ -256,6 +287,9 @@ export default function useAITutor() {
       abortRef.current = controller;
 
       const unitId = getUnitId();
+      const currentPage = getCurrentPageInfo();
+      const userProfile = getUserProfile();
+
       const res = await fetch(`${API_BASE}/ai/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -263,6 +297,8 @@ export default function useAITutor() {
           apiKey,
           unitId,
           scene: scene || getScene(),
+          currentPage,
+          userProfile,
           messages: [{ role: 'user', content: text }],
         }),
         signal: controller.signal,
@@ -270,7 +306,6 @@ export default function useAITutor() {
 
       if (!res.ok) throw new Error(`API error: ${res.status}`);
 
-      // Collect streaming response into single string
       const reader = res.body.getReader();
       const decoder = new TextDecoder();
       let fullText = '';
@@ -335,6 +370,7 @@ export default function useAITutor() {
     hasApiKey,
     getScene,
     getUnitId,
+    getCurrentPageInfo,
     setMessages,
   };
 }

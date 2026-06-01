@@ -145,6 +145,34 @@ CREATE TABLE IF NOT EXISTS review_sessions (
     completed_at TEXT,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
+
+CREATE TABLE IF NOT EXISTS chat_history (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL DEFAULT 1,
+    role TEXT NOT NULL,
+    content TEXT NOT NULL,
+    scene TEXT DEFAULT 'learn',
+    unit_id TEXT DEFAULT '',
+    current_page TEXT DEFAULT '',
+    created_at TEXT DEFAULT (datetime('now')),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+CREATE INDEX idx_chat_history_user ON chat_history(user_id);
+CREATE INDEX idx_chat_history_created ON chat_history(created_at);
+
+CREATE TABLE IF NOT EXISTS user_profile (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL DEFAULT 1 UNIQUE,
+    study_style TEXT DEFAULT '',
+    preferred_explanation TEXT DEFAULT '',
+    study_time_preference TEXT DEFAULT '',
+    weak_subjects TEXT DEFAULT '',
+    custom_notes TEXT DEFAULT '',
+    profile_json TEXT DEFAULT '{}',
+    created_at TEXT DEFAULT (datetime('now')),
+    updated_at TEXT DEFAULT (datetime('now')),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
 `;
 }
 
