@@ -5,3 +5,10 @@ data/anatomy.db
 .env
 .DS_Store
 Thumbs.db
+_atlas/
+_atlas_preview/
+_atlas_gallery.html
+_temp_atlas/
+dev-logs/
+ai-pomodoro-*
+.superpowers/

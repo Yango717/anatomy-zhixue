@@ -11,6 +11,7 @@ const testRouter = require('./routes/test');
 const errorbookRouter = require('./routes/errorbook');
 const recommendRouter = require('./routes/recommend');
 const practiceRouter = require('./routes/practice');
+const aiRouter = require('./routes/ai');
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use('/api/v1', testRouter);
 app.use('/api/v1', errorbookRouter);
 app.use('/api/v1', recommendRouter);
 app.use('/api/v1', practiceRouter);
+app.use('/api/v1/ai', aiRouter);
 
 app.get('/api/v1/health', (_req, res) => {
   res.json({ success: true, data: { status: 'ok' }, timestamp: new Date().toISOString() });

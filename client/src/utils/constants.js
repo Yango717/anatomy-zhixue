@@ -1,22 +1,21 @@
 export const PHASES = {
   NOT_STARTED: 0,
+  COMPLETED: 1,
+  // Legacy phases kept for reading old progress data
   LEARNED: 1,
   QUIZZED: 2,
   REVIEWED: 3,
   TESTED: 4,
   FINAL_EXAM_DONE: 5,
-  COMPLETED: 6,
+  ALL_COMPLETE: 6,
 };
 
 export const PHASE_LABELS = {
   0: '未开始',
-  1: '已学习',
-  2: '已测验',
-  3: '已回顾',
-  4: '已测试',
-  5: '已完成真题',
-  6: '全部完成',
+  1: '已完成',
 };
+// Merge legacy labels for backward-compatible display
+for (let i = 2; i <= 6; i++) PHASE_LABELS[i] = '已完成';
 
 export const QUESTION_TYPES = {
   FILL_BLANK: 'fill_blank',

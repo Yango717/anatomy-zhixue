@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { AIContextProvider } from './components/ai/AIContextProvider';
 import AppLayout from './components/layout/AppLayout';
 import HomePage from './pages/HomePage';
 import ModulesPage from './pages/ModulesPage';
@@ -16,7 +17,8 @@ import ProfilePage from './pages/ProfilePage';
 export default function App() {
   return (
     <BrowserRouter>
-      <AppLayout>
+      <AIContextProvider>
+        <AppLayout>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/modules" element={<ModulesPage />} />
@@ -46,6 +48,7 @@ export default function App() {
           } />
         </Routes>
       </AppLayout>
+      </AIContextProvider>
     </BrowserRouter>
   );
 }

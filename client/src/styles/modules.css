@@ -1,51 +1,4 @@
-/* === Page Base === */
-.page {
-  max-width: 480px;
-  margin: 0 auto;
-  padding: var(--spacing-lg);
-}
-
-.page__title {
-  font-size: var(--font-size-2xl);
-  font-weight: 700;
-  color: var(--color-text-primary);
-  margin-bottom: var(--spacing-xl);
-  letter-spacing: -0.3px;
-}
-
-.page-loading {
-  text-align: center;
-  padding: var(--spacing-3xl) 0;
-  color: var(--color-text-hint);
-}
-
-.empty-hint {
-  text-align: center;
-  padding: var(--spacing-2xl) 0;
-  color: var(--color-text-hint);
-}
-
-/* === Page Header (Sections) === */
-.page-header {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-xl);
-}
-
-.page-header__back {
-  font-size: var(--font-size-base);
-  color: var(--color-primary);
-  font-weight: 500;
-  flex-shrink: 0;
-}
-.page-header__back:active { opacity: 0.6; }
-
-.page-header__title {
-  font-size: var(--font-size-lg);
-  font-weight: 700;
-  color: var(--color-text-primary);
-}
+/* === Modules & Sections · Pentagram Style === */
 
 /* === Module Grid === */
 .module-grid {
@@ -62,12 +15,14 @@
   gap: var(--spacing-sm);
   padding: var(--spacing-lg);
   background: var(--color-card);
-  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
   text-align: left;
-  transition: transform 0.1s;
+  transition: border-color 0.15s;
   width: 100%;
 }
-.module-card:active { transform: scale(0.98); }
+.module-card:hover { border-color: var(--color-primary); }
+.module-card:active { background: var(--color-bg-subtle); }
 
 .module-card__icon {
   font-size: 28px;
@@ -95,8 +50,8 @@
 
 .module-card__bar {
   flex: 1;
-  height: 4px;
-  background: var(--color-border);
+  height: 3px;
+  background: var(--color-bg-subtle);
   border-radius: var(--radius-full);
   overflow: hidden;
 }
@@ -123,7 +78,8 @@
 
 .section-group {
   background: var(--color-card);
-  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
   overflow: hidden;
 }
 
@@ -144,9 +100,7 @@
   width: 14px;
   text-align: center;
 }
-.section-group__arrow--open {
-  transform: rotate(90deg);
-}
+.section-group__arrow--open { transform: rotate(90deg); }
 
 .section-group__icon {
   font-size: var(--font-size-base);
@@ -165,14 +119,11 @@
 /* === Subsection Block === */
 .subsection-block {
   padding-left: var(--spacing-xl);
-  border-left: 2px solid var(--color-divider);
+  border-left: 1.5px solid var(--color-border);
   margin-left: var(--spacing-md);
   margin-bottom: var(--spacing-md);
 }
-
-.subsection-block:last-child {
-  margin-bottom: 0;
-}
+.subsection-block:last-child { margin-bottom: 0; }
 
 .subsection-block__label {
   font-size: var(--font-size-sm);
@@ -197,10 +148,10 @@
   padding: var(--spacing-sm) var(--spacing-md);
   background: var(--color-bg-subtle);
   border-radius: var(--radius-sm);
-  transition: background 0.15s, transform 0.1s;
+  transition: background 0.15s;
   min-height: 44px;
 }
-.unit-item:active { background: var(--color-primary-bg); transform: scale(0.99); }
+.unit-item:active { background: var(--color-primary-bg); }
 
 .unit-item__name {
   font-size: var(--font-size-sm);
@@ -211,7 +162,7 @@
   font-size: 10px;
   color: #fff;
   padding: 2px 8px;
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-sm);
   white-space: nowrap;
   font-weight: 500;
   flex-shrink: 0;
@@ -230,6 +181,7 @@
 
 .system-accordion {
   background: var(--color-card);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   overflow: hidden;
 }
@@ -278,7 +230,7 @@
 }
 .system-accordion__arrow--open { transform: rotate(90deg); }
 
-/* Accordion body — nested tree */
+/* Accordion body */
 .system-accordion__body {
   padding: 0 var(--spacing-lg) var(--spacing-md);
   border-top: 1px solid var(--color-divider);
@@ -291,9 +243,7 @@
 }
 
 /* Section level */
-.system-section {
-  margin-top: var(--spacing-md);
-}
+.system-section { margin-top: var(--spacing-md); }
 
 .system-section__header {
   font-size: var(--font-size-sm);
@@ -331,7 +281,7 @@
   font-size: 10px;
   color: #fff;
   padding: 2px 8px;
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-sm);
   white-space: nowrap;
   font-weight: 500;
   flex-shrink: 0;

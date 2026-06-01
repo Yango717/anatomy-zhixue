@@ -38,6 +38,7 @@ export default function SectionTree({ sections, chapterId }) {
                       <UnitItem
                         key={part.id}
                         part={part}
+                        chapterId={chapterId}
                         sectionId={chapterId}
                         subsectionId={sub.id}
                         phase={progress[`${sub.id}-part-${part.id}`] ?? 0}

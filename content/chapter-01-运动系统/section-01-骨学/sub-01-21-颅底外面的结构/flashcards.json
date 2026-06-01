@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "image": { "src": "main.jpg", "alt": "颅底外面观" },
+  "flashcards": [
+    {"id":"fc-001","number":1,"front":"枕骨大孔（外面）","back":{"title":"枕骨大孔外面","detail":"颅底外面中央的大孔。前方为枕骨基底部（接蝶骨），后方为枕骨鳞部。两侧有**枕骨髁**（与寰椎侧块构成寰枕关节——\"点头\"运动）。","clinical":"枕骨髁骨折（Occipital Condyle Fracture）少见，常由高能量颅颈交界损伤所致（Anderson-Montesano分型），可合并下颅神经麻痹。","mnemonic":"枕骨大孔→中央→枕骨髁(两侧)→寰枕关节(点头)"}},
+    {"id":"fc-002","number":2,"front":"颈静脉孔","back":{"title":"颈静脉孔 (Jugular Foramen)","detail":"枕骨与颞骨岩部之间的孔。通过结构：（前内）**CN IX舌咽神经**+（中间）**CN X迷走神经**+**CN XI副神经**+（后外）**颈内静脉**。","clinical":"颈静脉孔综合征（Vernet Syndrome）——舌咽、迷走、副神经同时受损：吞咽困难+声嘶+斜方肌/胸锁乳突肌萎缩。颈静脉球瘤（Glomus Jugulare）是此区最常见的肿瘤。","mnemonic":"颈静脉孔→9+10+11→舌咽+迷走+副N→颈内V"}},
+    {"id":"fc-003","number":3,"front":"颈动脉管外口","back":{"title":"颈动脉管外口 (External Opening of Carotid Canal)","detail":"位于颞骨岩部下面、颈静脉孔前方。**颈内动脉**由此进入颅腔，在岩部内走行后经破裂孔后壁出管进入颅中窝。","clinical":"颈动脉管是颈内动脉进入颅腔的唯一骨性通道——颈内动脉夹层（ICA Dissection）可累及此段，表现为Horner综合征+对侧肢体瘫痪。","mnemonic":"颈动脉管外口→岩部下面→颈内A入颅→破裂孔→颅中窝"}},
+    {"id":"fc-004","number":4,"front":"茎乳孔","back":{"title":"茎乳孔 (Stylomastoid Foramen)","detail":"位于茎突与乳突之间的小孔。**面神经**（CN VII）主干由此出颅，随即进入腮腺。","clinical":"Bell面瘫（特发性面神经麻痹）——面神经在茎乳孔处水肿受压，导致同侧面肌瘫痪。面神经出茎乳孔后在腮腺内分为5支（颞支/颧支/颊支/下颌缘支/颈支）。","mnemonic":"茎乳孔→茎突+乳突之间→面神经出颅→腮腺→面瘫"}},
+    {"id":"fc-005","number":5,"front":"破裂孔（外面）","back":{"title":"破裂孔外面","detail":"蝶骨体、蝶骨大翼与颞骨岩部尖之间的不规则裂隙。活体由纤维软骨封闭。**咽鼓管**（Eustachian Tube）软骨部附着于此。","clinical":"咽鼓管功能障碍是分泌性中耳炎的主要原因——儿童咽鼓管更短更水平，易发生中耳积液。破裂孔是鼻咽癌颅内侵犯的通道。","mnemonic":"破裂孔→不规则裂隙→活体封闭→咽鼓管附着→鼻咽癌入侵通道"}},
+    {"id":"fc-006","number":6,"front":"枕骨髁","back":{"title":"枕骨髁 (Occipital Condyles)","detail":"枕骨大孔两侧的卵圆形关节面，与**寰椎侧块**的上关节凹构成**寰枕关节**。主要完成头的**屈伸运动**（\"点头\"约20°）和轻微的侧屈。","clinical":"枕颈融合术（Occipitocervical Fusion）用于寰枕关节不稳定——如类风湿关节炎、创伤、先天性畸形（颅底凹陷症）。","mnemonic":"枕骨髁→枕骨大孔两侧→接寰椎→寰枕关节→点头运动"}}
+  ]
+}

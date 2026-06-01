@@ -19,5 +19,12 @@ export function useLearningFlow(unitId) {
     setPhase(phaseNum);
   }
 
-  return { phase, loading, completePhase };
+  async function completeLearning() {
+    await api.post(`/learning/progress/unit/${unitId}/complete`);
+    setPhase(1);
+  }
+
+  const isCompleted = phase >= 1;
+
+  return { phase, loading, completePhase, completeLearning, isCompleted };
 }

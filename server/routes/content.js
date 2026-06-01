@@ -51,6 +51,16 @@ router.get('/units/:unitId/content', (req, res) => {
   }
 });
 
+// Get flashcards data for a specific unit
+router.get('/units/:unitId/flashcards', (req, res) => {
+  try {
+    const data = contentService.getUnitFlashcards(req.params.unitId);
+    res.json({ success: true, data, timestamp: new Date().toISOString() });
+  } catch (err) {
+    res.status(500).json({ success: false, error: { code: 'READ_ERROR', message: err.message }, timestamp: new Date().toISOString() });
+  }
+});
+
 // Search across all content.md files
 router.get('/search', (req, res) => {
   try {

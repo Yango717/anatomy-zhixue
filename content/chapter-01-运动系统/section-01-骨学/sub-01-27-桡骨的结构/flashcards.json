@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "image": {
+    "src": "main.jpg",
+    "alt": "前臂骨（尺骨与桡骨）前面观"
+  },
+  "flashcards": [
+    {
+      "id": "fc-001",
+      "number": 1,
+      "front": "桡骨头",
+      "back": {
+        "title": "桡骨头 (Head of Radius)",
+        "detail": "桡骨上端的扁圆形结构，上面有**关节凹**与**肱骨小头**相关节，周缘有**环状关节面**与尺骨的桡切迹相关节。",
+        "clinical": "桡骨头骨折是成人最常见的肘部骨折之一（Mason分型I-IV型），常因跌倒时手掌撑地所致。",
+        "mnemonic": "桡骨头→扁圆形→上接肱骨小头，侧面接尺骨"
+      }
+    },
+    {
+      "id": "fc-002",
+      "number": 2,
+      "front": "桡骨颈",
+      "back": {
+        "title": "桡骨颈 (Neck of Radius)",
+        "detail": "桡骨头下方的缩窄部，是桡骨头骨折的好发部位。",
+        "clinical": "桡骨颈骨折在儿童中较常见，可能损伤桡神经深支（骨间后神经）。",
+        "mnemonic": "桡骨颈→桡骨头下方缩窄→骨折好发"
+      }
+    },
+    {
+      "id": "fc-003",
+      "number": 3,
+      "front": "桡骨粗隆",
+      "back": {
+        "title": "桡骨粗隆 (Radial Tuberosity)",
+        "detail": "桡骨上端前内侧的隆起，是**肱二头肌腱**的止点。",
+        "clinical": "肱二头肌腱止点撕脱可发生于桡骨粗隆处，常见于举重运动员。",
+        "mnemonic": "桡骨粗隆→前内侧面→肱二头肌腱止点"
+      }
+    },
+    {
+      "id": "fc-004",
+      "number": 4,
+      "front": "桡骨茎突",
+      "back": {
+        "title": "桡骨茎突 (Radial Styloid Process)",
+        "detail": "桡骨下端外侧的锥形突起，是重要的体表标志。桡骨茎突比尺骨茎突低约1cm。",
+        "clinical": "桡骨茎突处是**de Quervain腱鞘炎**的疼痛部位（拇长展肌和拇短伸肌腱鞘炎）。桡骨远端骨折（Colles骨折）时茎突上移。",
+        "mnemonic": "桡骨茎突→外侧→比尺骨茎突低→Colles骨折标志"
+      }
+    },
+    {
+      "id": "fc-005",
+      "number": 5,
+      "front": "尺切迹",
+      "back": {
+        "title": "尺切迹 (Ulnar Notch)",
+        "detail": "桡骨下端内侧的切迹，与**尺骨头**相关节，构成**桡尺远侧关节**。",
+        "clinical": "桡尺远侧关节参与前臂旋前和旋后运动，该关节损伤可导致前臂旋转功能障碍。",
+        "mnemonic": "尺切迹→内侧→接尺骨头→桡尺远侧关节"
+      }
+    },
+    {
+      "id": "fc-006",
+      "number": 6,
+      "front": "腕关节面",
+      "back": {
+        "title": "腕关节面 (Carpal Articular Surface)",
+        "detail": "桡骨下端远侧的凹陷关节面，与**舟骨**、**月骨**和**三角骨**构成**桡腕关节**。",
+        "clinical": "桡骨远端骨折（Colles骨折/Smith骨折）涉及此关节面，Colles骨折呈\"餐叉样\"畸形。",
+        "mnemonic": "腕关节面→远侧凹陷→接舟骨+月骨+三角骨"
+      }
+    }
+  ]
+}

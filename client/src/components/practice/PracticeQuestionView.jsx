@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import AIHintButton from '../ai/AIHintButton';
 
 const TYPE_LABEL = {
   multiple_choice: '单选题', multi_select: '多选题', fill_blank: '填空题',
@@ -175,6 +176,11 @@ export default function PracticeQuestionView({
               placeholder="输入你的答案..."
               disabled={submitted && mode === 'brush'} />
           </>
+        )}
+
+        {/* AI Hint for brush/test mode */}
+        {!submitted && (mode === 'brush' || mode === 'test') && (
+          <AIHintButton questionStem={question.stem || ''} />
         )}
 
         {/* Action buttons */}

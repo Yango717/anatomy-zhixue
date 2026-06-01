@@ -1,13 +1,17 @@
 import { useState, useEffect } from 'react';
 import { api } from '../utils/api';
+import { useAIContext } from '../components/ai/AIContextProvider';
 
 export default function ProfilePage() {
   const [name, setName] = useState('');
   const [target, setTarget] = useState('');
   const [saved, setSaved] = useState(false);
+  const [apiKeySaved, setApiKeySaved] = useState(false);
   const [resetting, setResetting] = useState(false);
   const [dailyGoal, setDailyGoal] = useState(20);
   const [stats, setStats] = useState(null);
+  const { apiKey, saveApiKey, ttsKey, saveTtsKey, ttsAppId, saveTtsAppId } = useAIContext();
+  const [ttsSaved, setTtsSaved] = useState(false);
 
   useEffect(() => {
     api.get('/countdown').then((d) => {
@@ -88,6 +92,67 @@ export default function ProfilePage() {
         />
         <button className="btn btn--primary btn--block" style={{ marginTop: 'var(--spacing-md)' }} onClick={handleSaveGoal}>
           保存目标
+        </button>
+      </div>
+
+      <div className="settings-section">
+        <h3 className="settings-section__title">AI助手设置</h3>
+        <label className="settings-label">DeepSeek API Key</label>
+        <input
+          className="settings-input"
+          type="password"
+          value={apiKey}
+          onChange={(e) => saveApiKey(e.target.value.trim())}
+          placeholder="sk-xxxxxxxxxxxxxxxx"
+        />
+        <p className="settings-hint" style={{ marginTop: '4px', fontSize: '12px', color: 'var(--color-text-hint)' }}>
+          用于"解剖学长"AI助手功能。Key仅保存在本地浏览器中。
+          <br />
+          <a href="https://platform.deepseek.com/api_keys" target="_blank" rel="noopener" style={{ color: 'var(--ai-accent)' }}>
+            获取DeepSeek API Key →
+          </a>
+        </p>
+        <button
+          className="btn btn--primary btn--block"
+          style={{ marginTop: 'var(--spacing-md)' }}
+          onClick={() => {
+            setApiKeySaved(true);
+            setTimeout(() => setApiKeySaved(false), 2000);
+          }}
+        >
+          {apiKeySaved ? '已保存 ✓' : (apiKey ? '确认保存' : '请输入Key')}
+        </button>
+      </div>
+
+      <div className="settings-section">
+        <h3 className="settings-section__title">学姐语音设置（豆包TTS）</h3>
+        <label className="settings-label">Access Token</label>
+        <input
+          className="settings-input"
+          type="password"
+          value={ttsKey}
+          onChange={(e) => saveTtsKey(e.target.value.trim())}
+          placeholder="豆包TTS Access Token"
+        />
+        <label className="settings-label">语音音色（speaker）</label>
+        <input
+          className="settings-input"
+          value={ttsAppId}
+          onChange={(e) => saveTtsAppId(e.target.value.trim())}
+          placeholder="默认：zh_female_xiaohe_uranus_bigtts"
+        />
+        <p className="settings-hint" style={{ marginTop: '4px', fontSize: '12px', color: 'var(--color-text-hint)' }}>
+          已升级至 V3 API（seed-tts-2.0 情感模型）。可选：xiaohe_uranus / vv_uranus / xiaohe_jupiter
+        </p>
+        <button
+          className="btn btn--primary btn--block"
+          style={{ marginTop: 'var(--spacing-md)' }}
+          onClick={() => {
+            setTtsSaved(true);
+            setTimeout(() => setTtsSaved(false), 2000);
+          }}
+        >
+          {ttsSaved ? '已保存 ✓' : (ttsKey ? '确认保存' : '保存设置')}
         </button>
       </div>
 

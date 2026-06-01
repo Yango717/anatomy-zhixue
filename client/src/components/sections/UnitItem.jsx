@@ -1,27 +1,31 @@
 import { useNavigate } from 'react-router-dom';
-import { PHASE_LABELS } from '../../utils/constants';
 
-const PHASE_COLORS = {
-  0: '#CCCCCC', 1: '#3498DB', 2: '#F1C40F',
-  3: '#1ABC9C', 4: '#9B59B6', 5: '#1e6b9b',
+const BADGE_STYLES = {
+  completed: { color: '#1e6b9b', bg: '#E3F2FD' },
+  pending: { color: '#8b8b8f', bg: '#f0f0f0' },
 };
 
-export default function UnitItem({ part, sectionId, subsectionId, phase = 0 }) {
+export default function UnitItem({ part, chapterId, subsectionId, phase = 0 }) {
   const navigate = useNavigate();
   const unitId = `${subsectionId}-part-${part.id}`;
+  const isCompleted = phase >= 1;
 
   function handleClick() {
-    navigate(`/learn/${encodeURIComponent(unitId)}`, { state: { sectionId, subsectionId, partId: part.id, partTitle: part.title } });
+    navigate(`/learn/${encodeURIComponent(unitId)}`, {
+      state: { chapterId, sectionId: chapterId, subsectionId, partId: part.id, partTitle: part.title },
+    });
   }
+
+  const style = isCompleted ? BADGE_STYLES.completed : BADGE_STYLES.pending;
 
   return (
     <button className="unit-item" onClick={handleClick}>
       <span className="unit-item__name">{part.title}</span>
       <span
         className="unit-item__badge"
-        style={{ backgroundColor: PHASE_COLORS[phase] || PHASE_COLORS[0] }}
+        style={{ backgroundColor: style.bg, color: style.color }}
       >
-        {PHASE_LABELS[phase] || PHASE_LABELS[0]}
+        {isCompleted ? '已完成' : '未开始'}
       </span>
     </button>
   );

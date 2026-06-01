@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "image": { "src": "main.jpg", "alt": "髌骨" },
+  "flashcards": [
+    {"id":"fc-001","number":1,"front":"髌骨","back":{"title":"髌骨 (Patella)","detail":"人体最大的**籽骨**，位于股四头肌腱内。呈扁三角形，前面粗糙，后面光滑有软骨覆盖，与**股骨髌面**构成**髌股关节**。","clinical":"髌骨是伸膝装置的关键组成部分——增大股四头肌的力臂。髌骨骨折常见于直接撞击或股四头肌强力收缩。","mnemonic":"髌骨→最大籽骨→股四头肌腱内→伸膝杠杆"}},
+    {"id":"fc-002","number":2,"front":"髌底","back":{"title":"髌底 (Base of Patella)","detail":"髌骨的上缘，较宽大，是**股四头肌腱**的附着处。","clinical":"股四头肌腱炎好发于髌底附着处（Jumper's Knee/跳跃膝），常见于篮球、排球运动员。","mnemonic":"髌底→上缘宽→股四头肌腱附着→跳跃膝"}},
+    {"id":"fc-003","number":3,"front":"髌尖","back":{"title":"髌尖 (Apex of Patella)","detail":"髌骨的下端，较尖，**髌韧带**由此连接到**胫骨粗隆**。","clinical":"髌尖是Osgood-Schlatter病的相关结构（胫骨粗隆骨软骨炎），但更多见于胫骨粗隆止点处。髌尖综合征表现为髌骨下极疼痛。","mnemonic":"髌尖→下端尖→髌韧带→胫骨粗隆"}},
+    {"id":"fc-004","number":4,"front":"髌骨关节面","back":{"title":"髌骨关节面 (Articular Surface)","detail":"髌骨后面有软骨覆盖的关节面，中间有一纵嵴将其分为内、外两个面，与**股骨的髌面**相关节。","clinical":"髌骨软化症（Chondromalacia Patellae）是髌骨关节面软骨的退行性变，是青少年膝前痛最常见的原因。MRI可见软骨损伤分级。","mnemonic":"髌骨→后面软骨→纵嵴分内外→接股骨髌面"}},
+    {"id":"fc-005","number":5,"front":"髌骨脱位","back":{"title":"髌骨脱位 (Patellar Dislocation)","detail":"髌骨几乎总是向**外侧**脱位（股骨外侧髁较低，且Q角导致外侧拉力大）。常见于年轻女性。急性脱位常合并内侧髌股韧带（MPFL）撕裂。","clinical":"Q角（股四头肌拉力线与髌韧带夹角）增大是髌骨外侧脱位的主要危险因素。正常Q角男性<15°，女性<20°。","mnemonic":"髌骨脱位→总是向外→MPFL撕裂→Q角增大"}}
+  ]
+}

@@ -3,7 +3,7 @@
 /* Tablets (768px+) */
 @media (min-width: 768px) {
   .page {
-    max-width: 640px;
+    max-width: 680px;
   }
 
   .module-grid {

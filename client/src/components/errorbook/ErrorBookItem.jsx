@@ -1,3 +1,5 @@
+import AIErrorHelper from '../ai/AIErrorHelper';
+
 const TYPE_LABELS = { multiple_choice: '选择题', true_false: '判断题', term_explanation: '名词解释', short_answer: '简答题', essay: '问答题', fill_blank: '填空题', multi_select: '多选题' };
 
 export default function ErrorBookItem({ error, onMastery, onResolve, isDue }) {
@@ -31,6 +33,11 @@ export default function ErrorBookItem({ error, onMastery, onResolve, isDue }) {
           标记已解决
         </button>
       </div>
+      <AIErrorHelper errorItem={{
+        stem: error.question_stem,
+        userAnswer: error.user_answer,
+        correctAnswer: error.correct_answer,
+      }} />
     </div>
   );
 }

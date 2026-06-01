@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500">
+  <!-- 肩胛骨轮廓（前面观） -->
+  <!-- 上缘 -->
+  <polygon points="200,40 120,80 30,200 30,350 120,440 200,470 280,440 370,350 370,200 280,80"
+    fill="#f5f0e8" stroke="#4a3728" stroke-width="3"/>
+  <!-- 肩胛冈 -->
+  <line x1="30" y1="280" x2="370" y2="280" stroke="#8b7355" stroke-width="4" stroke-dasharray="8,4"/>
+  <!-- 喙突（钩状突起，从上方伸出） -->
+  <path d="M200,40 Q220,-20 260,-30" fill="none" stroke="#4a3728" stroke-width="3"/>
+  <!-- 关节盂 -->
+  <ellipse cx="370" cy="200" rx="30" ry="45" fill="#e8ddd0" stroke="#4a3728" stroke-width="2"/>
+  <!-- 肩峰 -->
+  <rect x="330" y="260" width="50" height="20" rx="5" fill="#e8ddd0" stroke="#4a3728" stroke-width="2"/>
+  <!-- 标注文字 -->
+  <text x="200" y="495" text-anchor="middle" font-size="12" fill="#888">肩胛骨前面观（示意）</text>
+</svg>

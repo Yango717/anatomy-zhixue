@@ -40,4 +40,16 @@ function getUnitContent(unitId) {
   return raw ? { content: raw, path: '' } : null;
 }
 
-module.exports = { getChapters, getChapter, getChapterMeta, countUnits, getUnitContent };
+// Find flashcards.json for a given unitId, return null if not found
+function getUnitFlashcards(unitId) {
+  const subPrefix = unitId.replace(/-part-.*/, '');
+  try {
+    const raw = findInChapters(config.contentDir, 'flashcards.json', subPrefix);
+    if (!raw) return null;
+    return JSON.parse(raw);
+  } catch {
+    return null;
+  }
+}
+
+module.exports = { getChapters, getChapter, getChapterMeta, countUnits, getUnitContent, getUnitFlashcards };

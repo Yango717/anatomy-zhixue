@@ -3,6 +3,7 @@ import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import TestSession from '../components/test/TestSession';
 import TestResult from '../components/test/TestResult';
 import Breadcrumb from '../components/common/Breadcrumb';
+import AIReviewPanel from '../components/ai/AIReviewPanel';
 import { api } from '../utils/api';
 
 export default function TestPage() {
@@ -42,6 +43,7 @@ export default function TestPage() {
           onBack={() => chapterId ? navigate(`/sections/${chapterId}`) : navigate('/modules')}
           onExam={() => navigate('/finalexam/' + encodeURIComponent(unitId), { state: loc })}
         />
+        <AIReviewPanel />
       </div>
     );
   }

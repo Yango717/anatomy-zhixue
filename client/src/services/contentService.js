@@ -130,4 +130,23 @@ export async function getAllPracticePools() {
   return pools;
 }
 
+export async function resolveUnitAsset(unitId, relativePath) {
+  await loadChapters();
+  const subId = unitPrefix(unitId);
+  const dir = getContentPath(subId, 'dummy');
+  if (!dir) return relativePath;
+  const baseDir = dir.replace(/\/dummy$/, '');
+  return encodeURI(`${baseDir}/${relativePath}`);
+}
+
+export async function getUnitFlashcards(unitId) {
+  await loadChapters();
+  const subId = unitPrefix(unitId);
+  const path = getContentPath(subId, 'flashcards.json');
+  if (!path) return null;
+  const resp = await fetch(path);
+  if (!resp.ok) return null;
+  return resp.json();
+}
+
 export { loadChapters, pathIndex, chaptersCache };

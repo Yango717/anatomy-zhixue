@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "image": { "src": "main.jpg", "alt": "胫骨与腓骨前面观" },
+  "flashcards": [
+    {"id":"fc-001","number":1,"front":"胫骨内侧髁","back":{"title":"胫骨内侧髁 (Medial Condyle of Tibia)","detail":"胫骨上端内侧的膨大关节面，与**股骨内侧髁**和**内侧半月板**相关节。","clinical":"内侧胫骨平台骨折常由外翻暴力所致（\"保险杠骨折\"）。内侧间室骨关节炎常见于此。","mnemonic":"内侧髁→上端内侧→接股骨内髁+内侧半月板"}},
+    {"id":"fc-002","number":2,"front":"胫骨外侧髁","back":{"title":"胫骨外侧髁 (Lateral Condyle of Tibia)","detail":"胫骨上端外侧的膨大关节面，与**股骨外侧髁**和**外侧半月板**相关节。其下方有关节面与**腓骨头**构成**胫腓关节**。","clinical":"外侧胫骨平台骨折（Schatzker分型）常为劈裂或塌陷型，需手术恢复关节面平整。","mnemonic":"外侧髁→上端外侧→接股骨外髁+外侧半月板+腓骨头"}},
+    {"id":"fc-003","number":3,"front":"胫骨粗隆","back":{"title":"胫骨粗隆 (Tibial Tuberosity)","detail":"胫骨上端前方的隆起，是**髌韧带**的止点。","clinical":"Osgood-Schlatter病（胫骨粗隆骨软骨炎）是青少年最常见的膝关节疼痛原因之一——运动后胫骨粗隆处疼痛、隆起。","mnemonic":"胫骨粗隆→前方隆起→髌韧带止点→青少年Osgood-Schlatter"}},
+    {"id":"fc-004","number":4,"front":"内踝","back":{"title":"内踝 (Medial Malleolus)","detail":"胫骨下端内侧的突起，是踝关节内侧的重要骨性标志。内踝关节面与**距骨**相关节。","clinical":"内踝骨折是最常见的踝关节骨折之一（Danis-Weber或Lauge-Hansen分型）。内踝后方有**踝管**，胫后神经、胫后动脉由此通过。","mnemonic":"内踝→胫骨下端内侧→踝内侧突起→踝管"}},
+    {"id":"fc-005","number":5,"front":"腓骨头","back":{"title":"腓骨头 (Head of Fibula)","detail":"腓骨上端的膨大，与**胫骨外侧髁**构成**胫腓关节**。腓骨头上方有**腓总神经**绕过。","clinical":"腓骨头/腓骨颈处腓总神经位置表浅，易受压迫或外伤——导致**足下垂**（踝背伸无力）和足背感觉障碍。","mnemonic":"腓骨头→外侧→腓总神经绕过→损伤→足下垂"}},
+    {"id":"fc-006","number":6,"front":"外踝","back":{"title":"外踝 (Lateral Malleolus)","detail":"腓骨下端的突起，比内踝低约1cm且更偏后。外踝关节面与**距骨**相关节。","clinical":"外踝骨折是最常见的踝部骨折——由于外踝比内踝低，踝外侧韧带（尤其距腓前韧带）最易损伤。Danis-Weber分类以腓骨骨折水平判断下胫腓联合损伤风险。","mnemonic":"外踝→腓骨下端→比内踝低1cm→踝扭伤最常累及"}},
+    {"id":"fc-007","number":7,"front":"骨间膜","back":{"title":"小腿骨间膜 (Interosseous Membrane)","detail":"连接胫骨和腓骨骨干的致密纤维膜，由斜行纤维组成。主要功能是传递和分散胫腓骨之间的力。","clinical":"下胫腓联合（踝关节上方）是由骨间膜下端增厚形成的韧带联合——Maisonneuve骨折累及下胫腓联合和骨间膜全长。","mnemonic":"骨间膜→胫腓之间→分散力→下胫腓联合"}}
+  ]
+}

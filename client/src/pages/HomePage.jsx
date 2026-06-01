@@ -4,6 +4,7 @@ import CountdownCard from '../components/home/CountdownCard';
 import RecommendCard from '../components/home/RecommendCard';
 import SystemProgressRing from '../components/systems/SystemProgressRing';
 import SystemIcon from '../components/systems/SystemIcon';
+import AITutorBar from '../components/ai/AITutorBar';
 import { api } from '../utils/api';
 import { CHAPTER_NAMES } from '../utils/constants';
 
@@ -21,6 +22,8 @@ export default function HomePage() {
     <div className="home-page">
       <div className="home-page__body">
         <CountdownCard />
+
+        <AITutorBar />
 
         <button className="btn btn--primary btn--lg btn--block home-cta"
           onClick={() => navigate('/modules')}>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import FillBlankQuiz from './FillBlankQuiz';
+import AIHintButton from '../ai/AIHintButton';
 
 export default function QuizSession({ questions, onSubmit }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -40,6 +41,8 @@ export default function QuizSession({ questions, onSubmit }) {
       </div>
 
       <FillBlankQuiz question={q} onAnswerChange={handleAnswerChange} />
+
+      <AIHintButton questionStem={q?.stem || ''} />
 
       <div className="quiz-session__nav">
         <button className="btn btn--outline btn--sm" onClick={goPrev} disabled={currentIndex === 0}>

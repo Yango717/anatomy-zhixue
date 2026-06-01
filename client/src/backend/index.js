@@ -21,6 +21,7 @@ export async function getChapters() { await init(); return content.getChapters()
 export async function getChapter(cid) { await init(); return content.getChapter(cid); }
 export async function getChapterSections(cid) { await init(); return content.getChapterMeta(cid); }
 export async function getUnitContent(uid) { await init(); return content.getUnitContent(uid); }
+export async function getUnitFlashcards(uid) { await init(); return content.getUnitFlashcards(uid); }
 export async function search(q) { await init(); return content.search(q); }
 
 // --- quiz ---
@@ -186,6 +187,7 @@ export async function getChapterProgress(cid) {
 // --- learning ---
 export async function getUnitProgress(uid) { await init(); return getOne(`SELECT * FROM unit_progress WHERE user_id=1 AND unit_id=?`, [uid]) || { unitId: uid, currentPhase: 0 }; }
 export async function completePhase(uid, p) { await init(); const ph = parseInt(p); const ex = getOne(`SELECT id FROM unit_progress WHERE user_id=1 AND unit_id=?`, [uid]); if (ex) runQuery(`UPDATE unit_progress SET current_phase=?, phase_${ph}_completed_at=datetime('now') WHERE user_id=1 AND unit_id=?`, [ph, uid]); else runQuery(`INSERT INTO unit_progress (user_id, unit_id, current_phase, phase_${ph}_completed_at) VALUES (1, ?, ?, datetime('now'))`, [uid, ph]); debouncedSave(); return { unitId: uid, currentPhase: ph }; }
+export async function markUnitComplete(uid) { await init(); const ex = getOne(`SELECT id FROM unit_progress WHERE user_id=1 AND unit_id=?`, [uid]); if (ex) runQuery(`UPDATE unit_progress SET current_phase=1, last_accessed_at=datetime('now') WHERE user_id=1 AND unit_id=?`, [uid]); else runQuery(`INSERT INTO unit_progress (user_id, unit_id, current_phase, last_accessed_at) VALUES (1, ?, 1, datetime('now'))`, [uid]); debouncedSave(); return { unitId: uid, completed: true }; }
 export async function getNotes(uid) { await init(); return all(`SELECT * FROM user_notes WHERE user_id=1 AND unit_id=? ORDER BY updated_at DESC`, [uid]); }
 export async function createNote(uid, text) { await init(); runQuery(`INSERT INTO user_notes (user_id, unit_id, note_text) VALUES (1, ?, ?)`, [uid, text]); debouncedSave(); return { success: true }; }
 export async function deleteNote(id) { await init(); runQuery(`DELETE FROM user_notes WHERE id=? AND user_id=1`, [id]); debouncedSave(); return { success: true }; }
@@ -372,3 +374,11 @@ export async function getRecommend() {
 // --- countdown ---
 export async function getCountdown() { await init(); const n = getOne(`SELECT value FROM settings WHERE key='countdown_name'`); const t = getOne(`SELECT value FROM settings WHERE key='countdown_target'`); return { name: n?.value || '距离解剖学期末考试', target: t?.value || '' }; }
 export async function updateCountdown(name, target) { await init(); if (name) runQuery(`INSERT INTO settings (key, value, updated_at) VALUES ('countdown_name', ?, datetime('now')) ON CONFLICT(key) DO UPDATE SET value=excluded.value`, [name]); if (target) runQuery(`INSERT INTO settings (key, value, updated_at) VALUES ('countdown_target', ?, datetime('now')) ON CONFLICT(key) DO UPDATE SET value=excluded.value`, [target]); debouncedSave(); return { success: true }; }
+
+// --- AI (local mode: direct DeepSeek API calls) ---
+import { aiChatLocal, aiGenerateQuizLocal, aiReviewReportLocal, aiTodayRecommendLocal } from '../utils/aiLocal';
+export async function aiChat(apiKey, unitId, scene, messages) { const text = await aiChatLocal(apiKey, unitId, scene, messages); return { reply: text }; }
+export async function aiGenerateQuiz(apiKey, unitId, count) { return aiGenerateQuizLocal(apiKey, unitId, count); }
+export async function aiReviewReport(apiKey, unitId) { const report = await aiReviewReportLocal(apiKey, unitId); return { report }; }
+export async function aiTodayRecommend(apiKey) { const recommendation = await aiTodayRecommendLocal(apiKey); return { recommendation };}
+export { aiChatLocal, aiGenerateQuizLocal, aiReviewReportLocal, aiTodayRecommendLocal };

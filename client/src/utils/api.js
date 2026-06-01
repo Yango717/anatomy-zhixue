@@ -44,6 +44,7 @@ async function localDispatch(method, s, body, rawPath) {
   if (s[0] === 'chapters' && s.length === 2) return b.getChapter(s[1]);
   if (s[0] === 'chapters' && s[2] === 'sections') return b.getChapterSections(s[1]);
   if (s[0] === 'units' && s[2] === 'content') return b.getUnitContent(s[1]);
+  if (s[0] === 'units' && s[2] === 'flashcards') return b.getUnitFlashcards(s[1]);
   if (s[0] === 'units' && s[2] === 'quiz' && s.length === 3) return b.getQuiz(s[1]);
   if (s[0] === 'units' && s[3] === 'submit' && s[2] === 'quiz') return b.submitQuiz(s[1], body.answers);
   if (s[0] === 'units' && s[3] === 'generate') return b.generateReview(s[1]);
@@ -56,6 +57,7 @@ async function localDispatch(method, s, body, rawPath) {
   if (s[0] === 'progress' && s[1] === 'chapter') return b.getChapterProgress(s[2]);
   if (s[0] === 'learning' && s[1] === 'progress' && s[2] === 'unit' && s.length === 4) return b.getUnitProgress(s[3]);
   if (s[0] === 'learning' && s[1] === 'progress' && s[4] === 'phase') return b.completePhase(s[3], s[5]);
+  if (s[0] === 'learning' && s[1] === 'progress' && s[4] === 'complete') return b.markUnitComplete(s[3]);
   if (s[0] === 'learning' && s[1] === 'notes' && s.length === 3 && method === 'GET') return b.getNotes(s[2]);
   if (s[0] === 'learning' && s[1] === 'notes' && s.length === 3 && method === 'POST') return b.createNote(s[2], body.text);
   if (s[0] === 'learning' && s[1] === 'notes' && s.length === 3 && method === 'DELETE') return b.deleteNote(s[2]);
@@ -70,6 +72,12 @@ async function localDispatch(method, s, body, rawPath) {
   if (s[0] === 'countdown' && s.length === 1 && method === 'GET') return b.getCountdown();
   if (s[0] === 'countdown' && s.length === 1 && method === 'PUT') return b.updateCountdown(body.name, body.target);
   if (s[0] === 'search') { const u = new URL(rawPath, 'http://x'); return b.search(u.searchParams.get('q') || ''); }
+
+  // AI routes — call DeepSeek API directly from browser
+  if (s[0] === 'ai' && s[1] === 'chat') return b.aiChat(body.apiKey, body.unitId, body.scene, body.messages);
+  if (s[0] === 'ai' && s[1] === 'generate-quiz') return b.aiGenerateQuiz(body.apiKey, body.unitId, body.count);
+  if (s[0] === 'ai' && s[1] === 'review-report') return b.aiReviewReport(body.apiKey, body.unitId);
+  if (s[0] === 'ai' && s[1] === 'today-recommend') return b.aiTodayRecommend(body.apiKey);
 
   throw { code: 'NOT_FOUND', message: `Unknown: ${method} /${s.join('/')}` };
 }

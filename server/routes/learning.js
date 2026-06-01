@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getDB, get: getOne, run: runQuery } = require('../db/database');
+const { getDB, get: getOne, run: runQuery, all } = require('../db/database');
 
 // Get current phase for a unit
 router.get('/progress/unit/:unitId', async (req, res) => {
@@ -52,6 +52,32 @@ router.post('/progress/unit/:unitId/phase/:phaseNum/complete', async (req, res) 
       data: { unitId, completedPhase: phase },
       timestamp: new Date().toISOString(),
     });
+  } catch (err) {
+    res.status(500).json({ success: false, error: { code: 'DB_ERROR', message: err.message }, timestamp: new Date().toISOString() });
+  }
+});
+
+// Mark unit learning as complete (binary: 0=not started, 1=completed)
+router.post('/progress/unit/:unitId/complete', async (req, res) => {
+  try {
+    await getDB();
+    const { unitId } = req.params;
+    const existing = getOne(
+      'SELECT id FROM unit_progress WHERE user_id = 1 AND unit_id = ?',
+      [unitId]
+    );
+    if (existing) {
+      runQuery(
+        `UPDATE unit_progress SET current_phase = 1, last_accessed_at = datetime('now') WHERE user_id = 1 AND unit_id = ?`,
+        [unitId]
+      );
+    } else {
+      runQuery(
+        `INSERT INTO unit_progress (user_id, unit_id, current_phase, last_accessed_at) VALUES (1, ?, 1, datetime('now'))`,
+        [unitId]
+      );
+    }
+    res.json({ success: true, data: { unitId, completed: true }, timestamp: new Date().toISOString() });
   } catch (err) {
     res.status(500).json({ success: false, error: { code: 'DB_ERROR', message: err.message }, timestamp: new Date().toISOString() });
   }
