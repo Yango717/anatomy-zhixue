@@ -215,7 +215,10 @@ export async function aiGeneratePlanLocal(apiKey, progress, errors, units, userP
 
   const planPrompt = `【任务：生成今日学习计划】
 
-你是妍学姐，请根据以下学习数据，为学弟学妹制定一份今日学习计划。
+你是妍学姐。请根据以下学习数据，为学弟学妹制定一份今日学习计划。
+
+【可用学习单元】
+${JSON.stringify((units || []).slice(0, 10), null, 2)}
 
 【学习进度】
 ${JSON.stringify(progress || {}, null, 2)}
@@ -223,37 +226,37 @@ ${JSON.stringify(progress || {}, null, 2)}
 【待复习错题】
 ${JSON.stringify(errors || {}, null, 2)}
 
-【可用学习单元】
-${JSON.stringify((units || []).slice(0, 10), null, 2)}
+【昨日练习记录】（如果有昨日错题，第一步必须安排回顾）
+${JSON.stringify(userProfile?.yesterdayPractice || {}, null, 2)}
 
-【学生偏好】
-${JSON.stringify(userProfile || {}, null, 2)}
+【正确的学习流程——必须按此顺序排列步骤】
+① review_yesterday_errors：回顾昨日刷题错题（仅当有昨日练习记录时才安排）
+② learn：学习新知识点（闪卡浏览+背诵），选一个未学或进行中的单元
+③ quiz：随机填空/简答/名词解释测试，检验学习效果
+④ error_review：回顾本次测验错题（测验错题自动入错题本，引导去错题本复习）
+⑤ practice：进入刷题界面（/practice）——这是最重要的环节！学生自主刷题，不限时间，退出即表示完成
 
-【要求】
-1. 计划2-5个步骤，按优先级排列
-2. 类型包括: learn(学习新内容), quiz(测验), review(复习错题), test(正式测试), practice(刷题), errorbook(清理错题本)
-3. 每个步骤包含: 简要说明、鼓励的话、跳转路径
-4. 返回严格JSON格式，不要包含其他文字:
+【类型定义】
+- review_yesterday_errors → route: "/review"（错题本，回顾昨日错题）
+- learn → route: "/learn/:unitId"
+- quiz → route: "/quiz/:unitId" 或 "/test/:unitId"
+- error_review → route: "/review/:unitId" 或 "/review"
+- practice → route: "/practice"（最后的环节，最重要的刷题环节）
+
+【返回严格JSON格式，不要包含其他文字】
 {
   "steps": [
-    {
-      "id": "step_1",
-      "type": "learn",
-      "unitId": "单元ID",
-      "title": "步骤标题",
-      "message": "妍学姐的引导语，俏皮温柔，50字内",
-      "actionLabel": "按钮文字",
-      "route": "/learn/单元ID"
-    }
+    {"id":"step_1","type":"review_yesterday_errors","unitId":"","title":"回顾昨日错题","message":"先看看昨天练错的题，温故知新～","actionLabel":"去错题本","route":"/review"},
+    {"id":"step_2","type":"learn","unitId":"单元ID","title":"学习XXX","message":"来看看这个知识点～","actionLabel":"去学习","route":"/learn/单元ID"},
+    {"id":"step_last","type":"practice","unitId":"","title":"刷题练手","message":"去刷题界面练练手吧，退出就是完成！","actionLabel":"去刷题","route":"/practice"}
   ]
 }
 
 注意：
-- 优先安排到期的错题复习
-- 如果某个单元学到了阶段1(已学习)，下一步安排测验
-- 如果测验分数低，安排复习该单元错题
-- 总数不要超过5个步骤
-- 路由格式参考：/learn/:unitId, /quiz/:unitId, /review/:unitId, /test/:unitId, /review(错题本), /practice`;
+- 最多5个步骤，最后一步必须是 practice（刷题）
+- 没有昨日记录时跳过 review_yesterday_errors
+- 学习→测验→错题回顾→刷题 的顺序不可打乱
+- 测验后必须有错题回顾步骤`;
 
   const text = await callDeepSeek(
     apiKey,
@@ -279,7 +282,7 @@ export async function aiGenerateNextCheckinLocal(apiKey, completedActivity, curr
 
   const checkinPrompt = `【任务：学习下一步引导】
 
-你是妍学姐。学弟学妹刚完成了以下学习活动：
+你是妍学姐。学弟学妹刚完成了学习活动。
 
 【刚完成的活动】
 ${JSON.stringify(completedActivity || {}, null, 2)}
@@ -287,21 +290,23 @@ ${JSON.stringify(completedActivity || {}, null, 2)}
 【当前学习计划】
 ${JSON.stringify(currentPlan || {}, null, 2)}
 
-【学生偏好】
-${JSON.stringify(userProfile || {}, null, 2)}
+【引导话术规则——根据完成的活动类型匹配】
+- 刚完成了 learn（学习）：引导去测验 "学得不错！来个小测验检验一下～"
+- 刚完成了 quiz（测验）：引导去错题回顾 "测验完成！看看哪些题需要重点复习～"
+- 刚完成了 error_review（错题回顾）：引导去刷题 "错题搞定啦！去刷题界面练练手吧～"
+- 刚完成了 review_yesterday_errors：引导去学习 "昨日错题回顾完毕！开始今天的学习吧～"
+- 刚完成了 practice（刷题/退出刷题）：全部完成！热情鼓励 "今天任务圆满完成！🎉 明天继续加油喔～"
 
 【要求】
-1. 先简短评价她/他刚才的表现（鼓励为主，俏皮温柔）
-2. 然后自然地引导到下一步该做什么
-3. 如果计划还有下一步，就引导过去；如果计划完成，恭喜她/他
-4. 提供一个快捷操作按钮
+1. 先简短评价刚才的表现（鼓励为主，俏皮温柔）
+2. 按上面的规则引导到下一步
+3. practice 完成后 actions 可以为空数组（全部完成）
+4. 80字以内
 
-返回严格JSON格式，不要包含其他文字：
+返回严格JSON格式：
 {
-  "message": "妍学姐的引导语（含评价+下一步引导），80字以内，俏皮温柔",
-  "actions": [
-    { "label": "按钮文字", "route": "/对应路径" }
-  ]
+  "message": "引导语",
+  "actions": [{ "label": "按钮文字", "route": "/路径" }]
 }
 
 注意：

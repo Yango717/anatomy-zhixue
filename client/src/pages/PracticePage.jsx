@@ -1,5 +1,6 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { api } from '../utils/api';
+import { useAIContext } from '../components/ai/AIContextProvider';
 import PracticeQuestionList from '../components/practice/PracticeQuestionList';
 import PracticeModuleSelect from '../components/practice/PracticeModuleSelect';
 import PracticeQuestionView from '../components/practice/PracticeQuestionView';
@@ -27,6 +28,9 @@ export default function PracticePage() {
   // Test mode answers
   const [testAnswers, setTestAnswers] = useState({});
   const [testResult, setTestResult] = useState(null);
+
+  const { autoPilotEnabled, registerActivityComplete } = useAIContext();
+  const hasReportedRef = useRef(false); // prevent duplicate completion reports
 
   useEffect(() => {
     api.get('/chapters').then((d) => setChapters(d.chapters || [])).catch(() => {});
@@ -90,11 +94,34 @@ export default function PracticePage() {
     setScreen('list');
   }
 
+  // Save practice errors for next-day review
+  function savePracticeHistory() {
+    if (hasReportedRef.current) return;
+    const wrongCount = Object.values(statusMap).filter((s) => s === 'wrong').length;
+    const totalAnswered = Object.keys(statusMap).length;
+    if (totalAnswered === 0) return; // nothing practiced
+
+    try {
+      localStorage.setItem('ai_practice_history', JSON.stringify({
+        date: new Date().toDateString(),
+        totalQuestions: totalAnswered,
+        totalErrors: wrongCount,
+        timestamp: Date.now(),
+      }));
+    } catch {}
+  }
+
   function handleBack() {
     if (screen === 'question') {
       setScreen('list');
       setCurrentQ(null);
     } else if (screen === 'list') {
+      // Exiting practice → report completion for autoPilot
+      if (autoPilotEnabled && !hasReportedRef.current) {
+        savePracticeHistory();
+        hasReportedRef.current = true;
+        registerActivityComplete({ type: 'practice', unitId: '', result: { statusMap } });
+      }
       setScreen('select');
       setAllQuestions([]);
       setStatusMap({});
@@ -105,6 +132,17 @@ export default function PracticePage() {
       setTestResult(null);
     }
   }
+
+  // Safety net: report on unmount if not already reported
+  useEffect(() => {
+    return () => {
+      if (autoPilotEnabled && !hasReportedRef.current && Object.keys(statusMap).length > 0) {
+        savePracticeHistory();
+        hasReportedRef.current = true;
+        registerActivityComplete({ type: 'practice', unitId: '', result: { statusMap } });
+      }
+    };
+  }, [autoPilotEnabled, statusMap, registerActivityComplete]);
 
   // Brush mode: submit for auto-graded types
   async function handleSubmitAnswer(unitId, questionId, answer) {

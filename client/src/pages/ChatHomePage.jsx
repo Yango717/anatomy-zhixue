@@ -158,7 +158,7 @@ export default function ChatHomePage() {
       generateLocalFallbackPlan();
     });
 
-    // Local fallback: use the existing recommendation engine
+    // Local fallback: generate plan following correct learning flow
     async function generateLocalFallbackPlan() {
       try {
         const [recommend, errors] = await Promise.all([
@@ -168,53 +168,127 @@ export default function ChatHomePage() {
 
         const recItems = Array.isArray(recommend) ? recommend : (recommend?.items || []);
         const errorItems = errors?.items || [];
-
         const steps = [];
 
-        // Add due errorbook items first
-        if (errorItems.length > 0) {
-          steps.push({
-            id: 'step_errorbook',
-            type: 'errorbook',
-            title: `复习 ${errorItems.length} 道错题`,
-            message: `你有 ${errorItems.length} 道错题到期该复习啦～趁热打铁！`,
-            actionLabel: '去错题本',
-            route: '/review',
-          });
+        // ─── ① 回顾昨日刷题错题 ───
+        let hasYesterdayErrors = false;
+        try {
+          const yesterdayData = JSON.parse(localStorage.getItem('ai_practice_history') || '{}');
+          const yesterday = new Date(Date.now() - 86400000).toDateString();
+          if (yesterdayData.date === yesterday && (yesterdayData.totalErrors > 0 || yesterdayData.totalQuestions > 0)) {
+            hasYesterdayErrors = true;
+            steps.push({
+              id: 'step_review_yesterday',
+              type: 'review_yesterday_errors',
+              unitId: '',
+              title: `回顾昨日错题（${yesterdayData.totalErrors || 0}道）`,
+              message: '先看看昨天练错的题，温故知新～趁热打铁印象更深！',
+              actionLabel: '去错题本',
+              route: '/review',
+            });
+          }
+        } catch {}
+
+        // ─── ② 学习新知识点 ───
+        // Pick first recommended unit that's not yet learned
+        let pickedUnitId = '';
+        for (const item of recItems) {
+          if (item.type === 'learn' || item.type === 'unit') {
+            const uid = item.unitId || item.id || '';
+            if (uid && !pickedUnitId) {
+              pickedUnitId = uid;
+              steps.push({
+                id: `step_learn_${uid}`,
+                type: 'learn',
+                unitId: uid,
+                title: item.title || item.name || '学习新内容',
+                message: '来看看这个知识点吧，图谱和闪卡都很棒的喔～',
+                actionLabel: '去学习',
+                route: `/learn/${encodeURIComponent(uid)}`,
+              });
+              break;
+            }
+          }
         }
 
-        // Add recommended items
-        for (const item of recItems.slice(0, 4)) {
-          if (item.type === 'learn' || item.type === 'unit') {
+        // If no recommendation, suggest browsing
+        if (!pickedUnitId) {
+          // Check for due errors as alternative entry
+          if (errorItems.length > 0 && !hasYesterdayErrors) {
             steps.push({
-              id: `step_${item.unitId || item.id}`,
+              id: 'step_errorbook',
+              type: 'error_review',
+              unitId: '',
+              title: `复习 ${errorItems.length} 道到期错题`,
+              message: `你有 ${errorItems.length} 道错题到期了，先清理一下吧！`,
+              actionLabel: '去错题本',
+              route: '/review',
+            });
+          } else {
+            steps.push({
+              id: 'step_explore',
               type: 'learn',
-              unitId: item.unitId || item.id,
-              title: item.title || item.name || '学习新内容',
-              message: '来看看这个知识点吧，图谱很棒的喔～',
-              actionLabel: '去学习',
-              route: `/learn/${encodeURIComponent(item.unitId || item.id)}`,
+              unitId: '',
+              title: '浏览解剖系统',
+              message: '从选一个感兴趣的系统开始今天的学习吧！',
+              actionLabel: '去选章节',
+              route: '/modules',
             });
           }
         }
 
-        // If still empty, add a general suggestion
-        if (steps.length === 0) {
+        // ─── ③ 测验 ───
+        if (pickedUnitId) {
           steps.push({
-            id: 'step_explore',
-            type: 'learn',
-            title: '浏览解剖系统',
-            message: '今天从选一个感兴趣的系统开始吧！',
-            actionLabel: '去选章节',
-            route: '/modules',
+            id: `step_quiz_${pickedUnitId}`,
+            type: 'quiz',
+            unitId: pickedUnitId,
+            title: '测验检验',
+            message: '学完了？来做几道题检验一下记住了多少！',
+            actionLabel: '去测验',
+            route: `/quiz/${encodeURIComponent(pickedUnitId)}`,
+          });
+
+          // ─── ④ 错题回顾 ───
+          steps.push({
+            id: 'step_error_review',
+            type: 'error_review',
+            unitId: pickedUnitId,
+            title: '错题回顾',
+            message: '测验完了看看错题，趁热打铁纠正印象！',
+            actionLabel: '去错题回顾',
+            route: `/review/${encodeURIComponent(pickedUnitId)}`,
           });
         }
+
+        // ─── ⑤ 刷题（最重要的环节）───
+        steps.push({
+          id: 'step_practice',
+          type: 'practice',
+          unitId: '',
+          title: '刷题练手',
+          message: '去刷题界面大展身手吧！想做多少做多少，退出就代表今天任务完成啦～',
+          actionLabel: '去刷题',
+          route: '/practice',
+        });
 
         const plan = { steps, createdAt: Date.now() };
         saveAutoPilotPlan(plan);
 
-        const stepLines = steps.map((s, i) => `${i + 1}️⃣ ${s.title}`).join('\n');
-        const planMsg = `我帮你安排了今天的学习路线～ 🌟\n\n${stepLines}\n\n开始吧！`;
+        // Build presentation
+        const emojiMap = {
+          review_yesterday_errors: '🔁',
+          learn: '📖',
+          quiz: '📝',
+          error_review: '🔍',
+          practice: '🎯',
+          errorbook: '📚',
+        };
+        const stepLines = steps.map((s, i) =>
+          `${emojiMap[s.type] || '📌'} ${i + 1}. ${s.title}`
+        ).join('\n');
+
+        const planMsg = `今天的学习路线来啦～ 🌟\n\n${stepLines}\n\n准备好了吗？开始吧！`;
         const firstStep = steps[0];
         const msg = {
           role: 'assistant',
@@ -228,10 +302,11 @@ export default function ChatHomePage() {
         if (!autoPilotThreadId) {
           saveAutoPilotThreadId(activeThreadId);
         }
+
+        console.log('[AutoPilot] 本地计划已生成:', steps.map(s => s.type).join(' → '));
       } catch (e) {
-        console.error('[AutoPilot] 本地计划也失败了:', e);
+        console.error('[AutoPilot] 本地计划失败:', e);
         setGreeting('');
-        // Last resort: show a simple message
         const fallbackMsg = {
           role: 'assistant',
           content: '自动驾驶模式已开启～告诉我你想学什么，或者去「系统」页面选一个章节开始吧！',
