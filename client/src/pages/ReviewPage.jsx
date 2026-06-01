@@ -3,6 +3,7 @@ import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import AutoReviewViewer from '../components/review/AutoReviewViewer';
 import Breadcrumb from '../components/common/Breadcrumb';
 import { api } from '../utils/api';
+import { useAIContext } from '../components/ai/AIContextProvider';
 
 export default function ReviewPage() {
   const { unitId: rawUnitId } = useParams();
@@ -13,6 +14,7 @@ export default function ReviewPage() {
 
   const [review, setReview] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { autoPilotEnabled, registerActivityComplete } = useAIContext();
 
   useEffect(() => {
     if (!unitId) return;
@@ -25,6 +27,7 @@ export default function ReviewPage() {
 
   async function handleComplete() {
     await api.post(`/units/${encodeURIComponent(unitId)}/review/complete`);
+    if (autoPilotEnabled) registerActivityComplete({ type: 'review', unitId });
     navigate(`/test/${encodeURIComponent(unitId)}`, { state: locState });
   }
 

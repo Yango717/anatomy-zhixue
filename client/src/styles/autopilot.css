@@ -1,0 +1,205 @@
+/* ========================================
+   AutoPilot · 自动驾驶模式
+   ======================================== */
+
+/* ─── Toggle Switch (Sidebar) ─── */
+
+.sidebar__autopilot {
+  padding: 10px var(--spacing-sm);
+  display: flex;
+  justify-content: center;
+}
+
+.autopilot-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px 5px 5px;
+  border: 1px solid rgba(124, 92, 191, 0.12);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 1px 4px rgba(124, 92, 191, 0.06);
+}
+
+.autopilot-toggle:hover {
+  border-color: rgba(124, 92, 191, 0.25);
+  box-shadow: 0 2px 8px rgba(124, 92, 191, 0.1);
+}
+
+.autopilot-toggle--on {
+  background: rgba(124, 92, 191, 0.08);
+  border-color: rgba(124, 92, 191, 0.3);
+  box-shadow: 0 0 12px rgba(124, 92, 191, 0.15);
+}
+
+.autopilot-toggle__track {
+  width: 32px;
+  height: 18px;
+  border-radius: 9px;
+  background: rgba(124, 92, 191, 0.15);
+  position: relative;
+  transition: background 0.25s ease;
+  flex-shrink: 0;
+}
+
+.autopilot-toggle--on .autopilot-toggle__track {
+  background: var(--ai-accent);
+}
+
+.autopilot-toggle__thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.autopilot-toggle--on .autopilot-toggle__thumb {
+  transform: translateX(14px);
+}
+
+.autopilot-toggle__label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text-hint);
+  transition: color 0.25s ease;
+  white-space: nowrap;
+}
+
+.autopilot-toggle--on .autopilot-toggle__label {
+  color: var(--ai-accent);
+}
+
+/* ─── Mini Avatar (Floating) ─── */
+
+.autopilot-mini-avatar {
+  position: fixed;
+  bottom: 142px;
+  right: 16px;
+  z-index: 905;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.autopilot-mini-avatar:hover {
+  transform: scale(1.08);
+}
+
+.autopilot-mini-avatar:active {
+  transform: scale(0.96);
+}
+
+.autopilot-mini-avatar__circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7c5cbf, #a78bda);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 3px 16px rgba(124, 92, 191, 0.3);
+  animation: autoAvatarGlow 3s ease-in-out infinite;
+  transition: box-shadow 0.3s;
+}
+
+@keyframes autoAvatarGlow {
+  0%, 100% {
+    box-shadow: 0 3px 16px rgba(124, 92, 191, 0.3), 0 0 0 0 rgba(124, 92, 191, 0.2);
+  }
+  50% {
+    box-shadow: 0 3px 20px rgba(124, 92, 191, 0.45), 0 0 0 6px rgba(124, 92, 191, 0.05);
+  }
+}
+
+.autopilot-mini-avatar__circle--alert {
+  animation: autoAvatarGlowAlert 1.5s ease-in-out infinite;
+}
+
+@keyframes autoAvatarGlowAlert {
+  0%, 100% {
+    box-shadow: 0 3px 16px rgba(124, 92, 191, 0.3), 0 0 0 0 rgba(124, 92, 191, 0.2);
+  }
+  50% {
+    box-shadow: 0 3px 24px rgba(124, 92, 191, 0.55), 0 0 0 10px rgba(124, 92, 191, 0.08);
+  }
+}
+
+.autopilot-mini-avatar__badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #e74c3c;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(231, 76, 60, 0.4);
+  animation: autoBadgePop 0.4s ease-out;
+}
+
+@keyframes autoBadgePop {
+  from { transform: scale(0.4); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.autopilot-mini-avatar__label {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--ai-accent);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: 1px 6px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+}
+
+/* ─── Inline Action Buttons (in chat messages) ─── */
+
+.autopilot-inline-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.autopilot-inline-actions__btn {
+  padding: 6px 16px;
+  border: 1px solid rgba(124, 92, 191, 0.25);
+  border-radius: 16px;
+  background: linear-gradient(135deg, #7c5cbf, #9b7fd4);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(124, 92, 191, 0.2);
+}
+
+.autopilot-inline-actions__btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(124, 92, 191, 0.35);
+}
+
+.autopilot-inline-actions__btn:active {
+  transform: scale(0.96);
+}
+
+/* ─── AutoPilot body attribute indicator ─── */
+body[data-auto-pilot="on"] .ai-first-layout {
+  /* Reserved for future autopilot-specific layout adjustments */
+}

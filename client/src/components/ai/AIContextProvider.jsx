@@ -40,6 +40,25 @@ export function AIContextProvider({ children }) {
     }
   });
 
+  // ─── AutoPilot mode ───
+  const [autoPilotEnabled, setAutoPilotEnabled] = useState(() => {
+    try { return localStorage.getItem('ai_autopilot_enabled') === 'true'; }
+    catch { return false; }
+  });
+  const [autoPilotPlan, setAutoPilotPlan] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('ai_autopilot_plan') || 'null'); }
+    catch { return null; }
+  });
+  const [autoPilotStepIndex, setAutoPilotStepIndex] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('ai_autopilot_state') || '{}').stepIndex || 0; }
+    catch { return 0; }
+  });
+  const [autoPilotPendingCheckin, setAutoPilotPendingCheckin] = useState(null);
+  const [autoPilotThreadId, setAutoPilotThreadId] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('ai_autopilot_state') || '{}').threadId || null; }
+    catch { return null; }
+  });
+
   // Persist API key
   const saveApiKey = useCallback((key) => {
     setApiKey(key);
@@ -227,6 +246,13 @@ export function AIContextProvider({ children }) {
     }
   }, []);
 
+  // Apply autoPilot theme on mount
+  useEffect(() => {
+    if (autoPilotEnabled) {
+      document.body.dataset.autoPilot = 'on';
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   // Model info (for future multimodal support)
   const [modelInfo, setModelInfo] = useState({
     name: 'DeepSeek V4',
@@ -236,6 +262,77 @@ export function AIContextProvider({ children }) {
 
   const updateModelInfo = useCallback((info) => {
     setModelInfo((prev) => ({ ...prev, ...info }));
+  }, []);
+
+  // ─── AutoPilot methods ───
+
+  const toggleAutoPilot = useCallback(() => {
+    setAutoPilotEnabled((prev) => {
+      const next = !prev;
+      localStorage.setItem('ai_autopilot_enabled', String(next));
+      if (next) {
+        document.body.dataset.autoPilot = 'on';
+      } else {
+        delete document.body.dataset.autoPilot;
+      }
+      return next;
+    });
+  }, []);
+
+  const saveAutoPilotPlan = useCallback((plan) => {
+    setAutoPilotPlan(plan);
+    setAutoPilotStepIndex(0);
+    try { localStorage.setItem('ai_autopilot_plan', JSON.stringify(plan)); } catch {}
+    try {
+      const state = JSON.parse(localStorage.getItem('ai_autopilot_state') || '{}');
+      state.stepIndex = 0;
+      localStorage.setItem('ai_autopilot_state', JSON.stringify(state));
+    } catch {}
+  }, []);
+
+  const advanceAutoPilotStep = useCallback(() => {
+    setAutoPilotStepIndex((prev) => {
+      const next = prev + 1;
+      try {
+        const state = JSON.parse(localStorage.getItem('ai_autopilot_state') || '{}');
+        state.stepIndex = next;
+        localStorage.setItem('ai_autopilot_state', JSON.stringify(state));
+      } catch {}
+      return next;
+    });
+  }, []);
+
+  const registerActivityComplete = useCallback((activity) => {
+    const idx = autoPilotStepIndex;
+    // Mark current step as completed
+    setAutoPilotPlan((prevPlan) => {
+      if (!prevPlan?.steps) return prevPlan;
+      const steps = prevPlan.steps.map((s, i) =>
+        i === idx ? { ...s, completed: true } : s
+      );
+      const newPlan = { ...prevPlan, steps };
+      try { localStorage.setItem('ai_autopilot_plan', JSON.stringify(newPlan)); } catch {}
+      return newPlan;
+    });
+    // Queue a checkin for AutoPilotCheckin to deliver
+    setAutoPilotPendingCheckin({
+      activity,
+      completedStepIndex: idx,
+      timestamp: Date.now(),
+    });
+  }, [autoPilotStepIndex]);
+
+  const markCheckinDelivered = useCallback(() => {
+    setAutoPilotPendingCheckin(null);
+  }, []);
+
+  const saveAutoPilotThreadId = useCallback((threadId) => {
+    setAutoPilotThreadId(threadId);
+    try {
+      const state = JSON.parse(localStorage.getItem('ai_autopilot_state') || '{}');
+      state.threadId = threadId;
+      localStorage.setItem('ai_autopilot_state', JSON.stringify(state));
+    } catch {}
   }, []);
 
   const value = {
@@ -272,6 +369,18 @@ export function AIContextProvider({ children }) {
     // Model info
     modelInfo,
     updateModelInfo,
+    // AutoPilot
+    autoPilotEnabled,
+    autoPilotPlan,
+    autoPilotStepIndex,
+    autoPilotPendingCheckin,
+    autoPilotThreadId,
+    toggleAutoPilot,
+    saveAutoPilotPlan,
+    advanceAutoPilotStep,
+    registerActivityComplete,
+    markCheckinDelivered,
+    saveAutoPilotThreadId,
   };
 
   return <AIContext.Provider value={value}>{children}</AIContext.Provider>;

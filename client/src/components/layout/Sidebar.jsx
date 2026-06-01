@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { api } from '../../utils/api';
+import AutoPilotToggle from '../ai/AutoPilotToggle';
 
 function calcRemaining(targetISO) {
   if (!targetISO) return null;
@@ -83,6 +84,11 @@ export default function Sidebar() {
           {countdownName && (
             <span className="sidebar__cd-name">{countdownName}</span>
           )}
+        </div>
+
+        {/* AutoPilot Toggle */}
+        <div className="sidebar__autopilot">
+          <AutoPilotToggle />
         </div>
 
         {/* Nav */}

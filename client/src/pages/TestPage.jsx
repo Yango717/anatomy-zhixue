@@ -5,6 +5,7 @@ import TestResult from '../components/test/TestResult';
 import Breadcrumb from '../components/common/Breadcrumb';
 import AIReviewPanel from '../components/ai/AIReviewPanel';
 import { api } from '../utils/api';
+import { useAIContext } from '../components/ai/AIContextProvider';
 
 export default function TestPage() {
   const { unitId: raw } = useParams();
@@ -15,6 +16,7 @@ export default function TestPage() {
   const [questions, setQuestions] = useState([]);
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { autoPilotEnabled, registerActivityComplete } = useAIContext();
 
   useEffect(() => {
     if (!unitId) return;
@@ -28,6 +30,7 @@ export default function TestPage() {
   async function handleSubmit(answers) {
     const res = await api.post(`/units/${encodeURIComponent(unitId)}/test/submit`, { answers });
     setResult(res);
+    if (autoPilotEnabled) registerActivityComplete({ type: 'test', unitId, result: res });
   }
 
   if (loading) return <div className="page-loading">加载中...</div>;

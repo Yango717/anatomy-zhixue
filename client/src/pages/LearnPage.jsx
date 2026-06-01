@@ -8,6 +8,7 @@ import FlashcardCarousel from '../components/learn/FlashcardCarousel';
 import { useLearningFlow } from '../hooks/useLearningFlow';
 import { resolveUnitAsset } from '../services/contentService';
 import { api } from '../utils/api';
+import { useAIContext } from '../components/ai/AIContextProvider';
 
 export default function LearnPage() {
   const { unitId: rawUnitId } = useParams();
@@ -17,6 +18,7 @@ export default function LearnPage() {
   const locationState = location.state || {};
 
   const { phase, loading: flowLoading, completeLearning } = useLearningFlow(unitId);
+  const { autoPilotEnabled, registerActivityComplete } = useAIContext();
 
   // Markdown fallback content
   const [content, setContent] = useState('');
@@ -79,6 +81,7 @@ export default function LearnPage() {
 
   async function handleComplete() {
     await completeLearning();
+    if (autoPilotEnabled) registerActivityComplete({ type: 'learn', unitId });
     const chapterId = locationState.chapterId;
     if (chapterId) {
       navigate(`/sections/${chapterId}`);

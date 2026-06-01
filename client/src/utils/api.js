@@ -78,6 +78,8 @@ async function localDispatch(method, s, body, rawPath) {
   if (s[0] === 'ai' && s[1] === 'generate-quiz') return b.aiGenerateQuiz(body.apiKey, body.unitId, body.count);
   if (s[0] === 'ai' && s[1] === 'review-report') return b.aiReviewReport(body.apiKey, body.unitId);
   if (s[0] === 'ai' && s[1] === 'today-recommend') return b.aiTodayRecommend(body.apiKey);
+  if (s[0] === 'ai' && s[1] === 'generate-plan') return b.aiGeneratePlan(body.apiKey, body.progress, body.errors, body.units, body.userProfile);
+  if (s[0] === 'ai' && s[1] === 'next-checkin') return b.aiGenerateNextCheckin(body.apiKey, body.completedActivity, body.currentPlan, body.userProfile);
   if (s[0] === 'ai' && s[1] === 'search') throw { code: 'SERVER_REQUIRED', message: 'AI搜索需要服务端支持' };
 
   throw { code: 'NOT_FOUND', message: `Unknown: ${method} /${s.join('/')}` };

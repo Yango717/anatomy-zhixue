@@ -9,6 +9,7 @@ import './styles/flashcards.css';
 import './styles/responsive.css';
 import './styles/print.css';
 import './styles/ai.css';
+import './styles/autopilot.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

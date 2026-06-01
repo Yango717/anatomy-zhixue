@@ -4,6 +4,7 @@ import QuizSession from '../components/quiz/QuizSession';
 import QuizResult from '../components/quiz/QuizResult';
 import Breadcrumb from '../components/common/Breadcrumb';
 import { api } from '../utils/api';
+import { useAIContext } from '../components/ai/AIContextProvider';
 
 export default function QuizPage() {
   const { unitId: rawUnitId } = useParams();
@@ -15,6 +16,7 @@ export default function QuizPage() {
   const [questions, setQuestions] = useState([]);
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { autoPilotEnabled, registerActivityComplete } = useAIContext();
 
   useEffect(() => {
     if (!unitId) return;
@@ -28,6 +30,7 @@ export default function QuizPage() {
   async function handleSubmit(answers) {
     const res = await api.post(`/units/${encodeURIComponent(unitId)}/quiz/submit`, { answers });
     setResult(res);
+    if (autoPilotEnabled) registerActivityComplete({ type: 'quiz', unitId, result: res });
   }
 
   function handleReview() {

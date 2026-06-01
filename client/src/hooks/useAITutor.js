@@ -339,6 +339,74 @@ export default function useAITutor(initialMessages) {
     }
   }
 
+  // Generate auto-pilot daily plan
+  async function generateAutoPilotPlan() {
+    const apiKey = getApiKey();
+    if (!apiKey) return null;
+
+    try {
+      // Gather learning context from backend
+      let progressData = {};
+      let errorData = {};
+      let unitsData = [];
+      try {
+        const [progress, errors, units] = await Promise.all([
+          api.get('/progress/overview').catch(() => ({})),
+          api.get('/errorbook/due').catch(() => ({})),
+          api.get('/modules/list').catch(() => []),
+        ]);
+        progressData = progress;
+        errorData = errors;
+        unitsData = units;
+      } catch {}
+
+      const result = await api.post('/ai/generate-plan', {
+        apiKey,
+        progress: progressData,
+        errors: errorData,
+        units: unitsData,
+        userProfile: getUserProfile(),
+      });
+
+      if (result?.plan) return result.plan;
+      // Fallback: if result is a string, try to parse JSON
+      if (typeof result === 'string') {
+        try {
+          const match = result.match(/```(?:json)?\s*([\s\S]*?)\s*```/) || [null, result];
+          return JSON.parse(match[1] || result);
+        } catch { return null; }
+      }
+      return null;
+    } catch {
+      return null;
+    }
+  }
+
+  // Generate next step checkin after activity completion
+  async function generateNextCheckin(completedActivity, currentPlan) {
+    const apiKey = getApiKey();
+    if (!apiKey) return null;
+
+    try {
+      const result = await api.post('/ai/next-checkin', {
+        apiKey,
+        completedActivity,
+        currentPlan,
+        userProfile: getUserProfile(),
+      });
+
+      if (result?.message) {
+        return {
+          message: result.message,
+          actions: result.actions || [],
+        };
+      }
+      return null;
+    } catch {
+      return null;
+    }
+  }
+
   function clearMessages() {
     setMessages([]);
     setError(null);
@@ -372,5 +440,7 @@ export default function useAITutor(initialMessages) {
     getUnitId,
     getCurrentPageInfo,
     setMessages,
+    generateAutoPilotPlan,
+    generateNextCheckin,
   };
 }

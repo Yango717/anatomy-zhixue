@@ -32,6 +32,13 @@ export default function ChatHomePage() {
     renameThread,
     deleteThread,
     getActiveThread,
+    // AutoPilot
+    autoPilotEnabled,
+    autoPilotPlan,
+    autoPilotStepIndex,
+    autoPilotThreadId,
+    saveAutoPilotPlan,
+    saveAutoPilotThreadId,
   } = useAIContext();
 
   // Get active thread messages
@@ -93,6 +100,54 @@ export default function ChatHomePage() {
       saveThreadMessages(activeThreadId, [{ role: 'assistant', content: fallback }]);
     });
   }, [hasApiKey, activeThreadId]);
+
+  // 自动驾驶模式：生成每日学习计划
+  useEffect(() => {
+    if (!autoPilotEnabled) return;
+    if (!hasApiKey) return;
+
+    // Check if we already have a valid plan for today
+    if (autoPilotPlan && autoPilotPlan.createdAt) {
+      const planDate = new Date(autoPilotPlan.createdAt).toDateString();
+      const today = new Date().toDateString();
+      if (planDate === today) return; // Already have today's plan
+    }
+
+    // Generate new plan
+    tutor.generateAutoPilotPlan().then((plan) => {
+      if (plan && plan.steps && plan.steps.length > 0) {
+        const planWithMeta = { ...plan, createdAt: Date.now() };
+        saveAutoPilotPlan(planWithMeta);
+
+        // Build plan presentation message
+        const stepLines = plan.steps.map((s, i) =>
+          `${i + 1}️⃣ ${s.title}`
+        ).join('\n');
+
+        const planMsg = `早安！今天的学习路线来啦～ 🌟\n\n${stepLines}\n\n准备好了吗？我们开始吧！`;
+
+        // Build actions for the first step
+        const firstStep = plan.steps[0];
+        const actions = [{ label: firstStep.actionLabel || '开始', route: firstStep.route }];
+
+        // Present in chat
+        const msg = {
+          role: 'assistant',
+          content: planMsg,
+          _actions: actions,
+        };
+        tutor.setMessages([msg]);
+        saveThreadMessages(activeThreadId, [msg]);
+
+        // Ensure autoPilot thread is tracked
+        if (!autoPilotThreadId) {
+          saveAutoPilotThreadId(activeThreadId);
+        }
+      }
+    }).catch(() => {
+      // Plan generation failed — user can still chat manually
+    });
+  }, [autoPilotEnabled, hasApiKey]);
 
   // Sync messages to thread
   useEffect(() => {
@@ -333,6 +388,20 @@ export default function ChatHomePage() {
                       )}
                     </svg>
                   </button>
+                )}
+                {/* AutoPilot inline action buttons */}
+                {msg._actions && msg._actions.length > 0 && (
+                  <div className="autopilot-inline-actions">
+                    {msg._actions.map((action, ai) => (
+                      <button
+                        key={ai}
+                        className="autopilot-inline-actions__btn"
+                        onClick={() => navigate(action.route)}
+                      >
+                        {action.label}
+                      </button>
+                    ))}
+                  </div>
                 )}
               </div>
             </div>

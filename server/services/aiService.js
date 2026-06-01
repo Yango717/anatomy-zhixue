@@ -1020,6 +1020,163 @@ module.exports = {
     return { recommendation: text, timestamp: new Date().toISOString() };
   },
 
+  // Generate auto-pilot daily learning plan
+  async generatePlan(apiKey, progressData, errorData, unitsData, userProfile) {
+    const context = await buildContext('', 'home');
+    const systemPrompt = buildSystemPrompt('home', context);
+
+    const planPrompt = `【任务：生成今日学习计划】
+
+你是妍学姐，请根据以下学习数据，为学弟学妹制定一份今日学习计划。
+
+【学习进度】
+${JSON.stringify(progressData || {}, null, 2)}
+
+【待复习错题】
+${JSON.stringify(errorData || {}, null, 2)}
+
+【可用学习单元】
+${JSON.stringify((unitsData || []).slice(0, 10), null, 2)}
+
+【学生偏好】
+${JSON.stringify(userProfile || {}, null, 2)}
+
+【要求】
+1. 计划2-5个步骤，按优先级排列
+2. 类型包括: learn(学习新内容), quiz(测验), review(复习错题), test(正式测试), practice(刷题), errorbook(清理错题本)
+3. 每个步骤包含: 简要说明、鼓励的话、跳转路径
+4. 返回严格JSON格式，不要包含其他文字:
+{
+  "steps": [
+    {
+      "id": "step_1",
+      "type": "learn",
+      "unitId": "单元ID",
+      "title": "步骤标题",
+      "message": "妍学姐的引导语，俏皮温柔，50字内",
+      "actionLabel": "按钮文字",
+      "route": "/learn/单元ID"
+    }
+  ]
+}
+
+注意：
+- 优先安排到期的错题复习
+- 如果某个单元学到了阶段1(已学习)，下一步安排测验
+- 如果测验分数低，安排复习该单元错题
+- 总数不要超过5个步骤
+- 路由格式参考：/learn/:unitId, /quiz/:unitId, /review/:unitId, /test/:unitId, /review(错题本), /practice`;
+
+    const messages = [
+      { role: 'system', content: systemPrompt },
+      { role: 'user', content: planPrompt },
+    ];
+
+    const options = {
+      hostname: DEEPSEEK_BASE,
+      path: DEEPSEEK_PATH,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`,
+      },
+    };
+
+    const body = {
+      model: MODEL,
+      messages,
+      stream: false,
+      max_tokens: 1024,
+      temperature: 0.7,
+    };
+
+    const result = await makeRequest(options, body);
+    if (result.status !== 200) {
+      throw new Error(`DeepSeek API error: ${result.status}`);
+    }
+    const text = result.data.choices?.[0]?.message?.content || '';
+    try {
+      const jsonMatch = text.match(/```(?:json)?\s*([\s\S]*?)\s*```/) || [null, text];
+      const plan = JSON.parse(jsonMatch[1] || text);
+      return { plan, timestamp: new Date().toISOString() };
+    } catch {
+      return { plan: { steps: [] }, raw: text, timestamp: new Date().toISOString() };
+    }
+  },
+
+  // Generate next step checkin after activity completion
+  async generateNextCheckin(apiKey, completedActivity, currentPlan, userProfile) {
+    const context = await buildContext('', 'home');
+    const systemPrompt = buildSystemPrompt('home', context);
+
+    const checkinPrompt = `【任务：学习下一步引导】
+
+你是妍学姐。学弟学妹刚完成了以下学习活动：
+
+【刚完成的活动】
+${JSON.stringify(completedActivity || {}, null, 2)}
+
+【当前学习计划】
+${JSON.stringify(currentPlan || {}, null, 2)}
+
+【学生偏好】
+${JSON.stringify(userProfile || {}, null, 2)}
+
+【要求】
+1. 先简短评价她/他刚才的表现（鼓励为主，俏皮温柔）
+2. 然后自然地引导到下一步该做什么
+3. 如果计划还有下一步，就引导过去；如果计划完成，恭喜她/他
+4. 提供一个快捷操作按钮
+
+返回严格JSON格式，不要包含其他文字：
+{
+  "message": "妍学姐的引导语（含评价+下一步引导），80字以内，俏皮温柔",
+  "actions": [
+    { "label": "按钮文字", "route": "/对应路径" }
+  ]
+}
+
+注意：
+- 语气必须俏皮温柔，符合妍学姐人设
+- 如果全部计划已完成，actions 可以为空数组
+- actions 最多2个按钮`;
+
+    const messages = [
+      { role: 'system', content: systemPrompt },
+      { role: 'user', content: checkinPrompt },
+    ];
+
+    const options = {
+      hostname: DEEPSEEK_BASE,
+      path: DEEPSEEK_PATH,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`,
+      },
+    };
+
+    const body = {
+      model: MODEL,
+      messages,
+      stream: false,
+      max_tokens: 512,
+      temperature: 0.8,
+    };
+
+    const result = await makeRequest(options, body);
+    if (result.status !== 200) {
+      throw new Error(`DeepSeek API error: ${result.status}`);
+    }
+    const text = result.data.choices?.[0]?.message?.content || '';
+    try {
+      const jsonMatch = text.match(/```(?:json)?\s*([\s\S]*?)\s*```/) || [null, text];
+      return JSON.parse(jsonMatch[1] || text);
+    } catch {
+      return { message: text, actions: [] };
+    }
+  },
+
   // TTS
   doubaoTTS,
 

@@ -376,9 +376,11 @@ export async function getCountdown() { await init(); const n = getOne(`SELECT va
 export async function updateCountdown(name, target) { await init(); if (name) runQuery(`INSERT INTO settings (key, value, updated_at) VALUES ('countdown_name', ?, datetime('now')) ON CONFLICT(key) DO UPDATE SET value=excluded.value`, [name]); if (target) runQuery(`INSERT INTO settings (key, value, updated_at) VALUES ('countdown_target', ?, datetime('now')) ON CONFLICT(key) DO UPDATE SET value=excluded.value`, [target]); debouncedSave(); return { success: true }; }
 
 // --- AI (local mode: direct DeepSeek API calls) ---
-import { aiChatLocal, aiGenerateQuizLocal, aiReviewReportLocal, aiTodayRecommendLocal } from '../utils/aiLocal';
+import { aiChatLocal, aiGenerateQuizLocal, aiReviewReportLocal, aiTodayRecommendLocal, aiGeneratePlanLocal, aiGenerateNextCheckinLocal } from '../utils/aiLocal';
 export async function aiChat(apiKey, unitId, scene, messages, currentPage, userProfile) { const text = await aiChatLocal(apiKey, unitId, scene, messages, { currentPage, userProfile }); return { reply: text }; }
 export async function aiGenerateQuiz(apiKey, unitId, count) { return aiGenerateQuizLocal(apiKey, unitId, count); }
 export async function aiReviewReport(apiKey, unitId) { const report = await aiReviewReportLocal(apiKey, unitId); return { report }; }
 export async function aiTodayRecommend(apiKey) { const recommendation = await aiTodayRecommendLocal(apiKey); return { recommendation };}
-export { aiChatLocal, aiGenerateQuizLocal, aiReviewReportLocal, aiTodayRecommendLocal };
+export async function aiGeneratePlan(apiKey, progress, errors, units, userProfile) { return aiGeneratePlanLocal(apiKey, progress, errors, units, userProfile); }
+export async function aiGenerateNextCheckin(apiKey, completedActivity, currentPlan, userProfile) { return aiGenerateNextCheckinLocal(apiKey, completedActivity, currentPlan, userProfile); }
+export { aiChatLocal, aiGenerateQuizLocal, aiReviewReportLocal, aiTodayRecommendLocal, aiGeneratePlanLocal, aiGenerateNextCheckinLocal };

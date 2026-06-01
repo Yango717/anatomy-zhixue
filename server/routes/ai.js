@@ -195,6 +195,50 @@ router.get('/proactive', async (req, res) => {
   }
 });
 
+// Generate auto-pilot daily learning plan
+router.post('/generate-plan', async (req, res) => {
+  try {
+    const { apiKey, progress, errors, units, userProfile } = req.body;
+    if (!apiKey) {
+      return res.status(400).json({
+        success: false,
+        error: { code: 'NO_API_KEY', message: '请先配置DeepSeek API Key' },
+        timestamp: new Date().toISOString(),
+      });
+    }
+    const result = await aiService.generatePlan(apiKey, progress, errors, units, userProfile);
+    res.json({ success: true, data: result, timestamp: new Date().toISOString() });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      error: { code: 'PLAN_ERROR', message: err.message },
+      timestamp: new Date().toISOString(),
+    });
+  }
+});
+
+// Generate next step checkin after activity completion
+router.post('/next-checkin', async (req, res) => {
+  try {
+    const { apiKey, completedActivity, currentPlan, userProfile } = req.body;
+    if (!apiKey) {
+      return res.status(400).json({
+        success: false,
+        error: { code: 'NO_API_KEY', message: '请先配置DeepSeek API Key' },
+        timestamp: new Date().toISOString(),
+      });
+    }
+    const result = await aiService.generateNextCheckin(apiKey, completedActivity, currentPlan, userProfile);
+    res.json({ success: true, data: result, timestamp: new Date().toISOString() });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      error: { code: 'CHECKIN_ERROR', message: err.message },
+      timestamp: new Date().toISOString(),
+    });
+  }
+});
+
 // Get recent chat history (Layer 0 memory)
 router.get('/history', async (req, res) => {
   try {
