@@ -104,62 +104,75 @@ export default function ChatHomePage() {
   // 自动驾驶模式：生成每日学习计划
   useEffect(() => {
     if (!autoPilotEnabled) return;
-    if (!hasApiKey) return;
 
     // Check if we already have a valid plan for today
     if (autoPilotPlan && autoPilotPlan.createdAt) {
       const planDate = new Date(autoPilotPlan.createdAt).toDateString();
       const today = new Date().toDateString();
-      if (planDate === today) return; // Already have today's plan
+      if (planDate === today) {
+        console.log('[AutoPilot] 今日计划已存在，跳过生成');
+        return;
+      }
     }
 
-    console.log('[AutoPilot] 开始生成今日学习计划...');
+    console.log('[AutoPilot] 开始生成今日学习计划... hasApiKey:', hasApiKey, 'activeThreadId:', activeThreadId);
     setGreeting('学姐正在为你制定今日学习计划...');
 
-    // Generate new plan
+    // Ensure we have an active thread
+    const threadId = activeThreadId || createThread();
+    if (!activeThreadId) {
+      console.log('[AutoPilot] 创建新线程:', threadId);
+      switchThread(threadId);
+    }
+
+    // If no API key, skip AI and go straight to local fallback
+    if (!hasApiKey) {
+      console.log('[AutoPilot] 无 API Key，使用本地降级方案');
+      generateLocalFallbackPlan(threadId);
+      return;
+    }
+
+    // Try AI first, fall back to local
+    console.log('[AutoPilot] 尝试 AI 生成计划...');
     tutor.generateAutoPilotPlan().then((plan) => {
-      console.log('[AutoPilot] 计划生成结果:', plan);
+      console.log('[AutoPilot] AI 计划结果:', plan);
       if (plan && plan.steps && plan.steps.length > 0) {
         const planWithMeta = { ...plan, createdAt: Date.now() };
         saveAutoPilotPlan(planWithMeta);
 
-        // Build plan presentation message
         const stepLines = plan.steps.map((s, i) =>
           `${i + 1}️⃣ ${s.title}`
         ).join('\n');
 
         const planMsg = `早安！今天的学习路线来啦～ 🌟\n\n${stepLines}\n\n准备好了吗？我们开始吧！`;
 
-        // Build actions for the first step
         const firstStep = plan.steps[0];
         const actions = [{ label: firstStep.actionLabel || '开始', route: firstStep.route }];
 
-        // Present in chat
         const msg = {
           role: 'assistant',
           content: planMsg,
           _actions: actions,
         };
+        console.log('[AutoPilot] 设置计划消息到对话:', threadId);
         tutor.setMessages([msg]);
-        saveThreadMessages(activeThreadId, [msg]);
+        saveThreadMessages(threadId, [msg]);
         setGreeting('');
 
-        // Ensure autoPilot thread is tracked
         if (!autoPilotThreadId) {
-          saveAutoPilotThreadId(activeThreadId);
+          saveAutoPilotThreadId(threadId);
         }
       } else {
-        // AI returned empty plan — fall through to local fallback
-        console.warn('[AutoPilot] AI 返回空计划，使用本地推荐');
-        generateLocalFallbackPlan();
+        console.warn('[AutoPilot] AI 返回空计划，降级到本地方案');
+        generateLocalFallbackPlan(threadId);
       }
     }).catch((err) => {
-      console.error('[AutoPilot] 计划生成失败:', err);
-      generateLocalFallbackPlan();
+      console.error('[AutoPilot] AI 计划失败:', err.message || err);
+      generateLocalFallbackPlan(threadId);
     });
 
     // Local fallback: generate plan following correct learning flow
-    async function generateLocalFallbackPlan() {
+    async function generateLocalFallbackPlan(threadId) {
       try {
         const [recommend, errors] = await Promise.all([
           api.get('/recommend').catch(() => []),
@@ -276,14 +289,14 @@ export default function ChatHomePage() {
           _actions: [{ label: firstStep.actionLabel, route: firstStep.route }],
         };
         tutor.setMessages([msg]);
-        saveThreadMessages(activeThreadId, [msg]);
+        saveThreadMessages(threadId, [msg]);
         setGreeting('');
 
         if (!autoPilotThreadId) {
-          saveAutoPilotThreadId(activeThreadId);
+          saveAutoPilotThreadId(threadId);
         }
 
-        console.log('[AutoPilot] 本地计划已生成:', steps.map(s => s.type).join(' → '));
+        console.log('[AutoPilot] 本地计划已生成:', steps.map(s => s.type).join(' → '), '→ thread:', threadId);
       } catch (e) {
         console.error('[AutoPilot] 本地计划失败:', e);
         setGreeting('');
@@ -293,7 +306,7 @@ export default function ChatHomePage() {
           _actions: [{ label: '去选章节', route: '/modules' }],
         };
         tutor.setMessages([fallbackMsg]);
-        saveThreadMessages(activeThreadId, [fallbackMsg]);
+        saveThreadMessages(threadId, [fallbackMsg]);
       }
     }
   }, [autoPilotEnabled, hasApiKey]);
