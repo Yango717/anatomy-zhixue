@@ -189,56 +189,26 @@ export default function ChatHomePage() {
           }
         } catch {}
 
-        // ─── ② 学习新知识点 ───
-        // Pick first recommended unit that's not yet learned
+        // ─── ② 学习 + 测验 + 错题回顾（仅当有可用单元时）───
         let pickedUnitId = '';
         for (const item of recItems) {
           if (item.type === 'learn' || item.type === 'unit') {
             const uid = item.unitId || item.id || '';
-            if (uid && !pickedUnitId) {
-              pickedUnitId = uid;
-              steps.push({
-                id: `step_learn_${uid}`,
-                type: 'learn',
-                unitId: uid,
-                title: item.title || item.name || '学习新内容',
-                message: '来看看这个知识点吧，图谱和闪卡都很棒的喔～',
-                actionLabel: '去学习',
-                route: `/learn/${encodeURIComponent(uid)}`,
-              });
-              break;
-            }
+            if (uid) { pickedUnitId = uid; break; }
           }
         }
 
-        // If no recommendation, suggest browsing
-        if (!pickedUnitId) {
-          // Check for due errors as alternative entry
-          if (errorItems.length > 0 && !hasYesterdayErrors) {
-            steps.push({
-              id: 'step_errorbook',
-              type: 'error_review',
-              unitId: '',
-              title: `复习 ${errorItems.length} 道到期错题`,
-              message: `你有 ${errorItems.length} 道错题到期了，先清理一下吧！`,
-              actionLabel: '去错题本',
-              route: '/review',
-            });
-          } else {
-            steps.push({
-              id: 'step_explore',
-              type: 'learn',
-              unitId: '',
-              title: '浏览解剖系统',
-              message: '从选一个感兴趣的系统开始今天的学习吧！',
-              actionLabel: '去选章节',
-              route: '/modules',
-            });
-          }
-        }
-
-        // ─── ③ 测验 ───
         if (pickedUnitId) {
+          // Full flow: learn → quiz → error_review
+          steps.push({
+            id: `step_learn_${pickedUnitId}`,
+            type: 'learn',
+            unitId: pickedUnitId,
+            title: '学习新知识点',
+            message: '来看看这个知识点吧，图谱和闪卡都很棒的喔～',
+            actionLabel: '去学习',
+            route: `/learn/${encodeURIComponent(pickedUnitId)}`,
+          });
           steps.push({
             id: `step_quiz_${pickedUnitId}`,
             type: 'quiz',
@@ -248,8 +218,6 @@ export default function ChatHomePage() {
             actionLabel: '去测验',
             route: `/quiz/${encodeURIComponent(pickedUnitId)}`,
           });
-
-          // ─── ④ 错题回顾 ───
           steps.push({
             id: 'step_error_review',
             type: 'error_review',
@@ -259,7 +227,19 @@ export default function ChatHomePage() {
             actionLabel: '去错题回顾',
             route: `/review/${encodeURIComponent(pickedUnitId)}`,
           });
+        } else if (errorItems.length > 0 && !hasYesterdayErrors) {
+          // No new unit to learn, but have due errors → review them
+          steps.push({
+            id: 'step_errorbook',
+            type: 'error_review',
+            unitId: '',
+            title: `复习 ${errorItems.length} 道到期错题`,
+            message: `你有 ${errorItems.length} 道错题到期了，趁热打铁清理一下！`,
+            actionLabel: '去错题本',
+            route: '/review',
+          });
         }
+        // If neither unit nor errors, skip straight to practice below
 
         // ─── ⑤ 刷题（最重要的环节）───
         steps.push({
