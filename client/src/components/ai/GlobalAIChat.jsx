@@ -114,7 +114,7 @@ export default function GlobalAIChat() {
         <button
           className="ai-float-btn ai-float-btn--global"
           onClick={() => setIsOpen(true)}
-          title={notificationCount > 0 ? `学姐提醒：${notificationCount}道错题待复习` : '解剖学姐'}
+          title={notificationCount > 0 ? `学姐提醒：${notificationCount}道错题待复习` : '妍学姐'}
           aria-label="打开AI学姐对话"
         >
           <span className="ai-float-btn__char">学</span>
@@ -135,7 +135,7 @@ export default function GlobalAIChat() {
               </svg>
             </div>
             <div className="ai-chat-panel__title">
-              <span>解剖学姐</span>
+              <span>妍学姐</span>
               <span className="ai-chat-panel__subtitle">大三 · 解剖学95分</span>
             </div>
             <div className="ai-chat-panel__actions">
@@ -157,12 +157,12 @@ export default function GlobalAIChat() {
           <div className="ai-chat-panel__messages">
             {!hasApiKey ? (
               <div className="ai-chat-panel__empty">
-                <p>我是解剖学姐，系统解剖学考了95分～</p>
+                <p>我是妍学姐，系统解剖学考了95分～</p>
                 <p>先去「我的」页面配置 DeepSeek API Key，我就能帮你学习啦！</p>
               </div>
             ) : (tutor.messages || []).length === 0 ? (
               <div className="ai-chat-panel__empty">
-                <p>嗨！我是解剖学姐～有什么可以帮你的？</p>
+                <p>嗨！我是妍学姐～有什么可以帮你的？</p>
               </div>
             ) : (
               (tutor.messages || []).map((msg, i) => (

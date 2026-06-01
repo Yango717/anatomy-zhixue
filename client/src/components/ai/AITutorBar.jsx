@@ -44,7 +44,7 @@ export default function AITutorBar() {
             <path d="M4 20c0-4 4-7 8-7s8 3 8 7" />
           </svg>
         </div>
-        <span className="ai-tutor-bar__name">解剖学姐</span>
+        <span className="ai-tutor-bar__name">妍学姐</span>
         {voice.isSynthSupported && message && (
           <button
             className={`ai-speak-btn ai-speak-btn--sm ${voice.isSpeaking ? 'ai-speak-btn--active' : ''}`}

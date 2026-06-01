@@ -230,7 +230,7 @@ export default function ChatHomePage() {
           </svg>
         </div>
         <div>
-          <div className="chat-home__name">解剖学姐</div>
+          <div className="chat-home__name">妍学姐</div>
           <div className="chat-home__subtitle">
             {threads.length > 1 ? `${threads.length} 个对话 · ` : ''}大三 · 解剖学95分
           </div>
@@ -253,7 +253,7 @@ export default function ChatHomePage() {
                 <circle cx="12" cy="8" r="4" /><path d="M4 20c0-4 4-7 8-7s8 3 8 7" />
               </svg>
             </div>
-            <h2 className="chat-home__onboard-title">嗨！我是解剖学姐 👋</h2>
+            <h2 className="chat-home__onboard-title">嗨！我是妍学姐 👋</h2>
             <p className="chat-home__onboard-desc">
               先去「我的」页面配置 DeepSeek API Key，我就能陪你学习啦～
             </p>

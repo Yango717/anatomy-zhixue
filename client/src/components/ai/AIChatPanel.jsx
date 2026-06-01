@@ -82,7 +82,7 @@ export default function AIChatPanel({ scene, unitId }) {
         <button
           className="ai-float-btn"
           onClick={() => setIsOpen(true)}
-          title="问解剖学姐"
+          title="问妍学姐"
           aria-label="打开AI对话"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -105,7 +105,7 @@ export default function AIChatPanel({ scene, unitId }) {
               </svg>
             </div>
             <div className="ai-chat-panel__title">
-              <span>解剖学姐</span>
+              <span>妍学姐</span>
               <span className="ai-chat-panel__subtitle">大三 · 解剖学95分</span>
             </div>
             <div className="ai-chat-panel__actions">
@@ -136,12 +136,12 @@ export default function AIChatPanel({ scene, unitId }) {
           <div className="ai-chat-panel__messages">
             {!hasApiKey ? (
               <div className="ai-chat-panel__empty">
-                <p>👋 我是解剖学姐，系统解剖学考了95分。</p>
+                <p>👋 我是妍学姐，系统解剖学考了95分。</p>
                 <p>先去「我的」页面配置DeepSeek API Key，我就能帮你学习了！</p>
               </div>
             ) : tutor.messages.length === 0 ? (
               <div className="ai-chat-panel__empty">
-                <p>👋 嗨！我是解剖学姐~</p>
+                <p>👋 嗨！我是妍学姐~</p>
                 <p>有什么解剖学问题尽管问，咱们一起搞定！</p>
               </div>
             ) : (
