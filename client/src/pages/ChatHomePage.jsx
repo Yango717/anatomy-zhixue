@@ -113,8 +113,12 @@ export default function ChatHomePage() {
       if (planDate === today) return; // Already have today's plan
     }
 
+    console.log('[AutoPilot] 开始生成今日学习计划...');
+    setGreeting('学姐正在为你制定今日学习计划...');
+
     // Generate new plan
     tutor.generateAutoPilotPlan().then((plan) => {
+      console.log('[AutoPilot] 计划生成结果:', plan);
       if (plan && plan.steps && plan.steps.length > 0) {
         const planWithMeta = { ...plan, createdAt: Date.now() };
         saveAutoPilotPlan(planWithMeta);
@@ -138,15 +142,105 @@ export default function ChatHomePage() {
         };
         tutor.setMessages([msg]);
         saveThreadMessages(activeThreadId, [msg]);
+        setGreeting('');
 
         // Ensure autoPilot thread is tracked
         if (!autoPilotThreadId) {
           saveAutoPilotThreadId(activeThreadId);
         }
+      } else {
+        // AI returned empty plan — fall through to local fallback
+        console.warn('[AutoPilot] AI 返回空计划，使用本地推荐');
+        generateLocalFallbackPlan();
       }
-    }).catch(() => {
-      // Plan generation failed — user can still chat manually
+    }).catch((err) => {
+      console.error('[AutoPilot] 计划生成失败:', err);
+      generateLocalFallbackPlan();
     });
+
+    // Local fallback: use the existing recommendation engine
+    async function generateLocalFallbackPlan() {
+      try {
+        const [recommend, errors] = await Promise.all([
+          api.get('/recommend').catch(() => []),
+          api.get('/errorbook/due').catch(() => ({})),
+        ]);
+
+        const recItems = Array.isArray(recommend) ? recommend : (recommend?.items || []);
+        const errorItems = errors?.items || [];
+
+        const steps = [];
+
+        // Add due errorbook items first
+        if (errorItems.length > 0) {
+          steps.push({
+            id: 'step_errorbook',
+            type: 'errorbook',
+            title: `复习 ${errorItems.length} 道错题`,
+            message: `你有 ${errorItems.length} 道错题到期该复习啦～趁热打铁！`,
+            actionLabel: '去错题本',
+            route: '/review',
+          });
+        }
+
+        // Add recommended items
+        for (const item of recItems.slice(0, 4)) {
+          if (item.type === 'learn' || item.type === 'unit') {
+            steps.push({
+              id: `step_${item.unitId || item.id}`,
+              type: 'learn',
+              unitId: item.unitId || item.id,
+              title: item.title || item.name || '学习新内容',
+              message: '来看看这个知识点吧，图谱很棒的喔～',
+              actionLabel: '去学习',
+              route: `/learn/${encodeURIComponent(item.unitId || item.id)}`,
+            });
+          }
+        }
+
+        // If still empty, add a general suggestion
+        if (steps.length === 0) {
+          steps.push({
+            id: 'step_explore',
+            type: 'learn',
+            title: '浏览解剖系统',
+            message: '今天从选一个感兴趣的系统开始吧！',
+            actionLabel: '去选章节',
+            route: '/modules',
+          });
+        }
+
+        const plan = { steps, createdAt: Date.now() };
+        saveAutoPilotPlan(plan);
+
+        const stepLines = steps.map((s, i) => `${i + 1}️⃣ ${s.title}`).join('\n');
+        const planMsg = `我帮你安排了今天的学习路线～ 🌟\n\n${stepLines}\n\n开始吧！`;
+        const firstStep = steps[0];
+        const msg = {
+          role: 'assistant',
+          content: planMsg,
+          _actions: [{ label: firstStep.actionLabel, route: firstStep.route }],
+        };
+        tutor.setMessages([msg]);
+        saveThreadMessages(activeThreadId, [msg]);
+        setGreeting('');
+
+        if (!autoPilotThreadId) {
+          saveAutoPilotThreadId(activeThreadId);
+        }
+      } catch (e) {
+        console.error('[AutoPilot] 本地计划也失败了:', e);
+        setGreeting('');
+        // Last resort: show a simple message
+        const fallbackMsg = {
+          role: 'assistant',
+          content: '自动驾驶模式已开启～告诉我你想学什么，或者去「系统」页面选一个章节开始吧！',
+          _actions: [{ label: '去选章节', route: '/modules' }],
+        };
+        tutor.setMessages([fallbackMsg]);
+        saveThreadMessages(activeThreadId, [fallbackMsg]);
+      }
+    }
   }, [autoPilotEnabled, hasApiKey]);
 
   // Sync messages to thread
