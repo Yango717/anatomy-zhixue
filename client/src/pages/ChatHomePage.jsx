@@ -125,54 +125,71 @@ export default function ChatHomePage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [autoPilotEnabled]);
 
+  // 防止重复生成计划（React StrictMode 双重调用 + 异步竞争）
+  const planGeneratingRef = useRef(false);
+
   // 自动驾驶模式：24h 过期 + 昨日顺延 + 当日续接 + 计划生成
   useEffect(() => {
     if (!autoPilotEnabled) return;
 
+    // ─── 阻止 StrictMode 双重调用 + 异步竞争 ───
+    if (planGeneratingRef.current) return;
+
+    // ─── 直接从 localStorage 读取最新计划（避免 stale closure）───
+    let latestPlan = null;
+    try { latestPlan = JSON.parse(localStorage.getItem('ai_autopilot_plan') || 'null'); } catch {}
+    const planValid = latestPlan && !isPlanExpired(latestPlan);
+
     // ─── 当日续接：计划未过期、已有进度但未完成 → 发续接消息 ───
-    if (autoPilotPlan && !isPlanExpired(autoPilotPlan) && autoPilotStepIndex > 0) {
-      const remaining = autoPilotPlan.steps.filter((s, i) =>
-        i >= autoPilotStepIndex && !s.completed
-      );
-      const currentStep = autoPilotPlan.steps[autoPilotStepIndex];
-      if (remaining.length > 0 && currentStep) {
-        // 检查是否已经有续接消息（避免重复发送）
-        const lastMsg = threadMessages[threadMessages.length - 1];
-        const alreadyResumed = lastMsg?.content?.includes('欢迎回来');
-        if (!alreadyResumed && threadMessages.length > 0) {
-          const resumeMsg = {
-            role: 'assistant',
-            content: `欢迎回来～你还有 ${remaining.length} 个任务没完成喔！接下来：${currentStep.title}`,
-            _actions: [{ label: currentStep.actionLabel || '继续', route: currentStep.route }],
-          };
-          const updated = [...threadMessages, resumeMsg];
-          tutor.setMessages(updated);
-          if (activeThreadId) saveThreadMessages(activeThreadId, updated);
-          console.log('[AutoPilot] 当日续接:', currentStep.title);
-          return; // 续接后不需要重新生成计划
+    if (planValid && latestPlan.steps) {
+      try {
+        const state = JSON.parse(localStorage.getItem('ai_autopilot_state') || '{}');
+        const stepIdx = state.stepIndex || 0;
+        if (stepIdx > 0) {
+          const remaining = latestPlan.steps.filter((s, i) =>
+            i >= stepIdx && !s.completed
+          );
+          const currentStep = latestPlan.steps[stepIdx];
+          if (remaining.length > 0 && currentStep) {
+            const lastMsg = threadMessages[threadMessages.length - 1];
+            const alreadyResumed = lastMsg?.content?.includes('欢迎回来');
+            if (!alreadyResumed && threadMessages.length > 0) {
+              const resumeMsg = {
+                role: 'assistant',
+                content: `欢迎回来～你还有 ${remaining.length} 个任务没完成喔！接下来：${currentStep.title}`,
+                _actions: [{ label: currentStep.actionLabel || '继续', route: currentStep.route }],
+              };
+              const updated = [...threadMessages, resumeMsg];
+              tutor.setMessages(updated);
+              if (activeThreadId) saveThreadMessages(activeThreadId, updated);
+            }
+            return; // 续接后不重新生成
+          }
         }
-        if (alreadyResumed) return; // 已续接，跳过
-      }
+      } catch {}
     }
 
-    // ─── 24h 过期检查：计划未过期且有消息 → 跳过生成 ───
-    if (autoPilotPlan && !isPlanExpired(autoPilotPlan) && threadMessages.length > 0) {
+    // ─── 24h 过期检查：计划有效且有消息 → 跳过生成 ───
+    if (planValid && threadMessages.length > 0) {
       console.log('[AutoPilot] 今日计划未过期，跳过生成');
       return;
     }
 
-    // ─── 计划过期或为空 → 生成新计划 ───
-    if (autoPilotPlan && isPlanExpired(autoPilotPlan)) {
+    // ─── 计划过期 → 清除后重新生成 ───
+    if (latestPlan && !planValid) {
       console.log('[AutoPilot] 计划已过期（超过24h），重新生成');
+      try { localStorage.removeItem('ai_autopilot_plan'); } catch {}
+      latestPlan = null;
     }
 
+    planGeneratingRef.current = true;
     console.log('[AutoPilot] 开始生成今日学习计划... hasApiKey:', hasApiKey, 'activeThreadId:', activeThreadId);
     setGreeting('学姐正在为你制定今日学习计划...');
 
     // Ensure we have an active thread
-    const threadId = activeThreadId || createThread();
+    const threadId = activeThreadId || threads[0]?.id || createThread();
     if (!activeThreadId) {
-      console.log('[AutoPilot] 创建新线程:', threadId);
+      console.log('[AutoPilot] 创建/复用线程:', threadId);
       switchThread(threadId);
     }
 
@@ -181,15 +198,17 @@ export default function ChatHomePage() {
     try {
       const yesterdaySummary = JSON.parse(localStorage.getItem('ai_autopilot_daily_summary') || 'null');
       if (yesterdaySummary?.pendingSteps?.length > 0) {
-        const yesterdayPlan = JSON.parse(localStorage.getItem('ai_autopilot_plan') || 'null');
-        if (yesterdayPlan?.steps) {
+        const yesterdayPlan = latestPlan; // 当前 plan 可能是昨天的
+        const yesterdayPlanFromStorage = JSON.parse(localStorage.getItem('ai_autopilot_plan') || 'null');
+        const sourcePlan = (yesterdayPlanFromStorage?.createdAt !== latestPlan?.createdAt) ? yesterdayPlanFromStorage : null;
+        if (sourcePlan?.steps) {
           carryOverSteps = yesterdaySummary.pendingSteps
-            .map(id => yesterdayPlan.steps.find(s => s.id === id))
+            .map(id => sourcePlan.steps.find(s => s.id === id))
             .filter(Boolean)
             .map(s => ({ ...s, completed: false, id: s.id + '_carry' }));
-          if (carryOverSteps.length > 0) {
-            console.log('[AutoPilot] 昨日未完成步骤顺延:', carryOverSteps.map(s => s.title).join(', '));
-          }
+        }
+        if (carryOverSteps.length > 0) {
+          console.log('[AutoPilot] 昨日未完成步骤顺延:', carryOverSteps.map(s => s.title).join(', '));
         }
       }
     } catch {}
@@ -232,6 +251,7 @@ export default function ChatHomePage() {
         tutor.setMessages(updatedMsgs);
         saveThreadMessages(threadId, updatedMsgs);
         setGreeting('');
+        planGeneratingRef.current = false;
       } else {
         console.warn('[AutoPilot] AI 返回空计划，降级到本地方案');
         generateLocalFallbackPlan(threadId, carryOverSteps);
@@ -365,6 +385,7 @@ export default function ChatHomePage() {
         setGreeting('');
 
         console.log('[AutoPilot] 本地计划已生成:', steps.map(s => s.type).join(' → '), '→ thread:', threadId);
+        planGeneratingRef.current = false;
       } catch (e) {
         console.error('[AutoPilot] 本地计划失败:', e);
         setGreeting('');
@@ -376,7 +397,7 @@ export default function ChatHomePage() {
         const existingMsgs3 = threads.find(t => t.id === threadId)?.messages || [];
         tutor.setMessages([...existingMsgs3, fallbackMsg]);
         saveThreadMessages(threadId, [...existingMsgs3, fallbackMsg]);
-        saveThreadMessages(threadId, [fallbackMsg]);
+        planGeneratingRef.current = false;
       }
     }
   }, [autoPilotEnabled, hasApiKey]);
