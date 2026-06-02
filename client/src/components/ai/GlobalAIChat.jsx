@@ -21,16 +21,16 @@ export default function GlobalAIChat() {
     autoPilotEnabled,
     autoPilotPlan,
     autoPilotStepIndex,
-    autoPilotThreadId,
+    activeThreadId,
+    getActiveThread,
     threads,
   } = useAIContext();
 
-  // When autoPilot is active, use the autoPilot thread messages
-  const autoPilotMsgs = autoPilotThreadId
-    ? (threads.find((t) => t.id === autoPilotThreadId)?.messages || [])
-    : [];
-  const initialMsgs = autoPilotEnabled && autoPilotMsgs.length > 0
-    ? autoPilotMsgs
+  // Always use the active thread messages — autopilot messages are now in the normal conversation
+  const activeThread = getActiveThread();
+  const threadMsgs = activeThread?.messages || [];
+  const initialMsgs = threadMsgs.length > 0
+    ? threadMsgs
     : (Array.isArray(globalMessages) ? globalMessages : []);
   const tutor = useAITutor(initialMsgs);
   const navigate = useNavigate();

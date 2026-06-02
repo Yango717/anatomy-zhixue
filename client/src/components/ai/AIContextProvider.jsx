@@ -42,8 +42,11 @@ export function AIContextProvider({ children }) {
 
   // ─── AutoPilot mode ───
   const [autoPilotEnabled, setAutoPilotEnabled] = useState(() => {
-    try { return localStorage.getItem('ai_autopilot_enabled') === 'true'; }
-    catch { return false; }
+    try {
+      const stored = localStorage.getItem('ai_autopilot_enabled');
+      return stored === null ? true : stored === 'true'; // 默认开启
+    }
+    catch { return true; }
   });
   const [autoPilotPlan, setAutoPilotPlan] = useState(() => {
     try { return JSON.parse(localStorage.getItem('ai_autopilot_plan') || 'null'); }
@@ -54,8 +57,9 @@ export function AIContextProvider({ children }) {
     catch { return 0; }
   });
   const [autoPilotPendingCheckin, setAutoPilotPendingCheckin] = useState(null);
-  const [autoPilotThreadId, setAutoPilotThreadId] = useState(() => {
-    try { return JSON.parse(localStorage.getItem('ai_autopilot_state') || '{}').threadId || null; }
+  // 每日任务完成摘要 — 追踪哪些步骤完成了，哪些没完成
+  const [autoPilotDailySummary, setAutoPilotDailySummary] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('ai_autopilot_daily_summary') || 'null'); }
     catch { return null; }
   });
 
@@ -266,6 +270,11 @@ export function AIContextProvider({ children }) {
 
   // ─── AutoPilot methods ───
 
+  const isPlanExpired = useCallback((plan) => {
+    if (!plan?.createdAt) return true;
+    return Date.now() - plan.createdAt > 24 * 60 * 60 * 1000;
+  }, []);
+
   const toggleAutoPilot = useCallback(() => {
     setAutoPilotEnabled((prev) => {
       const next = !prev;
@@ -288,6 +297,20 @@ export function AIContextProvider({ children }) {
       state.stepIndex = 0;
       localStorage.setItem('ai_autopilot_state', JSON.stringify(state));
     } catch {}
+    // Reset daily summary when plan is saved
+    if (plan?.steps) {
+      const summary = {
+        date: new Date().toDateString(),
+        createdAt: plan.createdAt,
+        completedSteps: [],
+        pendingSteps: plan.steps.map(s => s.id),
+      };
+      setAutoPilotDailySummary(summary);
+      try { localStorage.setItem('ai_autopilot_daily_summary', JSON.stringify(summary)); } catch {}
+    } else {
+      setAutoPilotDailySummary(null);
+      try { localStorage.removeItem('ai_autopilot_daily_summary'); } catch {}
+    }
   }, []);
 
   const advanceAutoPilotStep = useCallback(() => {
@@ -312,6 +335,19 @@ export function AIContextProvider({ children }) {
       );
       const newPlan = { ...prevPlan, steps };
       try { localStorage.setItem('ai_autopilot_plan', JSON.stringify(newPlan)); } catch {}
+
+      // Update daily summary
+      const completed = steps.filter(s => s.completed).map(s => s.id);
+      const pending = steps.filter(s => !s.completed).map(s => s.id);
+      const summary = {
+        date: new Date().toDateString(),
+        createdAt: newPlan.createdAt,
+        completedSteps: completed,
+        pendingSteps: pending,
+      };
+      setAutoPilotDailySummary(summary);
+      try { localStorage.setItem('ai_autopilot_daily_summary', JSON.stringify(summary)); } catch {}
+
       return newPlan;
     });
     // Queue a checkin for AutoPilotCheckin to deliver
@@ -324,15 +360,6 @@ export function AIContextProvider({ children }) {
 
   const markCheckinDelivered = useCallback(() => {
     setAutoPilotPendingCheckin(null);
-  }, []);
-
-  const saveAutoPilotThreadId = useCallback((threadId) => {
-    setAutoPilotThreadId(threadId);
-    try {
-      const state = JSON.parse(localStorage.getItem('ai_autopilot_state') || '{}');
-      state.threadId = threadId;
-      localStorage.setItem('ai_autopilot_state', JSON.stringify(state));
-    } catch {}
   }, []);
 
   const value = {
@@ -374,13 +401,13 @@ export function AIContextProvider({ children }) {
     autoPilotPlan,
     autoPilotStepIndex,
     autoPilotPendingCheckin,
-    autoPilotThreadId,
+    autoPilotDailySummary,
+    isPlanExpired,
     toggleAutoPilot,
     saveAutoPilotPlan,
     advanceAutoPilotStep,
     registerActivityComplete,
     markCheckinDelivered,
-    saveAutoPilotThreadId,
   };
 
   return <AIContext.Provider value={value}>{children}</AIContext.Provider>;

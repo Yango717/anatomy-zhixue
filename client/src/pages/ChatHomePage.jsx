@@ -36,9 +36,9 @@ export default function ChatHomePage() {
     autoPilotEnabled,
     autoPilotPlan,
     autoPilotStepIndex,
-    autoPilotThreadId,
+    autoPilotDailySummary,
+    isPlanExpired,
     saveAutoPilotPlan,
-    saveAutoPilotThreadId,
   } = useAIContext();
 
   // Get active thread messages
@@ -101,22 +101,65 @@ export default function ChatHomePage() {
     });
   }, [hasApiKey, activeThreadId]);
 
-  // 自动驾驶模式：生成每日学习计划
+  // 模式切换消息：监听 autoPilotEnabled 变化
+  const prevAutoPilotRef = useRef(autoPilotEnabled);
+  useEffect(() => {
+    if (prevAutoPilotRef.current === autoPilotEnabled) return;
+    prevAutoPilotRef.current = autoPilotEnabled;
+
+    if (!autoPilotEnabled && activeThreadId) {
+      // 关闭自动模式 → 发消息
+      const offMsg = {
+        role: 'assistant',
+        content: '好的～手动模式已开启！有需要随时叫我喔～😊',
+      };
+      const existing = threads.find(t => t.id === activeThreadId)?.messages || [];
+      const updated = [...existing, offMsg];
+      tutor.setMessages(updated);
+      saveThreadMessages(activeThreadId, updated);
+    }
+    // 开启自动模式 → 计划生成 useEffect 会自动触发
+  }, [autoPilotEnabled]);
+
+  // 自动驾驶模式：24h 过期 + 昨日顺延 + 当日续接 + 计划生成
   useEffect(() => {
     if (!autoPilotEnabled) return;
 
-    // Check if we already have a valid plan for today AND it's been shown
-    if (autoPilotPlan && autoPilotPlan.createdAt) {
-      const planDate = new Date(autoPilotPlan.createdAt).toDateString();
-      const today = new Date().toDateString();
-      if (planDate === today && threadMessages.length > 0) {
-        console.log('[AutoPilot] 今日计划已存在且有消息，跳过生成');
-        return;
+    // ─── 当日续接：计划未过期、已有进度但未完成 → 发续接消息 ───
+    if (autoPilotPlan && !isPlanExpired(autoPilotPlan) && autoPilotStepIndex > 0) {
+      const remaining = autoPilotPlan.steps.filter((s, i) =>
+        i >= autoPilotStepIndex && !s.completed
+      );
+      const currentStep = autoPilotPlan.steps[autoPilotStepIndex];
+      if (remaining.length > 0 && currentStep) {
+        // 检查是否已经有续接消息（避免重复发送）
+        const lastMsg = threadMessages[threadMessages.length - 1];
+        const alreadyResumed = lastMsg?.content?.includes('欢迎回来');
+        if (!alreadyResumed && threadMessages.length > 0) {
+          const resumeMsg = {
+            role: 'assistant',
+            content: `欢迎回来～你还有 ${remaining.length} 个任务没完成喔！接下来：${currentStep.title}`,
+            _actions: [{ label: currentStep.actionLabel || '继续', route: currentStep.route }],
+          };
+          const updated = [...threadMessages, resumeMsg];
+          tutor.setMessages(updated);
+          if (activeThreadId) saveThreadMessages(activeThreadId, updated);
+          console.log('[AutoPilot] 当日续接:', currentStep.title);
+          return; // 续接后不需要重新生成计划
+        }
+        if (alreadyResumed) return; // 已续接，跳过
       }
-      if (planDate === today && threadMessages.length === 0) {
-        console.log('[AutoPilot] 今日计划存在但消息为空，清除过期计划重新生成');
-        saveAutoPilotPlan(null);
-      }
+    }
+
+    // ─── 24h 过期检查：计划未过期且有消息 → 跳过生成 ───
+    if (autoPilotPlan && !isPlanExpired(autoPilotPlan) && threadMessages.length > 0) {
+      console.log('[AutoPilot] 今日计划未过期，跳过生成');
+      return;
+    }
+
+    // ─── 计划过期或为空 → 生成新计划 ───
+    if (autoPilotPlan && isPlanExpired(autoPilotPlan)) {
+      console.log('[AutoPilot] 计划已过期（超过24h），重新生成');
     }
 
     console.log('[AutoPilot] 开始生成今日学习计划... hasApiKey:', hasApiKey, 'activeThreadId:', activeThreadId);
@@ -129,10 +172,28 @@ export default function ChatHomePage() {
       switchThread(threadId);
     }
 
+    // ─── 昨日未完成步骤顺延 ───
+    let carryOverSteps = [];
+    try {
+      const yesterdaySummary = JSON.parse(localStorage.getItem('ai_autopilot_daily_summary') || 'null');
+      if (yesterdaySummary?.pendingSteps?.length > 0) {
+        const yesterdayPlan = JSON.parse(localStorage.getItem('ai_autopilot_plan') || 'null');
+        if (yesterdayPlan?.steps) {
+          carryOverSteps = yesterdaySummary.pendingSteps
+            .map(id => yesterdayPlan.steps.find(s => s.id === id))
+            .filter(Boolean)
+            .map(s => ({ ...s, completed: false, id: s.id + '_carry' }));
+          if (carryOverSteps.length > 0) {
+            console.log('[AutoPilot] 昨日未完成步骤顺延:', carryOverSteps.map(s => s.title).join(', '));
+          }
+        }
+      }
+    } catch {}
+
     // If no API key, skip AI and go straight to local fallback
     if (!hasApiKey) {
       console.log('[AutoPilot] 无 API Key，使用本地降级方案');
-      generateLocalFallbackPlan(threadId);
+      generateLocalFallbackPlan(threadId, carryOverSteps);
       return;
     }
 
@@ -141,16 +202,18 @@ export default function ChatHomePage() {
     tutor.generateAutoPilotPlan().then((plan) => {
       console.log('[AutoPilot] AI 计划结果:', plan);
       if (plan && plan.steps && plan.steps.length > 0) {
-        const planWithMeta = { ...plan, createdAt: Date.now() };
+        // Prepend carry-over steps
+        const allSteps = [...carryOverSteps, ...plan.steps];
+        const planWithMeta = { ...plan, steps: allSteps, createdAt: Date.now() };
         saveAutoPilotPlan(planWithMeta);
 
-        const stepLines = plan.steps.map((s, i) =>
+        const stepLines = allSteps.map((s, i) =>
           `${i + 1}️⃣ ${s.title}`
         ).join('\n');
 
         const planMsg = `早安！今天的学习路线来啦～ 🌟\n\n${stepLines}\n\n准备好了吗？我们开始吧！`;
 
-        const firstStep = plan.steps[0];
+        const firstStep = allSteps[0];
         const actions = [{ label: firstStep.actionLabel || '开始', route: firstStep.route }];
 
         const msg = {
@@ -162,21 +225,17 @@ export default function ChatHomePage() {
         tutor.setMessages([msg]);
         saveThreadMessages(threadId, [msg]);
         setGreeting('');
-
-        if (!autoPilotThreadId) {
-          saveAutoPilotThreadId(threadId);
-        }
       } else {
         console.warn('[AutoPilot] AI 返回空计划，降级到本地方案');
-        generateLocalFallbackPlan(threadId);
+        generateLocalFallbackPlan(threadId, carryOverSteps);
       }
     }).catch((err) => {
       console.error('[AutoPilot] AI 计划失败:', err.message || err);
-      generateLocalFallbackPlan(threadId);
+      generateLocalFallbackPlan(threadId, carryOverSteps);
     });
 
     // Local fallback: generate plan following correct learning flow
-    async function generateLocalFallbackPlan(threadId) {
+    async function generateLocalFallbackPlan(threadId, carryOver = []) {
       try {
         const [recommend, errors] = await Promise.all([
           api.get('/recommend').catch(() => []),
@@ -185,7 +244,7 @@ export default function ChatHomePage() {
 
         const recItems = Array.isArray(recommend) ? recommend : (recommend?.items || []);
         const errorItems = errors?.items || [];
-        const steps = [];
+        const steps = [...carryOver]; // 昨日顺延步骤放最前面
 
         // ─── ① 回顾昨日刷题错题 ───
         let hasYesterdayErrors = false;
@@ -295,10 +354,6 @@ export default function ChatHomePage() {
         tutor.setMessages([msg]);
         saveThreadMessages(threadId, [msg]);
         setGreeting('');
-
-        if (!autoPilotThreadId) {
-          saveAutoPilotThreadId(threadId);
-        }
 
         console.log('[AutoPilot] 本地计划已生成:', steps.map(s => s.type).join(' → '), '→ thread:', threadId);
       } catch (e) {

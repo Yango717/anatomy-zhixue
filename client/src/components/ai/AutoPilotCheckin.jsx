@@ -8,13 +8,11 @@ export default function AutoPilotCheckin() {
     autoPilotPlan,
     autoPilotStepIndex,
     autoPilotPendingCheckin,
-    autoPilotThreadId,
     advanceAutoPilotStep,
     markCheckinDelivered,
-    saveAutoPilotThreadId,
     saveThreadMessages,
+    activeThreadId,
     threads,
-    createThread,
   } = useAIContext();
 
   const tutor = useAITutor([]);
@@ -104,16 +102,12 @@ export default function AutoPilotCheckin() {
           }
         }
 
-        // Get or create autoPilot thread
-        let threadId = autoPilotThreadId;
+        // Use activeThreadId (messages stay in the normal conversation)
+        const threadId = activeThreadId;
         if (!threadId) {
-          threadId = createThread();
-          saveAutoPilotThreadId(threadId);
-          // Rename thread
-          const thread = threads.find((t) => t.id === threadId);
-          if (thread) {
-            saveThreadMessages(threadId, []);
-          }
+          // No active thread — can't deliver, just mark delivered
+          markCheckinDelivered();
+          return;
         }
 
         // Build action-augmented message
@@ -127,7 +121,7 @@ export default function AutoPilotCheckin() {
           _actions: checkinMsg.actions || [],
         };
 
-        // Get existing thread messages
+        // Append to existing thread messages
         const existingThread = threads.find((t) => t.id === threadId);
         const existingMsgs = existingThread?.messages || [];
         saveThreadMessages(threadId, [...existingMsgs, msg]);
