@@ -13,6 +13,44 @@ const QUICK_PROMPTS = [
   { text: '给我出几道题', icon: '📝' },
 ];
 
+// 学姐风格的计划问候语 — 有温度、有感情、按时间段切换
+function buildPlanGreeting(steps, carryOverSteps = []) {
+  const hour = new Date().getHours();
+  let timeGreet;
+  if (hour < 9) timeGreet = '早安';
+  else if (hour < 12) timeGreet = '上午好';
+  else if (hour < 14) timeGreet = '中午好';
+  else if (hour < 18) timeGreet = '下午好';
+  else timeGreet = '晚上好';
+
+  const emojiMap = {
+    review_yesterday_errors: '🔁',
+    learn: '📖',
+    quiz: '📝',
+    error_review: '🔍',
+    practice: '🎯',
+  };
+  const stepLines = steps.map((s, i) =>
+    `${emojiMap[s.type] || '📌'} ${i + 1}. ${s.title}`
+  ).join('\n');
+
+  const hasCarryOver = carryOverSteps.length > 0;
+  const totalNew = steps.length - carryOverSteps.length;
+
+  // 选一个俏皮的语气词
+  const tones = ['啦～', '喔～', '耶～', '欸～'];
+  const tone = tones[Math.floor(Math.random() * tones.length)];
+
+  let greeting;
+  if (hasCarryOver) {
+    greeting = `${timeGreet}${tone} 学姐等你呢～ 😊\n\n昨天有 ${carryOverSteps.length} 个小任务还没收尾，我们先把它补上，然后再开始今天的新内容！\n\n今天的学习路线：\n${stepLines}\n\n别担心，一步步来，学姐全程陪着你～有什么想问的随时喊我！`;
+  } else {
+    greeting = `${timeGreet}${tone} 又见面啦～ 😊\n\n今天学姐给你安排好啦，按这个节奏走就很棒：\n\n${stepLines}\n\n不用急，慢慢来～学到就是赚到！有不会的随时问学姐喔，我一直在这儿 🤍`;
+  }
+
+  return greeting;
+}
+
 export default function ChatHomePage() {
   const [input, setInput] = useState('');
   const [voiceError, setVoiceError] = useState(null);
@@ -234,7 +272,7 @@ export default function ChatHomePage() {
           `${i + 1}️⃣ ${s.title}`
         ).join('\n');
 
-        const planMsg = `早安！今天的学习路线来啦～ 🌟\n\n${stepLines}\n\n准备好了吗？我们开始吧！`;
+        const planMsg = buildPlanGreeting(allSteps, carryOverSteps);
 
         const firstStep = allSteps[0];
         const actions = [{ label: firstStep.actionLabel || '开始', route: firstStep.route }];
@@ -371,7 +409,7 @@ export default function ChatHomePage() {
           `${emojiMap[s.type] || '📌'} ${i + 1}. ${s.title}`
         ).join('\n');
 
-        const planMsg = `今天的学习路线来啦～ 🌟\n\n${stepLines}\n\n准备好了吗？开始吧！`;
+        const planMsg = buildPlanGreeting(steps, carryOver);
         const firstStep = steps[0];
         const msg = {
           role: 'assistant',
