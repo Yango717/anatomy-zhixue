@@ -105,20 +105,24 @@ export default function ChatHomePage() {
   const prevAutoPilotRef = useRef(autoPilotEnabled);
   useEffect(() => {
     if (prevAutoPilotRef.current === autoPilotEnabled) return;
+    const wasAuto = prevAutoPilotRef.current;
     prevAutoPilotRef.current = autoPilotEnabled;
 
-    if (!autoPilotEnabled && activeThreadId) {
-      // 关闭自动模式 → 发消息
+    if (!autoPilotEnabled && wasAuto && activeThreadId) {
+      // 关闭自动模式 → 追加手动模式消息到对话
       const offMsg = {
         role: 'assistant',
         content: '好的～手动模式已开启！有需要随时叫我喔～😊',
       };
-      const existing = threads.find(t => t.id === activeThreadId)?.messages || [];
-      const updated = [...existing, offMsg];
-      tutor.setMessages(updated);
-      saveThreadMessages(activeThreadId, updated);
+      // 用 tutor.messages 的最新值
+      tutor.setMessages((prev) => {
+        const updated = [...prev, offMsg];
+        if (activeThreadId) saveThreadMessages(activeThreadId, updated);
+        return updated;
+      });
     }
     // 开启自动模式 → 计划生成 useEffect 会自动触发
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [autoPilotEnabled]);
 
   // 自动驾驶模式：24h 过期 + 昨日顺延 + 当日续接 + 计划生成
@@ -221,9 +225,12 @@ export default function ChatHomePage() {
           content: planMsg,
           _actions: actions,
         };
+        // 追加到现有对话，不覆盖
+        const existingMsgs = threads.find(t => t.id === threadId)?.messages || [];
+        const updatedMsgs = [...existingMsgs, msg];
         console.log('[AutoPilot] 设置计划消息到对话:', threadId);
-        tutor.setMessages([msg]);
-        saveThreadMessages(threadId, [msg]);
+        tutor.setMessages(updatedMsgs);
+        saveThreadMessages(threadId, updatedMsgs);
         setGreeting('');
       } else {
         console.warn('[AutoPilot] AI 返回空计划，降级到本地方案');
@@ -351,8 +358,10 @@ export default function ChatHomePage() {
           content: planMsg,
           _actions: [{ label: firstStep.actionLabel, route: firstStep.route }],
         };
-        tutor.setMessages([msg]);
-        saveThreadMessages(threadId, [msg]);
+        const existingMsgs2 = threads.find(t => t.id === threadId)?.messages || [];
+        const updatedMsgs2 = [...existingMsgs2, msg];
+        tutor.setMessages(updatedMsgs2);
+        saveThreadMessages(threadId, updatedMsgs2);
         setGreeting('');
 
         console.log('[AutoPilot] 本地计划已生成:', steps.map(s => s.type).join(' → '), '→ thread:', threadId);
@@ -364,7 +373,9 @@ export default function ChatHomePage() {
           content: '自动驾驶模式已开启～告诉我你想学什么，或者去「系统」页面选一个章节开始吧！',
           _actions: [{ label: '去选章节', route: '/modules' }],
         };
-        tutor.setMessages([fallbackMsg]);
+        const existingMsgs3 = threads.find(t => t.id === threadId)?.messages || [];
+        tutor.setMessages([...existingMsgs3, fallbackMsg]);
+        saveThreadMessages(threadId, [...existingMsgs3, fallbackMsg]);
         saveThreadMessages(threadId, [fallbackMsg]);
       }
     }

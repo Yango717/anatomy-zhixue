@@ -11,8 +11,39 @@ import './styles/print.css';
 import './styles/ai.css';
 import './styles/autopilot.css';
 
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { error: null, errorInfo: null };
+  }
+  static getDerivedStateFromError(error) {
+    return { error };
+  }
+  componentDidCatch(error, errorInfo) {
+    console.error('[ErrorBoundary]', error, errorInfo);
+    this.setState({ errorInfo });
+  }
+  render() {
+    if (this.state.error) {
+      return (
+        <div style={{ padding: 24, color: '#ff4444', fontFamily: 'monospace' }}>
+          <h2>渲染出错</h2>
+          <pre>{this.state.error?.toString()}</pre>
+          <details>
+            <summary>详细信息</summary>
+            <pre>{this.state.errorInfo?.componentStack}</pre>
+          </details>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <ErrorBoundary>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </ErrorBoundary>
 );

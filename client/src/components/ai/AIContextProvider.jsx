@@ -250,6 +250,17 @@ export function AIContextProvider({ children }) {
     }
   }, []);
 
+  // v3.2 迁移：强制默认开启自动模式（仅首次升级时执行一次）
+  useEffect(() => {
+    try {
+      if (!localStorage.getItem('ai_autopilot_v3_migrated')) {
+        localStorage.setItem('ai_autopilot_v3_migrated', '1');
+        localStorage.setItem('ai_autopilot_enabled', 'true');
+        setAutoPilotEnabled(true);
+      }
+    } catch {}
+  }, []);
+
   // Apply autoPilot theme on mount
   useEffect(() => {
     if (autoPilotEnabled) {
