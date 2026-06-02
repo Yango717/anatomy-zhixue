@@ -134,9 +134,10 @@ export default function PracticePage() {
   }
 
   // Safety net: report on unmount if not already reported
+  // 自动模式下只要进入过刷题页就算完成（即使没答题就退出）
   useEffect(() => {
     return () => {
-      if (autoPilotEnabled && !hasReportedRef.current && Object.keys(statusMap).length > 0) {
+      if (autoPilotEnabled && !hasReportedRef.current) {
         savePracticeHistory();
         hasReportedRef.current = true;
         registerActivityComplete({ type: 'practice', unitId: '', result: { statusMap } });

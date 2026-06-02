@@ -146,17 +146,24 @@ export default function ChatHomePage() {
     const wasAuto = prevAutoPilotRef.current;
     prevAutoPilotRef.current = autoPilotEnabled;
 
-    if (!autoPilotEnabled && wasAuto && activeThreadId) {
+    const tid = getOrCreateThreadId();
+
+    if (!autoPilotEnabled && wasAuto) {
       // 关闭自动模式 → 追加手动模式消息
       const offMsg = {
         role: 'assistant',
         content: '好的～手动模式已开启！有需要随时叫我喔～😊',
       };
-      tutor.setMessages((prev) => {
-        const updated = [...prev, offMsg];
-        if (activeThreadId) saveThreadMessages(activeThreadId, updated);
-        return updated;
-      });
+      // 直接从 localStorage 读现有消息
+      let existing = [];
+      try {
+        const data = JSON.parse(localStorage.getItem('ai_threads') || '{}');
+        const thread = (data.threads || []).find(t => t.id === tid);
+        existing = thread?.messages || [];
+      } catch {}
+      const updated = [...existing, offMsg];
+      tutor.setMessages(updated);
+      saveThreadMessages(tid, updated);
       return;
     }
 
@@ -170,6 +177,14 @@ export default function ChatHomePage() {
         stepIdx = state.stepIndex || 0;
       } catch {}
 
+      // 读线程消息
+      let existing = [];
+      try {
+        const data = JSON.parse(localStorage.getItem('ai_threads') || '{}');
+        const thread = (data.threads || []).find(t => t.id === tid);
+        existing = thread?.messages || [];
+      } catch {}
+
       if (plan && plan.steps && !isPlanExpired(plan)) {
         const remaining = plan.steps.filter((s, i) => i >= stepIdx && !s.completed);
         const currentStep = plan.steps[stepIdx];
@@ -179,10 +194,9 @@ export default function ChatHomePage() {
             content: `自动驾驶模式已开启～你还有 ${remaining.length} 个任务没完成喔！接下来：${currentStep.title}`,
             _actions: [{ label: currentStep.actionLabel || '继续', route: currentStep.route }],
           };
-          const existingMsgs = threads.find(t => t.id === activeThreadId)?.messages || [];
-          const updated = [...existingMsgs, resumeMsg];
+          const updated = [...existing, resumeMsg];
           tutor.setMessages(updated);
-          if (activeThreadId) saveThreadMessages(activeThreadId, updated);
+          saveThreadMessages(tid, updated);
         } else {
           // 全部完成 → 问候
           const doneMsg = {
@@ -190,10 +204,9 @@ export default function ChatHomePage() {
             content: '自动驾驶模式已开启～不过今天的任务都完成啦！🎉 明天继续加油喔～或者你想再刷几道题练练手？',
             _actions: [{ label: '去刷题', route: '/practice' }],
           };
-          const existingMsgs = threads.find(t => t.id === activeThreadId)?.messages || [];
-          const updated = [...existingMsgs, doneMsg];
+          const updated = [...existing, doneMsg];
           tutor.setMessages(updated);
-          if (activeThreadId) saveThreadMessages(activeThreadId, updated);
+          saveThreadMessages(tid, updated);
         }
       }
     }
@@ -202,6 +215,29 @@ export default function ChatHomePage() {
 
   // 防止重复生成计划（React StrictMode 双重调用 + 异步竞争）
   const planGeneratingRef = useRef(false);
+
+  // 直接从 localStorage 获取或创建线程 ID — 避免 React state 竞态导致的重复创建
+  function getOrCreateThreadId() {
+    // 优先返回已有线程
+    if (activeThreadId) return activeThreadId;
+    // 从 localStorage 读（绕过 state 延迟）
+    try {
+      const data = JSON.parse(localStorage.getItem('ai_threads') || '{}');
+      if (data.activeThreadId) return data.activeThreadId;
+      if (data.threads?.length > 0) return data.threads[0].id;
+    } catch {}
+    // 都没有就创建一个
+    return createThread();
+  }
+
+  // 从 localStorage 直接读线程消息 — 绕过 state 延迟
+  function readThreadMessages(threadId) {
+    try {
+      const data = JSON.parse(localStorage.getItem('ai_threads') || '{}');
+      const thread = (data.threads || []).find(t => t.id === threadId);
+      return thread?.messages || [];
+    } catch { return []; }
+  }
 
   // 自动驾驶模式：24h 过期 + 昨日顺延 + 当日续接 + 计划生成
   useEffect(() => {
@@ -262,7 +298,7 @@ export default function ChatHomePage() {
     setGreeting('学姐正在为你制定今日学习计划...');
 
     // Ensure we have an active thread
-    const threadId = activeThreadId || threads[0]?.id || createThread();
+    const threadId = getOrCreateThreadId();
     if (!activeThreadId) {
       console.log('[AutoPilot] 创建/复用线程:', threadId);
       switchThread(threadId);
@@ -320,7 +356,7 @@ export default function ChatHomePage() {
           _actions: actions,
         };
         // 追加到现有对话，不覆盖
-        const existingMsgs = threads.find(t => t.id === threadId)?.messages || [];
+        const existingMsgs = readThreadMessages(threadId);
         const updatedMsgs = [...existingMsgs, msg];
         console.log('[AutoPilot] 设置计划消息到对话:', threadId);
         tutor.setMessages(updatedMsgs);
@@ -455,7 +491,7 @@ export default function ChatHomePage() {
           content: planMsg,
           _actions: [{ label: firstStep.actionLabel, route: firstStep.route }],
         };
-        const existingMsgs2 = threads.find(t => t.id === threadId)?.messages || [];
+        const existingMsgs2 = readThreadMessages(threadId);
         const updatedMsgs2 = [...existingMsgs2, msg];
         tutor.setMessages(updatedMsgs2);
         saveThreadMessages(threadId, updatedMsgs2);
@@ -471,7 +507,7 @@ export default function ChatHomePage() {
           content: '自动驾驶模式已开启～告诉我你想学什么，或者去「系统」页面选一个章节开始吧！',
           _actions: [{ label: '去选章节', route: '/modules' }],
         };
-        const existingMsgs3 = threads.find(t => t.id === threadId)?.messages || [];
+        const existingMsgs3 = readThreadMessages(threadId);
         tutor.setMessages([...existingMsgs3, fallbackMsg]);
         saveThreadMessages(threadId, [...existingMsgs3, fallbackMsg]);
         planGeneratingRef.current = false;
