@@ -7,7 +7,6 @@ import VoiceInputButton from './VoiceInputButton';
 import { api } from '../../utils/api';
 
 export default function GlobalAIChat() {
-  const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
   const [voiceError, setVoiceError] = useState(null);
   const [notificationCount, setNotificationCount] = useState(0);
@@ -24,6 +23,8 @@ export default function GlobalAIChat() {
     activeThreadId,
     getActiveThread,
     threads,
+    globalChatOpen,
+    setGlobalChatOpen,
   } = useAIContext();
 
   // Always use the active thread messages — autopilot messages are now in the normal conversation
@@ -49,7 +50,7 @@ export default function GlobalAIChat() {
       const count = d?.items?.length || d?.count || 0;
       setNotificationCount(count);
     }).catch(() => {});
-  }, [isOpen]); // Refresh when panel opens/closes
+  }, [globalChatOpen]); // Refresh when panel opens/closes
 
   // Also refresh on mount and periodically
   useEffect(() => {
@@ -89,10 +90,10 @@ export default function GlobalAIChat() {
 
   // Focus input on open
   useEffect(() => {
-    if (isOpen && inputRef.current) {
+    if (globalChatOpen && inputRef.current) {
       setTimeout(() => { if (inputRef.current) inputRef.current.focus(); }, 200);
     }
-  }, [isOpen]);
+  }, [globalChatOpen]);
 
   function handleSend() {
     const text = input.trim();
@@ -127,10 +128,10 @@ export default function GlobalAIChat() {
 
   return (
     <>
-      {!isOpen && (
+      {!globalChatOpen && (
         <button
           className="ai-float-btn ai-float-btn--global"
-          onClick={() => setIsOpen(true)}
+          onClick={() => setGlobalChatOpen(true)}
           title={notificationCount > 0 ? `学姐提醒：${notificationCount}道错题待复习` : '妍学姐'}
           aria-label="打开AI学姐对话"
         >
@@ -142,7 +143,7 @@ export default function GlobalAIChat() {
         </button>
       )}
 
-      {isOpen && (
+      {globalChatOpen && (
         <div className="ai-chat-panel ai-chat-panel--global">
           <div className="ai-chat-panel__header">
             <div className="ai-chat-panel__avatar">
@@ -162,7 +163,7 @@ export default function GlobalAIChat() {
                   <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
                 </svg>
               </button>
-              <button className="ai-icon-btn" onClick={() => setIsOpen(false)} title="关闭">
+              <button className="ai-icon-btn" onClick={() => setGlobalChatOpen(false)} title="关闭">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <line x1="18" y1="6" x2="6" y2="18" />
                   <line x1="6" y1="6" x2="18" y2="18" />

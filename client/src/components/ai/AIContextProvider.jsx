@@ -62,6 +62,8 @@ export function AIContextProvider({ children }) {
     try { return JSON.parse(localStorage.getItem('ai_autopilot_daily_summary') || 'null'); }
     catch { return null; }
   });
+  // 全局聊天气泡开关（迷你头像点击时打开）
+  const [globalChatOpen, setGlobalChatOpen] = useState(false);
 
   // Persist API key
   const saveApiKey = useCallback((key) => {
@@ -414,6 +416,8 @@ export function AIContextProvider({ children }) {
     autoPilotPendingCheckin,
     autoPilotDailySummary,
     isPlanExpired,
+    globalChatOpen,
+    setGlobalChatOpen,
     toggleAutoPilot,
     saveAutoPilotPlan,
     advanceAutoPilotStep,

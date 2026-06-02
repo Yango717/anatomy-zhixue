@@ -102,10 +102,13 @@ export default function AutoPilotCheckin() {
           }
         }
 
-        // Use activeThreadId (messages stay in the normal conversation)
-        const threadId = activeThreadId;
+        // Use activeThreadId, fallback to first thread
+        let threadId = activeThreadId;
+        if (!threadId && threads.length > 0) {
+          threadId = threads[0].id;
+        }
         if (!threadId) {
-          // No active thread — can't deliver, just mark delivered
+          // No thread at all — can't deliver, just mark delivered
           markCheckinDelivered();
           return;
         }

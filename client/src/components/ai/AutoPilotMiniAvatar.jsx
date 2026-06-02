@@ -8,6 +8,7 @@ export default function AutoPilotMiniAvatar() {
     autoPilotPlan,
     autoPilotStepIndex,
     isPlanExpired,
+    setGlobalChatOpen,
   } = useAIContext();
   const navigate = useNavigate();
   const location = useLocation();
@@ -25,16 +26,16 @@ export default function AutoPilotMiniAvatar() {
 
   function handleClick() {
     if (isHome) {
-      // On home page, scroll to latest messages (ChatHomePage is already full-screen)
+      // 首页：滚动到最新消息
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     } else {
-      // On other pages, navigate to home chat
-      navigate('/');
+      // 其他页面：打开聊天气泡（小窗），不跳转整页
+      setGlobalChatOpen(true);
     }
   }
 
   return (
-    <div className="autopilot-mini-avatar" onClick={handleClick} title="学姐自动驾驶中">
+    <div className="autopilot-mini-avatar" onClick={handleClick} title={isHome ? '滚动到最新消息' : '打开学姐对话'}>
       {/* Avatar circle */}
       <div className={`autopilot-mini-avatar__circle ${showBadge ? 'autopilot-mini-avatar__circle--alert' : ''}`}>
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
