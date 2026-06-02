@@ -147,19 +147,56 @@ export default function ChatHomePage() {
     prevAutoPilotRef.current = autoPilotEnabled;
 
     if (!autoPilotEnabled && wasAuto && activeThreadId) {
-      // 关闭自动模式 → 追加手动模式消息到对话
+      // 关闭自动模式 → 追加手动模式消息
       const offMsg = {
         role: 'assistant',
         content: '好的～手动模式已开启！有需要随时叫我喔～😊',
       };
-      // 用 tutor.messages 的最新值
       tutor.setMessages((prev) => {
         const updated = [...prev, offMsg];
         if (activeThreadId) saveThreadMessages(activeThreadId, updated);
         return updated;
       });
+      return;
     }
-    // 开启自动模式 → 计划生成 useEffect 会自动触发
+
+    // 开启自动模式 → 如果已有未过期计划，发状态消息告知当前进度
+    if (autoPilotEnabled && !wasAuto) {
+      let plan = null;
+      let stepIdx = 0;
+      try {
+        plan = JSON.parse(localStorage.getItem('ai_autopilot_plan') || 'null');
+        const state = JSON.parse(localStorage.getItem('ai_autopilot_state') || '{}');
+        stepIdx = state.stepIndex || 0;
+      } catch {}
+
+      if (plan && plan.steps && !isPlanExpired(plan)) {
+        const remaining = plan.steps.filter((s, i) => i >= stepIdx && !s.completed);
+        const currentStep = plan.steps[stepIdx];
+        if (remaining.length > 0 && currentStep) {
+          const resumeMsg = {
+            role: 'assistant',
+            content: `自动驾驶模式已开启～你还有 ${remaining.length} 个任务没完成喔！接下来：${currentStep.title}`,
+            _actions: [{ label: currentStep.actionLabel || '继续', route: currentStep.route }],
+          };
+          const existingMsgs = threads.find(t => t.id === activeThreadId)?.messages || [];
+          const updated = [...existingMsgs, resumeMsg];
+          tutor.setMessages(updated);
+          if (activeThreadId) saveThreadMessages(activeThreadId, updated);
+        } else {
+          // 全部完成 → 问候
+          const doneMsg = {
+            role: 'assistant',
+            content: '自动驾驶模式已开启～不过今天的任务都完成啦！🎉 明天继续加油喔～或者你想再刷几道题练练手？',
+            _actions: [{ label: '去刷题', route: '/practice' }],
+          };
+          const existingMsgs = threads.find(t => t.id === activeThreadId)?.messages || [];
+          const updated = [...existingMsgs, doneMsg];
+          tutor.setMessages(updated);
+          if (activeThreadId) saveThreadMessages(activeThreadId, updated);
+        }
+      }
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [autoPilotEnabled]);
 
