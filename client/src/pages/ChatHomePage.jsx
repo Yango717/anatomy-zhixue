@@ -297,12 +297,11 @@ export default function ChatHomePage() {
     console.log('[AutoPilot] 开始生成今日学习计划... hasApiKey:', hasApiKey, 'activeThreadId:', activeThreadId);
     setGreeting('学姐正在为你制定今日学习计划...');
 
-    // Ensure we have an active thread
+    // Ensure we have an active thread — getOrCreateThreadId handles creation + localStorage
     const threadId = getOrCreateThreadId();
-    if (!activeThreadId) {
-      console.log('[AutoPilot] 创建/复用线程:', threadId);
-      switchThread(threadId);
-    }
+    // 注意：不调用 switchThread！它在首次渲染时闭包里的 threads 是 []，
+    // 会覆写 localStorage 清空已创建的线程，导致消息全部丢失。
+    console.log('[AutoPilot] 使用线程:', threadId);
 
     // ─── 昨日未完成步骤顺延 ───
     let carryOverSteps = [];

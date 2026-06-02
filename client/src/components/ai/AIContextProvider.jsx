@@ -209,7 +209,13 @@ export function AIContextProvider({ children }) {
         return t;
       });
       try {
-        localStorage.setItem(THREADS_KEY, JSON.stringify({ threads: updated, activeThreadId }));
+        // 从 localStorage 读最新的 activeThreadId，避免 stale closure 覆写
+        let currentActiveId = activeThreadId;
+        if (!currentActiveId) {
+          const data = JSON.parse(localStorage.getItem(THREADS_KEY) || '{}');
+          currentActiveId = data.activeThreadId || threadId;
+        }
+        localStorage.setItem(THREADS_KEY, JSON.stringify({ threads: updated, activeThreadId: currentActiveId }));
       } catch {}
       return updated;
     });
@@ -219,7 +225,12 @@ export function AIContextProvider({ children }) {
     setThreads((prev) => {
       const updated = prev.map((t) => t.id === threadId ? { ...t, name } : t);
       try {
-        localStorage.setItem(THREADS_KEY, JSON.stringify({ threads: updated, activeThreadId }));
+        let currentActiveId = activeThreadId;
+        if (!currentActiveId) {
+          const data = JSON.parse(localStorage.getItem(THREADS_KEY) || '{}');
+          currentActiveId = data.activeThreadId || threadId;
+        }
+        localStorage.setItem(THREADS_KEY, JSON.stringify({ threads: updated, activeThreadId: currentActiveId }));
       } catch {}
       return updated;
     });
