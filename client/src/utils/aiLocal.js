@@ -213,12 +213,20 @@ export async function aiTodayRecommendLocal(apiKey) {
 export async function aiGeneratePlanLocal(apiKey, progress, errors, units, userProfile) {
   const systemPrompt = buildLocalSystemPrompt('home');
 
+  // 从真实单元列表中提取摘要（只传关键字段，节省 token）
+  const unitsSummary = (units || []).slice(0, 15).map(u => ({
+    id: u.id,
+    title: u.title,
+    chapter: u.chapterTitle,
+    difficulty: u.difficulty,
+  }));
+
   const planPrompt = `【任务：生成今日学习计划】
 
 你是妍学姐。请根据以下学习数据，为学弟学妹制定一份今日学习计划。
 
-【可用学习单元】
-${JSON.stringify((units || []).slice(0, 10), null, 2)}
+【可用学习单元（必须使用下面列表中的真实 id）】
+${JSON.stringify(unitsSummary, null, 2)}
 
 【学习进度】
 ${JSON.stringify(progress || {}, null, 2)}
@@ -231,32 +239,35 @@ ${JSON.stringify(userProfile?.yesterdayPractice || {}, null, 2)}
 
 【正确的学习流程——必须按此顺序排列步骤】
 ① review_yesterday_errors：回顾昨日刷题错题（仅当有昨日练习记录时才安排）
-② learn：学习新知识点（闪卡浏览+背诵），选一个未学或进行中的单元
-③ quiz：随机填空/简答/名词解释测试，检验学习效果
+② learn：学习新知识点（闪卡浏览+背诵），从上面的可用单元列表中选一个，unitId 必须是上面列表中的真实 id
+③ quiz：随机填空/简答/名词解释测试，检验学习效果，unitId 同 learn 步骤
 ④ error_review：回顾本次测验错题（测验错题自动入错题本，引导去错题本复习）
 ⑤ practice：进入刷题界面（/practice）——这是最重要的环节！学生自主刷题，不限时间，退出即表示完成
 
-【类型定义】
-- review_yesterday_errors → route: "/review"（错题本，回顾昨日错题）
-- learn → route: "/learn/:unitId"
-- quiz → route: "/quiz/:unitId" 或 "/test/:unitId"
-- error_review → route: "/review/:unitId" 或 "/review"
-- practice → route: "/practice"（最后的环节，最重要的刷题环节）
+【步骤类型与路由】
+- review_yesterday_errors → route: "/review"，unitId: ""
+- learn → route: "/learn/<真实unitId>"，unitId 必须从上面可用单元列表复制
+- quiz → route: "/quiz/<真实unitId>"，unitId 同上
+- error_review → route: "/review/<真实unitId>" 或 "/review"
+- practice → route: "/practice"，unitId: ""
 
-【返回严格JSON格式，不要包含其他文字】
+【返回严格JSON格式，不要编造 unitId】
 {
   "steps": [
     {"id":"step_1","type":"review_yesterday_errors","unitId":"","title":"回顾昨日错题","message":"先看看昨天练错的题，温故知新～","actionLabel":"去错题本","route":"/review"},
-    {"id":"step_2","type":"learn","unitId":"单元ID","title":"学习XXX","message":"来看看这个知识点～","actionLabel":"去学习","route":"/learn/单元ID"},
-    {"id":"step_last","type":"practice","unitId":"","title":"刷题练手","message":"去刷题界面练练手吧，退出就是完成！","actionLabel":"去刷题","route":"/practice"}
+    {"id":"step_2","type":"learn","unitId":"从列表复制的真实id","title":"学习：单元标题","message":"来看看这个知识点～","actionLabel":"去学习","route":"/learn/真实id"},
+    {"id":"step_3","type":"quiz","unitId":"同上","title":"测验检验","message":"来个小测验巩固一下！","actionLabel":"去测验","route":"/quiz/真实id"},
+    {"id":"step_4","type":"error_review","unitId":"同上","title":"错题回顾","message":"看看错题趁热纠正～","actionLabel":"去错题回顾","route":"/review/真实id"},
+    {"id":"step_5","type":"practice","unitId":"","title":"刷题练手","message":"去刷题吧，想做多少做多少～退出就是完成！","actionLabel":"去刷题","route":"/practice"}
   ]
 }
 
 注意：
+- unitId 必须从【可用学习单元】列表中精确复制，不能自己编造！
 - 最多5个步骤，最后一步必须是 practice（刷题）
-- 没有昨日记录时跳过 review_yesterday_errors
+- 没有昨日记录时跳过 review_yesterday_errors 步骤
 - 学习→测验→错题回顾→刷题 的顺序不可打乱
-- 测验后必须有错题回顾步骤`;
+- 如果没有可用学习单元，learn/quiz/error_review 三步都可以省略，只保留 practice`;
 
   const text = await callDeepSeek(
     apiKey,

@@ -302,12 +302,12 @@ export default function ChatHomePage() {
     // Local fallback: generate plan following correct learning flow
     async function generateLocalFallbackPlan(threadId, carryOver = []) {
       try {
-        const [recommend, errors] = await Promise.all([
-          api.get('/recommend').catch(() => []),
+        const [modulesRes, errors] = await Promise.all([
+          api.get('/modules/list').catch(() => ({ units: [] })),
           api.get('/errorbook/due').catch(() => ({})),
         ]);
 
-        const recItems = Array.isArray(recommend) ? recommend : (recommend?.items || []);
+        const allUnits = modulesRes?.units || [];
         const errorItems = errors?.items || [];
         const steps = [...carryOver]; // 昨日顺延步骤放最前面
 
@@ -330,13 +330,15 @@ export default function ChatHomePage() {
           }
         } catch {}
 
-        // ─── ② 学习 + 测验 + 错题回顾（仅当有可用单元时）───
+        // ─── ② 学习 + 测验 + 错题回顾（从真实单元列表中选）───
         let pickedUnitId = '';
-        for (const item of recItems) {
-          if (item.type === 'learn' || item.type === 'unit') {
-            const uid = item.unitId || item.id || '';
-            if (uid) { pickedUnitId = uid; break; }
-          }
+        let pickedUnitTitle = '';
+        if (allUnits.length > 0) {
+          // 优先选低难度单元（difficulty <= 2），否则选第一个
+          const easyUnits = allUnits.filter(u => u.difficulty <= 2);
+          const candidate = easyUnits[0] || allUnits[0];
+          pickedUnitId = candidate.id;
+          pickedUnitTitle = candidate.title;
         }
 
         if (pickedUnitId) {
@@ -345,7 +347,7 @@ export default function ChatHomePage() {
             id: `step_learn_${pickedUnitId}`,
             type: 'learn',
             unitId: pickedUnitId,
-            title: '学习新知识点',
+            title: `学习：${pickedUnitTitle}`,
             message: '来看看这个知识点吧，图谱和闪卡都很棒的喔～',
             actionLabel: '去学习',
             route: `/learn/${encodeURIComponent(pickedUnitId)}`,

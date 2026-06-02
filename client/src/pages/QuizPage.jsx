@@ -41,6 +41,14 @@ export default function QuizPage() {
     navigate(`/test/${encodeURIComponent(unitId)}`, { state: locState });
   }
 
+  // 跳过测验 → 标记完成并推进自动模式
+  function handleSkipToPractice() {
+    if (autoPilotEnabled) {
+      registerActivityComplete({ type: 'quiz', unitId, result: { skipped: true } });
+    }
+    navigate('/practice');
+  }
+
   if (loading) return <div className="page-loading">加载中...</div>;
 
   if (result) {
@@ -52,7 +60,34 @@ export default function QuizPage() {
     );
   }
 
-  if (!questions.length) return <div className="page-loading">该单元暂无测验</div>;
+  if (!questions.length) {
+    return (
+      <div className="page page--quiz-empty">
+        <Breadcrumb chapterId={locState.chapterId} partTitle={locState.partTitle || '填空测验'} />
+
+        <div className="quiz-empty__card">
+          <div className="quiz-empty__icon">🧪</div>
+          <h2 className="quiz-empty__title">测验题目筹备中</h2>
+          <p className="quiz-empty__desc">
+            学姐正在整理这个单元的填空测验题～<br />
+            很快就会上线啦！到时候会考你一些关键解剖学概念，帮你检验学习效果 💪
+          </p>
+          <p className="quiz-empty__hint">
+            想提前自测？可以用「问学姐」功能，让我出几道题考考你 👇
+          </p>
+
+          <div className="quiz-empty__actions">
+            <button className="btn btn--primary" onClick={handleSkipToPractice}>
+              去刷题练手 🎯
+            </button>
+            <button className="btn btn--outline" onClick={() => navigate(-1)}>
+              返回
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="page">

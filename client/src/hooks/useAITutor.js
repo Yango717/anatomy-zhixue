@@ -350,11 +350,12 @@ export default function useAITutor(initialMessages) {
       let errorData = {};
       let unitsData = [];
       try {
-        const [progress, errors, units] = await Promise.all([
+        const [progress, errors, unitsRes] = await Promise.all([
           api.get('/progress/overview').catch(() => ({})),
           api.get('/errorbook/due').catch(() => ({})),
-          api.get('/modules/list').catch(() => []),
+          api.get('/modules/list').catch(() => ({ units: [] })),
         ]);
+        unitsData = unitsRes?.units || [];
         progressData = progress;
         errorData = errors;
         unitsData = units;
