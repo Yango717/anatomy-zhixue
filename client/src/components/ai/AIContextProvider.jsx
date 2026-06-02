@@ -263,10 +263,17 @@ export function AIContextProvider({ children }) {
     }
   }, []);
 
-  // v3.2 迁移：强制默认开启自动模式（仅首次升级时执行一次）
+  // v3.2 迁移：强制默认开启自动模式 + 清理被竞态污染的线程数据（仅执行一次）
   useEffect(() => {
     try {
       if (!localStorage.getItem('ai_autopilot_v3_migrated')) {
+        // 清除所有可能被旧 bug 污染的 autoPilot + thread 数据
+        const keysToRemove = [
+          'ai_autopilot_enabled', 'ai_autopilot_plan', 'ai_autopilot_state',
+          'ai_autopilot_daily_summary', 'ai_threads', 'ai_global_chat',
+        ];
+        keysToRemove.forEach(k => { try { localStorage.removeItem(k); } catch {} });
+        // 重新设置默认值
         localStorage.setItem('ai_autopilot_v3_migrated', '1');
         localStorage.setItem('ai_autopilot_enabled', 'true');
         setAutoPilotEnabled(true);
