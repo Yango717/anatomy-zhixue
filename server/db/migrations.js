@@ -92,6 +92,7 @@ CREATE TABLE IF NOT EXISTS error_book (
     user_answer TEXT,
     correct_answer TEXT NOT NULL,
     explanation TEXT,
+    options TEXT,
     source_test_attempt_id INTEGER,
     mastery_level INTEGER DEFAULT 0,
     times_reviewed INTEGER DEFAULT 0,
@@ -106,6 +107,8 @@ CREATE TABLE IF NOT EXISTS error_book (
 CREATE INDEX idx_error_book_user ON error_book(user_id);
 CREATE INDEX idx_error_book_mastery ON error_book(mastery_level);
 CREATE INDEX idx_error_book_due ON error_book(next_review_due);
+-- Migration: add options column for existing DBs
+ALTER TABLE error_book ADD COLUMN options TEXT;
 
 CREATE TABLE IF NOT EXISTS final_exam_attempts (
     id INTEGER PRIMARY KEY AUTOINCREMENT,

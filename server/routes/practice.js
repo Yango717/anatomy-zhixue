@@ -179,7 +179,7 @@ router.post('/practice/submit', async (req, res) => {
           `INSERT INTO error_book (user_id, unit_id, question_id, question_type, question_stem, user_answer, correct_answer, explanation, mastery_level, next_review_due, created_at)
            VALUES (1, ?, ?, ?, ?, ?, ?, ?, 0, datetime('now'), ?)`,
           [unitId || 'practice', questionId, question.type, question.stem || '',
-           userAns, correctAns, JSON.stringify(question.options || []), now]
+           userAns, correctAns, question.explanation || '', now]
         );
       } else {
         const rowId = existing[0].values[0][0];

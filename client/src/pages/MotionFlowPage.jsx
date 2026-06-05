@@ -1,6 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
 import { useSearchParams } from "react-router-dom";
 import { api } from "../utils/api";
+import { useAIContext } from "../components/ai/AIContextProvider";
+import AIHintButton from "../components/ai/AIHintButton";
+import AIReviewPanel from "../components/ai/AIReviewPanel";
 
 const SECTIONS = [
   { key: "骨学", label: "骨学", icon: "🧑" },
@@ -34,6 +37,9 @@ export default function MotionFlowPage() {
   const chapter = searchParams.get("chapter") || "chapter-01";
   const section = searchParams.get("section") || (chapter === "chapter-01" ? "骨学" : "消化系统");
   const subsection = searchParams.get("subsection") || "";
+
+  const { autoPilotEnabled, registerActivityComplete } = useAIContext();
+  const unitId = chapter + ":" + section + (subsection ? ":" + subsection : "");
 
   const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -186,13 +192,29 @@ export default function MotionFlowPage() {
   }
 
   function handleQuizSubmit() {
-    const results = quizQuestions.map(q => ({
-      q,
-      userAnswer: quizAnswers[q.id] || "",
-      correct: checkAnswer(q, quizAnswers[q.id] || ""),
-    }));
+    const results = quizQuestions.map(q => {
+      const userAns = quizAnswers[q.id] || "";
+      return { q, userAnswer: userAns, correct: checkAnswer(q, userAns) };
+    });
     setQuizResults(results);
     setQuizSubmitted(true);
+
+    // 将答错的客观题写入错题本
+    const wrongOnes = results.filter(r => r.correct === false);
+    if (wrongOnes.length > 0) {
+      const errors = wrongOnes.map(r => ({
+        question_id: r.q.id,
+        question_type: r.q.type,
+        question_stem: (r.q.stem || "").substring(0, 500),
+        user_answer: typeof r.userAnswer === "object" ? JSON.stringify(r.userAnswer) : String(r.userAnswer),
+        correct_answer: r.q.answer || "",
+        explanation: r.q.explanation || "",
+        options: r.q.options ? JSON.stringify(r.q.options) : "",
+        unit_id: chapter + ":" + section + (subsection ? ":" + subsection : ""),
+      }));
+      api.post("/errorbook", { errors }).catch(() => {});
+    }
+    if (autoPilotEnabled) registerActivityComplete({ type: 'quiz', unitId, result: { total: results.length, correct: results.filter(r => r.correct === true).length } });
   }
 
   async function goToErrorReview() {
@@ -217,6 +239,7 @@ export default function MotionFlowPage() {
 
   function goToReTest() {
     setStep(4);
+    if (autoPilotEnabled) registerActivityComplete({ type: 'error_review', unitId });
     // 只复测明确错误的题（排除名词解释等 correct===null 的题型）
     const wrongOnes = quizResults.filter(r => r.correct === false).map(r => r.q);
     setReTestQuestions(wrongOnes);
@@ -237,6 +260,7 @@ export default function MotionFlowPage() {
     }));
     setReTestResults(results);
     setReTestSubmitted(true);
+    if (autoPilotEnabled) registerActivityComplete({ type: 'test', unitId, result: { total: results.length, correct: results.filter(r => r.correct === true).length } });
   }
 
   if (loading) return <div className="page-loading">加载中...</div>;
@@ -374,6 +398,9 @@ export default function MotionFlowPage() {
               )}
             </div>
           )}
+
+          {/* 妍学姐 AI 提示 */}
+          {!submitted && <div style={{ marginTop: 8 }}><AIHintButton questionStem={q.stem || ''} /></div>}
         </div>
       );
     });
@@ -445,6 +472,7 @@ export default function MotionFlowPage() {
                 </div>
                 <button className="btn btn--primary btn--lg btn--block" style={{ marginTop: 16 }}
                   onClick={() => {
+                    if (autoPilotEnabled) registerActivityComplete({ type: 'learn', unitId });
                     if (atlasCards.length > 0) { setStep(1); setAtlasIndex(0); }
                     else { setStep(2); buildQuiz(); }
                   }}>
@@ -487,7 +515,7 @@ export default function MotionFlowPage() {
                 </div>
                 <div style={{ display: "flex", gap: 12, marginTop: 16 }}>
                   <button className="btn btn--outline btn--lg" style={{ flex: 1 }} onClick={() => setStep(0)}>← 返回闪卡</button>
-                  <button className="btn btn--primary btn--lg" style={{ flex: 1 }} onClick={() => { setStep(2); buildQuiz(); }}>完成识记，开始测验 →</button>
+                  <button className="btn btn--primary btn--lg" style={{ flex: 1 }} onClick={() => { if (autoPilotEnabled) registerActivityComplete({ type: 'learn', unitId }); setStep(2); buildQuiz(); }}>完成识记，开始测验 →</button>
                 </div>
               </>
             )}
@@ -517,6 +545,9 @@ export default function MotionFlowPage() {
                     {quizResults.some(r => r.correct === false) ? "跳过回顾" : "完成"}
                   </button>
                 </div>
+
+                {/* 妍学姐 AI 测验总结 */}
+                <AIReviewPanel />
               </div>
             )}
           </div>
@@ -593,6 +624,9 @@ export default function MotionFlowPage() {
                       {reTestResults.every(r => r.correct === true) ? " 🎉" : ""}
                     </div>
                     <button className="btn btn--primary btn--lg btn--block" onClick={() => setStep(0)}>返回开始</button>
+
+                    {/* 妍学姐 AI 复测总结 */}
+                    <AIReviewPanel />
                   </div>
                 )}
               </>

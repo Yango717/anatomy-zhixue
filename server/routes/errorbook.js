@@ -68,4 +68,36 @@ router.put('/errorbook/:id/resolve', async (req, res) => {
   }
 });
 
+// Add errors to error book (from 5-step flow quiz)
+router.post('/errorbook', async (req, res) => {
+  try {
+    await getDB();
+    const { errors } = req.body;
+    if (!Array.isArray(errors)) return res.status(400).json({ success: false, error: { code: 'INVALID' } });
+    let added = 0;
+    for (const err of errors) {
+      // Check for duplicate unresolved error
+      const existing = getOne(
+        "SELECT id FROM error_book WHERE user_id = 1 AND question_id = ? AND is_resolved = 0",
+        [err.question_id]
+      );
+      if (existing) {
+        runQuery(
+          "UPDATE error_book SET user_answer = ?, mastery_level = MAX(0, mastery_level - 1), next_review_due = datetime('now'), updated_at = datetime('now') WHERE id = ?",
+          [err.user_answer, existing.id]
+        );
+      } else {
+        runQuery(
+          "INSERT INTO error_book (user_id, unit_id, question_id, question_type, question_stem, user_answer, correct_answer, explanation, options, mastery_level, next_review_due) VALUES (1, ?, ?, ?, ?, ?, ?, ?, ?, 0, ?)",
+          [err.unit_id, err.question_id, err.question_type, err.question_stem, err.user_answer, err.correct_answer, err.explanation || '', err.options || '', nextReview(0)]
+        );
+        added++;
+      }
+    }
+    res.json({ success: true, data: { added } });
+  } catch (err) {
+    res.status(500).json({ success: false, error: { code: 'DB_ERROR', message: err.message }, timestamp: new Date().toISOString() });
+  }
+});
+
 module.exports = router;

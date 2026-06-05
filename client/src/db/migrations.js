@@ -75,6 +75,7 @@ CREATE TABLE IF NOT EXISTS error_book (
     user_answer TEXT,
     correct_answer TEXT NOT NULL,
     explanation TEXT,
+    options TEXT,
     source_test_attempt_id INTEGER,
     mastery_level INTEGER DEFAULT 0,
     times_reviewed INTEGER DEFAULT 0,

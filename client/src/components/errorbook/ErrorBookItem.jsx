@@ -7,8 +7,8 @@ export default function ErrorBookItem({ error, onMastery, onResolve, isDue }) {
     <div className={`error-item ${isDue ? 'error-item--due' : ''}`}>
       <div className="error-item__header">
         <span className="error-item__type">{TYPE_LABELS[error.question_type] || error.question_type}</span>
-        <span className={`error-item__mastery error-item__mastery--l${error.mastery_level}`}>
-          {['未复习','1次','2次','已掌握'][error.mastery_level] || '未复习'}
+        <span className={`error-item__mastery error-item__mastery--l${Math.min(error.mastery_level||0, 3)}`}>
+          {['未复习','复习1次','复习2次','已掌握'][Math.min(error.mastery_level||0,3)] || '未复习'}
         </span>
       </div>
       <p className="error-item__stem">{error.question_stem}</p>

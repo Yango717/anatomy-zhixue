@@ -347,6 +347,22 @@ export async function getErrorBookStats() { await init(); const t = getOne(`SELE
 export async function updateErrorMastery(id, level) { await init(); runQuery(`UPDATE error_book SET mastery_level=?, times_reviewed=times_reviewed+1, next_review_due=?, updated_at=datetime('now') WHERE id=? AND user_id=1`, [level, nextReview(level), id]); debouncedSave(); return { success: true }; }
 export async function resolveError(id) { await init(); runQuery(`UPDATE error_book SET is_resolved=1, resolved_at=datetime('now'), updated_at=datetime('now') WHERE id=? AND user_id=1`, [id]); debouncedSave(); return { success: true }; }
 
+export async function addErrors(errors) {
+  await init();
+  let added = 0;
+  for (const err of errors) {
+    const existing = getOne(`SELECT id FROM error_book WHERE user_id=1 AND question_id=? AND is_resolved=0`, [err.question_id]);
+    if (existing) {
+      runQuery(`UPDATE error_book SET user_answer=?, mastery_level=MAX(0,mastery_level-1), next_review_due=datetime('now'), updated_at=datetime('now') WHERE id=?`, [err.user_answer, existing.id]);
+    } else {
+      runQuery(`INSERT INTO error_book (user_id, unit_id, question_id, question_type, question_stem, user_answer, correct_answer, explanation, options, mastery_level, next_review_due) VALUES (1,?,?,?,?,?,?,?,?,0,?)`, [err.unit_id, err.question_id, err.question_type, err.question_stem, err.user_answer, err.correct_answer, err.explanation||'', err.options||'', nextReview(0)]);
+      added++;
+    }
+  }
+  debouncedSave();
+  return { added };
+}
+
 // --- recommend ---
 export async function getRecommend() {
   await init();

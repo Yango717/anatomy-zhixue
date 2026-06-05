@@ -68,6 +68,7 @@ async function localDispatch(method, s, body, rawPath) {
   if (s[0] === 'errorbook' && s[1] === 'stats') return b.getErrorBookStats();
   if (s[0] === 'errorbook' && s[2] === 'mastery') return b.updateErrorMastery(parseInt(s[1]), body.masteryLevel);
   if (s[0] === 'errorbook' && s[2] === 'resolve') return b.resolveError(parseInt(s[1]));
+  if (s[0] === 'errorbook' && s.length === 1 && method === 'POST') return b.addErrors(body.errors);
   if (s[0] === 'recommend') return b.getRecommend();
   if (s[0] === 'countdown' && s.length === 1 && method === 'GET') return b.getCountdown();
   if (s[0] === 'countdown' && s.length === 1 && method === 'PUT') return b.updateCountdown(body.name, body.target);
