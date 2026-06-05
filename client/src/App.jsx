@@ -13,6 +13,7 @@ import FinalExamPage from './pages/FinalExamPage';
 import PracticePage from './pages/PracticePage';
 import ReviewHubPage from './pages/ReviewHubPage';
 import ExamHubPage from './pages/ExamHubPage';
+import MotionFlowPage from './pages/MotionFlowPage';
 import ProfilePage from './pages/ProfilePage';
 
 export default function App() {
@@ -35,6 +36,7 @@ export default function App() {
           {/* New hub routes */}
           <Route path="/review" element={<ReviewHubPage />} />
           <Route path="/exam" element={<ExamHubPage />} />
+          <Route path="/motion-flow" element={<MotionFlowPage />} />
           <Route path="/me" element={<ProfilePage />} />
 
           {/* Legacy redirects */}

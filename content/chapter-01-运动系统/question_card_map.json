@@ -1,0 +1,1335 @@
+[
+  {
+    "q_type": "fill-blank",
+    "q_num": 1,
+    "refs": [
+      "bone-004",
+      "bone-005"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 2,
+    "refs": [
+      "bone-071",
+      "bone-083"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 3,
+    "refs": [
+      "bone-040"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 4,
+    "refs": [
+      "bone-060"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 5,
+    "refs": [
+      "bone-060"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 6,
+    "refs": [
+      "bone-067",
+      "bone-068",
+      "bone-070"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 7,
+    "refs": [
+      "bone-078",
+      "bone-079",
+      "bone-080",
+      "bone-081"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 8,
+    "refs": [
+      "bone-003"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 9,
+    "refs": [
+      "bone-011"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 10,
+    "refs": [
+      "bone-054"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 11,
+    "refs": [
+      "bone-014"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 12,
+    "refs": [
+      "bone-044"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 13,
+    "refs": [
+      "bone-010"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 14,
+    "refs": [
+      "joint-003"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 15,
+    "refs": [
+      "joint-004"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 16,
+    "refs": [
+      "bone-012"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 17,
+    "refs": [
+      "bone-083"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 18,
+    "refs": [
+      "bone-073",
+      "bone-074"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 19,
+    "refs": [
+      "bone-043",
+      "bone-056"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 20,
+    "refs": [
+      "bone-055"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 21,
+    "refs": [
+      "bone-055",
+      "bone-039"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 22,
+    "refs": [
+      "bone-047",
+      "bone-049",
+      "bone-057",
+      "bone-058"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 23,
+    "refs": [
+      "bone-017"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 24,
+    "refs": [
+      "bone-071"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 25,
+    "refs": [
+      "bone-068",
+      "bone-071"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 26,
+    "refs": [
+      "bone-019"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 27,
+    "refs": [
+      "bone-053"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 28,
+    "refs": [
+      "bone-072"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 29,
+    "refs": [
+      "bone-051",
+      "bone-052"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 30,
+    "refs": [
+      "bone-033",
+      "bone-086"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 31,
+    "refs": [
+      "bone-021"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 32,
+    "refs": [
+      "bone-028"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 33,
+    "refs": [
+      "bone-059"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 34,
+    "refs": [
+      "bone-045"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 35,
+    "refs": [
+      "bone-014"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 36,
+    "refs": [
+      "bone-060"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 37,
+    "refs": [
+      "bone-020"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 38,
+    "refs": [
+      "bone-018"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 39,
+    "refs": [
+      "bone-018"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 40,
+    "refs": [
+      "joint-006"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 41,
+    "refs": [
+      "joint-006",
+      "joint-007"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 42,
+    "refs": [
+      "joint-010",
+      "joint-012"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 43,
+    "refs": [
+      "joint-012"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 44,
+    "refs": [
+      "joint-010"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 45,
+    "refs": [
+      "bone-035",
+      "joint-016"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 46,
+    "refs": [
+      "joint-017"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 47,
+    "refs": [
+      "bone-066"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 48,
+    "refs": [
+      "joint-019",
+      "joint-020"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 49,
+    "refs": [
+      "joint-021"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 50,
+    "refs": [
+      "muscle-014"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 51,
+    "refs": [
+      "muscle-023"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 52,
+    "refs": [
+      "bone-029",
+      "bone-030"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 53,
+    "refs": [
+      "joint-028"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 54,
+    "refs": [
+      "bone-027"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 55,
+    "refs": [
+      "bone-025"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 56,
+    "refs": [
+      "muscle-021"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 57,
+    "refs": [
+      "muscle-020"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 58,
+    "refs": [
+      "joint-021",
+      "joint-022"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 59,
+    "refs": [
+      "muscle-019"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 60,
+    "refs": [
+      "joint-029"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 61,
+    "refs": [
+      "muscle-004"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 62,
+    "refs": [
+      "bone-065",
+      "bone-063"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 63,
+    "refs": [
+      "muscle-006"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 64,
+    "refs": [
+      "muscle-008"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 65,
+    "refs": [
+      "joint-033"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 66,
+    "refs": [
+      "joint-029",
+      "joint-030"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 67,
+    "refs": [
+      "bone-036"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 68,
+    "refs": [
+      "joint-024"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 69,
+    "refs": [
+      "joint-016",
+      "joint-017"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 70,
+    "refs": [
+      "muscle-025"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 71,
+    "refs": [
+      "bone-060"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 72,
+    "refs": [
+      "joint-023"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 73,
+    "refs": [
+      "muscle-027",
+      "muscle-022"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 74,
+    "refs": [
+      "muscle-013"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 75,
+    "refs": [
+      "muscle-026"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 76,
+    "refs": [
+      "muscle-033"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 77,
+    "refs": [
+      "joint-031",
+      "joint-032"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 78,
+    "refs": [
+      "joint-025"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 79,
+    "refs": [
+      "muscle-012"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 1,
+    "refs": [
+      "joint-019",
+      "joint-020"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 2,
+    "refs": [
+      "bone-012"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 3,
+    "refs": [
+      "bone-086",
+      "bone-027",
+      "bone-033",
+      "bone-063"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 4,
+    "refs": [
+      "joint-031",
+      "joint-032"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 5,
+    "refs": [
+      "muscle-009",
+      "muscle-011"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 6,
+    "refs": [
+      "muscle-027"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 7,
+    "refs": [
+      "joint-021"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 8,
+    "refs": [
+      "bone-033"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 9,
+    "refs": [
+      "joint-031",
+      "joint-032"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 10,
+    "refs": [
+      "bone-041"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 11,
+    "refs": [
+      "bone-041",
+      "bone-056"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 12,
+    "refs": [
+      "bone-029",
+      "bone-030",
+      "bone-031"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 13,
+    "refs": [
+      "bone-039",
+      "bone-040",
+      "bone-042",
+      "bone-043"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 14,
+    "refs": [
+      "bone-003"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 15,
+    "refs": [
+      "bone-084",
+      "bone-085"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 16,
+    "refs": [
+      "muscle-020"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 17,
+    "refs": [
+      "muscle-020",
+      "muscle-021"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 18,
+    "refs": [
+      "muscle-020"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 19,
+    "refs": [
+      "muscle-020"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 20,
+    "refs": [
+      "muscle-019"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 21,
+    "refs": [
+      "muscle-019"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 22,
+    "refs": [
+      "muscle-019"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 23,
+    "refs": [
+      "muscle-023"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 24,
+    "refs": [
+      "bone-067",
+      "bone-069",
+      "bone-070"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 25,
+    "refs": [
+      "bone-044",
+      "bone-045",
+      "bone-053"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 26,
+    "refs": [
+      "joint-030"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 27,
+    "refs": [
+      "joint-006"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 28,
+    "refs": [
+      "bone-014"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 29,
+    "refs": [
+      "bone-018",
+      "bone-019"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 30,
+    "refs": [
+      "bone-021",
+      "bone-022",
+      "bone-027",
+      "bone-028"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 31,
+    "refs": [
+      "bone-023"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 32,
+    "refs": [
+      "bone-014"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 33,
+    "refs": [
+      "joint-013"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 34,
+    "refs": [
+      "muscle-004"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 35,
+    "refs": [
+      "bone-035"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 36,
+    "refs": [
+      "joint-020"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 37,
+    "refs": [
+      "bone-065"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 38,
+    "refs": [
+      "bone-022",
+      "bone-025",
+      "bone-026",
+      "bone-027"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 39,
+    "refs": [
+      "bone-053"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 40,
+    "refs": [
+      "bone-034",
+      "bone-035"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 41,
+    "refs": [
+      "bone-014",
+      "bone-015"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 42,
+    "refs": [
+      "bone-040",
+      "bone-043",
+      "bone-055"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 43,
+    "refs": [
+      "bone-055"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 44,
+    "refs": [
+      "joint-031",
+      "joint-032"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 45,
+    "refs": [
+      "bone-040"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 46,
+    "refs": [
+      "muscle-030"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 47,
+    "refs": [
+      "muscle-018"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 48,
+    "refs": [
+      "bone-047"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 49,
+    "refs": [
+      "bone-060"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 50,
+    "refs": [
+      "joint-023"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 51,
+    "refs": [
+      "bone-045"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 52,
+    "refs": [
+      "bone-060"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 53,
+    "refs": [
+      "muscle-009"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 54,
+    "refs": [
+      "joint-011"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 55,
+    "refs": [
+      "bone-041"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 56,
+    "refs": [
+      "bone-041",
+      "bone-042"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 57,
+    "refs": [
+      "bone-051",
+      "bone-052"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 58,
+    "refs": [
+      "bone-009"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 59,
+    "refs": [
+      "bone-007"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 60,
+    "refs": [
+      "bone-014"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 61,
+    "refs": [
+      "bone-004"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 62,
+    "refs": [
+      "bone-008"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 63,
+    "refs": [
+      "bone-022",
+      "bone-023"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 64,
+    "refs": [
+      "bone-032",
+      "bone-033"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 65,
+    "refs": [
+      "bone-033"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 66,
+    "refs": [
+      "joint-016",
+      "joint-017"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 67,
+    "refs": [
+      "muscle-012"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 68,
+    "refs": [
+      "bone-021"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 69,
+    "refs": [
+      "bone-028"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 70,
+    "refs": [
+      "bone-046",
+      "bone-047",
+      "bone-048"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 71,
+    "refs": [
+      "bone-057"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 72,
+    "refs": [
+      "bone-014",
+      "bone-015"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 73,
+    "refs": [
+      "bone-003",
+      "bone-004"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 74,
+    "refs": [
+      "bone-054"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 75,
+    "refs": [
+      "bone-005"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 76,
+    "refs": [
+      "joint-012",
+      "joint-013"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 77,
+    "refs": [
+      "muscle-006"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 78,
+    "refs": [
+      "joint-029"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 79,
+    "refs": [
+      "bone-051"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 80,
+    "refs": [
+      "bone-046",
+      "bone-047"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 81,
+    "refs": [
+      "joint-011"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 82,
+    "refs": [
+      "joint-029"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 83,
+    "refs": [
+      "muscle-017"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 84,
+    "refs": [
+      "bone-038"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 85,
+    "refs": [
+      "bone-018"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 86,
+    "refs": [
+      "bone-017",
+      "bone-018"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 87,
+    "refs": [
+      "bone-073",
+      "bone-074"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 1,
+    "refs": [
+      "bone-004",
+      "bone-005",
+      "bone-014"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 2,
+    "refs": [
+      "bone-014"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 3,
+    "refs": [
+      "muscle-020",
+      "muscle-021"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 4,
+    "refs": [
+      "muscle-020"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 5,
+    "refs": [
+      "muscle-019"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 6,
+    "refs": [
+      "muscle-023"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 7,
+    "refs": [
+      "bone-067",
+      "bone-069",
+      "bone-070"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 8,
+    "refs": [
+      "muscle-024"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 9,
+    "refs": [
+      "bone-038",
+      "bone-039"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 10,
+    "refs": [
+      "joint-033",
+      "joint-034"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 11,
+    "refs": [
+      "joint-001",
+      "joint-003"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 12,
+    "refs": [
+      "joint-019",
+      "joint-020"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 13,
+    "refs": [
+      "bone-065"
+    ]
+  }
+]

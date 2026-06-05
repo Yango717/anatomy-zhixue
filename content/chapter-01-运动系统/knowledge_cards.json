@@ -1,0 +1,1986 @@
+[
+  {
+    "id": "bone-001",
+    "front": "运动系统由哪三部分组成？",
+    "back": "骨、骨连结和骨骼肌",
+    "tags": [
+      "运动系统",
+      "组成"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "系统总论"
+  },
+  {
+    "id": "bone-002",
+    "front": "成人有多少块骨？",
+    "back": "206块（其中6块听小骨属于感觉器）",
+    "tags": [
+      "骨",
+      "数量"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "骨的概述"
+  },
+  {
+    "id": "bone-003",
+    "front": "骨按形态可分为哪4类？",
+    "back": "长骨、短骨、扁骨和不规则骨",
+    "tags": [
+      "骨",
+      "分类",
+      "形态"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "骨的概述"
+  },
+  {
+    "id": "bone-004",
+    "front": "长骨的特征是什么？分布于何处？",
+    "back": "呈长管状，分为一体两端；体内有空腔称髓腔，两端膨大称骺。分布于四肢",
+    "tags": [
+      "长骨",
+      "形态"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "骨的概述"
+  },
+  {
+    "id": "bone-005",
+    "front": "骺软骨是什么？成年后变成什么？",
+    "back": "幼年时骨干与骺之间保留的透明软骨，骺软骨细胞不断增殖和骨化使骨加长。成年后骨化，遗留骺线",
+    "tags": [
+      "骺软骨",
+      "骺线",
+      "长骨"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "骨的概述"
+  },
+  {
+    "id": "bone-006",
+    "front": "短骨分布于何处？举例",
+    "back": "多成群分布于连结牢固且运动较灵活的部位，如腕骨和跗骨",
+    "tags": [
+      "短骨",
+      "腕骨",
+      "跗骨"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "骨的概述"
+  },
+  {
+    "id": "bone-007",
+    "front": "扁骨的特征和功能是什么？举例",
+    "back": "呈板状，参与构成颅腔、胸腔和盆腔壁，保护脏器。如颅盖骨和肋骨",
+    "tags": [
+      "扁骨"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "骨的概述"
+  },
+  {
+    "id": "bone-008",
+    "front": "什么是不规则骨？含气骨举例",
+    "back": "形状不规则的骨，如椎骨。有些不规则骨内有与外界相通的腔洞，称含气骨，如上颌骨",
+    "tags": [
+      "不规则骨",
+      "含气骨"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "骨的概述"
+  },
+  {
+    "id": "bone-009",
+    "front": "籽骨是什么？人体最大的籽骨是哪块？",
+    "back": "位于肌腱内的扁圆形小骨，减少摩擦和改变肌肉牵拉方向。髌骨是人体最大的籽骨",
+    "tags": [
+      "籽骨",
+      "髌骨"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "骨的概述"
+  },
+  {
+    "id": "bone-010",
+    "front": "骨由哪三部分构成？",
+    "back": "骨质、骨膜和骨髓",
+    "tags": [
+      "骨",
+      "构造"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "骨的概述"
+  },
+  {
+    "id": "bone-011",
+    "front": "骨密质和骨松质有何区别？",
+    "back": "骨密质结构致密，抗压抗扭曲性强，分布于骨表面。骨松质呈海绵状，由骨小梁交织排列，分布于骨内部",
+    "tags": [
+      "骨质",
+      "骨密质",
+      "骨松质"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "骨的概述"
+  },
+  {
+    "id": "bone-012",
+    "front": "什么是板障？位于何处？",
+    "back": "扁骨的骨松质配布于内、外板之间，称板障，有板障静脉经过。颅盖骨骨折多见于内板",
+    "tags": [
+      "板障",
+      "扁骨"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "骨的概述"
+  },
+  {
+    "id": "bone-013",
+    "front": "骨膜有什么功能？分几层？",
+    "back": "含丰富神经血管和淋巴管，对骨的营养、再生和感觉有重要作用。分内、外两层，内层有成骨和破骨能力",
+    "tags": [
+      "骨膜"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "骨的概述"
+  },
+  {
+    "id": "bone-014",
+    "front": "红骨髓和黄骨髓有何区别？",
+    "back": "红骨髓有造血和免疫功能，胎儿和幼儿均为红骨髓。5岁后长骨骨干红骨髓被脂肪代替称黄骨髓。椎骨、髂骨、肋骨、胸骨及长骨骺内终身存在红骨髓",
+    "tags": [
+      "骨髓",
+      "红骨髓",
+      "黄骨髓"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "骨的概述"
+  },
+  {
+    "id": "bone-015",
+    "front": "临床常选何处进行骨髓穿刺？",
+    "back": "髂前上棘或髂后上棘等处",
+    "tags": [
+      "骨髓穿刺",
+      "髂骨"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "骨的概述"
+  },
+  {
+    "id": "bone-016",
+    "front": "幼儿和老年人骨折有何不同？",
+    "back": "幼儿有机质和无机质各占一半，弹性大，易发生青枝骨折。老年人无机质比例大，骨质疏松，脆性大，易骨折",
+    "tags": [
+      "骨折",
+      "年龄差异"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "骨的概述"
+  },
+  {
+    "id": "bone-017",
+    "front": "躯干骨包括哪些骨？",
+    "back": "24块椎骨、1块骶骨、1块尾骨、1块胸骨和12对肋骨",
+    "tags": [
+      "躯干骨"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "躯干骨-椎骨"
+  },
+  {
+    "id": "bone-018",
+    "front": "椎骨由哪两部分组成？椎孔和椎管是什么？",
+    "back": "由前方椎体和后方椎弓组成。椎体后面与椎弓围成椎孔，各椎孔贯通构成椎管，容纳脊髓",
+    "tags": [
+      "椎骨",
+      "椎孔",
+      "椎管"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "躯干骨-椎骨"
+  },
+  {
+    "id": "bone-019",
+    "front": "椎间孔如何形成？通行什么？",
+    "back": "相邻椎骨的椎上、下切迹共同围成，有脊神经和血管通过",
+    "tags": [
+      "椎间孔",
+      "脊神经"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "躯干骨-椎骨"
+  },
+  {
+    "id": "bone-020",
+    "front": "椎弓发出哪7个突起？",
+    "back": "棘突1个（向后或后下）、横突1对（向两侧）、上关节突1对、下关节突1对",
+    "tags": [
+      "椎骨",
+      "突起"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "躯干骨-椎骨"
+  },
+  {
+    "id": "bone-021",
+    "front": "胸椎的主要特征？",
+    "back": "椎体侧面有上下肋凹（接肋头），横突末端有横突肋凹（接肋结节），棘突长而向后下倾斜呈叠瓦状排列，关节突关节面呈冠状位",
+    "tags": [
+      "胸椎",
+      "肋凹"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "躯干骨-椎骨"
+  },
+  {
+    "id": "bone-022",
+    "front": "颈椎的特征是什么？",
+    "back": "椎体较小，横断面椭圆形。横突有横突孔（通行椎动脉和椎静脉），椎孔大呈三角形，第2~6颈椎棘突短而分叉",
+    "tags": [
+      "颈椎",
+      "横突孔"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "躯干骨-椎骨"
+  },
+  {
+    "id": "bone-023",
+    "front": "横突孔中通行什么结构？",
+    "back": "椎动脉和椎静脉（椎动脉向上穿第6至第1颈椎横突孔）",
+    "tags": [
+      "横突孔",
+      "椎动脉"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "躯干骨-椎骨"
+  },
+  {
+    "id": "bone-024",
+    "front": "钩椎关节（Luschka关节）是什么？临床意义？",
+    "back": "第3~7颈椎椎体钩与上位椎体唇缘相接形成。过度增生可致椎间孔狭窄，压迫脊神经",
+    "tags": [
+      "钩椎关节",
+      "颈椎"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "躯干骨-椎骨"
+  },
+  {
+    "id": "bone-025",
+    "front": "第1颈椎（寰椎）有何特征？",
+    "back": "呈环状，无椎体、棘突和关节突，由前弓、后弓及侧块组成。前弓后面有齿突凹与枢椎齿突相关节",
+    "tags": [
+      "寰椎",
+      "第1颈椎"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "躯干骨-椎骨"
+  },
+  {
+    "id": "bone-026",
+    "front": "第2颈椎（枢椎）有何特征？",
+    "back": "椎体向上伸出齿突，与寰椎齿突凹相关节",
+    "tags": [
+      "枢椎",
+      "第2颈椎",
+      "齿突"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "躯干骨-椎骨"
+  },
+  {
+    "id": "bone-027",
+    "front": "第7颈椎（隆椎）有何特征？",
+    "back": "棘突长，末端不分叉，活体易于触及，常作为计数椎骨的标志",
+    "tags": [
+      "隆椎",
+      "第7颈椎"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "躯干骨-椎骨"
+  },
+  {
+    "id": "bone-028",
+    "front": "腰椎的主要特征？",
+    "back": "椎体粗壮，横断面肾形。棘突宽短呈板状，水平伸向后方。各棘突间隙较宽，可用于腰椎穿刺",
+    "tags": [
+      "腰椎",
+      "腰椎穿刺"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "躯干骨-椎骨"
+  },
+  {
+    "id": "bone-029",
+    "front": "骶骨由几块骶椎融合？岬位于何处？",
+    "back": "由5块骶椎融合，呈三角形。上缘中份向前隆凸称岬",
+    "tags": [
+      "骶骨",
+      "岬"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "躯干骨-椎骨"
+  },
+  {
+    "id": "bone-030",
+    "front": "骶管裂孔和骶角的临床意义？",
+    "back": "骶管裂孔是骶管下端开口，裂孔两侧有骶角。骶管麻醉常以骶角作为标志",
+    "tags": [
+      "骶管裂孔",
+      "骶角"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "躯干骨-椎骨"
+  },
+  {
+    "id": "bone-031",
+    "front": "骶前孔和骶后孔各有几对？通行什么？",
+    "back": "各有4对。骶前、后孔分别有骶神经前、后支通过，均与骶管相通",
+    "tags": [
+      "骶前孔",
+      "骶后孔"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "躯干骨-椎骨"
+  },
+  {
+    "id": "bone-032",
+    "front": "胸骨分哪三部分？",
+    "back": "胸骨柄、胸骨体和剑突",
+    "tags": [
+      "胸骨"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "躯干骨-胸骨和肋"
+  },
+  {
+    "id": "bone-033",
+    "front": "胸骨角的临床意义？",
+    "back": "胸骨柄与体连接处，两侧平对第2肋（计数肋标志），向后平对第4胸椎下缘",
+    "tags": [
+      "胸骨角"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "躯干骨-胸骨和肋"
+  },
+  {
+    "id": "bone-034",
+    "front": "肋由什么组成？共多少对？",
+    "back": "由肋骨和肋软骨组成，共12对",
+    "tags": [
+      "肋"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "躯干骨-胸骨和肋"
+  },
+  {
+    "id": "bone-035",
+    "front": "真肋、假肋和浮肋各是哪些？",
+    "back": "第1~7对直接与胸骨相连为真肋；第8~10对不直接相连为假肋形成肋弓；第11~12对前端游离为浮肋",
+    "tags": [
+      "真肋",
+      "假肋",
+      "浮肋"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "躯干骨-胸骨和肋"
+  },
+  {
+    "id": "bone-036",
+    "front": "肋沟位于何处？通行什么？",
+    "back": "肋骨内面近下缘处，肋间神经和血管走行其中",
+    "tags": [
+      "肋沟"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "躯干骨-胸骨和肋"
+  },
+  {
+    "id": "bone-037",
+    "front": "颅骨共多少块？脑颅和面颅各几块？",
+    "back": "共23块（不含3对听小骨）。脑颅骨8块，面颅骨15块",
+    "tags": [
+      "颅骨"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "颅骨"
+  },
+  {
+    "id": "bone-038",
+    "front": "脑颅骨包括哪些？",
+    "back": "不成对：额骨、筛骨、蝶骨、枕骨。成对：颞骨、顶骨",
+    "tags": [
+      "脑颅骨"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "颅骨"
+  },
+  {
+    "id": "bone-039",
+    "front": "蝶骨分哪四部？",
+    "back": "体、大翼、小翼和翼突",
+    "tags": [
+      "蝶骨"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "颅骨"
+  },
+  {
+    "id": "bone-040",
+    "front": "蝶骨大翼根部三孔由前内向后外依次是什么？各通行什么？",
+    "back": "圆孔（上颌神经）、卵圆孔（下颌神经）和棘孔（脑膜中动脉）",
+    "tags": [
+      "蝶骨",
+      "圆孔",
+      "卵圆孔",
+      "棘孔"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "颅骨"
+  },
+  {
+    "id": "bone-041",
+    "front": "垂体窝位于哪块骨的哪个面？",
+    "back": "位于蝶骨体上面的蝶鞍中央凹陷",
+    "tags": [
+      "垂体窝",
+      "蝶骨"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "颅骨"
+  },
+  {
+    "id": "bone-042",
+    "front": "视神经管位于何处？",
+    "back": "位于蝶骨小翼与体的交界处",
+    "tags": [
+      "视神经管",
+      "蝶骨"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "颅骨"
+  },
+  {
+    "id": "bone-043",
+    "front": "眶上裂位于何处？",
+    "back": "蝶骨大翼与小翼之间的裂隙",
+    "tags": [
+      "眶上裂"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "颅骨"
+  },
+  {
+    "id": "bone-044",
+    "front": "筛骨分哪三部？",
+    "back": "筛板、垂直板和筛骨迷路",
+    "tags": [
+      "筛骨"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "颅骨"
+  },
+  {
+    "id": "bone-045",
+    "front": "上鼻甲和中鼻甲属于哪块骨？",
+    "back": "筛骨（筛骨迷路内侧壁）",
+    "tags": [
+      "筛骨",
+      "鼻甲"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "颅骨"
+  },
+  {
+    "id": "bone-046",
+    "front": "颞骨分哪三部？",
+    "back": "鳞部、鼓部和岩部（锥部）",
+    "tags": [
+      "颞骨"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "颅骨"
+  },
+  {
+    "id": "bone-047",
+    "front": "内耳门通行什么？",
+    "back": "面神经和前庭蜗神经",
+    "tags": [
+      "内耳门",
+      "面神经",
+      "前庭蜗神经"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "颅骨"
+  },
+  {
+    "id": "bone-048",
+    "front": "茎乳孔通行什么？",
+    "back": "面神经由此出颅",
+    "tags": [
+      "茎乳孔",
+      "面神经"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "颅骨"
+  },
+  {
+    "id": "bone-049",
+    "front": "颈动脉管位于何处？通行什么？",
+    "back": "位于颞骨岩部，颈内动脉由此入颅",
+    "tags": [
+      "颈动脉管",
+      "颈内动脉"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "颅骨"
+  },
+  {
+    "id": "bone-050",
+    "front": "枕骨大孔位于哪块骨？",
+    "back": "枕骨",
+    "tags": [
+      "枕骨大孔"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "颅骨"
+  },
+  {
+    "id": "bone-051",
+    "front": "面颅骨中最大的是哪块？分几部分？",
+    "back": "下颌骨，分一体两支（下颌体和下颌支）",
+    "tags": [
+      "下颌骨"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "颅骨"
+  },
+  {
+    "id": "bone-052",
+    "front": "下颌头与什么构成关节？",
+    "back": "与颞骨的下颌窝构成颞下颌关节",
+    "tags": [
+      "下颌头",
+      "下颌窝",
+      "颞下颌关节"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "颅骨"
+  },
+  {
+    "id": "bone-053",
+    "front": "上颌骨分哪一体四突？",
+    "back": "上颌体（内含上颌窦）；额突、颧突、牙槽突和腭突",
+    "tags": [
+      "上颌骨"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "颅骨"
+  },
+  {
+    "id": "bone-054",
+    "front": "骨腭由什么构成？",
+    "back": "上颌骨腭突和腭骨水平板",
+    "tags": [
+      "骨腭"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "颅骨"
+  },
+  {
+    "id": "bone-055",
+    "front": "颅前、中、后窝的分界？",
+    "back": "颅前窝与颅中窝以蝶骨小翼后缘和交叉前沟为界；颅中窝与颅后窝以颞骨岩部上缘及鞍背为界",
+    "tags": [
+      "颅前窝",
+      "颅中窝",
+      "颅后窝"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "颅骨"
+  },
+  {
+    "id": "bone-056",
+    "front": "颅中窝垂体窝两侧的重要孔裂？",
+    "back": "由前内向后外：视神经管、眶上裂、圆孔、卵圆孔、棘孔",
+    "tags": [
+      "颅中窝",
+      "孔裂"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "颅骨"
+  },
+  {
+    "id": "bone-057",
+    "front": "颈静脉孔通行什么？",
+    "back": "舌咽神经、迷走神经、副神经和颈内静脉",
+    "tags": [
+      "颈静脉孔"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "颅骨"
+  },
+  {
+    "id": "bone-058",
+    "front": "舌下神经管通行什么？",
+    "back": "舌下神经",
+    "tags": [
+      "舌下神经管"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "颅骨"
+  },
+  {
+    "id": "bone-059",
+    "front": "翼点是什么？临床意义？",
+    "back": "顶骨、额骨、蝶骨、颞骨四骨会合处。颅骨薄弱部位，内面有脑膜中动脉前支经过，骨折易形成硬膜外血肿",
+    "tags": [
+      "翼点"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "颅骨"
+  },
+  {
+    "id": "bone-060",
+    "front": "鼻旁窦包括哪些？各开口于何处？",
+    "back": "额窦→中鼻道；上颌窦→中鼻道；蝶窦→蝶筛隐窝；筛窦前中群→中鼻道，后群→上鼻道",
+    "tags": [
+      "鼻旁窦",
+      "开口"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "颅骨"
+  },
+  {
+    "id": "bone-061",
+    "front": "上肢带骨包括哪两块？",
+    "back": "锁骨和肩胛骨",
+    "tags": [
+      "上肢带骨"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "附肢骨-上肢"
+  },
+  {
+    "id": "bone-062",
+    "front": "锁骨的形态特征和易骨折部位？",
+    "back": "呈S形弯曲，内侧2/3凸前三棱形，外侧1/3凸后扁平形。骨折多发于内、外侧交界处",
+    "tags": [
+      "锁骨"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "附肢骨-上肢"
+  },
+  {
+    "id": "bone-063",
+    "front": "肩胛骨下角平对第几肋？",
+    "back": "平对第7肋或第7肋间隙，是计数肋骨的标志",
+    "tags": [
+      "肩胛下角"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "附肢骨-上肢"
+  },
+  {
+    "id": "bone-064",
+    "front": "喙突位于哪块骨？与什么构成喙肩弓？",
+    "back": "肩胛骨上缘外侧。与肩峰和喙肩韧带构成喙肩弓，防止肱骨头向上脱位",
+    "tags": [
+      "喙突",
+      "肩胛骨"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "附肢骨-上肢"
+  },
+  {
+    "id": "bone-065",
+    "front": "肱骨外科颈为何易骨折？",
+    "back": "肱骨上端与体交界处稍细，是骨松质和骨皮质交界部位",
+    "tags": [
+      "肱骨",
+      "外科颈"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "附肢骨-上肢"
+  },
+  {
+    "id": "bone-066",
+    "front": "桡神经沟位于何处？临床意义？",
+    "back": "肱骨体后面中部，自内上斜向外下。桡神经和肱深动脉沿此沟经过，肱骨中部骨折可能伤及桡神经",
+    "tags": [
+      "肱骨",
+      "桡神经沟"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "附肢骨-上肢"
+  },
+  {
+    "id": "bone-067",
+    "front": "肱骨下端内上髁后方有什么沟？通行什么？",
+    "back": "尺神经沟，尺神经由此经过",
+    "tags": [
+      "肱骨",
+      "尺神经沟"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "附肢骨-上肢"
+  },
+  {
+    "id": "bone-068",
+    "front": "肱骨小头和肱骨滑车各与什么相关节？",
+    "back": "肱骨小头与桡骨头相关节；肱骨滑车与尺骨滑车切迹相关节",
+    "tags": [
+      "肱骨小头",
+      "肱骨滑车"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "附肢骨-上肢"
+  },
+  {
+    "id": "bone-069",
+    "front": "尺骨鹰嘴和冠突与什么构成关节？",
+    "back": "与肱骨滑车切迹一起与肱骨滑车构成肱尺关节",
+    "tags": [
+      "尺骨",
+      "鹰嘴",
+      "冠突"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "附肢骨-上肢"
+  },
+  {
+    "id": "bone-070",
+    "front": "腕骨近侧列和远侧列各有哪些？",
+    "back": "近侧列（桡→尺）：手舟骨、月骨、三角骨、豌豆骨。远侧列：大多角骨、小多角骨、头状骨、钩骨",
+    "tags": [
+      "腕骨"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "附肢骨-上肢"
+  },
+  {
+    "id": "bone-071",
+    "front": "髋骨由哪三部分融合？融合年龄？",
+    "back": "髂骨、坐骨和耻骨，约16岁完全融合于髋臼",
+    "tags": [
+      "髋骨"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "附肢骨-下肢"
+  },
+  {
+    "id": "bone-072",
+    "front": "髋臼由哪些骨构成？",
+    "back": "髂骨体（上2/5）、坐骨体（后下2/5）和耻骨体（前下1/5）合成",
+    "tags": [
+      "髋臼"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "附肢骨-下肢"
+  },
+  {
+    "id": "bone-073",
+    "front": "两侧髂嵴最高点连线平对什么？",
+    "back": "平对第4腰椎棘突，是计数椎骨的标志",
+    "tags": [
+      "髂嵴",
+      "腰椎穿刺"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "附肢骨-下肢"
+  },
+  {
+    "id": "bone-074",
+    "front": "坐骨结节有何意义？",
+    "back": "坐骨体与坐骨支移行处后部粗糙隆起，是坐位时体重的承受点",
+    "tags": [
+      "坐骨结节"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "附肢骨-下肢"
+  },
+  {
+    "id": "bone-075",
+    "front": "闭孔如何形成？",
+    "back": "由耻骨与坐骨共同围成，活体有闭孔膜封闭",
+    "tags": [
+      "闭孔"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "附肢骨-下肢"
+  },
+  {
+    "id": "bone-076",
+    "front": "股骨颈干角是多少？",
+    "back": "男性平均132°，女性平均127°",
+    "tags": [
+      "颈干角",
+      "股骨"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "附肢骨-下肢"
+  },
+  {
+    "id": "bone-077",
+    "front": "股骨大转子和小转子位于何处？",
+    "back": "大转子位于颈与体连接处上外侧（重要体表标志）；小转子位于内下方。两者之间是骨折多发处",
+    "tags": [
+      "大转子",
+      "小转子"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "附肢骨-下肢"
+  },
+  {
+    "id": "bone-078",
+    "front": "收肌结节位于何处？",
+    "back": "股骨内上髁上方的小突起，为大收肌腱附着处",
+    "tags": [
+      "收肌结节"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "附肢骨-下肢"
+  },
+  {
+    "id": "bone-079",
+    "front": "髌骨是什么类型骨？有何功能？",
+    "back": "人体最大的籽骨，位于股四头肌腱内。保护膝关节，避免股四头肌腱与股骨髁摩擦，增加膝关节稳定性",
+    "tags": [
+      "髌骨"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "附肢骨-下肢"
+  },
+  {
+    "id": "bone-080",
+    "front": "胫骨粗隆位于何处？",
+    "back": "胫骨上端前面的隆起，髌韧带附着处",
+    "tags": [
+      "胫骨粗隆"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "附肢骨-下肢"
+  },
+  {
+    "id": "bone-081",
+    "front": "内踝和外踝分别属于哪块骨？",
+    "back": "内踝属于胫骨下端，外踝属于腓骨下端。外踝低于内踝",
+    "tags": [
+      "内踝",
+      "外踝"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "附肢骨-下肢"
+  },
+  {
+    "id": "bone-082",
+    "front": "跗骨包括哪些骨？",
+    "back": "距骨、跟骨、足舟骨、内侧楔骨、中间楔骨、外侧楔骨和骰骨，共7块",
+    "tags": [
+      "跗骨"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "附肢骨-下肢"
+  },
+  {
+    "id": "bone-083",
+    "front": "距骨滑车的形态特点？",
+    "back": "距骨上面前宽后窄的关节面，与胫骨下关节面及内、外踝构成踝关节",
+    "tags": [
+      "距骨",
+      "距骨滑车"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "附肢骨-下肢"
+  },
+  {
+    "id": "bone-084",
+    "front": "计数肋骨的体表标志有哪些？",
+    "back": "胸骨角（平第2肋）、肩胛下角（平第7肋）、第7颈椎棘突（隆椎）",
+    "tags": [
+      "骨性标志",
+      "计数肋"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "骨性标志"
+  },
+  {
+    "id": "bone-085",
+    "front": "翼点位置和意义？",
+    "back": "顶额蝶颞四骨会合处，颧弓中点上方约3.5~4cm处。薄弱部位，内面有脑膜中动脉前支经过",
+    "tags": [
+      "翼点"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "骨性标志"
+  },
+  {
+    "id": "bone-086",
+    "front": "尺骨茎突和桡骨茎突的位置关系？",
+    "back": "尺骨茎突较桡骨茎突高约1cm",
+    "tags": [
+      "尺骨茎突",
+      "桡骨茎突"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "骨性标志"
+  },
+  {
+    "id": "bone-087",
+    "front": "颧弓由什么构成？",
+    "back": "颞骨的颧突与颧骨的颞突构成",
+    "tags": [
+      "颧弓"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "骨学",
+    "subsection": "骨性标志"
+  },
+  {
+    "id": "joint-001",
+    "front": "骨连结分为哪两大类？",
+    "back": "直接连结和间接连结（关节/滑膜关节）",
+    "tags": [
+      "骨连结",
+      "分类"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "关节概述"
+  },
+  {
+    "id": "joint-002",
+    "front": "直接连结分为哪三类？",
+    "back": "纤维连结、软骨连结和骨性结合",
+    "tags": [
+      "直接连结"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "关节概述"
+  },
+  {
+    "id": "joint-003",
+    "front": "滑膜关节的三个基本构造是什么？",
+    "back": "关节面、关节囊和关节腔",
+    "tags": [
+      "关节",
+      "基本构造"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "关节概述"
+  },
+  {
+    "id": "joint-004",
+    "front": "关节囊分哪两层？各有何特征？",
+    "back": "外层纤维膜（厚而坚韧，含丰富血管神经）；内层滑膜（薄而柔润，产生滑液）",
+    "tags": [
+      "关节囊"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "关节概述"
+  },
+  {
+    "id": "joint-005",
+    "front": "滑液的作用是什么？",
+    "back": "为关节腔提供液态环境，增加润滑，是关节软骨和半月板新陈代谢的重要媒介",
+    "tags": [
+      "滑液"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "关节概述"
+  },
+  {
+    "id": "joint-006",
+    "front": "关节的辅助结构有哪些？",
+    "back": "韧带、关节盘、关节唇、滑膜襞和滑膜囊",
+    "tags": [
+      "关节",
+      "辅助结构"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "关节概述"
+  },
+  {
+    "id": "joint-007",
+    "front": "关节盘和关节唇的作用是什么？",
+    "back": "关节盘调整关节面适配，减少冲击震荡，分隔关节腔增加运动形式。关节唇加深关节窝，增加稳固性",
+    "tags": [
+      "关节盘",
+      "关节唇"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "关节概述"
+  },
+  {
+    "id": "joint-008",
+    "front": "关节的运动形式有哪些？",
+    "back": "移动、屈和伸（冠状轴）、收和展（矢状轴）、旋转（垂直轴）、环转",
+    "tags": [
+      "关节运动"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "关节概述"
+  },
+  {
+    "id": "joint-009",
+    "front": "按运动轴数目关节分为哪三类？",
+    "back": "单轴关节（屈戌关节/车轴关节）、双轴关节（椭圆关节/鞍状关节）、多轴关节（球窝关节/平面关节）",
+    "tags": [
+      "关节分类"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "关节概述"
+  },
+  {
+    "id": "joint-010",
+    "front": "椎间盘由哪两部分构成？",
+    "back": "中央部为髓核（柔软胶状物质），周围部为纤维环（多层纤维软骨同心圆排列）",
+    "tags": [
+      "椎间盘"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "脊柱和胸廓"
+  },
+  {
+    "id": "joint-011",
+    "front": "椎间盘的功能？髓核脱出的常见方位？",
+    "back": "缓冲外力对脊柱的震动，增加脊柱运动幅度。纤维环破裂时髓核容易向后外侧脱出，压迫脊髓或脊神经根",
+    "tags": [
+      "椎间盘",
+      "髓核脱出"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "脊柱和胸廓"
+  },
+  {
+    "id": "joint-012",
+    "front": "前纵韧带和后纵韧带各有何作用？",
+    "back": "前纵韧带防止脊柱过度后伸和椎间盘向前脱出。后纵韧带限制脊柱过度前屈",
+    "tags": [
+      "前纵韧带",
+      "后纵韧带"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "脊柱和胸廓"
+  },
+  {
+    "id": "joint-013",
+    "front": "黄韧带位于何处？有何作用？",
+    "back": "位于椎管内，连结相邻两椎弓板的黄色弹性纤维韧带。协助围成椎管，限制脊柱过度前屈",
+    "tags": [
+      "黄韧带"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "脊柱和胸廓"
+  },
+  {
+    "id": "joint-014",
+    "front": "成人脊柱有几个生理弯曲？各凸向何方？",
+    "back": "4个。颈曲和腰曲凸向前，胸曲和骶曲凸向后",
+    "tags": [
+      "脊柱",
+      "生理弯曲"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "脊柱和胸廓"
+  },
+  {
+    "id": "joint-015",
+    "front": "胸廓由什么构成？",
+    "back": "12块胸椎、12对肋、1块胸骨和它们之间的连结",
+    "tags": [
+      "胸廓"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "脊柱和胸廓"
+  },
+  {
+    "id": "joint-016",
+    "front": "颞下颌关节由什么构成？",
+    "back": "下颌骨的下颌头与颞骨的下颌窝和关节结节",
+    "tags": [
+      "颞下颌关节"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "颅骨连结"
+  },
+  {
+    "id": "joint-017",
+    "front": "颞下颌关节为什么易向前脱位？",
+    "back": "关节囊前份较薄弱，关节腔内有纤维软骨构成的关节盘",
+    "tags": [
+      "颞下颌关节",
+      "脱位"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "颅骨连结"
+  },
+  {
+    "id": "joint-018",
+    "front": "上肢骨与躯干骨连结的唯一关节是什么？",
+    "back": "胸锁关节，由锁骨胸骨端与胸骨锁切迹及第1肋软骨上面构成，属多轴关节",
+    "tags": [
+      "胸锁关节"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "上肢关节"
+  },
+  {
+    "id": "joint-019",
+    "front": "肩关节由什么构成？属什么类型？",
+    "back": "肱骨头与肩胛骨关节盂构成，属多轴球窝关节。头大盂浅，仅容纳肱骨头1/4到1/3",
+    "tags": [
+      "肩关节"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "上肢关节"
+  },
+  {
+    "id": "joint-020",
+    "front": "肩关节最薄弱处在哪里？脱位常见方向？",
+    "back": "关节囊下壁最为薄弱，肱骨头常从前下方脱出",
+    "tags": [
+      "肩关节",
+      "脱位"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "上肢关节"
+  },
+  {
+    "id": "joint-021",
+    "front": "肘关节包括哪三个关节？",
+    "back": "肱尺关节（肱骨滑车加尺骨滑车切迹）、肱桡关节（肱骨小头加桡骨关节凹）、桡尺近侧关节（桡骨环状关节面加尺骨桡切迹）",
+    "tags": [
+      "肘关节"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "上肢关节"
+  },
+  {
+    "id": "joint-022",
+    "front": "桡骨环状韧带的作用和临床意义？",
+    "back": "与尺骨桡切迹构成骨纤维环容纳桡骨头。幼儿4岁前韧带松弛，猛力牵拉前臂易发生桡骨小头半脱位",
+    "tags": [
+      "桡骨环状韧带"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "上肢关节"
+  },
+  {
+    "id": "joint-023",
+    "front": "桡腕关节的关节头和关节窝各由什么构成？",
+    "back": "关节窝由桡骨腕关节面及尺骨下方的关节盘构成；关节头由手舟骨、月骨和三角骨的近侧关节面构成",
+    "tags": [
+      "桡腕关节"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "上肢关节"
+  },
+  {
+    "id": "joint-024",
+    "front": "拇指腕掌关节属什么类型？",
+    "back": "鞍状关节，由大多角骨与第1掌骨底构成，可作对掌运动",
+    "tags": [
+      "拇指腕掌关节"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "上肢关节"
+  },
+  {
+    "id": "joint-025",
+    "front": "骨盆的界线是什么？",
+    "back": "骶骨岬经弓状线、耻骨梳、耻骨结节至耻骨联合上缘",
+    "tags": [
+      "骨盆",
+      "界线"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "下肢关节"
+  },
+  {
+    "id": "joint-026",
+    "front": "大骨盆和小骨盆的分界？",
+    "back": "以界线为界，上方为大骨盆（假骨盆），下方为小骨盆（真骨盆）",
+    "tags": [
+      "骨盆"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "下肢关节"
+  },
+  {
+    "id": "joint-027",
+    "front": "女性骨盆与男性有何主要差异？",
+    "back": "女性骨盆短而宽，上口近似圆形较大，耻骨下角90到100度。男性耻骨下角70到75度",
+    "tags": [
+      "骨盆",
+      "性别差异"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "下肢关节"
+  },
+  {
+    "id": "joint-028",
+    "front": "坐骨大孔和坐骨小孔如何形成？",
+    "back": "骶棘韧带与坐骨大切迹围成坐骨大孔；骶棘韧带、骶结节韧带和坐骨小切迹围成坐骨小孔",
+    "tags": [
+      "坐骨大孔",
+      "坐骨小孔"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "下肢关节"
+  },
+  {
+    "id": "joint-029",
+    "front": "髋关节由什么构成？脱位常见方向？",
+    "back": "由髋臼与股骨头构成，属多轴球窝关节。关节囊后下部较薄弱，股骨头易向下方脱出",
+    "tags": [
+      "髋关节"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "下肢关节"
+  },
+  {
+    "id": "joint-030",
+    "front": "髋关节关节囊如何附着？临床意义？",
+    "back": "前面达转子间线，后面仅包罩股骨颈内侧2/3。股骨颈骨折有囊内、囊外之分",
+    "tags": [
+      "髋关节",
+      "股骨颈骨折"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "下肢关节"
+  },
+  {
+    "id": "joint-031",
+    "front": "膝关节由什么构成？",
+    "back": "由股骨下端、胫骨上端和髌骨构成，是人体最大最复杂的关节",
+    "tags": [
+      "膝关节"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "下肢关节"
+  },
+  {
+    "id": "joint-032",
+    "front": "膝关节内有哪些重要结构？",
+    "back": "前交叉韧带（防止胫骨前移）、后交叉韧带（防止胫骨后移）、内侧半月板和外侧半月板",
+    "tags": [
+      "膝关节",
+      "交叉韧带",
+      "半月板"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "下肢关节"
+  },
+  {
+    "id": "joint-033",
+    "front": "踝关节由什么构成？属什么类型？",
+    "back": "由胫腓骨下端与距骨滑车构成，属屈戌关节",
+    "tags": [
+      "踝关节"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "下肢关节"
+  },
+  {
+    "id": "joint-034",
+    "front": "踝关节为什么跖屈时易扭伤？",
+    "back": "距骨滑车前宽后窄。跖屈时窄部进入踝穴，关节失稳。外侧韧带薄弱，外踝低于内踝，易发生内翻扭伤",
+    "tags": [
+      "踝关节",
+      "扭伤"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "下肢关节"
+  },
+  {
+    "id": "joint-035",
+    "front": "足弓的组成和功能？",
+    "back": "包括内侧纵弓、外侧纵弓和横弓。功能：增加弹性，缓冲震荡，保护足底血管神经",
+    "tags": [
+      "足弓"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "关节学",
+    "subsection": "下肢关节"
+  },
+  {
+    "id": "muscle-001",
+    "front": "骨骼肌包括哪两部分？",
+    "back": "肌腹（肌性部分，红色有收缩能力）和肌腱（胶原纤维束，白色强韧无收缩功能）",
+    "tags": [
+      "骨骼肌",
+      "肌腹",
+      "肌腱"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "肌的概述"
+  },
+  {
+    "id": "muscle-002",
+    "front": "肌按外形大致可分为哪四种？",
+    "back": "长肌、短肌、扁肌和轮匝肌",
+    "tags": [
+      "肌",
+      "形态分类"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "肌的概述"
+  },
+  {
+    "id": "muscle-003",
+    "front": "什么是拮抗肌和协同肌？",
+    "back": "拮抗肌：在运动轴相对侧配布、作用相反的一组肌。协同肌：在运动轴同侧、作用相同的多块肌",
+    "tags": [
+      "拮抗肌",
+      "协同肌"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "肌的概述"
+  },
+  {
+    "id": "muscle-004",
+    "front": "肌的辅助装置有哪些？",
+    "back": "筋膜（浅筋膜和深筋膜）、滑膜囊、腱鞘和籽骨",
+    "tags": [
+      "肌",
+      "辅助装置"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "肌的概述"
+  },
+  {
+    "id": "muscle-005",
+    "front": "浅筋膜和深筋膜有何区别？",
+    "back": "浅筋膜位于真皮之下，由疏松结缔组织构成，富含脂肪。深筋膜位于浅筋膜深面，由致密结缔组织构成，包被肌、血管和神经",
+    "tags": [
+      "筋膜"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "肌的概述"
+  },
+  {
+    "id": "muscle-006",
+    "front": "腱鞘分哪两层？有何作用？",
+    "back": "纤维层（外层，滑车和约束肌腱）和滑膜层（内层，脏壁两层形成腔隙含滑液，使肌腱自由滑动）",
+    "tags": [
+      "腱鞘"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "肌的概述"
+  },
+  {
+    "id": "muscle-007",
+    "front": "头肌分哪两部分？",
+    "back": "面肌（表情肌）和咀嚼肌",
+    "tags": [
+      "头肌"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "头肌"
+  },
+  {
+    "id": "muscle-008",
+    "front": "咀嚼肌包括哪四对？受什么神经支配？",
+    "back": "颞肌、咬肌、翼内肌和翼外肌。受三叉神经支配",
+    "tags": [
+      "咀嚼肌",
+      "三叉神经"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "头肌"
+  },
+  {
+    "id": "muscle-009",
+    "front": "咬肌和颞肌的作用是什么？",
+    "back": "咬肌：上提下颌骨（闭口）。颞肌：上提下颌骨并可使下颌骨后退",
+    "tags": [
+      "咬肌",
+      "颞肌"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "头肌"
+  },
+  {
+    "id": "muscle-010",
+    "front": "翼内肌和翼外肌的作用是什么？",
+    "back": "翼内肌协助上提下颌骨。翼外肌两侧同时收缩作张口运动，一侧收缩使下颌骨移向对侧",
+    "tags": [
+      "翼内肌",
+      "翼外肌"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "头肌"
+  },
+  {
+    "id": "muscle-011",
+    "front": "面肌（表情肌）有何特点？",
+    "back": "位置表浅，大多起自颅骨止于面部皮肤，分布于口眼鼻等孔裂周围，牵动面部皮肤显示表情",
+    "tags": [
+      "面肌",
+      "表情肌"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "头肌"
+  },
+  {
+    "id": "muscle-012",
+    "front": "胸锁乳突肌的起止点和作用？",
+    "back": "起自胸骨柄前面和锁骨内侧端，止于颞骨乳突。一侧收缩使头向同侧屈、面转向对侧；两侧收缩使头后仰",
+    "tags": [
+      "胸锁乳突肌"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "颈肌"
+  },
+  {
+    "id": "muscle-013",
+    "front": "舌骨下肌群包括哪四块？",
+    "back": "胸骨舌骨肌、肩胛舌骨肌、胸骨甲状肌和甲状舌骨肌",
+    "tags": [
+      "舌骨下肌群"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "颈肌"
+  },
+  {
+    "id": "muscle-014",
+    "front": "背肌浅群主要包括哪些？",
+    "back": "斜方肌、背阔肌、肩胛提肌和菱形肌",
+    "tags": [
+      "背肌浅群"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "躯干肌"
+  },
+  {
+    "id": "muscle-015",
+    "front": "斜方肌的作用是什么？",
+    "back": "使肩胛骨向脊柱靠拢（两侧收缩），上部肌束上提肩胛骨，下部肌束下降肩胛骨",
+    "tags": [
+      "斜方肌"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "躯干肌"
+  },
+  {
+    "id": "muscle-016",
+    "front": "背阔肌的作用是什么？",
+    "back": "使肩关节后伸、内收及旋内",
+    "tags": [
+      "背阔肌"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "躯干肌"
+  },
+  {
+    "id": "muscle-017",
+    "front": "胸上肢肌包括哪些？",
+    "back": "胸大肌、胸小肌和前锯肌",
+    "tags": [
+      "胸上肢肌"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "躯干肌"
+  },
+  {
+    "id": "muscle-018",
+    "front": "前锯肌的作用？瘫痪后出现什么？",
+    "back": "拉肩胛骨向前并使其紧贴胸廓。瘫痪后出现翼状肩",
+    "tags": [
+      "前锯肌",
+      "翼状肩"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "躯干肌"
+  },
+  {
+    "id": "muscle-019",
+    "front": "膈上有哪三个裂孔？各平对什么高度？通行什么？",
+    "back": "主动脉裂孔（平第12胸椎，主动脉和胸导管）、食管裂孔（平第10胸椎，食管和迷走神经）、腔静脉孔（平第8胸椎，下腔静脉）",
+    "tags": [
+      "膈",
+      "裂孔"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "躯干肌"
+  },
+  {
+    "id": "muscle-020",
+    "front": "腹直肌鞘由哪些腱膜构成？",
+    "back": "由腹外斜肌、腹内斜肌和腹横肌的腱膜构成。前壁由腹外斜肌腱膜与腹内斜肌腱膜前层愈合；后壁由腹内斜肌腱膜后层与腹横肌腱膜愈合（脐下4-5cm以下后壁缺如，形成半环线）",
+    "tags": [
+      "腹直肌鞘"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "躯干肌"
+  },
+  {
+    "id": "muscle-021",
+    "front": "腹股沟管前壁和后壁各是什么？",
+    "back": "前壁主要为腹外斜肌腱膜；后壁为腹横筋膜和腹股沟镰",
+    "tags": [
+      "腹股沟管"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "躯干肌"
+  },
+  {
+    "id": "muscle-022",
+    "front": "三角肌起止点和作用？",
+    "back": "起自锁骨外侧段、肩峰和肩胛冈，止于肱骨三角肌粗隆。主要作用是使肩关节外展",
+    "tags": [
+      "三角肌"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "上肢肌"
+  },
+  {
+    "id": "muscle-023",
+    "front": "肱二头肌起止点和作用？受什么神经支配？",
+    "back": "长头起自肩胛骨盂上结节，短头起自喙突，止于桡骨粗隆。作用：屈肘关节和屈肩关节。受肌皮神经支配",
+    "tags": [
+      "肱二头肌",
+      "肌皮神经"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "上肢肌"
+  },
+  {
+    "id": "muscle-024",
+    "front": "肱三头肌起止点和作用？受什么神经支配？",
+    "back": "长头起自盂下结节，内侧头和外侧头起自肱骨后面，止于尺骨鹰嘴。作用：伸肘关节。受桡神经支配",
+    "tags": [
+      "肱三头肌",
+      "桡神经"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "上肢肌"
+  },
+  {
+    "id": "muscle-025",
+    "front": "前臂肌前群第一层自桡侧向尺侧依次有哪些？",
+    "back": "肱桡肌、旋前圆肌、桡侧腕屈肌、掌长肌和尺侧腕屈肌",
+    "tags": [
+      "前臂肌前群"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "上肢肌"
+  },
+  {
+    "id": "muscle-026",
+    "front": "使前臂旋前的肌有哪些？旋后的肌有哪些？",
+    "back": "旋前：旋前圆肌和旋前方肌。旋后：旋后肌和肱二头肌",
+    "tags": [
+      "旋前",
+      "旋后"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "上肢肌"
+  },
+  {
+    "id": "muscle-027",
+    "front": "上肢带肌包括哪些？",
+    "back": "三角肌、冈上肌、冈下肌、小圆肌、大圆肌和肩胛下肌",
+    "tags": [
+      "上肢带肌"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "上肢肌"
+  },
+  {
+    "id": "muscle-028",
+    "front": "大腿肌前群主要包括什么？",
+    "back": "股四头肌和缝匠肌",
+    "tags": [
+      "大腿肌前群"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "下肢肌"
+  },
+  {
+    "id": "muscle-029",
+    "front": "股四头肌的四个头和止点？作用？",
+    "back": "股直肌（起自髂前下棘）、股内侧肌、股外侧肌和股中间肌。止于胫骨粗隆。作用：伸膝关节，股直肌还可屈髋关节",
+    "tags": [
+      "股四头肌"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "下肢肌"
+  },
+  {
+    "id": "muscle-030",
+    "front": "大腿肌后群包括哪三块？作用？",
+    "back": "股二头肌、半腱肌和半膜肌。作用：屈膝关节、伸髋关节",
+    "tags": [
+      "大腿肌后群"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "下肢肌"
+  },
+  {
+    "id": "muscle-031",
+    "front": "大腿内侧肌群的主要作用？",
+    "back": "使髋关节内收",
+    "tags": [
+      "大腿内侧肌群"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "下肢肌"
+  },
+  {
+    "id": "muscle-032",
+    "front": "小腿三头肌由什么构成？止于何处？作用？",
+    "back": "由腓肠肌和比目鱼肌构成，止于跟骨结节（跟腱）。作用：屈踝关节（跖屈）和屈膝关节",
+    "tags": [
+      "小腿三头肌"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "下肢肌"
+  },
+  {
+    "id": "muscle-033",
+    "front": "使足内翻的主要肌是哪些？使足外翻的是哪些？",
+    "back": "内翻：胫骨前肌和胫骨后肌。外翻：腓骨长肌和腓骨短肌",
+    "tags": [
+      "足内翻",
+      "足外翻"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "下肢肌"
+  },
+  {
+    "id": "muscle-034",
+    "front": "伸膝关节的肌是哪个？屈膝关节的肌主要有哪些？",
+    "back": "伸：股四头肌。屈：半腱肌、半膜肌、股二头肌、腓肠肌、腘肌、缝匠肌和股薄肌",
+    "tags": [
+      "膝关节",
+      "伸",
+      "屈"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "下肢肌"
+  },
+  {
+    "id": "muscle-035",
+    "front": "腓总神经损伤后出现什么？",
+    "back": "小腿前群肌和外侧群肌瘫痪，出现足下垂、内翻且趾不能伸，形成马蹄内翻足，行走呈跨阈步态",
+    "tags": [
+      "腓总神经"
+    ],
+    "type": "knowledge",
+    "system": "运动系统",
+    "section": "肌学",
+    "subsection": "下肢肌"
+  }
+]

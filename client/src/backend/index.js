@@ -375,6 +375,97 @@ export async function getRecommend() {
 export async function getCountdown() { await init(); const n = getOne(`SELECT value FROM settings WHERE key='countdown_name'`); const t = getOne(`SELECT value FROM settings WHERE key='countdown_target'`); return { name: n?.value || '距离解剖学期末考试', target: t?.value || '' }; }
 export async function updateCountdown(name, target) { await init(); if (name) runQuery(`INSERT INTO settings (key, value, updated_at) VALUES ('countdown_name', ?, datetime('now')) ON CONFLICT(key) DO UPDATE SET value=excluded.value`, [name]); if (target) runQuery(`INSERT INTO settings (key, value, updated_at) VALUES ('countdown_target', ?, datetime('now')) ON CONFLICT(key) DO UPDATE SET value=excluded.value`, [target]); debouncedSave(); return { success: true }; }
 
+// --- motion (五步学习流) ---
+const CHAPTER_DIR_CACHE = {};
+
+async function getMotionDir(chapterId) {
+  if (CHAPTER_DIR_CACHE[chapterId]) return CHAPTER_DIR_CACHE[chapterId];
+  try {
+    const resp = await fetch('/content/chapters.json');
+    if (resp.ok) {
+      const data = await resp.json();
+      const ch = (data.chapters || data).find(c => c.chapterId === chapterId);
+      if (ch) { CHAPTER_DIR_CACHE[chapterId] = '/content/' + chapterId + '-' + ch.title; return CHAPTER_DIR_CACHE[chapterId]; }
+    }
+  } catch {}
+  CHAPTER_DIR_CACHE[chapterId] = '/content/' + chapterId;
+  return CHAPTER_DIR_CACHE[chapterId];
+}
+
+async function loadMotionJSON(chapterId, filename) {
+  try {
+    const dir = await getMotionDir(chapterId);
+    const resp = await fetch(`${dir}/${filename}`);
+    return resp.ok ? resp.json() : null;
+  } catch { return null; }
+}
+
+export async function getMotionKnowledgeCards(chapterId, section, subsection) {
+  let cards = await loadMotionJSON(chapterId, 'knowledge_cards.json');
+  if (!cards) return [];
+  if (section) cards = cards.filter(c => c.section === section);
+  if (subsection) cards = cards.filter(c => c.subsection === subsection);
+  return cards;
+}
+
+export async function getMotionAtlasCards(chapterId, section) {
+  let cards = await loadMotionJSON(chapterId, 'atlas_cards.json');
+  if (!cards) return [];
+  if (section) cards = cards.filter(c => c.section === section);
+  return cards;
+}
+
+export async function getMotionQuestionCardMap(chapterId) {
+  return await loadMotionJSON(chapterId, 'question_card_map.json') || [];
+}
+
+export async function getMotionPracticePool(chapterId) {
+  return await loadMotionJSON(chapterId, 'practice-pool.json') || { questions: [] };
+}
+
+export async function getMotionErrorCardRefs(chapterId, errors) {
+  if (!Array.isArray(errors)) return { knowledgeCards: [], atlasCards: [] };
+  const cardMap = await loadMotionJSON(chapterId, 'question_card_map.json') || [];
+  const allKnowledge = await loadMotionJSON(chapterId, 'knowledge_cards.json') || [];
+  const allAtlas = await loadMotionJSON(chapterId, 'atlas_cards.json') || [];
+
+  const index = {};
+  for (const m of cardMap) {
+    index[m.q_type + "::" + m.q_num] = m.refs;
+  }
+
+  const knowledgeCards = [];
+  const atlasCards = [];
+  const seenK = new Set();
+  const seenA = new Set();
+
+  for (const err of errors) {
+    const key = err.q_type + "::" + err.q_num;
+    const refs = index[key];
+    if (!refs) continue;
+    for (const refId of refs) {
+      const kc = allKnowledge.find(c => c.id === refId);
+      if (kc && !seenK.has(kc.id)) {
+        seenK.add(kc.id);
+        knowledgeCards.push(kc);
+      }
+      if (kc && kc.tags) {
+        for (const tag of kc.tags) {
+          const matched = allAtlas.filter(a => a.tags && a.tags.some(t => t === tag || t.includes(tag) || tag.includes(t)));
+          for (const ac of matched) {
+            if (!seenA.has(ac.id)) {
+              seenA.add(ac.id);
+              atlasCards.push(ac);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  return { knowledgeCards, atlasCards };
+}
+
 // --- AI (local mode: direct DeepSeek API calls) ---
 import { aiChatLocal, aiGenerateQuizLocal, aiReviewReportLocal, aiTodayRecommendLocal, aiGeneratePlanLocal, aiGenerateNextCheckinLocal } from '../utils/aiLocal';
 export async function aiChat(apiKey, unitId, scene, messages, currentPage, userProfile) { const text = await aiChatLocal(apiKey, unitId, scene, messages, { currentPage, userProfile }); return { reply: text }; }

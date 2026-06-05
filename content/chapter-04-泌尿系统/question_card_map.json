@@ -1,0 +1,324 @@
+[
+  {
+    "q_type": "fill-blank",
+    "q_num": 1,
+    "refs": [
+      "uro-009"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 2,
+    "refs": [
+      "uro-009",
+      "uro-010"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 3,
+    "refs": [
+      "uro-001",
+      "uro-003",
+      "uro-008"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 4,
+    "refs": [
+      "uro-001"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 5,
+    "refs": [
+      "uro-009"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 6,
+    "refs": [
+      "uro-008"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 7,
+    "refs": [
+      "uro-012"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 8,
+    "refs": [
+      "uro-012"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 9,
+    "refs": [
+      "uro-005"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 10,
+    "refs": [
+      "uro-005"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 11,
+    "refs": [
+      "uro-002",
+      "uro-003",
+      "uro-011"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 12,
+    "refs": [
+      "uro-006"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 13,
+    "refs": [
+      "uro-005"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 14,
+    "refs": [
+      "uro-008"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 15,
+    "refs": [
+      "uro-008"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 16,
+    "refs": [
+      "uro-005"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 17,
+    "refs": [
+      "uro-008"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 1,
+    "refs": [
+      "uro-001",
+      "uro-009",
+      "uro-011"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 2,
+    "refs": [
+      "uro-011"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 3,
+    "refs": [
+      "uro-012"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 4,
+    "refs": [
+      "uro-012"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 5,
+    "refs": [
+      "uro-004",
+      "uro-011"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 6,
+    "refs": [
+      "uro-008",
+      "uro-012"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 7,
+    "refs": [
+      "uro-012"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 8,
+    "refs": [
+      "uro-001"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 9,
+    "refs": []
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 10,
+    "refs": [
+      "uro-006"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 11,
+    "refs": [
+      "uro-007"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 12,
+    "refs": [
+      "uro-001",
+      "uro-008"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 13,
+    "refs": []
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 14,
+    "refs": [
+      "uro-005",
+      "uro-006"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 15,
+    "refs": [
+      "uro-002"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 1,
+    "refs": [
+      "uro-001",
+      "uro-009",
+      "uro-011"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 2,
+    "refs": [
+      "uro-011"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 3,
+    "refs": [
+      "uro-006"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 4,
+    "refs": [
+      "uro-003"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 5,
+    "refs": []
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 6,
+    "refs": [
+      "uro-003",
+      "uro-011"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 7,
+    "refs": [
+      "uro-012"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 8,
+    "refs": [
+      "uro-012"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 9,
+    "refs": [
+      "uro-002"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 10,
+    "refs": []
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 11,
+    "refs": [
+      "uro-001",
+      "uro-008",
+      "uro-012"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 12,
+    "refs": [
+      "uro-003",
+      "uro-011"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 13,
+    "refs": []
+  }
+]

@@ -1,0 +1,823 @@
+[
+  {
+    "q_type": "fill-blank",
+    "q_num": 1,
+    "refs": [
+      "dig-001"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 2,
+    "refs": [
+      "dig-019"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 3,
+    "refs": [
+      "dig-048"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 4,
+    "refs": [
+      "dig-023"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 5,
+    "refs": [
+      "dig-052"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 6,
+    "refs": [
+      "dig-032",
+      "dig-052",
+      "dig-057"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 7,
+    "refs": [
+      "dig-010"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 8,
+    "refs": [
+      "dig-043"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 9,
+    "refs": []
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 10,
+    "refs": [
+      "dig-004",
+      "dig-014"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 11,
+    "refs": [
+      "dig-003",
+      "dig-006",
+      "dig-008"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 12,
+    "refs": [
+      "dig-019"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 13,
+    "refs": [
+      "dig-015"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 14,
+    "refs": [
+      "dig-018"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 15,
+    "refs": [
+      "dig-017"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 16,
+    "refs": [
+      "dig-014"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 17,
+    "refs": [
+      "dig-030"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 18,
+    "refs": [
+      "dig-001"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 19,
+    "refs": [
+      "dig-024",
+      "dig-025"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 20,
+    "refs": [
+      "dig-027"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 21,
+    "refs": [
+      "dig-052"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 22,
+    "refs": [
+      "dig-022",
+      "dig-066"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 23,
+    "refs": [
+      "dig-005"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 24,
+    "refs": [
+      "dig-060"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 25,
+    "refs": [
+      "dig-051"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 26,
+    "refs": [
+      "dig-065"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 1,
+    "refs": [
+      "dig-003",
+      "dig-025"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 2,
+    "refs": [
+      "dig-001",
+      "dig-024",
+      "dig-025"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 3,
+    "refs": [
+      "dig-001"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 4,
+    "refs": [
+      "dig-056"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 5,
+    "refs": [
+      "dig-056"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 6,
+    "refs": [
+      "dig-058"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 7,
+    "refs": [
+      "dig-057"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 8,
+    "refs": [
+      "dig-032",
+      "dig-057",
+      "dig-061"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 9,
+    "refs": [
+      "dig-002",
+      "dig-011"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 10,
+    "refs": [
+      "dig-052"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 11,
+    "refs": [
+      "dig-001",
+      "dig-030",
+      "dig-063"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 12,
+    "refs": [
+      "dig-001",
+      "dig-046"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 13,
+    "refs": [
+      "dig-001",
+      "dig-024",
+      "dig-025"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 14,
+    "refs": []
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 15,
+    "refs": []
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 16,
+    "refs": []
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 17,
+    "refs": [
+      "dig-001",
+      "dig-030"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 18,
+    "refs": [
+      "dig-001"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 19,
+    "refs": []
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 20,
+    "refs": []
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 21,
+    "refs": [
+      "dig-013"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 22,
+    "refs": [
+      "dig-043"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 23,
+    "refs": [
+      "dig-038"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 24,
+    "refs": [
+      "dig-001",
+      "dig-034",
+      "dig-035"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 25,
+    "refs": [
+      "dig-040"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 26,
+    "refs": [
+      "dig-001",
+      "dig-039"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 27,
+    "refs": [
+      "dig-001",
+      "dig-037",
+      "dig-040"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 28,
+    "refs": [
+      "dig-001",
+      "dig-039"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 29,
+    "refs": [
+      "dig-001",
+      "dig-030",
+      "dig-031"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 30,
+    "refs": [
+      "dig-013"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 31,
+    "refs": [
+      "dig-013"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 32,
+    "refs": [
+      "dig-019"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 33,
+    "refs": [
+      "dig-018"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 34,
+    "refs": [
+      "dig-030",
+      "dig-060"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 35,
+    "refs": [
+      "dig-001"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 36,
+    "refs": [
+      "dig-001",
+      "dig-021",
+      "dig-026"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 37,
+    "refs": [
+      "dig-024"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 38,
+    "refs": [
+      "dig-019"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 39,
+    "refs": []
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 40,
+    "refs": [
+      "dig-027"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 41,
+    "refs": [
+      "dig-019"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 42,
+    "refs": [
+      "dig-033"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 43,
+    "refs": [
+      "dig-023"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 44,
+    "refs": [
+      "dig-001"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 45,
+    "refs": [
+      "dig-002",
+      "dig-011"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 46,
+    "refs": [
+      "dig-002",
+      "dig-011",
+      "dig-012"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 47,
+    "refs": [
+      "dig-066"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 48,
+    "refs": [
+      "dig-066"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 49,
+    "refs": [
+      "dig-005"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 50,
+    "refs": [
+      "dig-001",
+      "dig-037",
+      "dig-043"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 51,
+    "refs": [
+      "dig-004"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 52,
+    "refs": [
+      "dig-064"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 53,
+    "refs": []
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 54,
+    "refs": [
+      "dig-045"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 55,
+    "refs": [
+      "dig-044"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 56,
+    "refs": [
+      "dig-015"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 57,
+    "refs": [
+      "dig-044"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 58,
+    "refs": [
+      "dig-044"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 1,
+    "refs": [
+      "dig-062"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 2,
+    "refs": [
+      "dig-023"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 3,
+    "refs": [
+      "dig-002",
+      "dig-011"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 4,
+    "refs": [
+      "dig-001",
+      "dig-046"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 5,
+    "refs": [
+      "dig-002",
+      "dig-011"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 6,
+    "refs": [
+      "dig-037",
+      "dig-038"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 7,
+    "refs": []
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 8,
+    "refs": []
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 9,
+    "refs": []
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 10,
+    "refs": [
+      "dig-051"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 11,
+    "refs": [
+      "dig-002",
+      "dig-003",
+      "dig-011"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 12,
+    "refs": [
+      "dig-001",
+      "dig-037",
+      "dig-040"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 13,
+    "refs": []
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 14,
+    "refs": []
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 15,
+    "refs": [
+      "dig-063"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 16,
+    "refs": []
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 17,
+    "refs": []
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 18,
+    "refs": []
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 19,
+    "refs": [
+      "dig-001"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 20,
+    "refs": [
+      "dig-001",
+      "dig-030"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 21,
+    "refs": [
+      "dig-001",
+      "dig-002",
+      "dig-011"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 22,
+    "refs": [
+      "dig-019"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 23,
+    "refs": []
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 24,
+    "refs": [
+      "dig-002",
+      "dig-011"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 25,
+    "refs": [
+      "dig-012"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 26,
+    "refs": [
+      "dig-002",
+      "dig-011",
+      "dig-021"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 27,
+    "refs": [
+      "dig-066"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 28,
+    "refs": []
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 29,
+    "refs": [
+      "dig-001",
+      "dig-002",
+      "dig-011"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 30,
+    "refs": [
+      "dig-043"
+    ]
+  },
+  {
+    "q_type": "choice-X",
+    "q_num": 31,
+    "refs": [
+      "dig-001",
+      "dig-034"
+    ]
+  }
+]

@@ -13,6 +13,7 @@ const recommendRouter = require('./routes/recommend');
 const practiceRouter = require('./routes/practice');
 const aiRouter = require('./routes/ai');
 const modulesRouter = require('./routes/modules');
+const motionRouter = require('./routes/motion');
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use('/api/v1', recommendRouter);
 app.use('/api/v1', practiceRouter);
 app.use('/api/v1/ai', aiRouter);
 app.use('/api/v1/modules', modulesRouter);
+app.use('/api/v1/motion', motionRouter);
 
 app.get('/api/v1/health', (_req, res) => {
   res.json({ success: true, data: { status: 'ok' }, timestamp: new Date().toISOString() });

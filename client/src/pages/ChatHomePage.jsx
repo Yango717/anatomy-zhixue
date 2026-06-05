@@ -58,6 +58,7 @@ export default function ChatHomePage() {
   const [showThreads, setShowThreads] = useState(false);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
+  const introThreadRef = useRef(null);
   const navigate = useNavigate();
 
   const {
@@ -103,19 +104,28 @@ export default function ChatHomePage() {
     }
   }, [hasApiKey, activeThreadId]);
 
+  useEffect(() => {
+    tutor.setMessages(threadMessages);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeThreadId]);
+
   // 自我介绍：每次新对话（空线程），学姐主动自我介绍
   useEffect(() => {
     if (!hasApiKey) return;
-    if (threadMessages.length > 0) return; // Only for empty threads
+    const threadId = getOrCreateThreadId();
+    if (!threadId) return;
+    if (introThreadRef.current === threadId) return;
+    if (readThreadMessages(threadId).length > 0) return; // Only for empty threads
     const apiKey = localStorage.getItem('deepseek_api_key');
     if (!apiKey) return;
+    introThreadRef.current = threadId;
 
     // Try AI-generated intro with learning context
     api.get('/ai/proactive', { apiKey }).then((d) => {
       const introMsg = d?.message;
       if (introMsg) {
         tutor.setMessages([{ role: 'assistant', content: introMsg }]);
-        saveThreadMessages(activeThreadId, [{ role: 'assistant', content: introMsg }]);
+        saveThreadMessages(threadId, [{ role: 'assistant', content: introMsg }]);
       } else {
         // Fallback: fixed introduction
         const fallback = `嗨！我是妍学姐～你可以叫我「妍」😊
@@ -130,12 +140,12 @@ export default function ChatHomePage() {
 
 虽然我是AI驱动的，但你就当我是你身边一个热心的学姐就好～有什么想知道的，直接问我吧！`;
         tutor.setMessages([{ role: 'assistant', content: fallback }]);
-        saveThreadMessages(activeThreadId, [{ role: 'assistant', content: fallback }]);
+        saveThreadMessages(threadId, [{ role: 'assistant', content: fallback }]);
       }
     }).catch(() => {
       const fallback = `嗨！我是妍学姐～叫我「妍」就好啦～😊\n\n大三临床医学生，解剖学95分，温柔又活泼。有什么解剖学问题尽管问，学姐帮你搞定！`;
       tutor.setMessages([{ role: 'assistant', content: fallback }]);
-      saveThreadMessages(activeThreadId, [{ role: 'assistant', content: fallback }]);
+      saveThreadMessages(threadId, [{ role: 'assistant', content: fallback }]);
     });
   }, [hasApiKey, activeThreadId]);
 

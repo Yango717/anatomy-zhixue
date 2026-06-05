@@ -1,0 +1,672 @@
+[
+  {
+    "id": "dig-001",
+    "front": "消化系统由哪两部分组成？",
+    "back": "消化管和消化腺。消化管包括口腔、咽、食管、胃、小肠（十二指肠、空肠、回肠）和大肠（盲肠、阑尾、结肠、直肠、肛管）。消化腺包括大唾液腺、肝、胰等。",
+    "tags": ["消化系统", "组成", "总论"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "系统总论"
+  },
+  {
+    "id": "dig-002",
+    "front": "消化管的一般结构从内到外分哪4层？",
+    "back": "黏膜层、黏膜下层、肌层和外膜。黏膜层是消化和吸收的主要部位；肌层一般为内环外纵两层平滑肌。",
+    "tags": ["消化管", "结构", "总论"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "系统总论"
+  },
+  {
+    "id": "dig-003",
+    "front": "口腔的境界如何划分？",
+    "back": "前壁为口唇，侧壁为颊，上壁为腭，下壁为口底。口腔借牙弓分为口腔前庭和固有口腔两部分。",
+    "tags": ["口腔", "境界"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "口腔的境界与分部"
+  },
+  {
+    "id": "dig-004",
+    "front": "腭分哪两部分？各占多少比例？",
+    "back": "硬腭占前2/3，由上颌骨腭突和腭骨水平板构成；软腭占后1/3，由横纹肌和黏膜构成。",
+    "tags": ["腭", "硬腭", "软腭"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "口腔的境界与分部"
+  },
+  {
+    "id": "dig-005",
+    "front": "软腭有哪些重要结构？",
+    "back": "腭帆（velum palatinum）、腭垂（uvula）、腭舌弓（palatoglossal arch）、腭咽弓（palatopharyngeal arch）。腭舌弓与腭咽弓之间的凹陷为扁桃体窝，容纳腭扁桃体。咽峡（isthmus of fauces）由腭垂、腭舌弓和舌根围成，是口腔与咽的分界。",
+    "tags": ["软腭", "腭垂", "咽峡"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "口腔的境界与分部"
+  },
+  {
+    "id": "dig-006",
+    "front": "人中有何解剖学名称？鼻唇沟有何意义？",
+    "back": "人中称philtrum；鼻唇沟（nasolabial sulcus）是颊与上唇的分界标志，面神经麻痹时此沟变浅或消失。",
+    "tags": ["人中", "鼻唇沟", "口唇"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "口腔的境界与分部"
+  },
+  {
+    "id": "dig-007",
+    "front": "乳牙有多少颗？何时开始萌出和脱落？",
+    "back": "乳牙共20颗（上下各10颗）。出生后6个月开始萌出，2~3岁出齐。6~7岁开始脱落，被恒牙替换。",
+    "tags": ["乳牙", "萌出", "脱落"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "牙的萌出与脱落"
+  },
+  {
+    "id": "dig-008",
+    "front": "恒牙有多少颗？智齿萌出年龄？",
+    "back": "恒牙共32颗（上下各16颗）。一般在12~14岁出齐（除第三磨牙外）。第三磨牙（智齿）在17~25岁萌出，约30%的人终生不萌出。",
+    "tags": ["恒牙", "智齿", "萌出"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "牙的萌出与脱落"
+  },
+  {
+    "id": "dig-009",
+    "front": "牙按形态和功能可分为哪几类？",
+    "back": "切牙（incisor）、尖牙（canine tooth）、前磨牙（premolar）和磨牙（molar）。切牙用于切割，尖牙用于撕裂，前磨牙和磨牙用于研磨。",
+    "tags": ["牙", "分类", "形态"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "牙的萌出与脱落"
+  },
+  {
+    "id": "dig-010",
+    "front": "牙的形态分哪三部分？",
+    "back": "牙冠（crown of tooth）、牙根（root of tooth）和牙颈（neck of tooth）。牙冠露于口腔内，牙根嵌入牙槽，牙颈为冠根交界处。",
+    "tags": ["牙", "形态", "牙冠", "牙根", "牙颈"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "牙的形态与结构"
+  },
+  {
+    "id": "dig-011",
+    "front": "牙的组织结构包括哪些？",
+    "back": "牙质（dentine）构成牙的主体；釉质（enamel）覆盖牙冠表面，为人体最硬的组织；牙骨质（cement）覆盖牙根表面；牙髓（dental pulp）位于牙腔内，含神经血管。",
+    "tags": ["牙", "结构", "釉质", "牙质", "牙髓"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "牙的形态与结构"
+  },
+  {
+    "id": "dig-012",
+    "front": "牙周组织包括哪三部分？",
+    "back": "牙周膜（periodontal membrane）、牙槽骨（alveolar bone）和牙龈（gingiva）。牙周膜连接牙根与牙槽骨；牙龈覆盖牙槽突表面。",
+    "tags": ["牙周组织", "牙周膜", "牙龈"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "牙的形态与结构"
+  },
+  {
+    "id": "dig-013",
+    "front": "牙式如何用数字表示恒牙和乳牙？",
+    "back": "恒牙：上下各16颗，每侧切牙2、尖牙1、前磨牙2、磨牙3。记为2-1-2-3。乳牙：上下各10颗，每侧切牙2、尖牙1、磨牙2。记为2-1-0-2（无前磨牙）。",
+    "tags": ["牙式", "恒牙", "乳牙"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "牙的形态与结构"
+  },
+  {
+    "id": "dig-014",
+    "front": "舌分哪两部分？分界标志是什么？",
+    "back": "借界沟（terminal sulcus）分为舌体（body of tongue，前2/3）和舌根（root of tongue，后1/3）。界沟尖端有盲孔（foramen cecum of tongue），为胚胎期甲状舌管的遗迹。",
+    "tags": ["舌", "界沟", "舌体", "舌根", "盲孔"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "舌的形态与分部"
+  },
+  {
+    "id": "dig-015",
+    "front": "舌乳头有哪4种？各有何特征？",
+    "back": "①丝状乳头（filiform papilla）—数量最多，遍布舌背前2/3，司一般感觉；②菌状乳头（fungiform papilla）—散在于丝状乳头间，含味蕾；③叶状乳头（foliate papilla）—位于舌侧缘后部；④轮廓乳头（vallate papilla）—约7~11个，排列于界沟前方，含大量味蕾。",
+    "tags": ["舌乳头", "味蕾", "丝状乳头", "轮廓乳头"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "舌的形态与分部"
+  },
+  {
+    "id": "dig-016",
+    "front": "舌根部有什么重要淋巴组织？",
+    "back": "舌扁桃体（lingual tonsil），位于舌根黏膜下，为咽淋巴环的一部分。",
+    "tags": ["舌扁桃体", "舌根", "淋巴"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "舌的形态与分部"
+  },
+  {
+    "id": "dig-017",
+    "front": "舌肌分哪两类？最重要的舌外肌是什么？",
+    "back": "舌内肌（intrinsic lingual muscle）和舌外肌（extrinsic lingual muscle）。最重要的舌外肌是颏舌肌（genioglossus），双侧同时收缩使舌前伸，单侧收缩使舌尖偏向对侧。",
+    "tags": ["舌肌", "颏舌肌", "舌外肌"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "舌的形态与分部"
+  },
+  {
+    "id": "dig-018",
+    "front": "舌系带和舌下阜有何临床意义？",
+    "back": "舌系带（frenulum of tongue）过短可导致舌不能充分前伸（舌系带过短症）。舌下阜（sublingual caruncle）位于舌系带根部两侧，为下颌下腺管和舌下腺大管的共同开口。",
+    "tags": ["舌系带", "舌下阜", "临床"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "舌的形态与分部"
+  },
+  {
+    "id": "dig-019",
+    "front": "三大唾液腺各位于何处？腺管开口在哪？",
+    "back": "①腮腺（parotid gland）—最大，位于耳廓前下方，重15~30g，腮腺管开口于上颌第二磨牙相对的颊黏膜（腮腺乳头）；②下颌下腺（submandibular gland）—约15g，位于下颌体深面，腺管开口于舌下阜；③舌下腺（sublingual gland）—约2~3g，位于口底黏膜下，大管开口于舌下阜，小管（5~15条）开口于舌下襞。",
+    "tags": ["唾液腺", "腮腺", "下颌下腺", "舌下腺"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "大唾液腺"
+  },
+  {
+    "id": "dig-020",
+    "front": "腮腺管的体表投影是什么？",
+    "back": "自鼻翼与口角连线的中点至耳屏间切迹连线的中1/3段。",
+    "tags": ["腮腺管", "体表投影"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "大唾液腺"
+  },
+  {
+    "id": "dig-021",
+    "front": "咽位于何处？上起什么下至什么？",
+    "back": "咽位于颈椎前方，上起颅底外面，下至第6颈椎体下缘平面续于食管。全长约12cm，为上宽下窄的漏斗形肌性管道，是消化道与呼吸道的共同通道。",
+    "tags": ["咽", "位置", "分部"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "咽的位置与分部"
+  },
+  {
+    "id": "dig-022",
+    "front": "咽分哪三部分？各有什么重要结构？",
+    "back": "①鼻咽（nasopharynx）—经鼻后孔通鼻腔，有咽鼓管咽口、咽鼓管圆枕、咽隐窝（鼻咽癌好发部位）、咽扁桃体；②口咽（oropharynx）—经咽峡通口腔，有腭扁桃体、会厌谷；③喉咽（laryngopharynx）—经喉口通喉腔，有梨状隐窝（异物易滞留处）。",
+    "tags": ["咽", "鼻咽", "口咽", "喉咽", "咽隐窝", "梨状隐窝"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "咽的位置与分部"
+  },
+  {
+    "id": "dig-023",
+    "front": "咽淋巴环（Waldeyer环）包括哪些结构？",
+    "back": "咽扁桃体（腺样体）、咽鼓管扁桃体、腭扁桃体和舌扁桃体，形成环状淋巴组织带，具有防御功能。",
+    "tags": ["咽淋巴环", "Waldeyer", "扁桃体"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "咽的位置与分部"
+  },
+  {
+    "id": "dig-024",
+    "front": "食管全长多少？三个生理狭窄各在何处？距中切牙多远？",
+    "back": "食管全长约25cm。三个狭窄：①第一狭窄（咽与食管移行处）—距中切牙约15cm，相当于第6颈椎体下缘；②第二狭窄（左主支气管和主动脉弓跨越处）—距中切牙约25cm，相当于第4~5胸椎间；③第三狭窄（食管穿膈处）—距中切牙约40cm，相当于第10胸椎。狭窄处是异物易滞留和食管癌好发部位。",
+    "tags": ["食管", "狭窄", "异物", "食管癌"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "食管的位置与分部"
+  },
+  {
+    "id": "dig-025",
+    "front": "食管分哪三部？各多长？",
+    "back": "颈部约5cm（自第6颈椎至胸骨颈静脉切迹），胸部约18~20cm（颈静脉切迹至膈食管裂孔），腹部约1~2cm（膈食管裂孔至贲门）。",
+    "tags": ["食管", "分部", "颈部", "胸部", "腹部"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "食管的位置与分部"
+  },
+  {
+    "id": "dig-026",
+    "front": "胃的位置和容量？",
+    "back": "胃位于左季肋区和腹上区，贲门约在第11胸椎左侧，幽门约在第1腰椎右侧。空虚时容量约50ml，充盈时可达1500ml。",
+    "tags": ["胃", "位置", "容量"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "胃的形态与分部"
+  },
+  {
+    "id": "dig-027",
+    "front": "胃分哪四部分？",
+    "back": "贲门部（cardiac part）—贲门周围；胃底（fundus of stomach）—贲门平面以上膨出部，常含气体（X线下胃泡）；胃体（body of stomach）—胃底与幽门部之间；幽门部（pyloric part）—角切迹至幽门，又分为幽门窦（pyloric antrum）和幽门管（pyloric canal）。",
+    "tags": ["胃", "贲门部", "胃底", "胃体", "幽门部"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "胃的形态与分部"
+  },
+  {
+    "id": "dig-028",
+    "front": "胃的弯曲和标志有哪些？",
+    "back": "胃小弯（lesser curvature）—右上缘，近幽门处有角切迹（angular incisure），为胃体与幽门部的分界；胃大弯（greater curvature）—左下缘，较长。贲门切迹（cardiac incisure）为食管与胃大弯之间的夹角。",
+    "tags": ["胃小弯", "胃大弯", "角切迹", "贲门切迹"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "胃的形态与分部"
+  },
+  {
+    "id": "dig-029",
+    "front": "幽门部的环形肌增厚形成什么结构？",
+    "back": "幽门括约肌（pyloric sphincter），其表面黏膜隆起形成幽门瓣（pyloric valve），控制胃内容物进入十二指肠的速度并防止反流。",
+    "tags": ["幽门括约肌", "幽门瓣"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "胃的形态与分部"
+  },
+  {
+    "id": "dig-030",
+    "front": "十二指肠全长多少？分哪四部分？",
+    "back": "全长约25cm（相当于十二横指宽，故名），整体呈\"C\"形包绕胰头。分四部：上部（superior part）约4~5cm、降部（descending part）约7~8cm、水平部（horizontal part）约5~6cm、升部（ascending part）约2~3cm。",
+    "tags": ["十二指肠", "分部", "C形"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "十二指肠的形态与分部"
+  },
+  {
+    "id": "dig-031",
+    "front": "十二指肠球部有何临床意义？",
+    "back": "十二指肠上部近侧端（球部/duodenal bulb）为消化性溃疡好发部位，也是X线钡餐检查的重要观察区域。",
+    "tags": ["十二指肠球部", "溃疡", "临床"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "十二指肠的形态与分部"
+  },
+  {
+    "id": "dig-032",
+    "front": "十二指肠大乳头位于何处？有何重要开口？",
+    "back": "位于降部后内侧壁的纵行皱襞（十二指肠纵襞）下端，距中切牙约75cm。为胆总管和胰管的共同开口（肝胰壶腹/Vater壶腹），周围有肝胰壶腹括约肌（Oddi括约肌）。",
+    "tags": ["十二指肠大乳头", "Vater壶腹", "Oddi括约肌", "胆总管", "胰管"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "十二指肠的形态与分部"
+  },
+  {
+    "id": "dig-033",
+    "front": "十二指肠悬韧带（Treitz韧带）有何意义？",
+    "back": "位于十二指肠升部末端与右膈脚之间，由骨骼肌（十二指肠悬肌）和纤维组织构成。临床上作为确定空肠起始端和区分上、下消化道出血的重要标志。",
+    "tags": ["Treitz韧带", "十二指肠悬韧带", "临床"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "十二指肠的形态与分部"
+  },
+  {
+    "id": "dig-034",
+    "front": "空肠和回肠如何区分？各占小肠的多少？",
+    "back": "空肠占近侧2/5，回肠占远侧3/5。空肠管径较大、管壁较厚、血供丰富（色较红）、环状皱襞高而密；回肠管径较小、管壁较薄、环状皱襞低而疏、有较多集合淋巴滤泡（Peyer斑）。空肠位于左上腹，回肠位于右下腹及盆腔。",
+    "tags": ["空肠", "回肠", "鉴别"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "空肠与回肠的比较"
+  },
+  {
+    "id": "dig-035",
+    "front": "什么是Meckel憩室？",
+    "back": "Meckel憩室是卵黄管近端未闭锁形成的回肠憩室，距回盲瓣约0.3~1.0m，长约2~5cm。发生率约2%，为最常见的消化道先天性畸形。炎症时易误诊为阑尾炎。",
+    "tags": ["Meckel憩室", "先天畸形", "回肠"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "空肠与回肠的比较"
+  },
+  {
+    "id": "dig-036",
+    "front": "集合淋巴滤泡（Peyer斑）有何特征和临床意义？",
+    "back": "位于回肠对系膜缘的黏膜固有层和黏膜下层内，由20~30个孤立淋巴滤泡聚集而成，长2~10cm。为肠伤寒的好发和穿孔部位。",
+    "tags": ["Peyer斑", "集合淋巴滤泡", "肠伤寒"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "空肠与回肠的比较"
+  },
+  {
+    "id": "dig-037",
+    "front": "大肠全长多少？分哪五部分？",
+    "back": "大肠全长约1.5m，分为盲肠（cecum）、阑尾（vermiform appendix）、结肠（colon）、直肠（rectum）和肛管（anal canal）五部分。",
+    "tags": ["大肠", "分部", "长度"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "盲肠与阑尾"
+  },
+  {
+    "id": "dig-038",
+    "front": "大肠区别于小肠的三个特征性结构是什么？",
+    "back": "①结肠带（colic band）—3条，由纵行平滑肌增厚形成；②结肠袋（haustra of colon）—结肠带之间肠壁膨出形成的囊状突起；③肠脂垂（epiploic appendices）—结肠带附近脂肪组织形成的突起。",
+    "tags": ["大肠", "结肠带", "结肠袋", "肠脂垂", "特征"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "盲肠与阑尾"
+  },
+  {
+    "id": "dig-039",
+    "front": "盲肠的位置和大小？回盲口有什么结构？",
+    "back": "盲肠位于右髂窝内，长6~7cm。回盲口处有回盲瓣（ileocecal valve），由回肠末端突入盲肠的上下两片黏膜皱襞构成，防止盲肠内容物反流入回肠。其下方约2cm处有阑尾的开口。",
+    "tags": ["盲肠", "回盲瓣", "位置"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "盲肠与阑尾"
+  },
+  {
+    "id": "dig-040",
+    "front": "阑尾的常见位置有哪些？",
+    "back": "①回肠后位（最常见）；②盲肠后位；③盲肠下位；④盆位；⑤回肠前位。虽位置多变，但阑尾根部位置恒定—三条结肠带的汇集处即为阑尾根部。",
+    "tags": ["阑尾", "位置", "结肠带"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "阑尾的位置与McBurney点"
+  },
+  {
+    "id": "dig-041",
+    "front": "McBurney点位于何处？临床意义？",
+    "back": "McBurney点位于脐与右髂前上棘连线的中、外1/3交界处。为急性阑尾炎时最显著的压痛点，是诊断阑尾炎的重要体征。",
+    "tags": ["McBurney点", "阑尾炎", "压痛点"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "阑尾的位置与McBurney点"
+  },
+  {
+    "id": "dig-042",
+    "front": "Lanz点位于何处？",
+    "back": "Lanz点位于两侧髂前上棘连线的右、中1/3交界处，为阑尾炎的又一压痛点。",
+    "tags": ["Lanz点", "阑尾炎"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "阑尾的位置与McBurney点"
+  },
+  {
+    "id": "dig-043",
+    "front": "结肠分哪四部分？各长多少？",
+    "back": "①升结肠（ascending colon）—长约15cm，自盲肠至肝曲（右结肠曲）；②横结肠（transverse colon）—长约50cm，自肝曲至脾曲（左结肠曲），有系膜，活动度大；③降结肠（descending colon）—长约25cm，自脾曲至左髂窝；④乙状结肠（sigmoid colon）—长约40cm，呈\"乙\"字形弯曲，有系膜，活动度大。",
+    "tags": ["结肠", "升结肠", "横结肠", "降结肠", "乙状结肠"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "结肠的形态与分部"
+  },
+  {
+    "id": "dig-044",
+    "front": "直肠全长多少？有哪些弯曲？",
+    "back": "全长10~14cm。有两个弯曲：①骶曲（sacral flexure）—凸向后，沿骶骨前面下行；②会阴曲（perineal flexure）—凸向前，绕尾骨尖下行。临床上做直肠镜检时应注意这两个弯曲以免损伤肠壁。",
+    "tags": ["直肠", "骶曲", "会阴曲", "弯曲"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "直肠与肛管"
+  },
+  {
+    "id": "dig-045",
+    "front": "直肠壶腹有何特征？Houston瓣是什么？",
+    "back": "直肠下部管腔膨大形成直肠壶腹（ampulla of rectum）。直肠内面有2~3条半月形的横行皱襞称Houston瓣（直肠横襞），上、下两个在左侧，中间一个在右侧，距肛门分别约11cm、7cm、5cm。中间的Houston瓣为直肠镜检定位标志。",
+    "tags": ["直肠壶腹", "Houston瓣", "直肠横襞"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "直肠与肛管"
+  },
+  {
+    "id": "dig-046",
+    "front": "肛管全长多少？内面有哪些重要结构？",
+    "back": "肛管全长约4cm。内面有6~10条纵行黏膜皱襞称肛柱（anal column）；肛柱下端之间的半月形皱襞称肛瓣（anal valve）；肛瓣与相邻肛柱下端围成的小凹陷称肛窦（anal sinus），深3~5mm，易发肛窦炎。",
+    "tags": ["肛管", "肛柱", "肛瓣", "肛窦"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "肛管的结构"
+  },
+  {
+    "id": "dig-047",
+    "front": "齿状线（dentate line）是什么？有何临床意义？",
+    "back": "齿状线又称肛皮线（anocutaneous line），是各肛柱下端和肛瓣连成的锯齿状环形线。为内、外胚层分界，线上为黏膜（内痔发生处，内脏神经支配，痛觉不敏感），线下为皮肤（外痔发生处，躯体神经支配，痛觉敏感）。上下方的静脉曲张分别形成内痔和外痔。",
+    "tags": ["齿状线", "肛皮线", "内痔", "外痔"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "肛管的结构"
+  },
+  {
+    "id": "dig-048",
+    "front": "肛梳（痔环）和白线（Hilton线）是什么？",
+    "back": "齿状线下方有约1cm宽的环形光滑区域称肛梳（anal pecten）或痔环（hemorrhoidal ring），其下缘称白线（white line/Hilton线），为肛门内括约肌与外括约肌皮下部的分界处。",
+    "tags": ["肛梳", "痔环", "白线", "Hilton线"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "肛管的结构"
+  },
+  {
+    "id": "dig-049",
+    "front": "肛管括约肌包括哪些？各自性质？",
+    "back": "肛门内括约肌（internal anal sphincter）—直肠壁环形平滑肌增厚形成，不随意肌，平时处于收缩状态，占肛管全长的3/4。肛门外括约肌（external anal sphincter）—骨骼肌，随意肌，分皮下部、浅部和深部三部分。",
+    "tags": ["肛门括约肌", "内括约肌", "外括约肌"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "肛管的结构"
+  },
+  {
+    "id": "dig-050",
+    "front": "肝的重量、位置和体表投影？",
+    "back": "成人肝重约1230~1450g（男）或1100~1300g（女），约占体重1/50~1/40。大部分位于右季肋区和腹上区，小部分位于左季肋区。肝上界与膈穹窿一致（右锁骨中线第5肋），肝下界在右锁骨中线与肋弓一致，腹上区可达剑突下3~5cm。",
+    "tags": ["肝", "重量", "位置", "体表投影"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "肝的形态与结构"
+  },
+  {
+    "id": "dig-051",
+    "front": "肝的膈面和脏面各有什么重要结构？",
+    "back": "膈面（diaphragmatic surface）：有镰状韧带（falciform ligament），将肝分为左叶和右叶。镰状韧带游离缘有肝圆韧带（ligamentum teres hepatis）。脏面（visceral surface）：有\"H\"形沟—左纵沟（前为肝圆韧带裂，后为静脉韧带裂）、右纵沟（前为胆囊窝，后为腔静脉沟）、横沟为肝门（porta hepatis）。",
+    "tags": ["肝", "膈面", "脏面", "镰状韧带", "肝门", "H形沟"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "肝的形态与结构"
+  },
+  {
+    "id": "dig-052",
+    "front": "肝门（第一肝门）有哪些结构进出？排列关系？",
+    "back": "肝门（porta hepatis）位于肝的脏面横沟处。进出结构：肝固有动脉（左、右支）、门静脉（左、右支）、肝管（左、右肝管）、神经和淋巴管。排列关系：肝管在前、肝固有动脉在中、门静脉在后。",
+    "tags": ["肝门", "肝固有动脉", "门静脉", "肝管"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "肝的形态与结构"
+  },
+  {
+    "id": "dig-053",
+    "front": "Glisson系统是什么？在肝内如何走行？",
+    "back": "Glisson系统指在肝内门静脉、肝固有动脉和肝管三级分支被同一结缔组织鞘（Glisson鞘）包裹，在肝内按肝段分布。肝静脉（肝左、中、右静脉）单独走行于肝段之间（不在Glisson鞘内），注入第二肝门处的下腔静脉。",
+    "tags": ["Glisson系统", "肝段", "肝静脉", "第二肝门"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "肝的形态与结构"
+  },
+  {
+    "id": "dig-054",
+    "front": "Couinaud分段法将肝分为几个段？基于什么划分？",
+    "back": "Couinaud分段法将肝分为8个段。基于肝静脉（肝左、中、右静脉走行于段间）和门静脉分支（进入各段中心）的分布划分。每个段有独立的Glisson系统分支供血和引流，可单独手术切除。",
+    "tags": ["Couinaud分段", "肝段", "8段"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "肝的形态与结构"
+  },
+  {
+    "id": "dig-055",
+    "front": "肝下面\"H\"形沟的四个分区叫什么？",
+    "back": "肝的脏面借\"H\"形沟分为四叶：左叶（left lobe）、右叶（right lobe）、方叶（quadrate lobe，肝门前方，肝圆韧带裂与胆囊窝之间）和尾状叶（caudate lobe，肝门后方，静脉韧带裂与腔静脉沟之间）。",
+    "tags": ["肝叶", "方叶", "尾状叶"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "肝的形态与结构"
+  },
+  {
+    "id": "dig-056",
+    "front": "胆囊分哪四部分？容量多大？",
+    "back": "胆囊（gallbladder）位于肝的脏面胆囊窝内，容量40~60ml，长8~12cm，宽3~5cm。分四部：底（fundus）—体表投影在右锁骨中线与右肋弓交点（Murphy点）；体（body）；颈（neck）—S形弯曲，有Hartmann囊（结石易嵌顿处）；管（cystic duct）—长3~4cm，管径0.2~0.3cm，内有螺旋襞（Heister瓣）。",
+    "tags": ["胆囊", "Murphy点", "Hartmann囊", "Heister瓣"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "胆囊与胆管"
+  },
+  {
+    "id": "dig-057",
+    "front": "胆总管走行和开口？全长约多少？",
+    "back": "胆总管（common bile duct）由肝总管（common hepatic duct，约3cm）与胆囊管汇合而成，全长4~8cm，管径0.6~0.8cm（超过1cm视为扩张）。在十二指肠降部后内侧与胰管汇合形成肝胰壶腹（Vater壶腹），开口于十二指肠大乳头。周围有肝胰壶腹括约肌（Oddi括约肌）。",
+    "tags": ["胆总管", "肝胰壶腹", "Vater壶腹", "Oddi括约肌"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "胆囊与胆管"
+  },
+  {
+    "id": "dig-058",
+    "front": "Calot三角由哪些结构围成？有何临床意义？",
+    "back": "Calot三角（胆囊三角）由胆囊管、肝总管和肝脏面围成。内有胆囊动脉通过，是胆囊切除术中寻找和结扎胆囊动脉的重要解剖标志。",
+    "tags": ["Calot三角", "胆囊动脉", "胆囊切除"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "胆囊与胆管"
+  },
+  {
+    "id": "dig-059",
+    "front": "胰的位置、大小和重量？",
+    "back": "胰位于胃后方，横卧于腹后壁，平第1~2腰椎高度。长17~20cm，宽3~5cm，厚1.5~2.5cm，重约82~117g。为腹膜后位器官。",
+    "tags": ["胰", "位置", "大小"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "胰的形态与结构"
+  },
+  {
+    "id": "dig-060",
+    "front": "胰分哪四部分？",
+    "back": "胰头（head of pancreas）—被十二指肠\"C\"形包绕，下方有钩突（uncinate process）；胰颈（neck of pancreas）—约2.0~2.5cm，胰头和胰体之间；胰体（body of pancreas）—横过第1腰椎前方；胰尾（tail of pancreas）—伸向脾门。",
+    "tags": ["胰", "胰头", "胰体", "胰尾", "钩突"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "胰的形态与结构"
+  },
+  {
+    "id": "dig-061",
+    "front": "胰管和副胰管分别开口于何处？",
+    "back": "胰管（pancreatic duct）自胰尾至胰头，贯穿胰全长，与胆总管汇合后开口于十二指肠大乳头。副胰管（accessory pancreatic duct）短而细，开口于十二指肠小乳头（大乳头上方约2cm处）。约10%的人副胰管为主要的胰液排出管道。",
+    "tags": ["胰管", "副胰管", "十二指肠大乳头", "十二指肠小乳头"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "胰的形态与结构"
+  },
+  {
+    "id": "dig-062",
+    "front": "什么是腹膜和腹膜腔？",
+    "back": "腹膜（peritoneum）是覆盖于腹、盆壁内面和腹、盆腔脏器表面的一层浆膜。腹膜腔（peritoneal cavity）是脏层腹膜与壁层腹膜之间的潜在性间隙，正常含少量浆液（润滑）。男性腹膜腔完全封闭，女性经输卵管腹腔口与外界相通。",
+    "tags": ["腹膜", "腹膜腔", "脏层腹膜", "壁层腹膜"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "腹膜与腹膜腔"
+  },
+  {
+    "id": "dig-063",
+    "front": "小网膜和大网膜各连接什么结构？",
+    "back": "小网膜（lesser omentum）：自肝门连至胃小弯和十二指肠上部，分为肝胃韧带（左侧）和肝十二指肠韧带（右侧，内含肝固有动脉、门静脉和胆总管）。大网膜（greater omentum）：自胃大弯和十二指肠上部下垂，覆盖于小肠前方，富含脂肪和巨噬细胞，有重要的防御和修复功能（\"腹腔卫士\"）。",
+    "tags": ["腹膜", "小网膜", "大网膜", "肝十二指肠韧带"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "腹膜与腹膜腔"
+  },
+  {
+    "id": "dig-064",
+    "front": "网膜孔（Winslow孔）的境界？",
+    "back": "网膜孔（omental foramen/Winslow孔）是网膜囊与大腹膜腔的唯一通道。前界为肝十二指肠韧带游离缘，后界为覆盖下腔静脉的壁腹膜，上界为肝尾状叶，下界为十二指肠上部。是疝的好发部位（网膜孔疝）。",
+    "tags": ["网膜孔", "Winslow孔", "网膜囊"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "腹膜与腹膜腔"
+  },
+  {
+    "id": "dig-065",
+    "front": "牙式如何用部位记录法和通用编号系统表示？",
+    "back": "部位记录法：以\"┼\"分四区（右上、左上、右下、左下）。恒牙用1~8表示（1=中切牙，8=第三磨牙），乳牙用I~V表示（I=乳中切牙，V=第二乳磨牙）。通用编号系统：恒牙#1为右上第三磨牙，顺时针编号至右下第三磨牙为#32；乳牙加d，从右上第二乳磨牙起编号1d~20d。",
+    "tags": ["牙式", "部位记录法", "通用编号系统"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "牙的形态与结构"
+  },
+  {
+    "id": "dig-066",
+    "front": "咽鼓管的位置和功能？",
+    "back": "咽鼓管（auditory tube/Eustachian tube）连接鼻咽与中耳鼓室，全长约3.5~4.0cm。外侧1/3为骨部（鼓室开口于鼓室前壁），内侧2/3为软骨部（鼻咽开口为咽鼓管咽口，位于下鼻甲后端后方约1cm）。功能：平衡鼓室内外气压，维持鼓膜正常振动。小儿咽鼓管短、宽、平，易诱发中耳炎。",
+    "tags": ["咽鼓管", "鼻咽", "中耳"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "咽的位置与分部"
+  },
+  {
+    "id": "dig-067",
+    "front": "舌的一般感觉和味觉各由什么神经支配？",
+    "back": "一般感觉：舌前2/3—下颌神经的舌神经（三叉神经），舌后1/3—舌咽神经。味觉：舌前2/3—面神经的鼓索支，舌后1/3—舌咽神经。",
+    "tags": ["舌", "神经支配", "三叉神经", "面神经", "舌咽神经"],
+    "type": "knowledge",
+    "system": "消化系统",
+    "section": "消化系统",
+    "subsection": "舌的形态与分部"
+  }
+]

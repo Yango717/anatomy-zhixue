@@ -124,9 +124,16 @@ export default function AutoPilotCheckin() {
           _actions: checkinMsg.actions || [],
         };
 
-        // Append to existing thread messages
-        const existingThread = threads.find((t) => t.id === threadId);
-        const existingMsgs = existingThread?.messages || [];
+        // Append to the latest stored messages to avoid overwriting chat typed in another surface.
+        let existingMsgs = [];
+        try {
+          const data = JSON.parse(localStorage.getItem('ai_threads') || '{}');
+          const existingThread = (data.threads || []).find((t) => t.id === threadId);
+          existingMsgs = existingThread?.messages || [];
+        } catch {
+          const existingThread = threads.find((t) => t.id === threadId);
+          existingMsgs = existingThread?.messages || [];
+        }
         saveThreadMessages(threadId, [...existingMsgs, msg]);
 
         // Advance step and mark delivered

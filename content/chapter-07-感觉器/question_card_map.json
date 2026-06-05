@@ -1,0 +1,846 @@
+[
+  {
+    "q_type": "fill-blank",
+    "q_num": 1,
+    "refs": [
+      "sen-006",
+      "sen-007"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 2,
+    "refs": [
+      "sen-004"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 3,
+    "refs": [
+      "sen-002"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 4,
+    "refs": [
+      "sen-002"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 5,
+    "refs": []
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 6,
+    "refs": [
+      "sen-006"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 7,
+    "refs": [
+      "sen-008"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 8,
+    "refs": [
+      "sen-006",
+      "sen-007"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 9,
+    "refs": [
+      "sen-006",
+      "sen-007"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 10,
+    "refs": []
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 11,
+    "refs": [
+      "sen-006",
+      "sen-007"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 12,
+    "refs": [
+      "sen-002"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 13,
+    "refs": []
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 14,
+    "refs": []
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 15,
+    "refs": [
+      "sen-008"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 16,
+    "refs": [
+      "sen-008"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 17,
+    "refs": [
+      "sen-005"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 18,
+    "refs": [
+      "sen-012"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 19,
+    "refs": [
+      "sen-011"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 20,
+    "refs": [
+      "sen-011"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 21,
+    "refs": [
+      "sen-013"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 22,
+    "refs": [
+      "sen-014"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 23,
+    "refs": [
+      "sen-013"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 24,
+    "refs": [
+      "sen-015"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 25,
+    "refs": []
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 26,
+    "refs": [
+      "sen-001"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 27,
+    "refs": [
+      "sen-010"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 28,
+    "refs": [
+      "sen-011"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 29,
+    "refs": [
+      "sen-011"
+    ]
+  },
+  {
+    "q_type": "fill-blank",
+    "q_num": 30,
+    "refs": [
+      "sen-011"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 1,
+    "refs": []
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 2,
+    "refs": []
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 3,
+    "refs": [
+      "sen-004"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 4,
+    "refs": []
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 5,
+    "refs": []
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 6,
+    "refs": [
+      "sen-006",
+      "sen-007"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 7,
+    "refs": [
+      "sen-006",
+      "sen-007"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 8,
+    "refs": [
+      "sen-002"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 9,
+    "refs": [
+      "sen-002"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 10,
+    "refs": [
+      "sen-012"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 11,
+    "refs": [
+      "sen-011"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 12,
+    "refs": [
+      "sen-011"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 13,
+    "refs": [
+      "sen-002"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 14,
+    "refs": [
+      "sen-011"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 15,
+    "refs": [
+      "sen-011"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 16,
+    "refs": [
+      "sen-006",
+      "sen-007"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 17,
+    "refs": [
+      "sen-003"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 18,
+    "refs": [
+      "sen-010"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 19,
+    "refs": [
+      "sen-011"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 20,
+    "refs": [
+      "sen-011"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 21,
+    "refs": [
+      "sen-011"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 22,
+    "refs": [
+      "sen-013"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 23,
+    "refs": [
+      "sen-001"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 24,
+    "refs": [
+      "sen-005"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 25,
+    "refs": [
+      "sen-008"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 26,
+    "refs": [
+      "sen-006",
+      "sen-007"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 27,
+    "refs": []
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 28,
+    "refs": [
+      "sen-015"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 29,
+    "refs": []
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 30,
+    "refs": [
+      "sen-004"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 31,
+    "refs": [
+      "sen-004"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 32,
+    "refs": [
+      "sen-010"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 33,
+    "refs": [
+      "sen-005"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 34,
+    "refs": [
+      "sen-002",
+      "sen-009"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 35,
+    "refs": [
+      "sen-004"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 36,
+    "refs": [
+      "sen-005"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 37,
+    "refs": [
+      "sen-013"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 38,
+    "refs": [
+      "sen-012"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 39,
+    "refs": [
+      "sen-013"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 40,
+    "refs": [
+      "sen-001"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 41,
+    "refs": [
+      "sen-011"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 42,
+    "refs": [
+      "sen-004",
+      "sen-007"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 43,
+    "refs": [
+      "sen-013"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 44,
+    "refs": []
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 45,
+    "refs": [
+      "sen-006",
+      "sen-007"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 46,
+    "refs": [
+      "sen-011"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 47,
+    "refs": [
+      "sen-011"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 48,
+    "refs": [
+      "sen-002"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 49,
+    "refs": [
+      "sen-011"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 50,
+    "refs": [
+      "sen-002"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 51,
+    "refs": [
+      "sen-013"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 52,
+    "refs": []
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 53,
+    "refs": [
+      "sen-006",
+      "sen-007"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 54,
+    "refs": [
+      "sen-012"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 55,
+    "refs": [
+      "sen-011"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 56,
+    "refs": [
+      "sen-011"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 57,
+    "refs": [
+      "sen-003",
+      "sen-007"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 58,
+    "refs": []
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 59,
+    "refs": [
+      "sen-004"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 60,
+    "refs": [
+      "sen-006",
+      "sen-007"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 61,
+    "refs": [
+      "sen-002"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 62,
+    "refs": [
+      "sen-005"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 63,
+    "refs": [
+      "sen-008"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 64,
+    "refs": [
+      "sen-002"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 65,
+    "refs": [
+      "sen-006",
+      "sen-007"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 66,
+    "refs": [
+      "sen-006",
+      "sen-007"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 67,
+    "refs": [
+      "sen-013"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 68,
+    "refs": []
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 69,
+    "refs": [
+      "sen-013"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 70,
+    "refs": []
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 71,
+    "refs": [
+      "sen-010"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 72,
+    "refs": [
+      "sen-011"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 73,
+    "refs": []
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 74,
+    "refs": []
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 75,
+    "refs": [
+      "sen-006",
+      "sen-007"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 76,
+    "refs": [
+      "sen-012"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 77,
+    "refs": [
+      "sen-011"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 78,
+    "refs": [
+      "sen-011"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 79,
+    "refs": [
+      "sen-004",
+      "sen-008",
+      "sen-015"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 80,
+    "refs": [
+      "sen-004",
+      "sen-008"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 81,
+    "refs": [
+      "sen-004",
+      "sen-008"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 82,
+    "refs": [
+      "sen-011"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 83,
+    "refs": [
+      "sen-001"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 84,
+    "refs": [
+      "sen-003"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 85,
+    "refs": []
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 86,
+    "refs": [
+      "sen-002"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 87,
+    "refs": []
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 88,
+    "refs": [
+      "sen-002"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 89,
+    "refs": []
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 90,
+    "refs": [
+      "sen-010"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 91,
+    "refs": [
+      "sen-011"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 92,
+    "refs": []
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 93,
+    "refs": [
+      "sen-006",
+      "sen-007"
+    ]
+  },
+  {
+    "q_type": "choice-A",
+    "q_num": 94,
+    "refs": []
+  }
+]

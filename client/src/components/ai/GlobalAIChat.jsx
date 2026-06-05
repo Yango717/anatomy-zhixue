@@ -21,6 +21,9 @@ export default function GlobalAIChat() {
     autoPilotPlan,
     autoPilotStepIndex,
     activeThreadId,
+    createThread,
+    switchThread,
+    saveThreadMessages,
     getActiveThread,
     threads,
     globalChatOpen,
@@ -35,6 +38,8 @@ export default function GlobalAIChat() {
     : (Array.isArray(globalMessages) ? globalMessages : []);
   const tutor = useAITutor(initialMsgs);
   const navigate = useNavigate();
+  const loadedThreadRef = useRef(activeThreadId);
+  const pendingThreadIdRef = useRef(activeThreadId);
 
   const voice = useVoice({
     lang: 'zh-CN',
@@ -65,12 +70,34 @@ export default function GlobalAIChat() {
     return () => clearInterval(interval);
   }, []);
 
-  // Sync messages back to global store
+  useEffect(() => {
+    pendingThreadIdRef.current = activeThreadId;
+  }, [activeThreadId]);
+
+  useEffect(() => {
+    if (!globalChatOpen) return;
+    loadedThreadRef.current = activeThreadId;
+    const nextThread = getActiveThread();
+    const nextMessages = nextThread?.messages?.length
+      ? nextThread.messages
+      : (Array.isArray(globalMessages) ? globalMessages : []);
+    tutor.setMessages(nextMessages);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [globalChatOpen, activeThreadId]);
+
+  // Sync messages back to the active thread and global fallback store
   useEffect(() => {
     if (tutor.messages && tutor.messages.length > 0) {
       saveGlobalMessages(tutor.messages);
+      let threadId = activeThreadId || pendingThreadIdRef.current;
+      if (!threadId) {
+        threadId = createThread();
+        pendingThreadIdRef.current = threadId;
+        switchThread(threadId);
+      }
+      saveThreadMessages(threadId, tutor.messages);
     }
-  }, [tutor.messages]);
+  }, [tutor.messages, activeThreadId]);
 
   // Auto-scroll
   useEffect(() => {
@@ -99,6 +126,11 @@ export default function GlobalAIChat() {
     const text = input.trim();
     if (!text || tutor.isLoading) return;
     setInput('');
+    if (!activeThreadId) {
+      const threadId = createThread();
+      pendingThreadIdRef.current = threadId;
+      switchThread(threadId);
+    }
     tutor.sendMessage(text);
   }
 
@@ -110,6 +142,11 @@ export default function GlobalAIChat() {
   }
 
   function handleVoiceResult(text) {
+    if (!activeThreadId) {
+      const threadId = createThread();
+      pendingThreadIdRef.current = threadId;
+      switchThread(threadId);
+    }
     tutor.sendMessage(text);
   }
 
@@ -124,6 +161,9 @@ export default function GlobalAIChat() {
   function handleClear() {
     tutor.clearMessages();
     saveGlobalMessages([]);
+    if (activeThreadId) {
+      saveThreadMessages(activeThreadId, []);
+    }
   }
 
   return (

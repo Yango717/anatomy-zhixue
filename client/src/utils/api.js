@@ -82,6 +82,13 @@ async function localDispatch(method, s, body, rawPath) {
   if (s[0] === 'ai' && s[1] === 'next-checkin') return b.aiGenerateNextCheckin(body.apiKey, body.completedActivity, body.currentPlan, body.userProfile);
   if (s[0] === 'ai' && s[1] === 'search') throw { code: 'SERVER_REQUIRED', message: 'AI搜索需要服务端支持' };
 
+  // motion routes (五步学习流)
+  if (s[0] === 'motion' && s[1] === 'knowledge-cards') { const u = new URL(rawPath, 'http://x'); return b.getMotionKnowledgeCards(u.searchParams.get('chapter') || 'chapter-01', u.searchParams.get('section'), u.searchParams.get('subsection')); }
+  if (s[0] === 'motion' && s[1] === 'atlas-cards') { const u = new URL(rawPath, 'http://x'); return b.getMotionAtlasCards(u.searchParams.get('chapter') || 'chapter-01', u.searchParams.get('section')); }
+  if (s[0] === 'motion' && s[1] === 'question-card-map') { const u = new URL(rawPath, 'http://x'); return b.getMotionQuestionCardMap(u.searchParams.get('chapter') || 'chapter-01'); }
+  if (s[0] === 'motion' && s[1] === 'practice-pool') { const u = new URL(rawPath, 'http://x'); return b.getMotionPracticePool(u.searchParams.get('chapter') || 'chapter-01'); }
+  if (s[0] === 'motion' && s[1] === 'error-card-refs') return b.getMotionErrorCardRefs(body.chapter || 'chapter-01', body.errors);
+
   throw { code: 'NOT_FOUND', message: `Unknown: ${method} /${s.join('/')}` };
 }
 
