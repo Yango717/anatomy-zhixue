@@ -2,6 +2,37 @@ import { useState, useEffect } from 'react';
 import { api } from '../utils/api';
 import { useAIContext } from '../components/ai/AIContextProvider';
 
+function StorageStatus() {
+  const [isServer, setIsServer] = useState(null);
+  const [dbSize, setDbSize] = useState('');
+  useEffect(() => {
+    fetch('/api/v1/health').then(r => r.json()).then(d => {
+      setIsServer(d?.success === true);
+    }).catch(() => setIsServer(false));
+    // Estimate localStorage usage
+    let total = 0;
+    for (let i = 0; i < localStorage.length; i++) {
+      total += (localStorage.getItem(localStorage.key(i)) || '').length;
+    }
+    setDbSize((total / 1024).toFixed(1) + ' KB');
+  }, []);
+  return (
+    <div>
+      <p className="settings-hint">
+        {isServer === null ? '检测中...' : isServer
+          ? '✅ 服务端模式 — 学习数据保存在 data/anatomy.db（磁盘持久化）'
+          : '⚠️ 本地模式 — 数据仅保存在浏览器中，建议启动后端服务'}
+      </p>
+      <p className="settings-hint" style={{ marginTop: 2, fontSize: 11 }}>
+        AI记忆/设置: 浏览器存储 {dbSize} | 学习进度/错题: SQLite数据库
+      </p>
+      <p className="settings-hint" style={{ marginTop: 2, fontSize: 11, color: 'var(--color-text-hint)' }}>
+        💡 定期备份 data/anatomy.db 和浏览器书签即可永久保留所有数据
+      </p>
+    </div>
+  );
+}
+
 export default function ProfilePage() {
   const [name, setName] = useState('');
   const [target, setTarget] = useState('');
@@ -173,8 +204,14 @@ export default function ProfilePage() {
       </div>
 
       <div className="settings-section">
+        <h3 className="settings-section__title">数据存储</h3>
+        <StorageStatus />
+      </div>
+
+      <div className="settings-section">
         <h3 className="settings-section__title">关于</h3>
-        <p className="settings-hint">解剖闪背 v0.2 — 医学生解剖学学习系统</p>
+        <p className="settings-hint">解剖闪背 v0.3 — 医学生解剖学学习系统</p>
+        <p className="settings-hint" style={{ marginTop: 4, fontSize: 11 }}>9大系统 · 338张知识闪卡 · 91张图谱 · 1789道题库</p>
       </div>
     </div>
   );
