@@ -4,7 +4,44 @@
     "image": "内分泌系统概观",
     "page": 0,
     "title": "内分泌系统概观",
-    "structures": [],
+    "structures": [
+      {
+        "label": "内分泌系统概观",
+        "desc": ""
+      },
+      {
+        "label": "垂体",
+        "desc": ""
+      },
+      {
+        "label": "松果体",
+        "desc": ""
+      },
+      {
+        "label": "甲状腺",
+        "desc": ""
+      },
+      {
+        "label": "甲状旁腺",
+        "desc": ""
+      },
+      {
+        "label": "肾上腺",
+        "desc": ""
+      },
+      {
+        "label": "胰岛",
+        "desc": ""
+      },
+      {
+        "label": "胸腺",
+        "desc": ""
+      },
+      {
+        "label": "性腺",
+        "desc": ""
+      }
+    ],
     "tags": [
       "胸腺",
       "垂体的位置与分部",
@@ -37,7 +74,52 @@
     "image": "垂体和松果体",
     "page": 0,
     "title": "垂体和松果体",
-    "structures": [],
+    "structures": [
+      {
+        "label": "垂体和松果体",
+        "desc": ""
+      },
+      {
+        "label": "腺垂体",
+        "desc": "前叶"
+      },
+      {
+        "label": "神经垂体",
+        "desc": "后叶"
+      },
+      {
+        "label": "垂体门脉系统",
+        "desc": ""
+      },
+      {
+        "label": "远侧部",
+        "desc": ""
+      },
+      {
+        "label": "中间部",
+        "desc": ""
+      },
+      {
+        "label": "结节部",
+        "desc": ""
+      },
+      {
+        "label": "神经部",
+        "desc": ""
+      },
+      {
+        "label": "松果体细胞",
+        "desc": ""
+      },
+      {
+        "label": "脑砂",
+        "desc": "钙化颗粒"
+      },
+      {
+        "label": "褪黑素",
+        "desc": ""
+      }
+    ],
     "tags": [
       "垂体",
       "胸腺",
@@ -69,7 +151,56 @@
     "image": "甲状腺和甲状旁腺",
     "page": 0,
     "title": "甲状腺和甲状旁腺",
-    "structures": [],
+    "structures": [
+      {
+        "label": "甲状腺和甲状旁腺",
+        "desc": ""
+      },
+      {
+        "label": "左叶",
+        "desc": ""
+      },
+      {
+        "label": "右叶",
+        "desc": ""
+      },
+      {
+        "label": "峡部",
+        "desc": ""
+      },
+      {
+        "label": "锥状叶",
+        "desc": ""
+      },
+      {
+        "label": "甲状腺滤泡",
+        "desc": ""
+      },
+      {
+        "label": "滤泡旁细胞",
+        "desc": "C细胞降钙素"
+      },
+      {
+        "label": "上甲状旁腺",
+        "desc": ""
+      },
+      {
+        "label": "下甲状旁腺",
+        "desc": ""
+      },
+      {
+        "label": "主细胞",
+        "desc": ""
+      },
+      {
+        "label": "嗜酸性细胞",
+        "desc": ""
+      },
+      {
+        "label": "甲状旁腺素",
+        "desc": "PTH"
+      }
+    ],
     "tags": [
       "甲状腺",
       "甲状腺和甲状旁腺",
@@ -102,7 +233,36 @@
     "image": "甲状腺",
     "page": 0,
     "title": "甲状腺",
-    "structures": [],
+    "structures": [
+      {
+        "label": "甲状腺",
+        "desc": ""
+      },
+      {
+        "label": "左叶",
+        "desc": ""
+      },
+      {
+        "label": "右叶",
+        "desc": ""
+      },
+      {
+        "label": "峡部",
+        "desc": ""
+      },
+      {
+        "label": "锥状叶",
+        "desc": ""
+      },
+      {
+        "label": "甲状腺滤泡",
+        "desc": ""
+      },
+      {
+        "label": "滤泡旁细胞",
+        "desc": "C细胞降钙素"
+      }
+    ],
     "tags": [
       "甲状腺",
       "胸腺",
@@ -134,7 +294,56 @@
     "image": "肾上腺",
     "page": 0,
     "title": "肾上腺",
-    "structures": [],
+    "structures": [
+      {
+        "label": "肾上腺",
+        "desc": ""
+      },
+      {
+        "label": "肾皮质",
+        "desc": ""
+      },
+      {
+        "label": "肾髓质",
+        "desc": ""
+      },
+      {
+        "label": "肾锥体",
+        "desc": ""
+      },
+      {
+        "label": "肾乳头",
+        "desc": ""
+      },
+      {
+        "label": "肾小盏",
+        "desc": ""
+      },
+      {
+        "label": "肾大盏",
+        "desc": ""
+      },
+      {
+        "label": "肾盂",
+        "desc": ""
+      },
+      {
+        "label": "肾动脉",
+        "desc": ""
+      },
+      {
+        "label": "肾静脉",
+        "desc": ""
+      },
+      {
+        "label": "皮质",
+        "desc": "三层"
+      },
+      {
+        "label": "髓质",
+        "desc": ""
+      }
+    ],
     "tags": [
       "肾上腺素",
       "胸腺",
@@ -166,7 +375,12 @@
     "image": "胸腺",
     "page": 0,
     "title": "胸腺",
-    "structures": [],
+    "structures": [
+      {
+        "label": "胸腺",
+        "desc": ""
+      }
+    ],
     "tags": [
       "胸腺",
       "垂体的位置与分部",
@@ -197,7 +411,48 @@
     "image": "胰岛",
     "page": 0,
     "title": "胰岛",
-    "structures": [],
+    "structures": [
+      {
+        "label": "胰岛",
+        "desc": ""
+      },
+      {
+        "label": "胰头",
+        "desc": "被十二指肠包裹"
+      },
+      {
+        "label": "胰体",
+        "desc": ""
+      },
+      {
+        "label": "胰尾",
+        "desc": "达脾门"
+      },
+      {
+        "label": "胰管",
+        "desc": ""
+      },
+      {
+        "label": "副胰管",
+        "desc": ""
+      },
+      {
+        "label": "A细胞",
+        "desc": "胰高血糖素"
+      },
+      {
+        "label": "B细胞",
+        "desc": "胰岛素"
+      },
+      {
+        "label": "D细胞",
+        "desc": "生长抑素"
+      },
+      {
+        "label": "PP细胞",
+        "desc": "胰多肽"
+      }
+    ],
     "tags": [
       "胸腺",
       "垂体的位置与分部",

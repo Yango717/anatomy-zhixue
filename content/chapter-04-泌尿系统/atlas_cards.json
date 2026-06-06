@@ -4,7 +4,36 @@
     "image": "男性泌尿生殖系统全貌",
     "page": 0,
     "title": "男性泌尿生殖系统全貌",
-    "structures": [],
+    "structures": [
+      {
+        "label": "男性泌尿生殖系统全貌",
+        "desc": ""
+      },
+      {
+        "label": "肾",
+        "desc": "滤过"
+      },
+      {
+        "label": "输尿管",
+        "desc": "输送"
+      },
+      {
+        "label": "膀胱",
+        "desc": "贮尿"
+      },
+      {
+        "label": "尿道",
+        "desc": "排尿"
+      },
+      {
+        "label": "男性",
+        "desc": "产生精子"
+      },
+      {
+        "label": "女性",
+        "desc": "产生卵子"
+      }
+    ],
     "tags": [
       "肾的被膜",
       "肾的毗邻",
@@ -35,7 +64,56 @@
     "image": "肾与输尿管",
     "page": 0,
     "title": "肾与输尿管",
-    "structures": [],
+    "structures": [
+      {
+        "label": "肾与输尿管",
+        "desc": ""
+      },
+      {
+        "label": "肾皮质",
+        "desc": ""
+      },
+      {
+        "label": "肾髓质",
+        "desc": ""
+      },
+      {
+        "label": "肾锥体",
+        "desc": ""
+      },
+      {
+        "label": "肾乳头",
+        "desc": ""
+      },
+      {
+        "label": "肾小盏",
+        "desc": ""
+      },
+      {
+        "label": "肾大盏",
+        "desc": ""
+      },
+      {
+        "label": "肾盂",
+        "desc": ""
+      },
+      {
+        "label": "肾动脉",
+        "desc": ""
+      },
+      {
+        "label": "肾静脉",
+        "desc": ""
+      },
+      {
+        "label": "腹段",
+        "desc": ""
+      },
+      {
+        "label": "盆段",
+        "desc": ""
+      }
+    ],
     "tags": [
       "肾的被膜",
       "肾的毗邻",
@@ -67,7 +145,44 @@
     "image": "肾",
     "page": 0,
     "title": "肾",
-    "structures": [],
+    "structures": [
+      {
+        "label": "肾皮质",
+        "desc": ""
+      },
+      {
+        "label": "肾髓质",
+        "desc": ""
+      },
+      {
+        "label": "肾锥体",
+        "desc": ""
+      },
+      {
+        "label": "肾乳头",
+        "desc": ""
+      },
+      {
+        "label": "肾小盏",
+        "desc": ""
+      },
+      {
+        "label": "肾大盏",
+        "desc": ""
+      },
+      {
+        "label": "肾盂",
+        "desc": ""
+      },
+      {
+        "label": "肾动脉",
+        "desc": ""
+      },
+      {
+        "label": "肾静脉",
+        "desc": ""
+      }
+    ],
     "tags": [
       "肾的被膜",
       "肾的毗邻",
@@ -97,7 +212,48 @@
     "image": "肾的位置",
     "page": 0,
     "title": "肾的位置",
-    "structures": [],
+    "structures": [
+      {
+        "label": "肾的位置",
+        "desc": ""
+      },
+      {
+        "label": "肾皮质",
+        "desc": ""
+      },
+      {
+        "label": "肾髓质",
+        "desc": ""
+      },
+      {
+        "label": "肾锥体",
+        "desc": ""
+      },
+      {
+        "label": "肾乳头",
+        "desc": ""
+      },
+      {
+        "label": "肾小盏",
+        "desc": ""
+      },
+      {
+        "label": "肾大盏",
+        "desc": ""
+      },
+      {
+        "label": "肾盂",
+        "desc": ""
+      },
+      {
+        "label": "肾动脉",
+        "desc": ""
+      },
+      {
+        "label": "肾静脉",
+        "desc": ""
+      }
+    ],
     "tags": [
       "肾的被膜",
       "肾的毗邻",
@@ -128,7 +284,48 @@
     "image": "肾的体表投影",
     "page": 0,
     "title": "肾的体表投影",
-    "structures": [],
+    "structures": [
+      {
+        "label": "肾的体表投影",
+        "desc": ""
+      },
+      {
+        "label": "肾皮质",
+        "desc": ""
+      },
+      {
+        "label": "肾髓质",
+        "desc": ""
+      },
+      {
+        "label": "肾锥体",
+        "desc": ""
+      },
+      {
+        "label": "肾乳头",
+        "desc": ""
+      },
+      {
+        "label": "肾小盏",
+        "desc": ""
+      },
+      {
+        "label": "肾大盏",
+        "desc": ""
+      },
+      {
+        "label": "肾盂",
+        "desc": ""
+      },
+      {
+        "label": "肾动脉",
+        "desc": ""
+      },
+      {
+        "label": "肾静脉",
+        "desc": ""
+      }
+    ],
     "tags": [
       "肾的被膜",
       "肾的毗邻",
@@ -159,7 +356,48 @@
     "image": "肾的毗邻",
     "page": 0,
     "title": "肾的毗邻",
-    "structures": [],
+    "structures": [
+      {
+        "label": "肾的毗邻",
+        "desc": ""
+      },
+      {
+        "label": "肾皮质",
+        "desc": ""
+      },
+      {
+        "label": "肾髓质",
+        "desc": ""
+      },
+      {
+        "label": "肾锥体",
+        "desc": ""
+      },
+      {
+        "label": "肾乳头",
+        "desc": ""
+      },
+      {
+        "label": "肾小盏",
+        "desc": ""
+      },
+      {
+        "label": "肾大盏",
+        "desc": ""
+      },
+      {
+        "label": "肾盂",
+        "desc": ""
+      },
+      {
+        "label": "肾动脉",
+        "desc": ""
+      },
+      {
+        "label": "肾静脉",
+        "desc": ""
+      }
+    ],
     "tags": [
       "肾的被膜",
       "肾的毗邻",
@@ -190,7 +428,48 @@
     "image": "肾的结构",
     "page": 0,
     "title": "肾的结构",
-    "structures": [],
+    "structures": [
+      {
+        "label": "肾的结构",
+        "desc": ""
+      },
+      {
+        "label": "肾皮质",
+        "desc": ""
+      },
+      {
+        "label": "肾髓质",
+        "desc": ""
+      },
+      {
+        "label": "肾锥体",
+        "desc": ""
+      },
+      {
+        "label": "肾乳头",
+        "desc": ""
+      },
+      {
+        "label": "肾小盏",
+        "desc": ""
+      },
+      {
+        "label": "肾大盏",
+        "desc": ""
+      },
+      {
+        "label": "肾盂",
+        "desc": ""
+      },
+      {
+        "label": "肾动脉",
+        "desc": ""
+      },
+      {
+        "label": "肾静脉",
+        "desc": ""
+      }
+    ],
     "tags": [
       "肾的被膜",
       "肾的毗邻",
@@ -220,7 +499,48 @@
     "image": "肾的被膜",
     "page": 0,
     "title": "肾的被膜",
-    "structures": [],
+    "structures": [
+      {
+        "label": "肾的被膜",
+        "desc": ""
+      },
+      {
+        "label": "肾皮质",
+        "desc": ""
+      },
+      {
+        "label": "肾髓质",
+        "desc": ""
+      },
+      {
+        "label": "肾锥体",
+        "desc": ""
+      },
+      {
+        "label": "肾乳头",
+        "desc": ""
+      },
+      {
+        "label": "肾小盏",
+        "desc": ""
+      },
+      {
+        "label": "肾大盏",
+        "desc": ""
+      },
+      {
+        "label": "肾盂",
+        "desc": ""
+      },
+      {
+        "label": "肾动脉",
+        "desc": ""
+      },
+      {
+        "label": "肾静脉",
+        "desc": ""
+      }
+    ],
     "tags": [
       "肾的被膜",
       "肾的毗邻",
@@ -251,7 +571,48 @@
     "image": "肾的被膜",
     "page": 0,
     "title": "肾的被膜",
-    "structures": [],
+    "structures": [
+      {
+        "label": "肾的被膜",
+        "desc": ""
+      },
+      {
+        "label": "肾皮质",
+        "desc": ""
+      },
+      {
+        "label": "肾髓质",
+        "desc": ""
+      },
+      {
+        "label": "肾锥体",
+        "desc": ""
+      },
+      {
+        "label": "肾乳头",
+        "desc": ""
+      },
+      {
+        "label": "肾小盏",
+        "desc": ""
+      },
+      {
+        "label": "肾大盏",
+        "desc": ""
+      },
+      {
+        "label": "肾盂",
+        "desc": ""
+      },
+      {
+        "label": "肾动脉",
+        "desc": ""
+      },
+      {
+        "label": "肾静脉",
+        "desc": ""
+      }
+    ],
     "tags": [
       "肾的被膜",
       "肾的毗邻",
@@ -282,7 +643,48 @@
     "image": "肾的血管与肾段",
     "page": 0,
     "title": "肾的血管与肾段",
-    "structures": [],
+    "structures": [
+      {
+        "label": "肾的血管与肾段",
+        "desc": ""
+      },
+      {
+        "label": "肾皮质",
+        "desc": ""
+      },
+      {
+        "label": "肾髓质",
+        "desc": ""
+      },
+      {
+        "label": "肾锥体",
+        "desc": ""
+      },
+      {
+        "label": "肾乳头",
+        "desc": ""
+      },
+      {
+        "label": "肾小盏",
+        "desc": ""
+      },
+      {
+        "label": "肾大盏",
+        "desc": ""
+      },
+      {
+        "label": "肾盂",
+        "desc": ""
+      },
+      {
+        "label": "肾动脉",
+        "desc": ""
+      },
+      {
+        "label": "肾静脉",
+        "desc": ""
+      }
+    ],
     "tags": [
       "肾的血管与肾段",
       "肾的被膜",
@@ -314,7 +716,36 @@
     "image": "女性输尿管走行",
     "page": 0,
     "title": "女性输尿管走行",
-    "structures": [],
+    "structures": [
+      {
+        "label": "女性输尿管走行",
+        "desc": ""
+      },
+      {
+        "label": "腹段",
+        "desc": ""
+      },
+      {
+        "label": "盆段",
+        "desc": ""
+      },
+      {
+        "label": "壁内段",
+        "desc": ""
+      },
+      {
+        "label": "第一狭窄",
+        "desc": ""
+      },
+      {
+        "label": "第二狭窄",
+        "desc": ""
+      },
+      {
+        "label": "第三狭窄",
+        "desc": ""
+      }
+    ],
     "tags": [
       "肾的被膜",
       "肾的毗邻",
@@ -345,7 +776,36 @@
     "image": "男性输尿管走行",
     "page": 0,
     "title": "男性输尿管走行",
-    "structures": [],
+    "structures": [
+      {
+        "label": "男性输尿管走行",
+        "desc": ""
+      },
+      {
+        "label": "腹段",
+        "desc": ""
+      },
+      {
+        "label": "盆段",
+        "desc": ""
+      },
+      {
+        "label": "壁内段",
+        "desc": ""
+      },
+      {
+        "label": "第一狭窄",
+        "desc": ""
+      },
+      {
+        "label": "第二狭窄",
+        "desc": ""
+      },
+      {
+        "label": "第三狭窄",
+        "desc": ""
+      }
+    ],
     "tags": [
       "肾的被膜",
       "肾的毗邻",
@@ -376,7 +836,56 @@
     "image": "肾与输尿管造影模式图",
     "page": 0,
     "title": "肾与输尿管造影模式图",
-    "structures": [],
+    "structures": [
+      {
+        "label": "肾皮质",
+        "desc": ""
+      },
+      {
+        "label": "肾髓质",
+        "desc": ""
+      },
+      {
+        "label": "肾锥体",
+        "desc": ""
+      },
+      {
+        "label": "肾乳头",
+        "desc": ""
+      },
+      {
+        "label": "肾小盏",
+        "desc": ""
+      },
+      {
+        "label": "肾大盏",
+        "desc": ""
+      },
+      {
+        "label": "肾盂",
+        "desc": ""
+      },
+      {
+        "label": "肾动脉",
+        "desc": ""
+      },
+      {
+        "label": "肾静脉",
+        "desc": ""
+      },
+      {
+        "label": "腹段",
+        "desc": ""
+      },
+      {
+        "label": "盆段",
+        "desc": ""
+      },
+      {
+        "label": "壁内段",
+        "desc": ""
+      }
+    ],
     "tags": [
       "肾的被膜",
       "肾的毗邻",
@@ -409,7 +918,40 @@
     "image": "膀胱侧面观",
     "page": 0,
     "title": "膀胱侧面观",
-    "structures": [],
+    "structures": [
+      {
+        "label": "膀胱侧面观",
+        "desc": ""
+      },
+      {
+        "label": "膀胱尖",
+        "desc": ""
+      },
+      {
+        "label": "膀胱底",
+        "desc": ""
+      },
+      {
+        "label": "膀胱体",
+        "desc": ""
+      },
+      {
+        "label": "膀胱颈",
+        "desc": ""
+      },
+      {
+        "label": "膀胱三角",
+        "desc": "输尿管口-尿道内口"
+      },
+      {
+        "label": "输尿管口",
+        "desc": ""
+      },
+      {
+        "label": "尿道内口",
+        "desc": ""
+      }
+    ],
     "tags": [
       "膀胱侧面观",
       "肾的被膜",
@@ -440,7 +982,40 @@
     "image": "膀胱前面观",
     "page": 0,
     "title": "膀胱前面观",
-    "structures": [],
+    "structures": [
+      {
+        "label": "膀胱前面观",
+        "desc": ""
+      },
+      {
+        "label": "膀胱尖",
+        "desc": ""
+      },
+      {
+        "label": "膀胱底",
+        "desc": ""
+      },
+      {
+        "label": "膀胱体",
+        "desc": ""
+      },
+      {
+        "label": "膀胱颈",
+        "desc": ""
+      },
+      {
+        "label": "膀胱三角",
+        "desc": "输尿管口-尿道内口"
+      },
+      {
+        "label": "输尿管口",
+        "desc": ""
+      },
+      {
+        "label": "尿道内口",
+        "desc": ""
+      }
+    ],
     "tags": [
       "肾的被膜",
       "肾的毗邻",
@@ -471,7 +1046,28 @@
     "image": "女性尿道",
     "page": 0,
     "title": "女性尿道",
-    "structures": [],
+    "structures": [
+      {
+        "label": "女性尿道",
+        "desc": ""
+      },
+      {
+        "label": "男性尿道",
+        "desc": "三个狭窄三个扩大"
+      },
+      {
+        "label": "前列腺部",
+        "desc": ""
+      },
+      {
+        "label": "膜部",
+        "desc": ""
+      },
+      {
+        "label": "海绵体部",
+        "desc": ""
+      }
+    ],
     "tags": [
       "肾的被膜",
       "肾的毗邻",
@@ -502,7 +1098,40 @@
     "image": "膀胱",
     "page": 0,
     "title": "膀胱",
-    "structures": [],
+    "structures": [
+      {
+        "label": "膀胱",
+        "desc": ""
+      },
+      {
+        "label": "膀胱尖",
+        "desc": ""
+      },
+      {
+        "label": "膀胱底",
+        "desc": ""
+      },
+      {
+        "label": "膀胱体",
+        "desc": ""
+      },
+      {
+        "label": "膀胱颈",
+        "desc": ""
+      },
+      {
+        "label": "膀胱三角",
+        "desc": "输尿管口-尿道内口"
+      },
+      {
+        "label": "输尿管口",
+        "desc": ""
+      },
+      {
+        "label": "尿道内口",
+        "desc": ""
+      }
+    ],
     "tags": [
       "膀胱颈",
       "肾的被膜",

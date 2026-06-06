@@ -4,7 +4,24 @@
     "image": "感觉器概览图",
     "page": 0,
     "title": "感觉器概览图",
-    "structures": [],
+    "structures": [
+      {
+        "label": "视器",
+        "desc": "眼"
+      },
+      {
+        "label": "前庭蜗器",
+        "desc": "耳"
+      },
+      {
+        "label": "嗅器",
+        "desc": ""
+      },
+      {
+        "label": "味器",
+        "desc": ""
+      }
+    ],
     "tags": [
       "概览图",
       "内耳的结构",
@@ -31,7 +48,28 @@
     "image": "感觉器数字资源",
     "page": 0,
     "title": "感觉器数字资源",
-    "structures": [],
+    "structures": [
+      {
+        "label": "感觉器数字资源",
+        "desc": ""
+      },
+      {
+        "label": "视器",
+        "desc": "眼"
+      },
+      {
+        "label": "前庭蜗器",
+        "desc": "耳"
+      },
+      {
+        "label": "嗅器",
+        "desc": ""
+      },
+      {
+        "label": "味器",
+        "desc": ""
+      }
+    ],
     "tags": [
       "内耳的结构",
       "感觉器概述",
@@ -58,7 +96,12 @@
     "image": "特殊感受器",
     "page": 0,
     "title": "特殊感受器",
-    "structures": [],
+    "structures": [
+      {
+        "label": "特殊感受器",
+        "desc": ""
+      }
+    ],
     "tags": [
       "内耳的结构",
       "感觉器概述",
@@ -85,7 +128,12 @@
     "image": "眶壁与视器",
     "page": 0,
     "title": "眶壁与视器",
-    "structures": [],
+    "structures": [
+      {
+        "label": "眶壁与视器",
+        "desc": ""
+      }
+    ],
     "tags": [
       "眶壁与视器",
       "内耳的结构",
@@ -113,7 +161,56 @@
     "image": "右眼球",
     "page": 0,
     "title": "右眼球",
-    "structures": [],
+    "structures": [
+      {
+        "label": "右眼球",
+        "desc": ""
+      },
+      {
+        "label": "角膜",
+        "desc": "透明"
+      },
+      {
+        "label": "巩膜",
+        "desc": "白色"
+      },
+      {
+        "label": "虹膜",
+        "desc": "有色"
+      },
+      {
+        "label": "瞳孔",
+        "desc": ""
+      },
+      {
+        "label": "晶状体",
+        "desc": ""
+      },
+      {
+        "label": "玻璃体",
+        "desc": ""
+      },
+      {
+        "label": "视网膜",
+        "desc": "感光"
+      },
+      {
+        "label": "上睑",
+        "desc": ""
+      },
+      {
+        "label": "下睑",
+        "desc": ""
+      },
+      {
+        "label": "结膜",
+        "desc": ""
+      },
+      {
+        "label": "泪腺",
+        "desc": ""
+      }
+    ],
     "tags": [
       "眼球",
       "内耳的结构",
@@ -140,7 +237,36 @@
     "image": "视器概览图",
     "page": 0,
     "title": "视器概览图",
-    "structures": [],
+    "structures": [
+      {
+        "label": "眼球",
+        "desc": ""
+      },
+      {
+        "label": "眼睑",
+        "desc": ""
+      },
+      {
+        "label": "结膜",
+        "desc": ""
+      },
+      {
+        "label": "泪器",
+        "desc": ""
+      },
+      {
+        "label": "眼外肌",
+        "desc": "上/下/内/外直肌和上/下斜肌"
+      },
+      {
+        "label": "视神经",
+        "desc": ""
+      },
+      {
+        "label": "眶脂体",
+        "desc": ""
+      }
+    ],
     "tags": [
       "概览图",
       "内耳的结构",
@@ -168,7 +294,40 @@
     "image": "眶壁、眼轴和视轴",
     "page": 0,
     "title": "眶壁、眼轴和视轴",
-    "structures": [],
+    "structures": [
+      {
+        "label": "眶壁",
+        "desc": ""
+      },
+      {
+        "label": "眼轴和视轴",
+        "desc": ""
+      },
+      {
+        "label": "上睑",
+        "desc": ""
+      },
+      {
+        "label": "下睑",
+        "desc": ""
+      },
+      {
+        "label": "结膜",
+        "desc": ""
+      },
+      {
+        "label": "泪腺",
+        "desc": ""
+      },
+      {
+        "label": "泪小管",
+        "desc": ""
+      },
+      {
+        "label": "鼻泪管",
+        "desc": ""
+      }
+    ],
     "tags": [
       "内耳的结构",
       "感觉器概述",
@@ -196,7 +355,56 @@
     "image": "（一）  眼球壁",
     "page": 0,
     "title": "（一）  眼球壁",
-    "structures": [],
+    "structures": [
+      {
+        "label": "眼球壁",
+        "desc": ""
+      },
+      {
+        "label": "角膜",
+        "desc": "透明"
+      },
+      {
+        "label": "巩膜",
+        "desc": "白色"
+      },
+      {
+        "label": "虹膜",
+        "desc": "有色"
+      },
+      {
+        "label": "瞳孔",
+        "desc": ""
+      },
+      {
+        "label": "晶状体",
+        "desc": ""
+      },
+      {
+        "label": "玻璃体",
+        "desc": ""
+      },
+      {
+        "label": "视网膜",
+        "desc": "感光"
+      },
+      {
+        "label": "上睑",
+        "desc": ""
+      },
+      {
+        "label": "下睑",
+        "desc": ""
+      },
+      {
+        "label": "结膜",
+        "desc": ""
+      },
+      {
+        "label": "泪腺",
+        "desc": ""
+      }
+    ],
     "tags": [
       "眼球",
       "内耳的结构",
@@ -223,7 +431,56 @@
     "image": "眼球前半部后面观及虹膜角膜角",
     "page": 0,
     "title": "眼球前半部后面观及虹膜角膜角",
-    "structures": [],
+    "structures": [
+      {
+        "label": "眼球前半部后面观及虹膜角膜角",
+        "desc": ""
+      },
+      {
+        "label": "角膜",
+        "desc": "透明"
+      },
+      {
+        "label": "巩膜",
+        "desc": "白色"
+      },
+      {
+        "label": "虹膜",
+        "desc": "有色"
+      },
+      {
+        "label": "瞳孔",
+        "desc": ""
+      },
+      {
+        "label": "晶状体",
+        "desc": ""
+      },
+      {
+        "label": "玻璃体",
+        "desc": ""
+      },
+      {
+        "label": "视网膜",
+        "desc": "感光"
+      },
+      {
+        "label": "角膜上皮",
+        "desc": ""
+      },
+      {
+        "label": "前弹力层",
+        "desc": ""
+      },
+      {
+        "label": "角膜基质",
+        "desc": ""
+      },
+      {
+        "label": "后弹力层",
+        "desc": ""
+      }
+    ],
     "tags": [
       "眼球",
       "内耳的结构",
@@ -252,7 +509,36 @@
     "image": "眼底",
     "page": 0,
     "title": "眼底",
-    "structures": [],
+    "structures": [
+      {
+        "label": "眼底",
+        "desc": ""
+      },
+      {
+        "label": "上睑",
+        "desc": ""
+      },
+      {
+        "label": "下睑",
+        "desc": ""
+      },
+      {
+        "label": "结膜",
+        "desc": ""
+      },
+      {
+        "label": "泪腺",
+        "desc": ""
+      },
+      {
+        "label": "泪小管",
+        "desc": ""
+      },
+      {
+        "label": "鼻泪管",
+        "desc": ""
+      }
+    ],
     "tags": [
       "内耳的结构",
       "感觉器概述",
@@ -278,7 +564,48 @@
     "image": "视网膜神经细胞示意图",
     "page": 0,
     "title": "视网膜神经细胞示意图",
-    "structures": [],
+    "structures": [
+      {
+        "label": "色素上皮",
+        "desc": ""
+      },
+      {
+        "label": "视锥细胞",
+        "desc": "色觉"
+      },
+      {
+        "label": "视杆细胞",
+        "desc": "暗光"
+      },
+      {
+        "label": "黄斑",
+        "desc": ""
+      },
+      {
+        "label": "中央凹",
+        "desc": ""
+      },
+      {
+        "label": "视神经盘",
+        "desc": "盲点"
+      },
+      {
+        "label": "中枢",
+        "desc": "脑和脊髓"
+      },
+      {
+        "label": "周围",
+        "desc": "脑神经和脊神经"
+      },
+      {
+        "label": "躯体",
+        "desc": "随意运动"
+      },
+      {
+        "label": "内脏",
+        "desc": "自主神经"
+      }
+    ],
     "tags": [
       "内耳的结构",
       "视网膜神经细胞示意图",
@@ -305,7 +632,36 @@
     "image": "右眼眶",
     "page": 0,
     "title": "右眼眶",
-    "structures": [],
+    "structures": [
+      {
+        "label": "右眼眶",
+        "desc": ""
+      },
+      {
+        "label": "上睑",
+        "desc": ""
+      },
+      {
+        "label": "下睑",
+        "desc": ""
+      },
+      {
+        "label": "结膜",
+        "desc": ""
+      },
+      {
+        "label": "泪腺",
+        "desc": ""
+      },
+      {
+        "label": "泪小管",
+        "desc": ""
+      },
+      {
+        "label": "鼻泪管",
+        "desc": ""
+      }
+    ],
     "tags": [
       "内耳的结构",
       "感觉器概述",
@@ -332,7 +688,36 @@
     "image": "上眼睑",
     "page": 0,
     "title": "上眼睑",
-    "structures": [],
+    "structures": [
+      {
+        "label": "上眼睑",
+        "desc": ""
+      },
+      {
+        "label": "上睑",
+        "desc": ""
+      },
+      {
+        "label": "下睑",
+        "desc": ""
+      },
+      {
+        "label": "结膜",
+        "desc": ""
+      },
+      {
+        "label": "泪腺",
+        "desc": ""
+      },
+      {
+        "label": "泪小管",
+        "desc": ""
+      },
+      {
+        "label": "鼻泪管",
+        "desc": ""
+      }
+    ],
     "tags": [
       "内耳的结构",
       "感觉器概述",
@@ -359,7 +744,36 @@
     "image": "眼睑的血管",
     "page": 0,
     "title": "眼睑的血管",
-    "structures": [],
+    "structures": [
+      {
+        "label": "眼睑的血管",
+        "desc": ""
+      },
+      {
+        "label": "上睑",
+        "desc": ""
+      },
+      {
+        "label": "下睑",
+        "desc": ""
+      },
+      {
+        "label": "结膜",
+        "desc": ""
+      },
+      {
+        "label": "泪腺",
+        "desc": ""
+      },
+      {
+        "label": "泪小管",
+        "desc": ""
+      },
+      {
+        "label": "鼻泪管",
+        "desc": ""
+      }
+    ],
     "tags": [
       "内耳的结构",
       "眼睑的血管",
@@ -386,7 +800,12 @@
     "image": "睑板",
     "page": 0,
     "title": "睑板",
-    "structures": [],
+    "structures": [
+      {
+        "label": "睑板",
+        "desc": ""
+      }
+    ],
     "tags": [
       "内耳的结构",
       "感觉器概述",
@@ -412,7 +831,12 @@
     "image": "泪器",
     "page": 0,
     "title": "泪器",
-    "structures": [],
+    "structures": [
+      {
+        "label": "泪器",
+        "desc": ""
+      }
+    ],
     "tags": [
       "内耳的结构",
       "感觉器概述",
@@ -438,7 +862,36 @@
     "image": "听器概览图",
     "page": 0,
     "title": "听器概览图",
-    "structures": [],
+    "structures": [
+      {
+        "label": "外耳",
+        "desc": "耳廓+外耳道"
+      },
+      {
+        "label": "中耳",
+        "desc": "鼓室+听骨链"
+      },
+      {
+        "label": "内耳",
+        "desc": "骨迷路+膜迷路"
+      },
+      {
+        "label": "鼓膜",
+        "desc": ""
+      },
+      {
+        "label": "咽鼓管",
+        "desc": ""
+      },
+      {
+        "label": "耳蜗",
+        "desc": ""
+      },
+      {
+        "label": "半规管",
+        "desc": ""
+      }
+    ],
     "tags": [
       "听器",
       "概览图",
@@ -466,7 +919,32 @@
     "image": "第八章  感觉器",
     "page": 0,
     "title": "第八章  感觉器",
-    "structures": [],
+    "structures": [
+      {
+        "label": "第八章",
+        "desc": ""
+      },
+      {
+        "label": "感觉器",
+        "desc": ""
+      },
+      {
+        "label": "视器",
+        "desc": "眼"
+      },
+      {
+        "label": "前庭蜗器",
+        "desc": "耳"
+      },
+      {
+        "label": "嗅器",
+        "desc": ""
+      },
+      {
+        "label": "味器",
+        "desc": ""
+      }
+    ],
     "tags": [
       "内耳的结构",
       "感觉器概述",
@@ -492,7 +970,56 @@
     "image": "眼球外肌",
     "page": 0,
     "title": "眼球外肌",
-    "structures": [],
+    "structures": [
+      {
+        "label": "眼球外肌",
+        "desc": ""
+      },
+      {
+        "label": "角膜",
+        "desc": "透明"
+      },
+      {
+        "label": "巩膜",
+        "desc": "白色"
+      },
+      {
+        "label": "虹膜",
+        "desc": "有色"
+      },
+      {
+        "label": "瞳孔",
+        "desc": ""
+      },
+      {
+        "label": "晶状体",
+        "desc": ""
+      },
+      {
+        "label": "玻璃体",
+        "desc": ""
+      },
+      {
+        "label": "视网膜",
+        "desc": "感光"
+      },
+      {
+        "label": "上睑",
+        "desc": ""
+      },
+      {
+        "label": "下睑",
+        "desc": ""
+      },
+      {
+        "label": "结膜",
+        "desc": ""
+      },
+      {
+        "label": "泪腺",
+        "desc": ""
+      }
+    ],
     "tags": [
       "眼球",
       "内耳的结构",
@@ -519,7 +1046,56 @@
     "image": "眼的动脉",
     "page": 0,
     "title": "眼的动脉",
-    "structures": [],
+    "structures": [
+      {
+        "label": "眼的动脉",
+        "desc": ""
+      },
+      {
+        "label": "颈总动脉",
+        "desc": ""
+      },
+      {
+        "label": "锁骨下动脉",
+        "desc": ""
+      },
+      {
+        "label": "腋动脉",
+        "desc": ""
+      },
+      {
+        "label": "肱动脉",
+        "desc": ""
+      },
+      {
+        "label": "桡动脉",
+        "desc": ""
+      },
+      {
+        "label": "尺动脉",
+        "desc": ""
+      },
+      {
+        "label": "股动脉",
+        "desc": ""
+      },
+      {
+        "label": "腘动脉",
+        "desc": ""
+      },
+      {
+        "label": "上睑",
+        "desc": ""
+      },
+      {
+        "label": "下睑",
+        "desc": ""
+      },
+      {
+        "label": "结膜",
+        "desc": ""
+      }
+    ],
     "tags": [
       "眼的动脉",
       "内耳的结构",
@@ -545,7 +1121,56 @@
     "image": "虹膜的动脉和涡静脉",
     "page": 0,
     "title": "虹膜的动脉和涡静脉",
-    "structures": [],
+    "structures": [
+      {
+        "label": "虹膜的动脉和涡静脉",
+        "desc": ""
+      },
+      {
+        "label": "颈总动脉",
+        "desc": ""
+      },
+      {
+        "label": "锁骨下动脉",
+        "desc": ""
+      },
+      {
+        "label": "腋动脉",
+        "desc": ""
+      },
+      {
+        "label": "肱动脉",
+        "desc": ""
+      },
+      {
+        "label": "桡动脉",
+        "desc": ""
+      },
+      {
+        "label": "尺动脉",
+        "desc": ""
+      },
+      {
+        "label": "股动脉",
+        "desc": ""
+      },
+      {
+        "label": "腘动脉",
+        "desc": ""
+      },
+      {
+        "label": "上腔静脉",
+        "desc": ""
+      },
+      {
+        "label": "下腔静脉",
+        "desc": ""
+      },
+      {
+        "label": "头臂静脉",
+        "desc": ""
+      }
+    ],
     "tags": [
       "内耳的结构",
       "感觉器概述",
@@ -572,7 +1197,32 @@
     "image": "前庭蜗器",
     "page": 0,
     "title": "前庭蜗器",
-    "structures": [],
+    "structures": [
+      {
+        "label": "前庭蜗器",
+        "desc": ""
+      },
+      {
+        "label": "椭圆囊",
+        "desc": ""
+      },
+      {
+        "label": "球囊",
+        "desc": ""
+      },
+      {
+        "label": "椭圆囊斑",
+        "desc": ""
+      },
+      {
+        "label": "球囊斑",
+        "desc": ""
+      },
+      {
+        "label": "壶腹嵴",
+        "desc": ""
+      }
+    ],
     "tags": [
       "内耳的结构",
       "前庭",
@@ -599,7 +1249,40 @@
     "image": "一、  外耳",
     "page": 0,
     "title": "一、  外耳",
-    "structures": [],
+    "structures": [
+      {
+        "label": "外耳",
+        "desc": ""
+      },
+      {
+        "label": "耳廓",
+        "desc": ""
+      },
+      {
+        "label": "外耳道",
+        "desc": ""
+      },
+      {
+        "label": "鼓膜",
+        "desc": ""
+      },
+      {
+        "label": "鼓室",
+        "desc": ""
+      },
+      {
+        "label": "锤骨",
+        "desc": ""
+      },
+      {
+        "label": "砧骨",
+        "desc": ""
+      },
+      {
+        "label": "镫骨",
+        "desc": ""
+      }
+    ],
     "tags": [
       "内耳的结构",
       "外耳道",
@@ -626,7 +1309,40 @@
     "image": "耳郭",
     "page": 0,
     "title": "耳郭",
-    "structures": [],
+    "structures": [
+      {
+        "label": "耳郭",
+        "desc": ""
+      },
+      {
+        "label": "耳廓",
+        "desc": ""
+      },
+      {
+        "label": "外耳道",
+        "desc": ""
+      },
+      {
+        "label": "鼓膜",
+        "desc": ""
+      },
+      {
+        "label": "鼓室",
+        "desc": ""
+      },
+      {
+        "label": "锤骨",
+        "desc": ""
+      },
+      {
+        "label": "砧骨",
+        "desc": ""
+      },
+      {
+        "label": "镫骨",
+        "desc": ""
+      }
+    ],
     "tags": [
       "内耳的结构",
       "感觉器概述",
@@ -652,7 +1368,12 @@
     "image": "鼓室外侧壁",
     "page": 0,
     "title": "鼓室外侧壁",
-    "structures": [],
+    "structures": [
+      {
+        "label": "鼓室外侧壁",
+        "desc": ""
+      }
+    ],
     "tags": [
       "内耳的结构",
       "感觉器概述",
@@ -679,7 +1400,12 @@
     "image": "鼓膜",
     "page": 0,
     "title": "鼓膜",
-    "structures": [],
+    "structures": [
+      {
+        "label": "鼓膜",
+        "desc": ""
+      }
+    ],
     "tags": [
       "内耳的结构",
       "感觉器概述",
@@ -706,7 +1432,12 @@
     "image": "鼓室内侧壁",
     "page": 0,
     "title": "鼓室内侧壁",
-    "structures": [],
+    "structures": [
+      {
+        "label": "鼓室内侧壁",
+        "desc": ""
+      }
+    ],
     "tags": [
       "鼓室内侧壁",
       "内耳的结构",
@@ -733,7 +1464,12 @@
     "image": "听小骨",
     "page": 0,
     "title": "听小骨",
-    "structures": [],
+    "structures": [
+      {
+        "label": "听小骨",
+        "desc": ""
+      }
+    ],
     "tags": [
       "内耳的结构",
       "感觉器概述",
@@ -759,7 +1495,56 @@
     "image": "内耳在颞骨岩部的投影",
     "page": 0,
     "title": "内耳在颞骨岩部的投影",
-    "structures": [],
+    "structures": [
+      {
+        "label": "内耳在颞骨岩部的投影",
+        "desc": ""
+      },
+      {
+        "label": "耳廓",
+        "desc": ""
+      },
+      {
+        "label": "外耳道",
+        "desc": ""
+      },
+      {
+        "label": "鼓膜",
+        "desc": ""
+      },
+      {
+        "label": "鼓室",
+        "desc": ""
+      },
+      {
+        "label": "锤骨",
+        "desc": ""
+      },
+      {
+        "label": "砧骨",
+        "desc": ""
+      },
+      {
+        "label": "镫骨",
+        "desc": ""
+      },
+      {
+        "label": "骨迷路",
+        "desc": ""
+      },
+      {
+        "label": "膜迷路",
+        "desc": ""
+      },
+      {
+        "label": "耳蜗",
+        "desc": "听觉"
+      },
+      {
+        "label": "前庭",
+        "desc": ""
+      }
+    ],
     "tags": [
       "内耳的结构",
       "感觉器概述",
@@ -786,7 +1571,12 @@
     "image": "骨迷路",
     "page": 0,
     "title": "骨迷路",
-    "structures": [],
+    "structures": [
+      {
+        "label": "骨迷路",
+        "desc": ""
+      }
+    ],
     "tags": [
       "内耳的结构",
       "感觉器概述",
@@ -812,7 +1602,56 @@
     "image": "内耳模式图",
     "page": 0,
     "title": "内耳模式图",
-    "structures": [],
+    "structures": [
+      {
+        "label": "耳廓",
+        "desc": ""
+      },
+      {
+        "label": "外耳道",
+        "desc": ""
+      },
+      {
+        "label": "鼓膜",
+        "desc": ""
+      },
+      {
+        "label": "鼓室",
+        "desc": ""
+      },
+      {
+        "label": "锤骨",
+        "desc": ""
+      },
+      {
+        "label": "砧骨",
+        "desc": ""
+      },
+      {
+        "label": "镫骨",
+        "desc": ""
+      },
+      {
+        "label": "骨迷路",
+        "desc": ""
+      },
+      {
+        "label": "膜迷路",
+        "desc": ""
+      },
+      {
+        "label": "耳蜗",
+        "desc": "听觉"
+      },
+      {
+        "label": "前庭",
+        "desc": ""
+      },
+      {
+        "label": "半规管",
+        "desc": ""
+      }
+    ],
     "tags": [
       "内耳的结构",
       "感觉器概述",
@@ -840,7 +1679,36 @@
     "image": "耳蜗切面图",
     "page": 0,
     "title": "耳蜗切面图",
-    "structures": [],
+    "structures": [
+      {
+        "label": "耳廓",
+        "desc": ""
+      },
+      {
+        "label": "外耳道",
+        "desc": ""
+      },
+      {
+        "label": "鼓膜",
+        "desc": ""
+      },
+      {
+        "label": "鼓室",
+        "desc": ""
+      },
+      {
+        "label": "锤骨",
+        "desc": ""
+      },
+      {
+        "label": "砧骨",
+        "desc": ""
+      },
+      {
+        "label": "镫骨",
+        "desc": ""
+      }
+    ],
     "tags": [
       "内耳的结构",
       "感觉器概述",
@@ -867,7 +1735,12 @@
     "image": "声波的传导",
     "page": 0,
     "title": "声波的传导",
-    "structures": [],
+    "structures": [
+      {
+        "label": "声波的传导",
+        "desc": ""
+      }
+    ],
     "tags": [
       "内耳的结构",
       "感觉器概述",
@@ -893,7 +1766,56 @@
     "image": "内耳道底",
     "page": 0,
     "title": "内耳道底",
-    "structures": [],
+    "structures": [
+      {
+        "label": "内耳道底",
+        "desc": ""
+      },
+      {
+        "label": "耳廓",
+        "desc": ""
+      },
+      {
+        "label": "外耳道",
+        "desc": ""
+      },
+      {
+        "label": "鼓膜",
+        "desc": ""
+      },
+      {
+        "label": "鼓室",
+        "desc": ""
+      },
+      {
+        "label": "锤骨",
+        "desc": ""
+      },
+      {
+        "label": "砧骨",
+        "desc": ""
+      },
+      {
+        "label": "镫骨",
+        "desc": ""
+      },
+      {
+        "label": "骨迷路",
+        "desc": ""
+      },
+      {
+        "label": "膜迷路",
+        "desc": ""
+      },
+      {
+        "label": "耳蜗",
+        "desc": "听觉"
+      },
+      {
+        "label": "前庭",
+        "desc": ""
+      }
+    ],
     "tags": [
       "内耳的结构",
       "感觉器概述",
@@ -920,7 +1842,32 @@
     "image": "皮肤概览图",
     "page": 0,
     "title": "皮肤概览图",
-    "structures": [],
+    "structures": [
+      {
+        "label": "表皮",
+        "desc": ""
+      },
+      {
+        "label": "真皮",
+        "desc": ""
+      },
+      {
+        "label": "皮下组织",
+        "desc": ""
+      },
+      {
+        "label": "毛囊",
+        "desc": ""
+      },
+      {
+        "label": "皮脂腺",
+        "desc": ""
+      },
+      {
+        "label": "汗腺",
+        "desc": ""
+      }
+    ],
     "tags": [
       "皮肤",
       "概览图",
@@ -948,7 +1895,56 @@
     "image": "（三）  内耳道",
     "page": 0,
     "title": "（三）  内耳道",
-    "structures": [],
+    "structures": [
+      {
+        "label": "内耳道",
+        "desc": ""
+      },
+      {
+        "label": "耳廓",
+        "desc": ""
+      },
+      {
+        "label": "外耳道",
+        "desc": ""
+      },
+      {
+        "label": "鼓膜",
+        "desc": ""
+      },
+      {
+        "label": "鼓室",
+        "desc": ""
+      },
+      {
+        "label": "锤骨",
+        "desc": ""
+      },
+      {
+        "label": "砧骨",
+        "desc": ""
+      },
+      {
+        "label": "镫骨",
+        "desc": ""
+      },
+      {
+        "label": "骨迷路",
+        "desc": ""
+      },
+      {
+        "label": "膜迷路",
+        "desc": ""
+      },
+      {
+        "label": "耳蜗",
+        "desc": "听觉"
+      },
+      {
+        "label": "前庭",
+        "desc": ""
+      }
+    ],
     "tags": [
       "内耳的结构",
       "感觉器概述",
