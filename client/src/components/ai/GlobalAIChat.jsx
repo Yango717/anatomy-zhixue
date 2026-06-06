@@ -17,9 +17,6 @@ export default function GlobalAIChat() {
     hasApiKey,
     globalMessages,
     saveGlobalMessages,
-    autoPilotEnabled,
-    autoPilotPlan,
-    autoPilotStepIndex,
     activeThreadId,
     createThread,
     switchThread,
@@ -255,20 +252,6 @@ export default function GlobalAIChat() {
                         </svg>
                       </button>
                     )}
-                    {/* AutoPilot inline action buttons */}
-                    {msg._actions && msg._actions.length > 0 && (
-                      <div className="autopilot-inline-actions">
-                        {msg._actions.map((action, ai) => (
-                          <button
-                            key={ai}
-                            className="autopilot-inline-actions__btn"
-                            onClick={() => navigate(action.route)}
-                          >
-                            {action.label}
-                          </button>
-                        ))}
-                      </div>
-                    )}
                   </div>
                 </div>
               ))
@@ -284,67 +267,36 @@ export default function GlobalAIChat() {
 
           {hasApiKey && (
             <div className="ai-chat-panel__input">
-              {/* Quick actions — dynamic in autoPilot mode */}
+              {/* Quick actions — static navigation */}
               <div className="ai-chat-panel__quick-actions">
-                {autoPilotEnabled && autoPilotPlan?.steps ? (
-                  // AutoPilot: show next planned step
-                  (() => {
-                    const nextStep = autoPilotPlan.steps[autoPilotStepIndex];
-                    if (nextStep && !nextStep.completed) {
-                      return (
-                        <button
-                          className="ai-quick-btn"
-                          onClick={() => navigate(nextStep.route)}
-                          title={nextStep.title}
-                        >
-                          {nextStep.actionLabel || '下一步'}
-                        </button>
-                      );
+                <button
+                  className="ai-quick-btn"
+                  onClick={() => {
+                    const unitId = tutor.getUnitId();
+                    if (unitId) {
+                      navigate(`/quiz/${encodeURIComponent(unitId)}`);
+                    } else {
+                      navigate('/modules');
                     }
-                    // All steps completed or no next step
-                    return (
-                      <button
-                        className="ai-quick-btn"
-                        onClick={() => navigate('/modules')}
-                        title="浏览系统"
-                      >
-                        🧬 系统
-                      </button>
-                    );
-                  })()
-                ) : (
-                  // Manual mode: static quick actions
-                  <>
-                    <button
-                      className="ai-quick-btn"
-                      onClick={() => {
-                        const unitId = tutor.getUnitId();
-                        if (unitId) {
-                          navigate(`/quiz/${encodeURIComponent(unitId)}`);
-                        } else {
-                          navigate('/modules');
-                        }
-                      }}
-                      title="去测验"
-                    >
-                      📝 测验
-                    </button>
-                    <button
-                      className="ai-quick-btn"
-                      onClick={() => navigate('/review')}
-                      title="去错题本"
-                    >
-                      📖 错题
-                    </button>
-                    <button
-                      className="ai-quick-btn"
-                      onClick={() => navigate('/practice')}
-                      title="去刷题"
-                    >
-                      🎯 刷题
-                    </button>
-                  </>
-                )}
+                  }}
+                  title="去测验"
+                >
+                  📝 测验
+                </button>
+                <button
+                  className="ai-quick-btn"
+                  onClick={() => navigate('/review')}
+                  title="去错题本"
+                >
+                  📖 错题
+                </button>
+                <button
+                  className="ai-quick-btn"
+                  onClick={() => navigate('/practice')}
+                  title="去刷题"
+                >
+                  🎯 刷题
+                </button>
               </div>
               <div className="ai-chat-panel__input-row">
                 {voice.isRecognitionSupported && (

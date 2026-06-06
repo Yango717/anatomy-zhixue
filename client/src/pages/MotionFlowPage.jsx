@@ -496,8 +496,18 @@ export default function MotionFlowPage() {
                     <span className="motion-atlas-card__title">{atlasCards[atlasIndex]?.title}</span>
                   </div>
                   <div className="motion-atlas-card__image-ref">
-                    <p className="motion-atlas-card__image-name">ð¼ï¸ {atlasCards[atlasIndex]?.image}</p>
-                    <p className="motion-atlas-card__image-hint">图谱图片待匹配到实际文件</p>
+                    {(atlasCards[atlasIndex]?.imageUrls?.length > 0) ? (
+                      <div className="motion-atlas-card__images">
+                        {atlasCards[atlasIndex].imageUrls.map((url, i) => (
+                          <img key={i} src={url} alt={atlasCards[atlasIndex]?.title || ''} className="motion-atlas-card__img" loading="lazy" />
+                        ))}
+                      </div>
+                    ) : (
+                      <>
+                        <p className="motion-atlas-card__image-name">{atlasCards[atlasIndex]?.image}</p>
+                        <p className="motion-atlas-card__image-hint">图谱图片待匹配到实际文件</p>
+                      </>
+                    )}
                   </div>
                   <div className="motion-atlas-card__structures">
                     <h4>需识记结构：</h4>
@@ -574,6 +584,13 @@ export default function MotionFlowPage() {
                       <span className="motion-atlas-card__tag">图谱回顾</span>
                       <span className="motion-atlas-card__title">{allReviewCards[errorCardIdx]?.title}</span>
                     </div>
+                    {(allReviewCards[errorCardIdx]?.imageUrls?.length > 0) && (
+                      <div className="motion-atlas-card__images">
+                        {allReviewCards[errorCardIdx].imageUrls.map((url, i) => (
+                          <img key={i} src={url} alt={allReviewCards[errorCardIdx]?.title || ''} className="motion-atlas-card__img" loading="lazy" />
+                        ))}
+                      </div>
+                    )}
                     <div className="motion-atlas-card__structures">
                       <ul>
                         {(allReviewCards[errorCardIdx]?.structures || []).map((s, si) => (

@@ -1,7 +1,7 @@
 // Browser-side API handlers — replaces Express routes when server is unavailable
 // All imports are local-only modules (no sql.js import at top level)
 
-import { getDB, all, getOne, runQuery, debouncedSave } from '../db/database';
+import { getDB, all, getOne, runQuery, debouncedSave, immediateSave } from '../db/database';
 import * as content from '../services/contentService';
 import { nextReview } from '../services/spacedRepetition';
 
@@ -65,7 +65,7 @@ export async function submitQuiz(unitId, answers) {
   const prog = getOne(`SELECT id FROM unit_progress WHERE user_id=1 AND unit_id=?`, [unitId]);
   if (prog) runQuery(`UPDATE unit_progress SET current_phase=2, phase_2_completed_at=datetime('now') WHERE user_id=1 AND unit_id=?`, [unitId]);
   else runQuery(`INSERT INTO unit_progress (user_id, unit_id, current_phase, phase_2_completed_at) VALUES (1, ?, 2, datetime('now'))`, [unitId]);
-  debouncedSave();
+  immediateSave();
   return { score: pct, correctCount: quiz.questions.length - wrongAnswers.length, totalCount: quiz.questions.length, wrongAnswers };
 }
 
@@ -86,7 +86,7 @@ export async function completeReview(unitId) {
   const prog = getOne(`SELECT id FROM unit_progress WHERE user_id=1 AND unit_id=?`, [unitId]);
   if (prog) runQuery(`UPDATE unit_progress SET current_phase=3, phase_3_completed_at=datetime('now') WHERE user_id=1 AND unit_id=?`, [unitId]);
   else runQuery(`INSERT INTO unit_progress (user_id, unit_id, current_phase, phase_3_completed_at) VALUES (1, ?, 3, datetime('now'))`, [unitId]);
-  debouncedSave();
+  immediateSave();
   return { success: true };
 }
 
@@ -120,7 +120,7 @@ export async function submitTest(unitId, answers) {
   const prog = getOne(`SELECT id FROM unit_progress WHERE user_id=1 AND unit_id=?`, [unitId]);
   if (prog) runQuery(`UPDATE unit_progress SET current_phase=4, phase_4_completed_at=datetime('now') WHERE user_id=1 AND unit_id=?`, [unitId]);
   else runQuery(`INSERT INTO unit_progress (user_id, unit_id, current_phase, phase_4_completed_at) VALUES (1, ?, 4, datetime('now'))`, [unitId]);
-  debouncedSave();
+  immediateSave();
   return { score: pct, results: t.questions.map((q, i) => ({ questionId: q.id, correct: judge(q, answers[i] || '').correct, score: judge(q, answers[i] || '').score ?? 0 })), totalCount: t.questions.length };
 }
 
@@ -139,7 +139,7 @@ export async function submitFinalExam(unitId, answers) {
   const prog = getOne(`SELECT id FROM unit_progress WHERE user_id=1 AND unit_id=?`, [unitId]);
   if (prog) runQuery(`UPDATE unit_progress SET current_phase=5, phase_5_completed_at=datetime('now') WHERE user_id=1 AND unit_id=?`, [unitId]);
   else runQuery(`INSERT INTO unit_progress (user_id, unit_id, current_phase, phase_5_completed_at) VALUES (1, ?, 5, datetime('now'))`, [unitId]);
-  debouncedSave();
+  immediateSave();
   return { score: pct, results: t.questions.map((q, i) => ({ questionId: q.id, correct: judge(q, answers[i] || '').correct, score: judge(q, answers[i] || '').score ?? 0 })), totalCount: t.questions.length };
 }
 
@@ -186,10 +186,10 @@ export async function getChapterProgress(cid) {
 
 // --- learning ---
 export async function getUnitProgress(uid) { await init(); return getOne(`SELECT * FROM unit_progress WHERE user_id=1 AND unit_id=?`, [uid]) || { unitId: uid, currentPhase: 0 }; }
-export async function completePhase(uid, p) { await init(); const ph = parseInt(p); const ex = getOne(`SELECT id FROM unit_progress WHERE user_id=1 AND unit_id=?`, [uid]); if (ex) runQuery(`UPDATE unit_progress SET current_phase=?, phase_${ph}_completed_at=datetime('now') WHERE user_id=1 AND unit_id=?`, [ph, uid]); else runQuery(`INSERT INTO unit_progress (user_id, unit_id, current_phase, phase_${ph}_completed_at) VALUES (1, ?, ?, datetime('now'))`, [uid, ph]); debouncedSave(); return { unitId: uid, currentPhase: ph }; }
-export async function markUnitComplete(uid) { await init(); const ex = getOne(`SELECT id FROM unit_progress WHERE user_id=1 AND unit_id=?`, [uid]); if (ex) runQuery(`UPDATE unit_progress SET current_phase=1, last_accessed_at=datetime('now') WHERE user_id=1 AND unit_id=?`, [uid]); else runQuery(`INSERT INTO unit_progress (user_id, unit_id, current_phase, last_accessed_at) VALUES (1, ?, 1, datetime('now'))`, [uid]); debouncedSave(); return { unitId: uid, completed: true }; }
+export async function completePhase(uid, p) { await init(); const ph = parseInt(p); const ex = getOne(`SELECT id FROM unit_progress WHERE user_id=1 AND unit_id=?`, [uid]); if (ex) runQuery(`UPDATE unit_progress SET current_phase=?, phase_${ph}_completed_at=datetime('now') WHERE user_id=1 AND unit_id=?`, [ph, uid]); else runQuery(`INSERT INTO unit_progress (user_id, unit_id, current_phase, phase_${ph}_completed_at) VALUES (1, ?, ?, datetime('now'))`, [uid, ph]); immediateSave(); return { unitId: uid, currentPhase: ph }; }
+export async function markUnitComplete(uid) { await init(); const ex = getOne(`SELECT id FROM unit_progress WHERE user_id=1 AND unit_id=?`, [uid]); if (ex) runQuery(`UPDATE unit_progress SET current_phase=1, last_accessed_at=datetime('now') WHERE user_id=1 AND unit_id=?`, [uid]); else runQuery(`INSERT INTO unit_progress (user_id, unit_id, current_phase, last_accessed_at) VALUES (1, ?, 1, datetime('now'))`, [uid]); immediateSave(); return { unitId: uid, completed: true }; }
 export async function getNotes(uid) { await init(); return all(`SELECT * FROM user_notes WHERE user_id=1 AND unit_id=? ORDER BY updated_at DESC`, [uid]); }
-export async function createNote(uid, text) { await init(); runQuery(`INSERT INTO user_notes (user_id, unit_id, note_text) VALUES (1, ?, ?)`, [uid, text]); debouncedSave(); return { success: true }; }
+export async function createNote(uid, text) { await init(); runQuery(`INSERT INTO user_notes (user_id, unit_id, note_text) VALUES (1, ?, ?)`, [uid, text]); immediateSave(); return { success: true }; }
 export async function deleteNote(id) { await init(); runQuery(`DELETE FROM user_notes WHERE id=? AND user_id=1`, [id]); debouncedSave(); return { success: true }; }
 
 // --- practice ---
@@ -327,7 +327,7 @@ export async function submitPractice(unitId, questionId, type, answer) {
     }
   }
 
-  debouncedSave();
+  immediateSave();
   const correctAnsStr = question.type === 'fill_blank'
     ? (question.blanks || []).map(b => b.answer).join('、')
     : question.answer || '';
@@ -344,8 +344,8 @@ export async function submitPractice(unitId, questionId, type, answer) {
 export async function getErrorBook() { await init(); return all(`SELECT * FROM error_book WHERE user_id=1 ORDER BY created_at DESC`); }
 export async function getErrorBookDue() { await init(); return all(`SELECT * FROM error_book WHERE user_id=1 AND is_resolved=0 AND next_review_due <= datetime('now') ORDER BY next_review_due ASC`); }
 export async function getErrorBookStats() { await init(); const t = getOne(`SELECT COUNT(*) as c FROM error_book WHERE user_id=1 AND is_resolved=0`)?.c || 0; const bt = all(`SELECT question_type, COUNT(*) as c FROM error_book WHERE user_id=1 AND is_resolved=0 GROUP BY question_type`); return { total: t, byType: bt }; }
-export async function updateErrorMastery(id, level) { await init(); runQuery(`UPDATE error_book SET mastery_level=?, times_reviewed=times_reviewed+1, next_review_due=?, updated_at=datetime('now') WHERE id=? AND user_id=1`, [level, nextReview(level), id]); debouncedSave(); return { success: true }; }
-export async function resolveError(id) { await init(); runQuery(`UPDATE error_book SET is_resolved=1, resolved_at=datetime('now'), updated_at=datetime('now') WHERE id=? AND user_id=1`, [id]); debouncedSave(); return { success: true }; }
+export async function updateErrorMastery(id, level) { await init(); runQuery(`UPDATE error_book SET mastery_level=?, times_reviewed=times_reviewed+1, next_review_due=?, updated_at=datetime('now') WHERE id=? AND user_id=1`, [level, nextReview(level), id]); immediateSave(); return { success: true }; }
+export async function resolveError(id) { await init(); runQuery(`UPDATE error_book SET is_resolved=1, resolved_at=datetime('now'), updated_at=datetime('now') WHERE id=? AND user_id=1`, [id]); immediateSave(); return { success: true }; }
 
 export async function addErrors(errors) {
   await init();
@@ -359,7 +359,7 @@ export async function addErrors(errors) {
       added++;
     }
   }
-  debouncedSave();
+  immediateSave();
   return { added };
 }
 
@@ -428,7 +428,11 @@ export async function getMotionAtlasCards(chapterId, section) {
   let cards = await loadMotionJSON(chapterId, 'atlas_cards.json');
   if (!cards) return [];
   if (section) cards = cards.filter(c => c.section === section);
-  return cards;
+  const dir = await getMotionDir(chapterId);
+  return cards.map(card => ({
+    ...card,
+    imageUrls: (card.images || []).map(f => `${dir}/atlas/${f}`)
+  }));
 }
 
 export async function getMotionQuestionCardMap(chapterId) {
@@ -479,7 +483,14 @@ export async function getMotionErrorCardRefs(chapterId, errors) {
     }
   }
 
-  return { knowledgeCards, atlasCards };
+  // Add image URLs to atlas cards
+  const dir = await getMotionDir(chapterId);
+  const atlasCardsWithUrls = atlasCards.map(card => ({
+    ...card,
+    imageUrls: (card.images || []).map(f => `${dir}/atlas/${f}`)
+  }));
+
+  return { knowledgeCards, atlasCards: atlasCardsWithUrls };
 }
 
 // --- AI (local mode: direct DeepSeek API calls) ---

@@ -6,9 +6,12 @@ const CHAT_HISTORY_KEY = 'ai_chat_history';
 const GLOBAL_CHAT_KEY = 'ai_global_chat';
 const USER_PROFILE_KEY = 'ai_user_profile';
 const THREADS_KEY = 'ai_threads';
+const AUTOPILOT_MSGS_KEY = 'ai_autopilot_msgs';
+const ACTIVE_HOME_TAB_KEY = 'ai_active_home_tab';
 const MAX_HISTORY = 50;
 const MAX_GLOBAL_MESSAGES = 100;
 const MAX_THREADS = 20;
+const MAX_AUTOPILOT_MSGS = 200;
 
 export function AIContextProvider({ children }) {
   const [apiKey, setApiKey] = useState(() => localStorage.getItem('deepseek_api_key') || '');
@@ -62,6 +65,16 @@ export function AIContextProvider({ children }) {
     try { return JSON.parse(localStorage.getItem('ai_autopilot_daily_summary') || 'null'); }
     catch { return null; }
   });
+  // ─── 自主模式独立消息流 ───
+  const [autoPilotMessages, setAutoPilotMessages] = useState(() => {
+    try { return JSON.parse(localStorage.getItem(AUTOPILOT_MSGS_KEY) || '[]'); }
+    catch { return []; }
+  });
+  // 首页 Tab：'chat' | 'auto'
+  const [activeHomeTab, setActiveHomeTab] = useState(() => {
+    return localStorage.getItem(ACTIVE_HOME_TAB_KEY) || 'auto';
+  });
+
   // 全局聊天气泡开关（迷你头像点击时打开）
   const [globalChatOpen, setGlobalChatOpen] = useState(false);
 
@@ -95,6 +108,31 @@ export function AIContextProvider({ children }) {
     } else {
       localStorage.removeItem('doubao_tts_appid');
     }
+  }, []);
+
+  // ─── 自主模式消息方法 ───
+  const saveAutoPilotMessages = useCallback((msgs) => {
+    const trimmed = Array.isArray(msgs) ? msgs.slice(-MAX_AUTOPILOT_MSGS) : [];
+    setAutoPilotMessages(trimmed);
+    try { localStorage.setItem(AUTOPILOT_MSGS_KEY, JSON.stringify(trimmed)); } catch {}
+  }, []);
+
+  const addAutoPilotMessage = useCallback((msg) => {
+    setAutoPilotMessages((prev) => {
+      const updated = [...prev, msg].slice(-MAX_AUTOPILOT_MSGS);
+      try { localStorage.setItem(AUTOPILOT_MSGS_KEY, JSON.stringify(updated)); } catch {}
+      return updated;
+    });
+  }, []);
+
+  const clearAutoPilotMessages = useCallback(() => {
+    setAutoPilotMessages([]);
+    try { localStorage.removeItem(AUTOPILOT_MSGS_KEY); } catch {}
+  }, []);
+
+  const switchHomeTab = useCallback((tab) => {
+    setActiveHomeTab(tab);
+    try { localStorage.setItem(ACTIVE_HOME_TAB_KEY, tab); } catch {}
   }, []);
 
   // ─── Legacy: per-unit chat history ───
@@ -310,6 +348,37 @@ export function AIContextProvider({ children }) {
     } catch {}
   }, []);
 
+  // v4 迁移：将旧线程中的 AutoPilot 消息迁移到独立消息流
+  useEffect(() => {
+    try {
+      if (localStorage.getItem('ai_autopilot_v4_migrated')) return;
+
+      // 从现有线程中提取含 _actions 的 AutoPilot 消息
+      let migratedMsgs = [];
+      try {
+        const data = JSON.parse(localStorage.getItem('ai_threads') || '{}');
+        const allThreads = data.threads || [];
+        for (const thread of allThreads) {
+          if (!thread.messages) continue;
+          for (const msg of thread.messages) {
+            if (msg._actions && msg._actions.length > 0) {
+              migratedMsgs.push(msg);
+            }
+          }
+        }
+      } catch {}
+
+      // 如果已有自主消息，追加迁移消息；否则直接写入
+      if (migratedMsgs.length > 0) {
+        const existing = JSON.parse(localStorage.getItem(AUTOPILOT_MSGS_KEY) || '[]');
+        const combined = [...existing, ...migratedMsgs].slice(-MAX_AUTOPILOT_MSGS);
+        localStorage.setItem(AUTOPILOT_MSGS_KEY, JSON.stringify(combined));
+      }
+
+      localStorage.setItem('ai_autopilot_v4_migrated', '1');
+    } catch {}
+  }, []);
+
   // Apply autoPilot theme on mount
   useEffect(() => {
     if (autoPilotEnabled) {
@@ -470,6 +539,14 @@ export function AIContextProvider({ children }) {
     advanceAutoPilotStep,
     registerActivityComplete,
     markCheckinDelivered,
+    // 自主模式独立消息
+    autoPilotMessages,
+    saveAutoPilotMessages,
+    addAutoPilotMessage,
+    clearAutoPilotMessages,
+    // 首页 Tab
+    activeHomeTab,
+    switchHomeTab,
   };
 
   return <AIContext.Provider value={value}>{children}</AIContext.Provider>;

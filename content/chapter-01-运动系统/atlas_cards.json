@@ -34,7 +34,10 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "骨学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-001.jpg"
+    ]
   },
   {
     "id": "atlas-002",
@@ -82,7 +85,10 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "骨学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-002.jpg"
+    ]
   },
   {
     "id": "atlas-003",
@@ -129,7 +135,10 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "骨学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-003.jpg"
+    ]
   },
   {
     "id": "atlas-004",
@@ -165,7 +174,10 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "骨学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-004.jpg"
+    ]
   },
   {
     "id": "atlas-005",
@@ -204,7 +216,10 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "骨学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-005.jpg"
+    ]
   },
   {
     "id": "atlas-006",
@@ -248,7 +263,10 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "骨学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-006.jpg"
+    ]
   },
   {
     "id": "atlas-007",
@@ -288,7 +306,10 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "骨学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-007.jpg"
+    ]
   },
   {
     "id": "atlas-008",
@@ -327,7 +348,10 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "骨学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-008.jpg"
+    ]
   },
   {
     "id": "atlas-009",
@@ -391,7 +415,10 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "骨学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-009.jpg"
+    ]
   },
   {
     "id": "atlas-010",
@@ -414,7 +441,10 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "骨学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-010.jpg"
+    ]
   },
   {
     "id": "atlas-011",
@@ -473,7 +503,11 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "骨学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-011_1.jpg",
+      "atlas-011_2.jpg"
+    ]
   },
   {
     "id": "atlas-012",
@@ -540,7 +574,10 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "骨学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-012.jpg"
+    ]
   },
   {
     "id": "atlas-013",
@@ -596,7 +633,10 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "骨学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-013.jpg"
+    ]
   },
   {
     "id": "atlas-014",
@@ -660,7 +700,10 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "骨学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-014.jpg"
+    ]
   },
   {
     "id": "atlas-015",
@@ -747,7 +790,11 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "骨学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-015_1.jpg",
+      "atlas-015_2.jpg"
+    ]
   },
   {
     "id": "atlas-016",
@@ -822,7 +869,10 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "骨学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-016.jpg"
+    ]
   },
   {
     "id": "atlas-017",
@@ -878,7 +928,10 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "骨学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-017.jpg"
+    ]
   },
   {
     "id": "atlas-018",
@@ -938,7 +991,10 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "骨学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-018.jpg"
+    ]
   },
   {
     "id": "atlas-019",
@@ -974,7 +1030,10 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "关节学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-019.jpg"
+    ]
   },
   {
     "id": "atlas-020",
@@ -1017,7 +1076,10 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "关节学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-020.jpg"
+    ]
   },
   {
     "id": "atlas-021",
@@ -1069,7 +1131,10 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "关节学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-021.jpg"
+    ]
   },
   {
     "id": "atlas-022",
@@ -1120,7 +1185,10 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "关节学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-022.jpg"
+    ]
   },
   {
     "id": "atlas-023",
@@ -1155,7 +1223,10 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "关节学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-023.jpg"
+    ]
   },
   {
     "id": "atlas-024",
@@ -1198,7 +1269,10 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "关节学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-024.jpg"
+    ]
   },
   {
     "id": "atlas-025",
@@ -1237,7 +1311,11 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "关节学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-025_1.jpg",
+      "atlas-025_2.jpg"
+    ]
   },
   {
     "id": "atlas-026",
@@ -1302,7 +1380,10 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "关节学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-026.jpg"
+    ]
   },
   {
     "id": "atlas-027",
@@ -1350,7 +1431,10 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "关节学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-027.jpg"
+    ]
   },
   {
     "id": "atlas-028",
@@ -1394,7 +1478,10 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "肌学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-028.jpg"
+    ]
   },
   {
     "id": "atlas-029",
@@ -1429,7 +1516,10 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "肌学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-029.jpg"
+    ]
   },
   {
     "id": "atlas-030",
@@ -1474,7 +1564,11 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "肌学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-030_1.jpg",
+      "atlas-030_2.jpg"
+    ]
   },
   {
     "id": "atlas-031",
@@ -1521,7 +1615,12 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "肌学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-031_1.jpg",
+      "atlas-031_2.jpg",
+      "atlas-031_3.jpg"
+    ]
   },
   {
     "id": "atlas-032",
@@ -1568,7 +1667,13 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "肌学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-032_1.jpg",
+      "atlas-032_2.jpg",
+      "atlas-032_3.jpg",
+      "atlas-032_4.jpg"
+    ]
   },
   {
     "id": "atlas-033",
@@ -1615,6 +1720,11 @@
     "type": "atlas",
     "system": "运动系统",
     "section": "肌学",
-    "subsection": "图谱"
+    "subsection": "图谱",
+    "images": [
+      "atlas-033_1.jpg",
+      "atlas-033_2.jpg",
+      "atlas-033_3.jpg"
+    ]
   }
 ]

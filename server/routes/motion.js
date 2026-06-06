@@ -47,6 +47,14 @@ router.get("/atlas-cards", (req, res) => {
     if (!cards) return res.status(404).json({ success: false, error: { code: "NOT_FOUND" } });
     const section = req.query.section;
     if (section) cards = cards.filter(c => c.section === section);
+
+    // Add image URLs for each card
+    const chapterDirName = path.basename(chapterDir);
+    cards = cards.map(card => ({
+      ...card,
+      imageUrls: (card.images || []).map(f => `/content/${chapterDirName}/atlas/${f}`)
+    }));
+
     res.json({ success: true, data: cards });
   } catch (err) {
     res.status(500).json({ success: false, error: { code: "READ_ERROR", message: err.message } });
@@ -112,7 +120,14 @@ router.post("/error-card-refs", (req, res) => {
       }
     }
 
-    res.json({ success: true, data: { knowledgeCards, atlasCards } });
+    // Add image URLs to atlas cards
+    const chapterDirName = path.basename(chapterDir);
+    const atlasCardsWithUrls = atlasCards.map(card => ({
+      ...card,
+      imageUrls: (card.images || []).map(f => `/content/${chapterDirName}/atlas/${f}`)
+    }));
+
+    res.json({ success: true, data: { knowledgeCards, atlasCards: atlasCardsWithUrls } });
   } catch (err) {
     res.status(500).json({ success: false, error: { code: "READ_ERROR", message: err.message } });
   }

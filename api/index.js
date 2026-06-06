@@ -12,6 +12,7 @@ const testRouter = require('../server/routes/test');
 const errorbookRouter = require('../server/routes/errorbook');
 const recommendRouter = require('../server/routes/recommend');
 const practiceRouter = require('../server/routes/practice');
+const motionRouter = require('../server/routes/motion');
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use('/api/v1', testRouter);
 app.use('/api/v1', errorbookRouter);
 app.use('/api/v1', recommendRouter);
 app.use('/api/v1', practiceRouter);
+app.use('/api/v1/motion', motionRouter);
 
 app.get('/api/v1/health', (_req, res) => {
   res.json({ success: true, data: { status: 'ok' }, timestamp: new Date().toISOString() });

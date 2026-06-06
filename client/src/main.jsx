@@ -10,6 +10,7 @@ import './styles/responsive.css';
 import './styles/print.css';
 import './styles/ai.css';
 import './styles/autopilot.css';
+import './styles/autopilot-chat.css';
 import './styles/motion-flow.css';
 
 class ErrorBoundary extends React.Component {

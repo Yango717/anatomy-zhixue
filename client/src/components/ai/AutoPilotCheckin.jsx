@@ -10,9 +10,8 @@ export default function AutoPilotCheckin() {
     autoPilotPendingCheckin,
     advanceAutoPilotStep,
     markCheckinDelivered,
-    saveThreadMessages,
-    activeThreadId,
-    threads,
+    // 自主模式独立消息
+    addAutoPilotMessage,
   } = useAIContext();
 
   const tutor = useAITutor([]);
@@ -102,17 +101,6 @@ export default function AutoPilotCheckin() {
           }
         }
 
-        // Use activeThreadId, fallback to first thread
-        let threadId = activeThreadId;
-        if (!threadId && threads.length > 0) {
-          threadId = threads[0].id;
-        }
-        if (!threadId) {
-          // No thread at all — can't deliver, just mark delivered
-          markCheckinDelivered();
-          return;
-        }
-
         // Build action-augmented message
         const actionText = checkinMsg.actions?.length
           ? '\n\n' + checkinMsg.actions.map((a, i) => `[action:${a.label}:${a.route}]`).join(' ')
@@ -124,17 +112,8 @@ export default function AutoPilotCheckin() {
           _actions: checkinMsg.actions || [],
         };
 
-        // Append to the latest stored messages to avoid overwriting chat typed in another surface.
-        let existingMsgs = [];
-        try {
-          const data = JSON.parse(localStorage.getItem('ai_threads') || '{}');
-          const existingThread = (data.threads || []).find((t) => t.id === threadId);
-          existingMsgs = existingThread?.messages || [];
-        } catch {
-          const existingThread = threads.find((t) => t.id === threadId);
-          existingMsgs = existingThread?.messages || [];
-        }
-        saveThreadMessages(threadId, [...existingMsgs, msg]);
+        // 写入自主模式独立消息流，不再写入对话线程
+        addAutoPilotMessage(msg);
 
         // Advance step and mark delivered
         advanceAutoPilotStep();

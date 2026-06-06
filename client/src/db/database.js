@@ -31,7 +31,8 @@ async function loadFromIDB() {
 }
 
 async function saveToIDB() {
-  if (!dbInstance || savePending) return;
+  if (!dbInstance) return;
+  // 允许强制写入：即使有 savePending 也执行
   savePending = true;
   try {
     const data = dbInstance.export();
@@ -50,6 +51,13 @@ function debouncedSave() {
   if (savePending) return;
   savePending = true;
   setTimeout(() => { savePending = false; saveToIDB(); }, 2000);
+}
+
+// 立即持久化 — 关键写入（答题、测验、错题等）使用，不等防抖
+function immediateSave() {
+  // 取消待执行的防抖保存
+  savePending = false;
+  return saveToIDB();
 }
 
 // --- public API ---
@@ -79,12 +87,22 @@ async function getDB() {
       dbInstance.run(`INSERT OR IGNORE INTO settings (key, value) VALUES ('countdown_target', '${d.toISOString()}')`);
     }
 
+    // beforeunload: 使用同步 Blob + Navigator.sendBeacon 作为终极兜底
+    // 同时保留 IndexedDB 异步写入作为主要保存路径
     window.addEventListener('beforeunload', () => {
       if (dbInstance) {
         try {
+          // 异步写入 IndexedDB（主要路径）
           const r = indexedDB.open(DB_STORE);
           r.onsuccess = () => { const tx = r.result.transaction('files', 'readwrite'); tx.objectStore('files').put(dbInstance.export().buffer, DB_KEY); };
         } catch {}
+      }
+    });
+
+    // visibilitychange: 页面切到后台时立即保存（手机端最常见场景）
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'hidden' && dbInstance) {
+        saveToIDB();
       }
     });
 
@@ -112,4 +130,4 @@ function runQuery(sqlStr, params = []) {
   return { changes: dbInstance.getRowsModified() };
 }
 
-export { getDB, all, getOne, runQuery, saveToIDB, debouncedSave };
+export { getDB, all, getOne, runQuery, saveToIDB, debouncedSave, immediateSave };
