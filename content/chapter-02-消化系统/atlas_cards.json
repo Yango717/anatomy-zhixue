@@ -494,12 +494,12 @@
   },
   {
     "id": "atlas-030",
-    "image": "图谱",
+    "image": "消化系统概览图",
     "page": 0,
-    "title": "图谱",
+    "title": "消化系统概览图",
     "structures": [],
     "tags": [
-      "图谱"
+      "消化系统概览图"
     ],
     "type": "atlas",
     "system": "消化系统",

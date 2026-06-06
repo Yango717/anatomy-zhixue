@@ -392,12 +392,12 @@
   },
   {
     "id": "atlas-024",
-    "image": "图谱",
+    "image": "脑干概览图",
     "page": 0,
-    "title": "图谱",
+    "title": "脑干概览图",
     "structures": [],
     "tags": [
-      "图谱"
+      "脑干概览图"
     ],
     "type": "atlas",
     "system": "神经系统",
@@ -698,12 +698,12 @@
   },
   {
     "id": "atlas-042",
-    "image": "图谱",
+    "image": "小脑概览图",
     "page": 0,
-    "title": "图谱",
+    "title": "小脑概览图",
     "structures": [],
     "tags": [
-      "图谱"
+      "小脑概览图"
     ],
     "type": "atlas",
     "system": "神经系统",
@@ -766,12 +766,12 @@
   },
   {
     "id": "atlas-046",
-    "image": "图谱",
+    "image": "间脑概览图",
     "page": 0,
-    "title": "图谱",
+    "title": "间脑概览图",
     "structures": [],
     "tags": [
-      "图谱"
+      "间脑概览图"
     ],
     "type": "atlas",
     "system": "神经系统",
@@ -800,12 +800,12 @@
   },
   {
     "id": "atlas-048",
-    "image": "图谱",
+    "image": "端脑概览图",
     "page": 0,
-    "title": "图谱",
+    "title": "端脑概览图",
     "structures": [],
     "tags": [
-      "图谱"
+      "端脑概览图"
     ],
     "type": "atlas",
     "system": "神经系统",
@@ -953,12 +953,12 @@
   },
   {
     "id": "atlas-057",
-    "image": "图谱",
+    "image": "脑神经概览图",
     "page": 0,
-    "title": "图谱",
+    "title": "脑神经概览图",
     "structures": [],
     "tags": [
-      "图谱"
+      "脑神经概览图"
     ],
     "type": "atlas",
     "system": "神经系统",
@@ -1055,12 +1055,12 @@
   },
   {
     "id": "atlas-063",
-    "image": "图谱",
+    "image": "脊神经概览图",
     "page": 0,
-    "title": "图谱",
+    "title": "脊神经概览图",
     "structures": [],
     "tags": [
-      "图谱"
+      "脊神经概览图"
     ],
     "type": "atlas",
     "system": "神经系统",
@@ -1106,12 +1106,12 @@
   },
   {
     "id": "atlas-066",
-    "image": "图谱",
+    "image": "内脏神经概览图",
     "page": 0,
-    "title": "图谱",
+    "title": "内脏神经概览图",
     "structures": [],
     "tags": [
-      "图谱"
+      "内脏神经概览图"
     ],
     "type": "atlas",
     "system": "神经系统",
@@ -2432,12 +2432,12 @@
   },
   {
     "id": "atlas-144",
-    "image": "图谱",
+    "image": "神经传导通路概览图",
     "page": 0,
-    "title": "图谱",
+    "title": "神经传导通路概览图",
     "structures": [],
     "tags": [
-      "图谱"
+      "神经传导通路概览图"
     ],
     "type": "atlas",
     "system": "神经系统",

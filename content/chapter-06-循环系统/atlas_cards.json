@@ -817,12 +817,12 @@
   },
   {
     "id": "atlas-049",
-    "image": "图谱",
+    "image": "循环系统概览图",
     "page": 0,
-    "title": "图谱",
+    "title": "循环系统概览图",
     "structures": [],
     "tags": [
-      "图谱"
+      "循环系统概览图"
     ],
     "type": "atlas",
     "system": "循环系统",
@@ -868,12 +868,12 @@
   },
   {
     "id": "atlas-052",
-    "image": "图谱",
+    "image": "循环系统概览图2",
     "page": 0,
-    "title": "图谱",
+    "title": "循环系统概览图2",
     "structures": [],
     "tags": [
-      "图谱"
+      "循环系统概览图2"
     ],
     "type": "atlas",
     "system": "循环系统",
@@ -919,12 +919,12 @@
   },
   {
     "id": "atlas-055",
-    "image": "图谱",
+    "image": "循环系统概览图3",
     "page": 0,
-    "title": "图谱",
+    "title": "循环系统概览图3",
     "structures": [],
     "tags": [
-      "图谱"
+      "循环系统概览图3"
     ],
     "type": "atlas",
     "system": "循环系统",
@@ -1157,12 +1157,12 @@
   },
   {
     "id": "atlas-069",
-    "image": "图谱",
+    "image": "淋巴系统概览图",
     "page": 0,
-    "title": "图谱",
+    "title": "淋巴系统概览图",
     "structures": [],
     "tags": [
-      "图谱"
+      "淋巴系统概览图"
     ],
     "type": "atlas",
     "system": "循环系统",
@@ -1310,12 +1310,12 @@
   },
   {
     "id": "atlas-078",
-    "image": "图谱",
+    "image": "血管分布概览图",
     "page": 0,
-    "title": "图谱",
+    "title": "血管分布概览图",
     "structures": [],
     "tags": [
-      "图谱"
+      "血管分布概览图"
     ],
     "type": "atlas",
     "system": "循环系统",

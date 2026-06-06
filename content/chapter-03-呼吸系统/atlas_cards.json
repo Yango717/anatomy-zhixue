@@ -1,12 +1,12 @@
 [
   {
     "id": "atlas-001",
-    "image": "图谱",
+    "image": "呼吸系统概览图",
     "page": 0,
-    "title": "图谱",
+    "title": "呼吸系统概览图",
     "structures": [],
     "tags": [
-      "图谱"
+      "呼吸系统概览图"
     ],
     "type": "atlas",
     "system": "呼吸系统",
@@ -18,12 +18,12 @@
   },
   {
     "id": "atlas-002",
-    "image": "本章数字资源",
+    "image": "呼吸系统数字资源",
     "page": 0,
-    "title": "本章数字资源",
+    "title": "呼吸系统数字资源",
     "structures": [],
     "tags": [
-      "本章数字资源"
+      "呼吸系统数字资源"
     ],
     "type": "atlas",
     "system": "呼吸系统",
