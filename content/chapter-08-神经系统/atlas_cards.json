@@ -1,390 +1,3147 @@
 [
   {
-    "id": "atlas-neu-001",
-    "image": "图9-1 脊髓外形",
-    "page": 272,
-    "title": "脊髓的外形与节段",
-    "structures": [
-      {
-        "label": "颈膨大",
-        "desc": "C5~T1，支配上肢"
-      },
-      {
-        "label": "腰骶膨大",
-        "desc": "L2~S3，支配下肢"
-      },
-      {
-        "label": "脊髓圆锥",
-        "desc": "脊髓末端变细，平L1"
-      },
-      {
-        "label": "终丝",
-        "desc": "软膜延续，固定于尾骨"
-      },
-      {
-        "label": "前正中裂",
-        "desc": "前方深沟"
-      },
-      {
-        "label": "后正中沟",
-        "desc": "后方浅沟"
-      },
-      {
-        "label": "脊神经根",
-        "desc": "前根（运动）+后根（感觉）"
-      }
-    ],
+    "id": "atlas-001",
+    "image": "神经系统的区分",
+    "page": 0,
+    "title": "神经系统的区分",
+    "structures": [],
     "tags": [
-      "脊髓",
-      "颈膨大",
-      "腰骶膨大",
-      "脊髓圆锥"
+      "神经系统的区分"
     ],
     "type": "atlas",
     "system": "神经系统",
-    "section": "神经系统",
-    "subsection": "脊髓"
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-001.jpg"
+    ]
   },
   {
-    "id": "atlas-neu-002",
-    "image": "图9-2 脊髓横断面",
-    "page": 274,
-    "title": "脊髓灰质和白质",
-    "structures": [
-      {
-        "label": "前角",
-        "desc": "运动神经元"
-      },
-      {
-        "label": "后角",
-        "desc": "感觉神经元"
-      },
-      {
-        "label": "侧角",
-        "desc": "T1~L3，交感节前神经元"
-      },
-      {
-        "label": "薄束",
-        "desc": "后索内侧，下肢本体感觉"
-      },
-      {
-        "label": "楔束",
-        "desc": "后索外侧，上肢本体感觉"
-      },
-      {
-        "label": "脊髓丘脑束",
-        "desc": "外侧索和前索，痛温觉和粗触觉"
-      },
-      {
-        "label": "皮质脊髓侧束",
-        "desc": "外侧索，随意运动"
-      }
-    ],
+    "id": "atlas-002",
+    "image": "神经元模式图",
+    "page": 0,
+    "title": "神经元模式图",
+    "structures": [],
     "tags": [
-      "脊髓",
-      "灰质",
-      "白质",
-      "前角",
-      "后角",
-      "薄束",
-      "楔束"
+      "神经元模式图"
     ],
     "type": "atlas",
-    "系统": "神经系统",
-    "section": "神经系统",
-    "subsection": "脊髓"
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-002.jpg"
+    ]
   },
   {
-    "id": "atlas-neu-003",
-    "image": "图9-4 脑干腹侧面",
-    "page": 280,
-    "title": "脑干的外形（腹面观）",
-    "structures": [
-      {
-        "label": "延髓",
-        "desc": "锥体、锥体交叉、橄榄"
-      },
-      {
-        "label": "脑桥",
-        "desc": "基底部，有三叉神经根"
-      },
-      {
-        "label": "中脑",
-        "desc": "大脑脚、脚间窝（动眼神经出脑处）"
-      },
-      {
-        "label": "锥体",
-        "desc": "皮质脊髓束形成"
-      },
-      {
-        "label": "锥体交叉",
-        "desc": "皮质脊髓束大部分交叉处"
-      }
-    ],
+    "id": "atlas-003",
+    "image": "各种类型的神经元",
+    "page": 0,
+    "title": "各种类型的神经元",
+    "structures": [],
     "tags": [
-      "脑干",
-      "延髓",
-      "脑桥",
-      "中脑",
-      "锥体",
-      "锥体交叉"
+      "各种类型的神经元"
     ],
     "type": "atlas",
-    "系统": "神经系统",
-    "section": "神经系统",
-    "subsection": "脑干"
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-003.jpg"
+    ]
   },
   {
-    "id": "atlas-neu-004",
-    "image": "图9-7 小脑",
-    "page": 285,
-    "title": "小脑的上面和下面",
-    "structures": [
-      {
-        "label": "小脑半球",
-        "desc": "两侧膨大部"
-      },
-      {
-        "label": "小脑蚓",
-        "desc": "中间狭窄部"
-      },
-      {
-        "label": "绒球小结叶",
-        "desc": "古小脑，平衡"
-      },
-      {
-        "label": "小脑扁桃体",
-        "desc": "近枕骨大孔，颅内高压时可疝入"
-      },
-      {
-        "label": "小脑脚",
-        "desc": "上、中、下三对，连于脑干"
-      }
-    ],
+    "id": "atlas-004",
+    "image": "尼氏体和神经原纤维",
+    "page": 0,
+    "title": "尼氏体和神经原纤维",
+    "structures": [],
     "tags": [
-      "小脑",
-      "小脑半球",
-      "小脑蚓",
-      "小脑扁桃体"
+      "尼氏体和神经原纤维"
     ],
     "type": "atlas",
-    "系统": "神经系统",
-    "section": "神经系统",
-    "subsection": "小脑"
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-004.jpg"
+    ]
   },
   {
-    "id": "atlas-neu-005",
-    "image": "图9-10 大脑半球外侧面",
-    "page": 292,
+    "id": "atlas-005",
+    "image": "周围神经有髓纤维构成模式图",
+    "page": 0,
+    "title": "周围神经有髓纤维构成模式图",
+    "structures": [],
+    "tags": [
+      "周围神经有髓纤维构成模式图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-005.jpg"
+    ]
+  },
+  {
+    "id": "atlas-006",
+    "image": "无髓纤维与施万细胞关系模式图",
+    "page": 0,
+    "title": "无髓纤维与施万细胞关系模式图",
+    "structures": [],
+    "tags": [
+      "无髓纤维与施万细胞关系模式图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-006.jpg"
+    ]
+  },
+  {
+    "id": "atlas-007",
+    "image": "中枢神经有髓纤维构成模式图",
+    "page": 0,
+    "title": "中枢神经有髓纤维构成模式图",
+    "structures": [],
+    "tags": [
+      "中枢神经有髓纤维构成模式图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-007.jpg"
+    ]
+  },
+  {
+    "id": "atlas-008",
+    "image": "神经细胞突触",
+    "page": 0,
+    "title": "神经细胞突触",
+    "structures": [],
+    "tags": [
+      "神经细胞突触"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-008.jpg"
+    ]
+  },
+  {
+    "id": "atlas-009",
+    "image": "神经胶质细胞",
+    "page": 0,
+    "title": "神经胶质细胞",
+    "structures": [],
+    "tags": [
+      "神经胶质细胞"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-009.jpg"
+    ]
+  },
+  {
+    "id": "atlas-010",
+    "image": "神经",
+    "page": 0,
+    "title": "神经",
+    "structures": [],
+    "tags": [
+      "神经"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-010.jpg"
+    ]
+  },
+  {
+    "id": "atlas-011",
+    "image": "反射弧",
+    "page": 0,
+    "title": "反射弧",
+    "structures": [],
+    "tags": [
+      "反射弧"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-011.jpg"
+    ]
+  },
+  {
+    "id": "atlas-012",
+    "image": "脊髓外形",
+    "page": 0,
+    "title": "脊髓外形",
+    "structures": [],
+    "tags": [
+      "脊髓外形"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-012.jpg"
+    ]
+  },
+  {
+    "id": "atlas-013",
+    "image": "脊髓节段与椎骨对应关系",
+    "page": 0,
+    "title": "脊髓节段与椎骨对应关系",
+    "structures": [],
+    "tags": [
+      "脊髓节段与椎骨对应关系"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-013.jpg"
+    ]
+  },
+  {
+    "id": "atlas-014",
+    "image": "头面部皮神经分布示意图",
+    "page": 0,
+    "title": "头面部皮神经分布示意图",
+    "structures": [],
+    "tags": [
+      "头面部皮神经分布示意图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-014.jpg"
+    ]
+  },
+  {
+    "id": "atlas-015",
+    "image": "眼外肌的神经与海绵窦的关系",
+    "page": 0,
+    "title": "眼外肌的神经与海绵窦的关系",
+    "structures": [],
+    "tags": [
+      "眼外肌的神经与海绵窦的关系"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-015.jpg"
+    ]
+  },
+  {
+    "id": "atlas-016",
+    "image": "面神经在面部的分支",
+    "page": 0,
+    "title": "面神经在面部的分支",
+    "structures": [],
+    "tags": [
+      "面神经在面部的分支"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-016.jpg"
+    ]
+  },
+  {
+    "id": "atlas-017",
+    "image": "鼓索、翼腭神经节与耳神经节",
+    "page": 0,
+    "title": "鼓索、翼腭神经节与耳神经节",
+    "structures": [],
+    "tags": [
+      "鼓索、翼腭神经节与耳神经节"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-017.jpg"
+    ]
+  },
+  {
+    "id": "atlas-018",
+    "image": "舌咽神经、迷走神经和舌下神经",
+    "page": 0,
+    "title": "舌咽神经、迷走神经和舌下神经",
+    "structures": [],
+    "tags": [
+      "舌咽神经、迷走神经和舌下神经"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-018.jpg"
+    ]
+  },
+  {
+    "id": "atlas-019",
+    "image": "头部腺体的副交感纤维来源",
+    "page": 0,
+    "title": "头部腺体的副交感纤维来源",
+    "structures": [],
+    "tags": [
+      "头部腺体的副交感纤维来源"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-019.jpg"
+    ]
+  },
+  {
+    "id": "atlas-020",
+    "image": "舌咽神经、迷走神经和副神经",
+    "page": 0,
+    "title": "舌咽神经、迷走神经和副神经",
+    "structures": [],
+    "tags": [
+      "舌咽神经、迷走神经和副神经"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-020.jpg"
+    ]
+  },
+  {
+    "id": "atlas-021",
+    "image": "迷走神经的纤维成分及分",
+    "page": 0,
+    "title": "迷走神经的纤维成分及分",
+    "structures": [],
+    "tags": [
+      "迷走神经的纤维成分及分"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-021.jpg"
+    ]
+  },
+  {
+    "id": "atlas-022",
+    "image": "副神经两根示意图",
+    "page": 0,
+    "title": "副神经两根示意图",
+    "structures": [],
+    "tags": [
+      "副神经两根示意图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-022.jpg"
+    ]
+  },
+  {
+    "id": "atlas-023",
+    "image": "迷走神经的胃分布",
+    "page": 0,
+    "title": "迷走神经的胃分布",
+    "structures": [],
+    "tags": [
+      "迷走神经的胃分布"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-023.jpg"
+    ]
+  },
+  {
+    "id": "atlas-024",
+    "image": "图谱",
+    "page": 0,
+    "title": "图谱",
+    "structures": [],
+    "tags": [
+      "图谱"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-024.png"
+    ]
+  },
+  {
+    "id": "atlas-025",
+    "image": "（一）  内脏运动神经",
+    "page": 0,
+    "title": "（一）  内脏运动神经",
+    "structures": [],
+    "tags": [
+      "（一）  内脏运动神经"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-025.png"
+    ]
+  },
+  {
+    "id": "atlas-026",
+    "image": "内脏运动神经概况示意图",
+    "page": 0,
+    "title": "内脏运动神经概况示意图",
+    "structures": [],
+    "tags": [
+      "内脏运动神经概况示意图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-026.jpg"
+    ]
+  },
+  {
+    "id": "atlas-027",
+    "image": "脊髓内部结构",
+    "page": 0,
+    "title": "脊髓内部结构",
+    "structures": [],
+    "tags": [
+      "脊髓内部结构"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-027.jpg"
+    ]
+  },
+  {
+    "id": "atlas-028",
+    "image": "脊髓内部结构",
+    "page": 0,
+    "title": "脊髓内部结构",
+    "structures": [],
+    "tags": [
+      "脊髓内部结构"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-028.jpg"
+    ]
+  },
+  {
+    "id": "atlas-029",
+    "image": "交感神经纤维走行模式图",
+    "page": 0,
+    "title": "交感神经纤维走行模式图",
+    "structures": [],
+    "tags": [
+      "交感神经纤维走行模式图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-029.jpg"
+    ]
+  },
+  {
+    "id": "atlas-030",
+    "image": "交感干和交感神经节",
+    "page": 0,
+    "title": "交感干和交感神经节",
+    "structures": [],
+    "tags": [
+      "交感干和交感神经节"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-030.jpg"
+    ]
+  },
+  {
+    "id": "atlas-031",
+    "image": "右交感干与内脏神经丛的联系",
+    "page": 0,
+    "title": "右交感干与内脏神经丛的联系",
+    "structures": [],
+    "tags": [
+      "右交感干与内脏神经丛的联系"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-031.jpg"
+    ]
+  },
+  {
+    "id": "atlas-032",
+    "image": "头部的内脏神经分布模式图",
+    "page": 0,
+    "title": "头部的内脏神经分布模式图",
+    "structures": [],
+    "tags": [
+      "头部的内脏神经分布模式图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-032.jpg"
+    ]
+  },
+  {
+    "id": "atlas-033",
+    "image": "盆部内脏神经丛",
+    "page": 0,
+    "title": "盆部内脏神经丛",
+    "structures": [],
+    "tags": [
+      "盆部内脏神经丛"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-033.jpg"
+    ]
+  },
+  {
+    "id": "atlas-034",
+    "image": "心的神经支配和血压调节",
+    "page": 0,
+    "title": "心的神经支配和血压调节",
+    "structures": [],
+    "tags": [
+      "心的神经支配和血压调节"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-034.jpg"
+    ]
+  },
+  {
+    "id": "atlas-035",
+    "image": "内脏感觉神经中神经肽作用示意图",
+    "page": 0,
+    "title": "内脏感觉神经中神经肽作用示意图",
+    "structures": [],
+    "tags": [
+      "内脏感觉神经中神经肽作用示意图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-035.jpg"
+    ]
+  },
+  {
+    "id": "atlas-036",
+    "image": "心传入神经与皮肤传入神经的中枢投射联系",
+    "page": 0,
+    "title": "心传入神经与皮肤传入神经的中枢投射联系",
+    "structures": [],
+    "tags": [
+      "心传入神经与皮肤传入神经的中枢投射联系"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-036.jpg"
+    ]
+  },
+  {
+    "id": "atlas-037",
+    "image": "内脏器官疾病时的牵涉性痛区",
+    "page": 0,
+    "title": "内脏器官疾病时的牵涉性痛区",
+    "structures": [],
+    "tags": [
+      "内脏器官疾病时的牵涉性痛区"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-037.jpg"
+    ]
+  },
+  {
+    "id": "atlas-038",
+    "image": "Rexed 分层模式图",
+    "page": 0,
+    "title": "Rexed 分层模式图",
+    "structures": [],
+    "tags": [
+      "Rexed 分层模式图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-038.jpg"
+    ]
+  },
+  {
+    "id": "atlas-039",
+    "image": "2.  心",
+    "page": 0,
+    "title": "2.  心",
+    "structures": [],
+    "tags": [
+      "2.  心"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-039.png"
+    ]
+  },
+  {
+    "id": "atlas-040",
+    "image": "第四节  _  神经系统的传导通路",
+    "page": 0,
+    "title": "第四节  _  神经系统的传导通路",
+    "structures": [],
+    "tags": [
+      "第四节  _  神经系统的传导通路"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-040.png"
+    ]
+  },
+  {
+    "id": "atlas-041",
+    "image": "躯干和四肢意识性本体感觉传导通路",
+    "page": 0,
+    "title": "躯干和四肢意识性本体感觉传导通路",
+    "structures": [],
+    "tags": [
+      "躯干和四肢意识性本体感觉传导通路"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-041.jpg"
+    ]
+  },
+  {
+    "id": "atlas-042",
+    "image": "图谱",
+    "page": 0,
+    "title": "图谱",
+    "structures": [],
+    "tags": [
+      "图谱"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-042.jpg"
+    ]
+  },
+  {
+    "id": "atlas-043",
+    "image": "第九章  神经系统",
+    "page": 0,
+    "title": "第九章  神经系统",
+    "structures": [],
+    "tags": [
+      "第九章  神经系统"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-043.jpg"
+    ]
+  },
+  {
+    "id": "atlas-044",
+    "image": "躯干和四肢非意识性本体感觉传导通路",
+    "page": 0,
+    "title": "躯干和四肢非意识性本体感觉传导通路",
+    "structures": [],
+    "tags": [
+      "躯干和四肢非意识性本体感觉传导通路"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-044.png"
+    ]
+  },
+  {
+    "id": "atlas-045",
+    "image": "痛温觉、粗略触觉和压觉传导通路",
+    "page": 0,
+    "title": "痛温觉、粗略触觉和压觉传导通路",
+    "structures": [],
+    "tags": [
+      "痛温觉、粗略触觉和压觉传导通路"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-045.jpg"
+    ]
+  },
+  {
+    "id": "atlas-046",
+    "image": "图谱",
+    "page": 0,
+    "title": "图谱",
+    "structures": [],
+    "tags": [
+      "图谱"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-046.png"
+    ]
+  },
+  {
+    "id": "atlas-047",
+    "image": "（三）  视觉传导通路和瞳孔对光反射通路",
+    "page": 0,
+    "title": "（三）  视觉传导通路和瞳孔对光反射通路",
+    "structures": [],
+    "tags": [
+      "（三）  视觉传导通路和瞳孔对光反射通路"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-047.png"
+    ]
+  },
+  {
+    "id": "atlas-048",
+    "image": "图谱",
+    "page": 0,
+    "title": "图谱",
+    "structures": [],
+    "tags": [
+      "图谱"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-048.png"
+    ]
+  },
+  {
+    "id": "atlas-049",
+    "image": "视觉传导通路和瞳孔对光反射通路",
+    "page": 0,
+    "title": "视觉传导通路和瞳孔对光反射通路",
+    "structures": [],
+    "tags": [
+      "视觉传导通路和瞳孔对光反射通路"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-049.jpg"
+    ]
+  },
+  {
+    "id": "atlas-050",
+    "image": "（四）  听觉传导通路",
+    "page": 0,
+    "title": "（四）  听觉传导通路",
+    "structures": [],
+    "tags": [
+      "（四）  听觉传导通路"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-050.png"
+    ]
+  },
+  {
+    "id": "atlas-051",
+    "image": "听觉传导通路",
+    "page": 0,
+    "title": "听觉传导通路",
+    "structures": [],
+    "tags": [
+      "听觉传导通路"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-051.jpg"
+    ]
+  },
+  {
+    "id": "atlas-052",
+    "image": "平衡觉传导通路",
+    "page": 0,
+    "title": "平衡觉传导通路",
+    "structures": [],
+    "tags": [
+      "平衡觉传导通路"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-052.jpg"
+    ]
+  },
+  {
+    "id": "atlas-053",
+    "image": "二、  运动传导通路",
+    "page": 0,
+    "title": "二、  运动传导通路",
+    "structures": [],
+    "tags": [
+      "二、  运动传导通路"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-053.png"
+    ]
+  },
+  {
+    "id": "atlas-054",
+    "image": "二、  运动传导通路_1",
+    "page": 0,
+    "title": "二、  运动传导通路_1",
+    "structures": [],
+    "tags": [
+      "二、  运动传导通路_1"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-054.png"
+    ]
+  },
+  {
+    "id": "atlas-055",
+    "image": "（六）  内脏感觉传导通路",
+    "page": 0,
+    "title": "（六）  内脏感觉传导通路",
+    "structures": [],
+    "tags": [
+      "（六）  内脏感觉传导通路"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-055.png"
+    ]
+  },
+  {
+    "id": "atlas-056",
+    "image": "（六）  内脏感觉传导通路_1",
+    "page": 0,
+    "title": "（六）  内脏感觉传导通路_1",
+    "structures": [],
+    "tags": [
+      "（六）  内脏感觉传导通路_1"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-056.png"
+    ]
+  },
+  {
+    "id": "atlas-057",
+    "image": "图谱",
+    "page": 0,
+    "title": "图谱",
+    "structures": [],
+    "tags": [
+      "图谱"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-057.jpg"
+    ]
+  },
+  {
+    "id": "atlas-058",
+    "image": "第九章  神经系统",
+    "page": 0,
+    "title": "第九章  神经系统",
+    "structures": [],
+    "tags": [
+      "第九章  神经系统"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-058.jpg"
+    ]
+  },
+  {
+    "id": "atlas-059",
+    "image": "锥体系中的皮质核束",
+    "page": 0,
+    "title": "锥体系中的皮质核束",
+    "structures": [],
+    "tags": [
+      "锥体系中的皮质核束"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-059.jpg"
+    ]
+  },
+  {
+    "id": "atlas-060",
+    "image": "锥体系中的皮质脊髓束",
+    "page": 0,
+    "title": "锥体系中的皮质脊髓束",
+    "structures": [],
+    "tags": [
+      "锥体系中的皮质脊髓束"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-060.png"
+    ]
+  },
+  {
+    "id": "atlas-061",
+    "image": "舌肌瘫痪",
+    "page": 0,
+    "title": "舌肌瘫痪",
+    "structures": [],
+    "tags": [
+      "舌肌瘫痪"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-061.jpg"
+    ]
+  },
+  {
+    "id": "atlas-062",
+    "image": "面肌瘫痪",
+    "page": 0,
+    "title": "面肌瘫痪",
+    "structures": [],
+    "tags": [
+      "面肌瘫痪"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-062.jpg"
+    ]
+  },
+  {
+    "id": "atlas-063",
+    "image": "图谱",
+    "page": 0,
+    "title": "图谱",
+    "structures": [],
+    "tags": [
+      "图谱"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-063.png"
+    ]
+  },
+  {
+    "id": "atlas-064",
+    "image": "（二）  锥体外系",
+    "page": 0,
+    "title": "（二）  锥体外系",
+    "structures": [],
+    "tags": [
+      "（二）  锥体外系"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-064.png"
+    ]
+  },
+  {
+    "id": "atlas-065",
+    "image": "1.  举例说明神经系统的活动方式。",
+    "page": 0,
+    "title": "1.  举例说明神经系统的活动方式。",
+    "structures": [],
+    "tags": [
+      "1.  举例说明神经系统的活动方式。"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-065.jpg"
+    ]
+  },
+  {
+    "id": "atlas-066",
+    "image": "图谱",
+    "page": 0,
+    "title": "图谱",
+    "structures": [],
+    "tags": [
+      "图谱"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-066.jpg"
+    ]
+  },
+  {
+    "id": "atlas-067",
+    "image": "锥体外系的皮质 - 脑桥 - 小脑 - 皮质环路",
+    "page": 0,
+    "title": "锥体外系的皮质 - 脑桥 - 小脑 - 皮质环路",
+    "structures": [],
+    "tags": [
+      "锥体外系的皮质 - 脑桥 - 小脑 - 皮质环路"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-067.png"
+    ]
+  },
+  {
+    "id": "atlas-068",
+    "image": "薄束和楔束",
+    "page": 0,
+    "title": "薄束和楔束",
+    "structures": [],
+    "tags": [
+      "薄束和楔束"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-068.jpg"
+    ]
+  },
+  {
+    "id": "atlas-069",
+    "image": "脊髓丘脑束",
+    "page": 0,
+    "title": "脊髓丘脑束",
+    "structures": [],
+    "tags": [
+      "脊髓丘脑束"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-069.jpg"
+    ]
+  },
+  {
+    "id": "atlas-070",
+    "image": "皮质脊髓束",
+    "page": 0,
+    "title": "皮质脊髓束",
+    "structures": [],
+    "tags": [
+      "皮质脊髓束"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-070.jpg"
+    ]
+  },
+  {
+    "id": "atlas-071",
+    "image": "牵张反射模式图",
+    "page": 0,
+    "title": "牵张反射模式图",
+    "structures": [],
+    "tags": [
+      "牵张反射模式图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-071.jpg"
+    ]
+  },
+  {
+    "id": "atlas-072",
+    "image": "屈曲反射模式图",
+    "page": 0,
+    "title": "屈曲反射模式图",
+    "structures": [],
+    "tags": [
+      "屈曲反射模式图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-072.jpg"
+    ]
+  },
+  {
+    "id": "atlas-073",
+    "image": "脑的底面",
+    "page": 0,
+    "title": "脑的底面",
+    "structures": [],
+    "tags": [
+      "脑的底面"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-073.jpg"
+    ]
+  },
+  {
+    "id": "atlas-074",
+    "image": "脑的正中矢状切面",
+    "page": 0,
+    "title": "脑的正中矢状切面",
+    "structures": [],
+    "tags": [
+      "脑的正中矢状切面"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-074.jpg"
+    ]
+  },
+  {
+    "id": "atlas-075",
+    "image": "脑干外形",
+    "page": 0,
+    "title": "脑干外形",
+    "structures": [],
+    "tags": [
+      "脑干外形"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-075.jpg"
+    ]
+  },
+  {
+    "id": "atlas-076",
+    "image": "脑干外形",
+    "page": 0,
+    "title": "脑干外形",
+    "structures": [],
+    "tags": [
+      "脑干外形"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-076.jpg"
+    ]
+  },
+  {
+    "id": "atlas-077",
+    "image": "小脑冠状切面示第四脑室顶",
+    "page": 0,
+    "title": "小脑冠状切面示第四脑室顶",
+    "structures": [],
+    "tags": [
+      "小脑冠状切面示第四脑室顶"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-077.jpg"
+    ]
+  },
+  {
+    "id": "atlas-078",
+    "image": "脑干、小脑和第四脑室正中矢状切面示意图",
+    "page": 0,
+    "title": "脑干、小脑和第四脑室正中矢状切面示意图",
+    "structures": [],
+    "tags": [
+      "脑干、小脑和第四脑室正中矢状切面示意图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-078.jpg"
+    ]
+  },
+  {
+    "id": "atlas-079",
+    "image": "第四脑室脉络组织",
+    "page": 0,
+    "title": "第四脑室脉络组织",
+    "structures": [],
+    "tags": [
+      "第四脑室脉络组织"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-079.jpg"
+    ]
+  },
+  {
+    "id": "atlas-080",
+    "image": "脑神经核在脑干背面的投影示意图",
+    "page": 0,
+    "title": "脑神经核在脑干背面的投影示意图",
+    "structures": [],
+    "tags": [
+      "脑神经核在脑干背面的投影示意图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-080.jpg"
+    ]
+  },
+  {
+    "id": "atlas-081",
+    "image": "脑神经核基本排列规律模式图",
+    "page": 0,
+    "title": "脑神经核基本排列规律模式图",
+    "structures": [],
+    "tags": [
+      "脑神经核基本排列规律模式图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-081.jpg"
+    ]
+  },
+  {
+    "id": "atlas-082",
+    "image": "脑神经核与脑神经关系模式图",
+    "page": 0,
+    "title": "脑神经核与脑神经关系模式图",
+    "structures": [],
+    "tags": [
+      "脑神经核与脑神经关系模式图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-082.jpg"
+    ]
+  },
+  {
+    "id": "atlas-083",
+    "image": "三叉神经感觉核、运动核及其纤维联系示意图",
+    "page": 0,
+    "title": "三叉神经感觉核、运动核及其纤维联系示意图",
+    "structures": [],
+    "tags": [
+      "三叉神经感觉核、运动核及其纤维联系示意图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-083.jpg"
+    ]
+  },
+  {
+    "id": "atlas-084",
+    "image": "延髓水平切面",
+    "page": 0,
+    "title": "延髓水平切面",
+    "structures": [],
+    "tags": [
+      "延髓水平切面"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-084.jpg"
+    ]
+  },
+  {
+    "id": "atlas-085",
+    "image": "延髓水平切面",
+    "page": 0,
+    "title": "延髓水平切面",
+    "structures": [],
+    "tags": [
+      "延髓水平切面"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-085.jpg"
+    ]
+  },
+  {
+    "id": "atlas-086",
+    "image": "延髓水平切面",
+    "page": 0,
+    "title": "延髓水平切面",
+    "structures": [],
+    "tags": [
+      "延髓水平切面"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-086.jpg"
+    ]
+  },
+  {
+    "id": "atlas-087",
+    "image": "延髓水平切面",
+    "page": 0,
+    "title": "延髓水平切面",
+    "structures": [],
+    "tags": [
+      "延髓水平切面"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-087.jpg"
+    ]
+  },
+  {
+    "id": "atlas-088",
+    "image": "脑桥水平切面",
+    "page": 0,
+    "title": "脑桥水平切面",
+    "structures": [],
+    "tags": [
+      "脑桥水平切面"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-088.jpg"
+    ]
+  },
+  {
+    "id": "atlas-089",
+    "image": "脑桥水平切面",
+    "page": 0,
+    "title": "脑桥水平切面",
+    "structures": [],
+    "tags": [
+      "脑桥水平切面"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-089.jpg"
+    ]
+  },
+  {
+    "id": "atlas-090",
+    "image": "面神经的特殊内脏运动纤维在脑干内经行示意图",
+    "page": 0,
+    "title": "面神经的特殊内脏运动纤维在脑干内经行示意图",
+    "structures": [],
+    "tags": [
+      "面神经的特殊内脏运动纤维在脑干内经行示意图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-090.jpg"
+    ]
+  },
+  {
+    "id": "atlas-091",
+    "image": "中脑水平切面",
+    "page": 0,
+    "title": "中脑水平切面",
+    "structures": [],
+    "tags": [
+      "中脑水平切面"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-091.jpg"
+    ]
+  },
+  {
+    "id": "atlas-092",
+    "image": "脑桥水平切面",
+    "page": 0,
+    "title": "脑桥水平切面",
+    "structures": [],
+    "tags": [
+      "脑桥水平切面"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-092.jpg"
+    ]
+  },
+  {
+    "id": "atlas-093",
+    "image": "中脑上丘的分层结构及其纤维联系",
+    "page": 0,
+    "title": "中脑上丘的分层结构及其纤维联系",
+    "structures": [],
+    "tags": [
+      "中脑上丘的分层结构及其纤维联系"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-093.jpg"
+    ]
+  },
+  {
+    "id": "atlas-094",
+    "image": "中脑水平切面",
+    "page": 0,
+    "title": "中脑水平切面",
+    "structures": [],
+    "tags": [
+      "中脑水平切面"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-094.jpg"
+    ]
+  },
+  {
+    "id": "atlas-095",
+    "image": "中脑顶盖前区的核团及其纤维联系",
+    "page": 0,
+    "title": "中脑顶盖前区的核团及其纤维联系",
+    "structures": [],
+    "tags": [
+      "中脑顶盖前区的核团及其纤维联系"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-095.jpg"
+    ]
+  },
+  {
+    "id": "atlas-096",
+    "image": "脑干网状结构核团在脑干背面投影示意图",
+    "page": 0,
+    "title": "脑干网状结构核团在脑干背面投影示意图",
+    "structures": [],
+    "tags": [
+      "脑干网状结构核团在脑干背面投影示意图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-096.jpg"
+    ]
+  },
+  {
+    "id": "atlas-097",
+    "image": "上行网状激活系统示意图",
+    "page": 0,
+    "title": "上行网状激活系统示意图",
+    "structures": [],
+    "tags": [
+      "上行网状激活系统示意图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-097.jpg"
+    ]
+  },
+  {
+    "id": "atlas-098",
+    "image": "脑干动脉供应概况",
+    "page": 0,
+    "title": "脑干动脉供应概况",
+    "structures": [],
+    "tags": [
+      "脑干动脉供应概况"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-098.jpg"
+    ]
+  },
+  {
+    "id": "atlas-099",
+    "image": "延髓损伤区及相关临床综合征",
+    "page": 0,
+    "title": "延髓损伤区及相关临床综合征",
+    "structures": [],
+    "tags": [
+      "延髓损伤区及相关临床综合征"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-099.jpg"
+    ]
+  },
+  {
+    "id": "atlas-100",
+    "image": "脑桥损伤区及相关临床综合征",
+    "page": 0,
+    "title": "脑桥损伤区及相关临床综合征",
+    "structures": [],
+    "tags": [
+      "脑桥损伤区及相关临床综合征"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-100.jpg"
+    ]
+  },
+  {
+    "id": "atlas-101",
+    "image": "中脑损伤区及相关临床综合征",
+    "page": 0,
+    "title": "中脑损伤区及相关临床综合征",
+    "structures": [],
+    "tags": [
+      "中脑损伤区及相关临床综合征"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-101.jpg"
+    ]
+  },
+  {
+    "id": "atlas-102",
+    "image": "小脑的外形",
+    "page": 0,
+    "title": "小脑的外形",
+    "structures": [],
+    "tags": [
+      "小脑的外形"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-102.jpg"
+    ]
+  },
+  {
+    "id": "atlas-103",
+    "image": "小脑正中矢状切面",
+    "page": 0,
+    "title": "小脑正中矢状切面",
+    "structures": [],
+    "tags": [
+      "小脑正中矢状切面"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-103.jpg"
+    ]
+  },
+  {
+    "id": "atlas-104",
+    "image": "小脑的外形",
+    "page": 0,
+    "title": "小脑的外形",
+    "structures": [],
+    "tags": [
+      "小脑的外形"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-104.jpg"
+    ]
+  },
+  {
+    "id": "atlas-105",
+    "image": "小脑的外形",
+    "page": 0,
+    "title": "小脑的外形",
+    "structures": [],
+    "tags": [
+      "小脑的外形"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-105.jpg"
+    ]
+  },
+  {
+    "id": "atlas-106",
+    "image": "小脑皮质平面示意图",
+    "page": 0,
+    "title": "小脑皮质平面示意图",
+    "structures": [],
+    "tags": [
+      "小脑皮质平面示意图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-106.jpg"
+    ]
+  },
+  {
+    "id": "atlas-107",
+    "image": "小脑皮质细胞构筑模式图",
+    "page": 0,
+    "title": "小脑皮质细胞构筑模式图",
+    "structures": [],
+    "tags": [
+      "小脑皮质细胞构筑模式图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-107.jpg"
+    ]
+  },
+  {
+    "id": "atlas-108",
+    "image": "小脑皮质细胞构筑模式图",
+    "page": 0,
+    "title": "小脑皮质细胞构筑模式图",
+    "structures": [],
+    "tags": [
+      "小脑皮质细胞构筑模式图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-108.jpg"
+    ]
+  },
+  {
+    "id": "atlas-109",
+    "image": "小脑水平切面",
+    "page": 0,
+    "title": "小脑水平切面",
+    "structures": [],
+    "tags": [
+      "小脑水平切面"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-109.jpg"
+    ]
+  },
+  {
+    "id": "atlas-110",
+    "image": "小脑脚示意图",
+    "page": 0,
+    "title": "小脑脚示意图",
+    "structures": [],
+    "tags": [
+      "小脑脚示意图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-110.jpg"
+    ]
+  },
+  {
+    "id": "atlas-111",
+    "image": "前庭小脑的主要传入、传出纤维联系",
+    "page": 0,
+    "title": "前庭小脑的主要传入、传出纤维联系",
+    "structures": [],
+    "tags": [
+      "前庭小脑的主要传入、传出纤维联系"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-111.jpg"
+    ]
+  },
+  {
+    "id": "atlas-112",
+    "image": "脊髓小脑的主要传入、传出纤维联系",
+    "page": 0,
+    "title": "脊髓小脑的主要传入、传出纤维联系",
+    "structures": [],
+    "tags": [
+      "脊髓小脑的主要传入、传出纤维联系"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-112.jpg"
+    ]
+  },
+  {
+    "id": "atlas-113",
+    "image": "大脑小脑的主要传入、传出纤维联系",
+    "page": 0,
+    "title": "大脑小脑的主要传入、传出纤维联系",
+    "structures": [],
+    "tags": [
+      "大脑小脑的主要传入、传出纤维联系"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-113.jpg"
+    ]
+  },
+  {
+    "id": "atlas-114",
+    "image": "小脑传入、传出纤维二次交叉示意图",
+    "page": 0,
+    "title": "小脑传入、传出纤维二次交叉示意图",
+    "structures": [],
+    "tags": [
+      "小脑传入、传出纤维二次交叉示意图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-114.jpg"
+    ]
+  },
+  {
+    "id": "atlas-115",
+    "image": "间脑",
+    "page": 0,
+    "title": "间脑",
+    "structures": [],
+    "tags": [
+      "间脑"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-115.jpg"
+    ]
+  },
+  {
+    "id": "atlas-116",
+    "image": "背侧丘脑核团模式图",
+    "page": 0,
+    "title": "背侧丘脑核团模式图",
+    "structures": [],
+    "tags": [
+      "背侧丘脑核团模式图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-116.jpg"
+    ]
+  },
+  {
+    "id": "atlas-117",
+    "image": "底丘脑（冠状切面）的结构和纤维联系",
+    "page": 0,
+    "title": "底丘脑（冠状切面）的结构和纤维联系",
+    "structures": [],
+    "tags": [
+      "底丘脑（冠状切面）的结构和纤维联系"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-117.jpg"
+    ]
+  },
+  {
+    "id": "atlas-118",
+    "image": "下丘脑（矢状切面）的主要核团",
+    "page": 0,
+    "title": "下丘脑（矢状切面）的主要核团",
+    "structures": [],
+    "tags": [
+      "下丘脑（矢状切面）的主要核团"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-118.jpg"
+    ]
+  },
+  {
+    "id": "atlas-119",
+    "image": "下丘脑（矢状切面）的纤维联系",
+    "page": 0,
+    "title": "下丘脑（矢状切面）的纤维联系",
+    "structures": [],
+    "tags": [
+      "下丘脑（矢状切面）的纤维联系"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-119.jpg"
+    ]
+  },
+  {
+    "id": "atlas-120",
+    "image": "下丘脑（矢状切面）的纤维联系",
+    "page": 0,
+    "title": "下丘脑（矢状切面）的纤维联系",
+    "structures": [],
+    "tags": [
+      "下丘脑（矢状切面）的纤维联系"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-120.jpg"
+    ]
+  },
+  {
+    "id": "atlas-121",
+    "image": "大脑半球外侧面",
+    "page": 0,
     "title": "大脑半球外侧面",
-    "structures": [
-      {
-        "label": "中央沟",
-        "desc": "分隔额叶和顶叶"
-      },
-      {
-        "label": "外侧沟",
-        "desc": "分隔额叶/顶叶与颞叶"
-      },
-      {
-        "label": "中央前回",
-        "desc": "第1躯体运动区"
-      },
-      {
-        "label": "中央后回",
-        "desc": "第1躯体感觉区"
-      },
-      {
-        "label": "额叶",
-        "desc": "运动、语言运动区（Broca区）"
-      },
-      {
-        "label": "顶叶",
-        "desc": "躯体感觉"
-      },
-      {
-        "label": "枕叶",
-        "desc": "视觉区"
-      },
-      {
-        "label": "颞叶",
-        "desc": "听觉区、感觉性语言区（Wernicke区）"
-      }
-    ],
+    "structures": [],
     "tags": [
-      "大脑",
-      "中央沟",
-      "中央前回",
-      "中央后回",
-      "分叶"
+      "大脑半球外侧面"
     ],
     "type": "atlas",
-    "系统": "神经系统",
-    "section": "神经系统",
-    "subsection": "端脑"
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-121.jpg"
+    ]
   },
   {
-    "id": "atlas-neu-006",
-    "image": "图9-14 基底核和内囊",
-    "page": 300,
-    "title": "基底核与内囊（水平切面）",
-    "structures": [
-      {
-        "label": "尾状核",
-        "desc": "C形灰质核团"
-      },
-      {
-        "label": "豆状核",
-        "desc": "壳核+苍白球"
-      },
-      {
-        "label": "内囊",
-        "desc": "投射纤维集中处"
-      },
-      {
-        "label": "内囊前肢",
-        "desc": "额桥束和丘脑前辐射"
-      },
-      {
-        "label": "内囊膝",
-        "desc": "皮质核束"
-      },
-      {
-        "label": "内囊后肢",
-        "desc": "皮质脊髓束、丘脑中央辐射、视辐射"
-      }
-    ],
+    "id": "atlas-122",
+    "image": "岛叶",
+    "page": 0,
+    "title": "岛叶",
+    "structures": [],
     "tags": [
-      "基底核",
-      "内囊",
-      "尾状核",
-      "豆状核",
-      "三偏症"
+      "岛叶"
     ],
     "type": "atlas",
-    "系统": "神经系统",
-    "section": "神经系统",
-    "subsection": "端脑"
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-122.jpg"
+    ]
   },
   {
-    "id": "atlas-neu-007",
-    "image": "图9-16 脑和脊髓被膜",
-    "page": 306,
-    "title": "脑的被膜",
-    "structures": [
-      {
-        "label": "硬脑膜",
-        "desc": "厚而坚韧，形成大脑镰和小脑幕"
-      },
-      {
-        "label": "蛛网膜",
-        "desc": "薄而透明"
-      },
-      {
-        "label": "软脑膜",
-        "desc": "紧贴脑表面，富含血管"
-      },
-      {
-        "label": "蛛网膜下隙",
-        "desc": "含脑脊液"
-      },
-      {
-        "label": "硬膜外隙",
-        "desc": "硬脊膜与椎管骨膜之间"
-      }
-    ],
+    "id": "atlas-123",
+    "image": "大脑半球内侧面",
+    "page": 0,
+    "title": "大脑半球内侧面",
+    "structures": [],
     "tags": [
-      "被膜",
-      "硬脑膜",
-      "蛛网膜",
-      "软脑膜"
+      "大脑半球内侧面"
     ],
     "type": "atlas",
-    "系统": "神经系统",
-    "section": "神经系统",
-    "subsection": "被膜"
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-123.jpg"
+    ]
   },
   {
-    "id": "atlas-neu-008",
-    "image": "图9-17 脑脊液循环",
-    "page": 308,
-    "title": "脑脊液循环路径",
-    "structures": [
-      {
-        "label": "侧脑室",
-        "desc": "左、右各一"
-      },
-      {
-        "label": "室间孔",
-        "desc": "侧脑室→第三脑室"
-      },
-      {
-        "label": "第三脑室",
-        "desc": "间脑之间"
-      },
-      {
-        "label": "中脑水管",
-        "desc": "第三脑室→第四脑室"
-      },
-      {
-        "label": "第四脑室",
-        "desc": "脑桥、延髓与小脑之间"
-      },
-      {
-        "label": "蛛网膜粒",
-        "desc": "脑脊液汇入上矢状窦处"
-      }
-    ],
+    "id": "atlas-124",
+    "image": "海马结构",
+    "page": 0,
+    "title": "海马结构",
+    "structures": [],
     "tags": [
-      "脑脊液",
-      "脑室",
-      "蛛网膜粒"
+      "海马结构"
     ],
     "type": "atlas",
-    "系统": "神经系统",
-    "section": "神经系统",
-    "subsection": "脑脊液"
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-124.jpg"
+    ]
   },
   {
-    "id": "atlas-neu-009",
-    "image": "图9-18 Willis环",
-    "page": 310,
-    "title": "大脑动脉环（Willis环）",
-    "structures": [
-      {
-        "label": "大脑前动脉",
-        "desc": "供应大脑半球内侧面"
-      },
-      {
-        "label": "大脑中动脉",
-        "desc": "供应大脑半球外侧面，豆纹动脉为出血动脉"
-      },
-      {
-        "label": "大脑后动脉",
-        "desc": "供应枕叶和颞叶下面"
-      },
-      {
-        "label": "前交通动脉",
-        "desc": "连接两侧大脑前动脉"
-      },
-      {
-        "label": "后交通动脉",
-        "desc": "连接颈内动脉与大脑后动脉"
-      },
-      {
-        "label": "颈内动脉",
-        "desc": "供应大脑前2/3"
-      }
-    ],
+    "id": "atlas-125",
+    "image": "端脑底面",
+    "page": 0,
+    "title": "端脑底面",
+    "structures": [],
     "tags": [
-      "Willis环",
-      "大脑中动脉",
-      "颈内动脉",
-      "脑动脉"
+      "端脑底面"
     ],
     "type": "atlas",
-    "系统": "神经系统",
-    "section": "神经系统",
-    "subsection": "脑的血管"
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-125.jpg"
+    ]
+  },
+  {
+    "id": "atlas-126",
+    "image": "大脑皮质Brodmann 分区",
+    "page": 0,
+    "title": "大脑皮质Brodmann 分区",
+    "structures": [],
+    "tags": [
+      "大脑皮质Brodmann 分区"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-126.jpg"
+    ]
+  },
+  {
+    "id": "atlas-127",
+    "image": "大脑皮质Brodmann 分区",
+    "page": 0,
+    "title": "大脑皮质Brodmann 分区",
+    "structures": [],
+    "tags": [
+      "大脑皮质Brodmann 分区"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-127.jpg"
+    ]
+  },
+  {
+    "id": "atlas-128",
+    "image": "人体各部在第Ⅰ躯体感觉区的定位",
+    "page": 0,
+    "title": "人体各部在第Ⅰ躯体感觉区的定位",
+    "structures": [],
+    "tags": [
+      "人体各部在第Ⅰ躯体感觉区的定位"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-128.jpg"
+    ]
+  },
+  {
+    "id": "atlas-129",
+    "image": "人体各部在第Ⅰ躯体运动区的定位",
+    "page": 0,
+    "title": "人体各部在第Ⅰ躯体运动区的定位",
+    "structures": [],
+    "tags": [
+      "人体各部在第Ⅰ躯体运动区的定位"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-129.jpg"
+    ]
+  },
+  {
+    "id": "atlas-130",
+    "image": "左侧大脑半球的语言中枢",
+    "page": 0,
+    "title": "左侧大脑半球的语言中枢",
+    "structures": [],
+    "tags": [
+      "左侧大脑半球的语言中枢"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-130.jpg"
+    ]
+  },
+  {
+    "id": "atlas-131",
+    "image": "基底核、背侧丘脑和内囊",
+    "page": 0,
+    "title": "基底核、背侧丘脑和内囊",
+    "structures": [],
+    "tags": [
+      "基底核、背侧丘脑和内囊"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-131.jpg"
+    ]
+  },
+  {
+    "id": "atlas-132",
+    "image": "侧脑室",
+    "page": 0,
+    "title": "侧脑室",
+    "structures": [],
+    "tags": [
+      "侧脑室"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-132.jpg"
+    ]
+  },
+  {
+    "id": "atlas-133",
+    "image": "脑室投影图",
+    "page": 0,
+    "title": "脑室投影图",
+    "structures": [],
+    "tags": [
+      "脑室投影图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-133.jpg"
+    ]
+  },
+  {
+    "id": "atlas-134",
+    "image": "齿状回、海马和内嗅区皮质分层模式图",
+    "page": 0,
+    "title": "齿状回、海马和内嗅区皮质分层模式图",
+    "structures": [],
+    "tags": [
+      "齿状回、海马和内嗅区皮质分层模式图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-134.jpg"
+    ]
+  },
+  {
+    "id": "atlas-135",
+    "image": "大脑半球联络纤维",
+    "page": 0,
+    "title": "大脑半球联络纤维",
+    "structures": [],
+    "tags": [
+      "大脑半球联络纤维"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-135.jpg"
+    ]
+  },
+  {
+    "id": "atlas-136",
+    "image": "新皮质神经元相互间及与传入纤维间联系模式图",
+    "page": 0,
+    "title": "新皮质神经元相互间及与传入纤维间联系模式图",
+    "structures": [],
+    "tags": [
+      "新皮质神经元相互间及与传入纤维间联系模式图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-136.jpg"
+    ]
+  },
+  {
+    "id": "atlas-137",
+    "image": "大脑半球连合纤维",
+    "page": 0,
+    "title": "大脑半球连合纤维",
+    "structures": [],
+    "tags": [
+      "大脑半球连合纤维"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-137.jpg"
+    ]
+  },
+  {
+    "id": "atlas-138",
+    "image": "内囊模式图",
+    "page": 0,
+    "title": "内囊模式图",
+    "structures": [],
+    "tags": [
+      "内囊模式图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-138.jpg"
+    ]
+  },
+  {
+    "id": "atlas-139",
+    "image": "边缘系统",
+    "page": 0,
+    "title": "边缘系统",
+    "structures": [],
+    "tags": [
+      "边缘系统"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-139.jpg"
+    ]
+  },
+  {
+    "id": "atlas-140",
+    "image": "脊髓的被膜示意图",
+    "page": 0,
+    "title": "脊髓的被膜示意图",
+    "structures": [],
+    "tags": [
+      "脊髓的被膜示意图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-140.jpg"
+    ]
+  },
+  {
+    "id": "atlas-141",
+    "image": "脑的被膜模式图",
+    "page": 0,
+    "title": "脑的被膜模式图",
+    "structures": [],
+    "tags": [
+      "脑的被膜模式图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-141.jpg"
+    ]
+  },
+  {
+    "id": "atlas-142",
+    "image": "硬脑膜及硬脑膜窦",
+    "page": 0,
+    "title": "硬脑膜及硬脑膜窦",
+    "structures": [],
+    "tags": [
+      "硬脑膜及硬脑膜窦"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-142.jpg"
+    ]
+  },
+  {
+    "id": "atlas-143",
+    "image": "上矢状窦和蛛网膜粒",
+    "page": 0,
+    "title": "上矢状窦和蛛网膜粒",
+    "structures": [],
+    "tags": [
+      "上矢状窦和蛛网膜粒"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-143.png"
+    ]
+  },
+  {
+    "id": "atlas-144",
+    "image": "图谱",
+    "page": 0,
+    "title": "图谱",
+    "structures": [],
+    "tags": [
+      "图谱"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-144.jpg"
+    ]
+  },
+  {
+    "id": "atlas-145",
+    "image": "海绵窦",
+    "page": 0,
+    "title": "海绵窦",
+    "structures": [],
+    "tags": [
+      "海绵窦"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-145.jpg"
+    ]
+  },
+  {
+    "id": "atlas-146",
+    "image": "第九章  神经系统",
+    "page": 0,
+    "title": "第九章  神经系统",
+    "structures": [],
+    "tags": [
+      "第九章  神经系统"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-146.jpg"
+    ]
+  },
+  {
+    "id": "atlas-147",
+    "image": "脑底的动脉",
+    "page": 0,
+    "title": "脑底的动脉",
+    "structures": [],
+    "tags": [
+      "脑底的动脉"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-147.jpg"
+    ]
+  },
+  {
+    "id": "atlas-148",
+    "image": "大脑半球的动脉",
+    "page": 0,
+    "title": "大脑半球的动脉",
+    "structures": [],
+    "tags": [
+      "大脑半球的动脉"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-148.jpg"
+    ]
+  },
+  {
+    "id": "atlas-149",
+    "image": "大脑半球的动脉",
+    "page": 0,
+    "title": "大脑半球的动脉",
+    "structures": [],
+    "tags": [
+      "大脑半球的动脉"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-149.jpg"
+    ]
+  },
+  {
+    "id": "atlas-150",
+    "image": "大脑中动脉的皮质支和中央支",
+    "page": 0,
+    "title": "大脑中动脉的皮质支和中央支",
+    "structures": [],
+    "tags": [
+      "大脑中动脉的皮质支和中央支"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-150.jpg"
+    ]
+  },
+  {
+    "id": "atlas-151",
+    "image": "脑的静脉",
+    "page": 0,
+    "title": "脑的静脉",
+    "structures": [],
+    "tags": [
+      "脑的静脉"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-151.jpg"
+    ]
+  },
+  {
+    "id": "atlas-152",
+    "image": "脑的静脉",
+    "page": 0,
+    "title": "脑的静脉",
+    "structures": [],
+    "tags": [
+      "脑的静脉"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-152.jpg"
+    ]
+  },
+  {
+    "id": "atlas-153",
+    "image": "脊髓内部的动脉分布",
+    "page": 0,
+    "title": "脊髓内部的动脉分布",
+    "structures": [],
+    "tags": [
+      "脊髓内部的动脉分布"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-153.jpg"
+    ]
+  },
+  {
+    "id": "atlas-154",
+    "image": "脊髓的动脉",
+    "page": 0,
+    "title": "脊髓的动脉",
+    "structures": [],
+    "tags": [
+      "脊髓的动脉"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-154.jpg"
+    ]
+  },
+  {
+    "id": "atlas-155",
+    "image": "脑脊液循环模式图",
+    "page": 0,
+    "title": "脑脊液循环模式图",
+    "structures": [],
+    "tags": [
+      "脑脊液循环模式图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-155.jpg"
+    ]
+  },
+  {
+    "id": "atlas-156",
+    "image": "脑屏障的结构和位置关系",
+    "page": 0,
+    "title": "脑屏障的结构和位置关系",
+    "structures": [],
+    "tags": [
+      "脑屏障的结构和位置关系"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-156.jpg"
+    ]
+  },
+  {
+    "id": "atlas-157",
+    "image": "脊神经的组成、分支和分布示意图",
+    "page": 0,
+    "title": "脊神经的组成、分支和分布示意图",
+    "structures": [],
+    "tags": [
+      "脊神经的组成、分支和分布示意图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-157.jpg"
+    ]
+  },
+  {
+    "id": "atlas-158",
+    "image": "颈丛的组成及颈袢示意图",
+    "page": 0,
+    "title": "颈丛的组成及颈袢示意图",
+    "structures": [],
+    "tags": [
+      "颈丛的组成及颈袢示意图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-158.jpg"
+    ]
+  },
+  {
+    "id": "atlas-159",
+    "image": "颈丛皮支的分布",
+    "page": 0,
+    "title": "颈丛皮支的分布",
+    "structures": [],
+    "tags": [
+      "颈丛皮支的分布"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-159.jpg"
+    ]
+  },
+  {
+    "id": "atlas-160",
+    "image": "膈神经",
+    "page": 0,
+    "title": "膈神经",
+    "structures": [],
+    "tags": [
+      "膈神经"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-160.jpg"
+    ]
+  },
+  {
+    "id": "atlas-161",
+    "image": "臂丛及其分支",
+    "page": 0,
+    "title": "臂丛及其分支",
+    "structures": [],
+    "tags": [
+      "臂丛及其分支"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-161.jpg"
+    ]
+  },
+  {
+    "id": "atlas-162",
+    "image": "臂丛组成模式图",
+    "page": 0,
+    "title": "臂丛组成模式图",
+    "structures": [],
+    "tags": [
+      "臂丛组成模式图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-162.jpg"
+    ]
+  },
+  {
+    "id": "atlas-163",
+    "image": "上肢的神经",
+    "page": 0,
+    "title": "上肢的神经",
+    "structures": [],
+    "tags": [
+      "上肢的神经"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-163.jpg"
+    ]
+  },
+  {
+    "id": "atlas-164",
+    "image": "上肢的神经",
+    "page": 0,
+    "title": "上肢的神经",
+    "structures": [],
+    "tags": [
+      "上肢的神经"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-164.jpg"
+    ]
+  },
+  {
+    "id": "atlas-165",
+    "image": "手的神经",
+    "page": 0,
+    "title": "手的神经",
+    "structures": [],
+    "tags": [
+      "手的神经"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-165.jpg"
+    ]
+  },
+  {
+    "id": "atlas-166",
+    "image": "手的神经",
+    "page": 0,
+    "title": "手的神经",
+    "structures": [],
+    "tags": [
+      "手的神经"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-166.jpg"
+    ]
+  },
+  {
+    "id": "atlas-167",
+    "image": "手部皮肤的神经分布",
+    "page": 0,
+    "title": "手部皮肤的神经分布",
+    "structures": [],
+    "tags": [
+      "手部皮肤的神经分布"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-167.jpg"
+    ]
+  },
+  {
+    "id": "atlas-168",
+    "image": "桡、尺和正中神经损伤时的手形及皮肤感觉丧失区",
+    "page": 0,
+    "title": "桡、尺和正中神经损伤时的手形及皮肤感觉丧失区",
+    "structures": [],
+    "tags": [
+      "桡、尺和正中神经损伤时的手形及皮肤感觉丧失区"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-168.jpg"
+    ]
+  },
+  {
+    "id": "atlas-169",
+    "image": "肋间神经走行及分支",
+    "page": 0,
+    "title": "肋间神经走行及分支",
+    "structures": [],
+    "tags": [
+      "肋间神经走行及分支"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-169.jpg"
+    ]
+  },
+  {
+    "id": "atlas-170",
+    "image": "腰、骶丛的组成模式图",
+    "page": 0,
+    "title": "腰、骶丛的组成模式图",
+    "structures": [],
+    "tags": [
+      "腰、骶丛的组成模式图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-170.jpg"
+    ]
+  },
+  {
+    "id": "atlas-171",
+    "image": "躯干皮神经的节段性分布",
+    "page": 0,
+    "title": "躯干皮神经的节段性分布",
+    "structures": [],
+    "tags": [
+      "躯干皮神经的节段性分布"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-171.jpg"
+    ]
+  },
+  {
+    "id": "atlas-172",
+    "image": "下肢的神经",
+    "page": 0,
+    "title": "下肢的神经",
+    "structures": [],
+    "tags": [
+      "下肢的神经"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-172.jpg"
+    ]
+  },
+  {
+    "id": "atlas-173",
+    "image": "腰丛的分支",
+    "page": 0,
+    "title": "腰丛的分支",
+    "structures": [],
+    "tags": [
+      "腰丛的分支"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-173.jpg"
+    ]
+  },
+  {
+    "id": "atlas-174",
+    "image": "下肢的神经",
+    "page": 0,
+    "title": "下肢的神经",
+    "structures": [],
+    "tags": [
+      "下肢的神经"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-174.jpg"
+    ]
+  },
+  {
+    "id": "atlas-175",
+    "image": "会阴部的神经",
+    "page": 0,
+    "title": "会阴部的神经",
+    "structures": [],
+    "tags": [
+      "会阴部的神经"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-175.jpg"
+    ]
+  },
+  {
+    "id": "atlas-176",
+    "image": "神经损伤后足的畸形",
+    "page": 0,
+    "title": "神经损伤后足的畸形",
+    "structures": [],
+    "tags": [
+      "神经损伤后足的畸形"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-176.jpg"
+    ]
+  },
+  {
+    "id": "atlas-177",
+    "image": "足底的神经",
+    "page": 0,
+    "title": "足底的神经",
+    "structures": [],
+    "tags": [
+      "足底的神经"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-177.jpg"
+    ]
+  },
+  {
+    "id": "atlas-178",
+    "image": "脊神经的节段性分布",
+    "page": 0,
+    "title": "脊神经的节段性分布",
+    "structures": [],
+    "tags": [
+      "脊神经的节段性分布"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-178.jpg"
+    ]
+  },
+  {
+    "id": "atlas-179",
+    "image": "皮神经分布的重叠性示意图",
+    "page": 0,
+    "title": "皮神经分布的重叠性示意图",
+    "structures": [],
+    "tags": [
+      "皮神经分布的重叠性示意图"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-179.jpg"
+    ]
+  },
+  {
+    "id": "atlas-180",
+    "image": "脑神经概况",
+    "page": 0,
+    "title": "脑神经概况",
+    "structures": [],
+    "tags": [
+      "脑神经概况"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-180.jpg"
+    ]
+  },
+  {
+    "id": "atlas-181",
+    "image": "眶内的神经",
+    "page": 0,
+    "title": "眶内的神经",
+    "structures": [],
+    "tags": [
+      "眶内的神经"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-181.jpg"
+    ]
+  },
+  {
+    "id": "atlas-182",
+    "image": "视神经横切面",
+    "page": 0,
+    "title": "视神经横切面",
+    "structures": [],
+    "tags": [
+      "视神经横切面"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-182.jpg"
+    ]
+  },
+  {
+    "id": "atlas-183",
+    "image": "三叉神经",
+    "page": 0,
+    "title": "三叉神经",
+    "structures": [],
+    "tags": [
+      "三叉神经"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-183.jpg"
+    ]
+  },
+  {
+    "id": "atlas-184",
+    "image": "眶内的神经",
+    "page": 0,
+    "title": "眶内的神经",
+    "structures": [],
+    "tags": [
+      "眶内的神经"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-184.jpg"
+    ]
+  },
+  {
+    "id": "atlas-185",
+    "image": "下颌神经",
+    "page": 0,
+    "title": "下颌神经",
+    "structures": [],
+    "tags": [
+      "下颌神经"
+    ],
+    "type": "atlas",
+    "system": "神经系统",
+    "section": "",
+    "subsection": "图谱",
+    "images": [
+      "atlas-185.jpg"
+    ]
   }
 ]
