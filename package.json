@@ -1,15 +1,10 @@
 {
-  "name": "anatomy-flash",
-  "version": "0.4.0",
+  "name": "anatomy-zhixue",
+  "version": "0.5.0",
   "private": true,
   "scripts": {
     "dev": "node server/index.js & cd client && npm run dev",
     "build": "cd client && npm install && npm run build",
-    "install:all": "npm install && cd client && npm install && cd ../server && npm install"
-  },
-  "dependencies": {
-    "express": "^4.21.0",
-    "cors": "^2.8.5",
-    "sql.js": "^1.10.0"
+    "install:all": "cd client && npm install && cd ../server && npm install"
   }
 }
