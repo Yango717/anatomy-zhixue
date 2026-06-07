@@ -18,7 +18,7 @@ export default function LearnPage() {
   const locationState = location.state || {};
 
   const { phase, loading: flowLoading, completeLearning } = useLearningFlow(unitId);
-  const { autoPilotEnabled, registerActivityComplete } = useAIContext();
+  const { autoPilotEnabled, registerActivityComplete, pushAgentMessage } = useAIContext();
 
   // Markdown fallback content
   const [content, setContent] = useState('');
@@ -82,6 +82,14 @@ export default function LearnPage() {
   async function handleComplete() {
     await completeLearning();
     if (autoPilotEnabled) registerActivityComplete({ type: 'learn', unitId });
+
+    // Agent: 学习完成后主动推送
+    pushAgentMessage({
+      message: '学习完成！掌握得不错 🎉\n\n下一步建议进入小测验，检验一下学习效果。',
+      actionLabel: '去小测验',
+      actionRoute: `/quiz/${encodeURIComponent(unitId)}`,
+    });
+
     const chapterId = locationState.chapterId;
     if (chapterId) {
       navigate(`/sections/${chapterId}`);

@@ -1,0 +1,188 @@
+/* === 学习路径推荐 === */
+
+.learning-path {
+  padding: var(--spacing-lg);
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.learning-path__header {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.learning-path__title {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  font-family: var(--font-display);
+}
+
+.learning-path__subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+  margin-top: var(--spacing-xs);
+}
+
+/* --- Mode Switch --- */
+.lp-mode-switch {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.lp-mode-switch__btn {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+  border: 1.5px solid rgba(124, 92, 191, 0.3);
+  background: transparent;
+  color: var(--color-primary);
+  transition: all 0.2s;
+  font-family: var(--font-family);
+}
+
+.lp-mode-switch__btn--active {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 2px 8px rgba(124, 92, 191, 0.3);
+}
+
+/* --- Sprint Timeline --- */
+.lp-timeline {
+  position: relative;
+  padding-left: 24px;
+}
+
+.lp-timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--color-primary), rgba(124, 92, 191, 0.1));
+}
+
+.lp-day-card {
+  position: relative;
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  background: rgba(255, 255, 255, 0.65);
+  border-radius: var(--radius);
+  border: 1px solid rgba(124, 92, 191, 0.1);
+  transition: transform 0.15s;
+}
+
+.lp-day-card:active {
+  transform: scale(0.99);
+}
+
+.lp-day-card::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 18px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 2px rgba(124, 92, 191, 0.2);
+}
+
+.lp-day-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-sm);
+}
+
+.lp-day-card__day {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+.lp-day-card__date {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-hint);
+}
+
+.lp-day-card__tasks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.lp-day-card__tag {
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  background: rgba(124, 92, 191, 0.1);
+  color: var(--color-primary-dark);
+}
+
+/* --- Rescue Phases --- */
+.lp-phase-card {
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--color-primary);
+}
+
+.lp-phase-card--recovery {
+  border-color: #c08a4a;
+  background: rgba(192, 138, 74, 0.05);
+}
+
+.lp-phase-card--reinforce {
+  border-color: var(--color-primary);
+  background: rgba(124, 92, 191, 0.05);
+}
+
+.lp-phase-card--sprint {
+  border-color: #4a9c7c;
+  background: rgba(74, 156, 124, 0.05);
+}
+
+.lp-phase-card__title {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.lp-phase-card__meta {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-hint);
+  margin-top: 2px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.lp-phase-card__desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin-bottom: var(--spacing-sm);
+}
+
+.lp-phase-card__tasks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+/* --- CTA --- */
+.lp-cta {
+  margin-top: var(--spacing-lg);
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .learning-path { padding: var(--spacing-md); }
+}

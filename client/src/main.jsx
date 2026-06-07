@@ -12,6 +12,9 @@ import './styles/ai.css';
 import './styles/autopilot.css';
 import './styles/autopilot-chat.css';
 import './styles/motion-flow.css';
+import './styles/learning-center.css';
+import './styles/learning-portrait.css';
+import './styles/learning-path.css';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {

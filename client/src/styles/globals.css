@@ -1595,3 +1595,57 @@ ul, ol { list-style: none; }
     max-width: 90%;
   }
 }
+
+/* === 错题 AI 分析区域 === */
+.error-ai-analysis {
+  background: linear-gradient(135deg, rgba(124, 92, 191, 0.05), rgba(167, 139, 218, 0.1));
+  border: 1px solid rgba(124, 92, 191, 0.15);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.error-ai-analysis__header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.error-ai-analysis__avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.error-ai-analysis__name {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+.error-ai-analysis__body {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.error-ai-analysis__body p {
+  margin-bottom: var(--spacing-xs);
+}
+
+.error-ai-analysis__body strong {
+  color: var(--color-text-primary);
+}
+
+.error-ai-analysis__actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+}

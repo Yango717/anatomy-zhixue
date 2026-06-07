@@ -1,0 +1,251 @@
+/* === AI 学习画像 === */
+
+.learning-portrait {
+  padding: var(--spacing-lg);
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.learning-portrait__header {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.learning-portrait__title {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  font-family: var(--font-display);
+}
+
+.learning-portrait__subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+  margin-top: var(--spacing-xs);
+}
+
+/* --- Module Groups --- */
+.lp-module-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.lp-module-group__label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-hint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: var(--spacing-sm);
+  font-weight: 600;
+}
+
+.lp-module-card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  margin-bottom: var(--spacing-xs);
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(124, 92, 191, 0.08);
+}
+
+.lp-module-card__icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.lp-module-card__info {
+  flex: 1;
+}
+
+.lp-module-card__name {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.lp-module-card__sub {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-hint);
+}
+
+.lp-module-card__pct {
+  font-size: var(--font-size-2xl);
+  font-weight: 800;
+  min-width: 48px;
+  text-align: right;
+}
+
+.lp-module-card__pct--high {
+  color: #4a9c7c;
+}
+
+.lp-module-card__pct--low {
+  color: #c0554a;
+}
+
+/* --- Traits --- */
+.lp-traits-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  box-shadow: var(--glass-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  margin-bottom: var(--spacing-md);
+}
+
+.lp-traits-card__title {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  font-family: var(--font-display);
+  margin-bottom: var(--spacing-md);
+}
+
+.lp-trait-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.lp-trait-bar__label {
+  width: 88px;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.lp-trait-bar__track {
+  flex: 1;
+  height: 10px;
+  background: rgba(124, 92, 191, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.lp-trait-bar__fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.6s ease;
+}
+
+.lp-trait-bar__score {
+  width: 36px;
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  text-align: left;
+}
+
+/* --- Trend Chart --- */
+.lp-trend {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  box-shadow: var(--glass-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  margin-bottom: var(--spacing-md);
+}
+
+.lp-trend__title {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  font-family: var(--font-display);
+  margin-bottom: var(--spacing-sm);
+}
+
+.lp-trend__chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 80px;
+  padding: var(--spacing-xs) 0;
+}
+
+.lp-trend__bar {
+  flex: 1;
+  border-radius: 2px 2px 0 0;
+  background: linear-gradient(180deg, var(--color-primary), var(--color-primary-light));
+  min-height: 4px;
+  transition: height 0.3s ease, opacity 0.3s ease;
+}
+
+.lp-trend__labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--color-text-hint);
+  margin-top: var(--spacing-xs);
+}
+
+/* --- Error Distribution --- */
+.lp-error-dist {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  box-shadow: var(--glass-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  margin-bottom: var(--spacing-md);
+}
+
+.lp-error-dist__title {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  font-family: var(--font-display);
+  margin-bottom: var(--spacing-md);
+}
+
+.lp-error-dist__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-sm);
+}
+
+.lp-error-dist__item {
+  text-align: center;
+  padding: var(--spacing-sm);
+  background: rgba(197, 85, 74, 0.04);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(197, 85, 74, 0.08);
+}
+
+.lp-error-dist__num {
+  font-size: var(--font-size-2xl);
+  font-weight: 800;
+  color: var(--color-error);
+}
+
+.lp-error-dist__label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-hint);
+  margin-top: 2px;
+}
+
+/* --- Two column layout on desktop --- */
+.lp-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+}
+
+.lp-body > .lp-traits-card,
+.lp-body > .lp-trend {
+  grid-column: span 2;
+}
+
+@media (max-width: 768px) {
+  .learning-portrait { padding: var(--spacing-md); }
+  .lp-body { grid-template-columns: 1fr; }
+  .lp-body > .lp-traits-card,
+  .lp-body > .lp-trend { grid-column: span 1; }
+  .lp-error-dist__grid { grid-template-columns: 1fr 1fr; }
+}

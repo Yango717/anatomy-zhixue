@@ -75,6 +75,31 @@ export function AIContextProvider({ children }) {
     return localStorage.getItem(ACTIVE_HOME_TAB_KEY) || 'auto';
   });
 
+  // ─── Agent 主动消息系统 ───
+  const [agentMessages, setAgentMessages] = useState([]);
+  const MAX_AGENT_MESSAGES = 5;
+
+  const pushAgentMessage = useCallback((msg) => {
+    setAgentMessages((prev) => {
+      const updated = [...prev, {
+        id: `agent_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,
+        message: msg.message,
+        actionLabel: msg.actionLabel || null,
+        actionRoute: msg.actionRoute || null,
+        timestamp: Date.now(),
+      }].slice(-MAX_AGENT_MESSAGES);
+      return updated;
+    });
+  }, []);
+
+  const dismissAgentMessage = useCallback((id) => {
+    setAgentMessages((prev) => prev.filter((m) => m.id !== id));
+  }, []);
+
+  const clearAgentMessages = useCallback(() => {
+    setAgentMessages([]);
+  }, []);
+
   // 全局聊天气泡开关（迷你头像点击时打开）
   const [globalChatOpen, setGlobalChatOpen] = useState(false);
 
@@ -547,6 +572,11 @@ export function AIContextProvider({ children }) {
     // 首页 Tab
     activeHomeTab,
     switchHomeTab,
+    // Agent 主动消息
+    agentMessages,
+    pushAgentMessage,
+    dismissAgentMessage,
+    clearAgentMessages,
   };
 
   return <AIContext.Provider value={value}>{children}</AIContext.Provider>;

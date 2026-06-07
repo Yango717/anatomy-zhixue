@@ -1,6 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AIContextProvider } from './components/ai/AIContextProvider';
 import AIFirstLayout from './components/layout/AIFirstLayout';
+import LearningCenterPage from './pages/LearningCenterPage';
+import LearningPortraitPage from './pages/LearningPortraitPage';
+import LearningPathPage from './pages/LearningPathPage';
 import ChatHomePage from './pages/ChatHomePage';
 import HomePage from './pages/HomePage';
 import ModulesPage from './pages/ModulesPage';
@@ -22,7 +25,10 @@ export default function App() {
       <AIContextProvider>
         <AIFirstLayout>
         <Routes>
-          <Route path="/" element={<ChatHomePage />} />
+          <Route path="/" element={<LearningCenterPage />} />
+          <Route path="/chat" element={<ChatHomePage />} />
+          <Route path="/portrait" element={<LearningPortraitPage />} />
+          <Route path="/path/:planType" element={<LearningPathPage />} />
           <Route path="/modules" element={<ModulesPage />} />
           <Route path="/sections/:chapterId" element={<SectionsPage />} />
           <Route path="/learn/:unitId" element={<LearnPage />} />

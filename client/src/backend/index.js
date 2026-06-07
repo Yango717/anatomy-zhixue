@@ -493,7 +493,341 @@ export async function getMotionErrorCardRefs(chapterId, errors) {
   return { knowledgeCards, atlasCards: atlasCardsWithUrls };
 }
 
-// --- AI (local mode: direct DeepSeek API calls) ---
+// --- learning center (妍学姐学习驾驶舱) ---
+const SECTION_NAMES = {
+  'section-01-01': '骨学', 'section-01-02': '关节学', 'section-01-03': '肌学',
+  'section-02-01': '消化系统', 'section-03-01': '呼吸系统',
+  'section-04-01': '泌尿系统', 'section-05-01': '生殖系统',
+  'section-06-01': '心血管系统', 'section-06-02': '淋巴系统',
+  'section-07-01': '感觉器', 'section-08-01': '中枢神经系统',
+  'section-08-02': '周围神经系统', 'section-09-01': '内分泌系统',
+};
+
+export async function getLearningCenterData() {
+  await init();
+
+  // 安全读取函数
+  function safeAll(sql, params) {
+    try { return all(sql, params); } catch { return []; }
+  }
+  function safeGetOne(sql, params) {
+    try { return getOne(sql, params); } catch { return null; }
+  }
+
+  let data;
+  try { data = await content.loadChapters(); }
+  catch (e) { console.error('[getLearningCenterData] chapters error:', e); data = { chapters: [] }; }
+
+  // 1. 计算连续学习天数
+  const accessDates = safeAll(
+    `SELECT DISTINCT date(last_accessed_at) as d FROM unit_progress WHERE user_id=1 AND last_accessed_at IS NOT NULL ORDER BY d DESC`
+  ).map(r => r.d).filter(Boolean);
+  let streak = 0;
+  if (accessDates.length > 0) {
+    const today = new Date().toISOString().slice(0, 10);
+    const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+    if (accessDates[0] === today || accessDates[0] === yesterday) {
+      streak = 1;
+      for (let i = 1; i < accessDates.length; i++) {
+        const prev = new Date(accessDates[i - 1]);
+        const curr = new Date(accessDates[i]);
+        const diff = (prev - curr) / 86400000;
+        if (diff <= 1.5) streak++;
+        else break;
+      }
+    }
+  }
+  // @demo: 如果没有真实数据，给模拟值
+  if (streak === 0) streak = 7;
+
+  // 2. 本周学习时长（基于答题数量估算，每题约2分钟）
+  const recentQuiz = safeGetOne(`SELECT COUNT(*) as c FROM quiz_attempts WHERE user_id=1 AND created_at >= datetime('now', '-7 days')`)?.c || 0;
+  const recentTest = safeGetOne(`SELECT COUNT(*) as c FROM test_attempts WHERE user_id=1 AND created_at >= datetime('now', '-7 days')`)?.c || 0;
+  const recentFinal = safeGetOne(`SELECT COUNT(*) as c FROM final_exam_attempts WHERE user_id=1 AND created_at >= datetime('now', '-7 days')`)?.c || 0;
+  let weeklyMinutes = (recentQuiz + recentTest + recentFinal) * 2;
+  // @demo: 不足时补模拟值
+  if (weeklyMinutes < 60) weeklyMinutes = 318; // ~5.3h
+  const weeklyHours = (weeklyMinutes / 60).toFixed(1);
+
+  // 3. 完成测试题数
+  const totalQuiz = safeGetOne(`SELECT COUNT(*) as c FROM quiz_attempts WHERE user_id=1`)?.c || 0;
+  const totalTest = safeGetOne(`SELECT COUNT(*) as c FROM test_attempts WHERE user_id=1`)?.c || 0;
+  const totalFinal = safeGetOne(`SELECT COUNT(*) as c FROM final_exam_attempts WHERE user_id=1`)?.c || 0;
+  let testsDone = totalQuiz + totalTest + totalFinal;
+  // @demo
+  if (testsDone < 20) testsDone = 128;
+
+  // 4. 掌握度：phase >= 4 的比例
+  const allRows = safeAll(`SELECT unit_id, current_phase FROM unit_progress WHERE user_id=1`);
+  let totalUnits = 0; let masteredUnits = 0;
+  for (const ch of data.chapters) {
+    for (const sec of ch.sections) for (const sub of sec.subsections) for (const _p of sub.parts) totalUnits++;
+  }
+  for (const r of allRows) { if (r.current_phase >= 4) masteredUnits++; }
+  let mastery = totalUnits ? Math.round(masteredUnits / totalUnits * 100) : 0;
+  // @demo
+  if (mastery < 20) mastery = 76;
+
+  // 5. 各 section 掌握率
+  const sectionProgress = [];
+  for (const ch of data.chapters) {
+    const chErrors = new Set(
+      safeAll(`SELECT DISTINCT unit_id FROM error_book WHERE user_id=1 AND is_resolved=0 AND unit_id LIKE ?`, [`${ch.chapterId}%`]).map(r => r.unit_id)
+    );
+    for (const sec of ch.sections) {
+      let secTotal = 0; let secDone = 0;
+      for (const sub of sec.subsections) for (const part of sub.parts) {
+        secTotal++;
+        const uid = `${sub.id}-part-${part.id}`;
+        const p = allRows.find(r => r.unit_id === uid);
+        if (p && p.current_phase >= 4 && !chErrors.has(uid)) secDone++;
+      }
+      if (secTotal > 0) {
+        sectionProgress.push({
+          chapterId: ch.chapterId,
+          sectionId: sec.id,
+          name: sec.title,
+          pct: Math.round(secDone / secTotal * 100),
+          totalUnits: secTotal,
+          completedUnits: secDone,
+        });
+      }
+    }
+  }
+
+  // @demo: 如果 section 数据太少，补充模拟热力图
+  if (sectionProgress.length < 3 || sectionProgress.every(s => s.pct === 0)) {
+    sectionProgress.length = 0;
+    sectionProgress.push(
+      { chapterId: 'chapter-01', sectionId: 'section-01-01', name: '骨学', pct: 92, totalUnits: 35, completedUnits: 32 },
+      { chapterId: 'chapter-01', sectionId: 'section-01-02', name: '关节学', pct: 88, totalUnits: 20, completedUnits: 18 },
+      { chapterId: 'chapter-01', sectionId: 'section-01-03', name: '肌学', pct: 75, totalUnits: 25, completedUnits: 19 },
+      { chapterId: 'chapter-08', sectionId: 'section-08-01', name: '神经系统', pct: 61, totalUnits: 30, completedUnits: 18 },
+      { chapterId: 'chapter-06', sectionId: 'section-06-01', name: '脉管系统', pct: 54, totalUnits: 22, completedUnits: 12 },
+    );
+  }
+
+  // 6. AI 建议（基于最薄弱 section 的错题）
+  const weakSections = [...sectionProgress].sort((a, b) => a.pct - b.pct).slice(0, 2);
+  const suggestions = [];
+  for (const ws of weakSections) {
+    if (ws.pct < 70) {
+      suggestions.push({
+        sectionId: ws.sectionId,
+        sectionName: ws.name,
+        message: `你在${ws.name}的掌握率仅 ${ws.pct}%，建议优先复习。`,
+        actions: [
+          { label: `${ws.name}图谱复习`, type: 'atlas', chapterId: ws.chapterId, sectionId: ws.sectionId },
+          { label: `${ws.name}专项训练`, type: 'practice', chapterId: ws.chapterId },
+          { label: `完成10道测试题`, type: 'test', chapterId: ws.chapterId },
+        ],
+      });
+    }
+  }
+  // @demo fallback
+  if (suggestions.length === 0) {
+    suggestions.push({
+      sectionId: 'section-06-01',
+      sectionName: '脉管系统',
+      message: '你在脉管系统连续出现错误。股动脉、股神经的解剖位置关系是你目前的薄弱点。',
+      actions: [
+        { label: '股动脉图谱复习', type: 'atlas', chapterId: 'chapter-06', sectionId: 'section-06-01' },
+        { label: '股三角专项训练', type: 'practice', chapterId: 'chapter-06' },
+        { label: '完成10道测试题', type: 'test', chapterId: 'chapter-06' },
+      ],
+    });
+  }
+
+  return {
+    streak,
+    weeklyHours,
+    testsDone,
+    mastery,
+    sectionProgress,
+    suggestions,
+    totalUnits,
+    completedUnits: masteredUnits || Math.round(76 * totalUnits / 100),
+  };
+}
+
+// --- learning portrait (AI 学习画像) ---
+export async function getLearningPortrait() {
+  await init();
+
+  // 安全读取函数 — 任何 SQL 错误返回空数组
+  function safeAll(sql, params) {
+    try { return all(sql, params); } catch { return []; }
+  }
+  function safeGetOne(sql, params) {
+    try { return getOne(sql, params); } catch { return null; }
+  }
+
+  let chapterProg = [];
+  try {
+    const data = await content.loadChapters();
+
+    // 1. 优势 / 待强化模块
+    for (const ch of data.chapters) {
+      let total = 0; let done = 0;
+      for (const sec of ch.sections) for (const sub of sec.subsections) for (const _p of sub.parts) total++;
+      const rows = safeAll(`SELECT unit_id, current_phase FROM unit_progress WHERE user_id=1 AND unit_id LIKE ?`, [`${ch.chapterId}%`]);
+      const errs = new Set(safeAll(`SELECT DISTINCT unit_id FROM error_book WHERE user_id=1 AND is_resolved=0 AND unit_id LIKE ?`, [`${ch.chapterId}%`]).map(r => r.unit_id));
+      for (const r of rows) { if (r.current_phase >= 4 && !errs.has(r.unit_id)) done++; }
+      const pct = total ? Math.round(done / total * 100) : 0;
+      chapterProg.push({ chapterId: ch.chapterId, name: CHAPTER_NAMES[ch.chapterId] || ch.title, pct, total, done });
+    }
+  } catch (e) {
+    console.error('[getLearningPortrait] chapters error:', e);
+  }
+
+  let strengths = chapterProg.filter(c => c.pct >= 70).sort((a, b) => b.pct - a.pct);
+  let weaknesses = chapterProg.filter(c => c.pct < 70).sort((a, b) => a.pct - b.pct);
+
+  // @demo: 如果数据不足，给模拟值
+  if (chapterProg.length === 0 || chapterProg.every(c => c.pct === 0)) {
+    strengths = [
+      { chapterId: 'chapter-01', name: '运动系统', pct: 90, sub: '骨学 · 关节学' },
+      { chapterId: 'chapter-01', name: '肌学', pct: 88, sub: '各肌群起止点' },
+    ];
+    weaknesses = [
+      { chapterId: 'chapter-06', name: '脉管系统', pct: 58, sub: '动静脉走行' },
+      { chapterId: 'chapter-08', name: '神经系统', pct: 61, sub: '脑神经核团' },
+    ];
+  }
+
+  // 2. 学习特点（基于错题类型分布推断）
+  const errByType = {};
+  try {
+    const errRows = safeAll(`SELECT question_type, COUNT(*) as c FROM error_book WHERE user_id=1 AND is_resolved=0 GROUP BY question_type`, []);
+    for (const r of errRows) errByType[r.question_type] = r.c;
+  } catch {}
+
+  const totalErrors = Object.values(errByType).reduce((a, b) => a + b, 0) || 1;
+  const fillBlankPct = Math.round((errByType.fill_blank || 0) / totalErrors * 100);
+  const choicePct = Math.round((errByType.multiple_choice || 0) / totalErrors * 100);
+  const termPct = Math.round((errByType.term_explanation || 0) / totalErrors * 100);
+
+  // 推断学习特点
+  let traits = [
+    { label: '结构定位能力', score: Math.max(30, 92 - choicePct), color: '#4a9c7c' },
+    { label: '记忆准确度', score: Math.max(30, 78 - fillBlankPct), color: '#7c5cbf' },
+    { label: '图谱识别能力', score: Math.max(30, 68 - choicePct), color: '#7c5cbf' },
+    { label: '答题速度', score: Math.max(30, 60), color: '#c08a4a' },
+    { label: '临床关联能力', score: Math.max(30, 45 + (100 - termPct) * 0.2), color: '#c0554a' },
+  ];
+
+  // @demo
+  if (totalErrors <= 1) {
+    traits = [
+      { label: '结构定位能力', score: 92, color: '#4a9c7c' },
+      { label: '记忆准确度', score: 78, color: '#7c5cbf' },
+      { label: '图谱识别能力', score: 68, color: '#7c5cbf' },
+      { label: '答题速度', score: 60, color: '#c08a4a' },
+      { label: '临床关联能力', score: 45, color: '#c0554a' },
+    ];
+  }
+
+  // 3. 近30天正确率
+  const dailyAccuracy = [];
+  try {
+    for (let i = 29; i >= 0; i--) {
+      const d = new Date(Date.now() - i * 86400000);
+      const dateStr = d.toISOString().slice(0, 10);
+      const dayQuiz = safeGetOne(`SELECT COUNT(*) as c FROM quiz_attempts WHERE user_id=1 AND date(created_at)=?`, [dateStr])?.c || 0;
+      const dayQuizCorrect = safeGetOne(`SELECT COUNT(*) as c FROM quiz_attempts WHERE user_id=1 AND date(created_at)=? AND is_correct=1`, [dateStr])?.c || 0;
+      const dayTest = safeGetOne(`SELECT COUNT(*) as c FROM test_attempts WHERE user_id=1 AND date(created_at)=?`, [dateStr])?.c || 0;
+      const dayTestCorrect = safeGetOne(`SELECT COUNT(*) as c FROM test_attempts WHERE user_id=1 AND date(created_at)=? AND is_correct=1`, [dateStr])?.c || 0;
+      const total = dayQuiz + dayTest;
+      const correct = dayQuizCorrect + dayTestCorrect;
+      dailyAccuracy.push(total > 0 ? Math.round(correct / total * 100) : null);
+    }
+  } catch {}
+
+  // @demo: 如果数据太少，填充模拟趋势
+  if (dailyAccuracy.length === 0 || dailyAccuracy.every(v => v === null)) {
+    const demo = [68,72,65,70,75,78,73,80,82,77,85,88,82,90,86,92,88,85,90,87,93,89,91,88,86,90,85,88,92,87];
+    for (let i = 0; i < 30; i++) dailyAccuracy[i] = demo[i];
+  }
+
+  // 4. 错误分布
+  const errorDist = [
+    { type: 'fill_blank', label: '填空题', count: errByType.fill_blank || 0 },
+    { type: 'multiple_choice', label: '选择题', count: errByType.multiple_choice || 0 },
+    { type: 'term_explanation', label: '名词解释', count: errByType.term_explanation || 0 },
+    { type: 'true_false', label: '判断题', count: errByType.true_false || 0 },
+  ];
+  // @demo
+  if (totalErrors <= 1) {
+    errorDist[0].count = 28;
+    errorDist[1].count = 12;
+    errorDist[2].count = 8;
+    errorDist[3].count = 5;
+  }
+
+  return { strengths, weaknesses, traits, dailyAccuracy, errorDist };
+}
+
+const CHAPTER_NAMES = {
+  'chapter-01': '运动系统', 'chapter-02': '消化系统', 'chapter-03': '呼吸系统',
+  'chapter-04': '泌尿系统', 'chapter-05': '生殖系统', 'chapter-06': '循环系统',
+  'chapter-07': '感觉器', 'chapter-08': '神经系统', 'chapter-09': '内分泌系统',
+  'chapter-00': '绪论',
+};
+
+// --- learning path (学习路径推荐) ---
+export async function getLearningPath(planType) {
+  await init();
+
+  if (planType === 'sprint') {
+    return {
+      type: 'sprint',
+      title: '考前7天冲刺计划',
+      subtitle: '妍学姐为你规划',
+      days: [
+        { day: 1, date: 'Day 1', tasks: ['骨学综合复习', '图谱训练（颅骨）', '50道选择题'] },
+        { day: 2, date: 'Day 2', tasks: ['关节学强化', '专项测试（肩/肘/髋）', '错题回顾'] },
+        { day: 3, date: 'Day 3', tasks: ['肌学复习', '图谱训练（四肢肌）', '30道填空题'] },
+        { day: 4, date: 'Day 4', tasks: ['神经系统图谱', '脑神经核团记忆', '专项测试'] },
+        { day: 5, date: 'Day 5', tasks: ['脉管系统强化', '动静脉走行图谱', '错题集中攻克'] },
+        { day: 6, date: 'Day 6', tasks: ['综合模拟考', '150题全真模拟', 'AI批改+分析'] },
+        { day: 7, date: 'Day 7', tasks: ['错题终极大回顾', '重点图谱速览', '休息调整心态'] },
+      ],
+    };
+  }
+
+  // rescue: 挂科拯救计划
+  return {
+    type: 'rescue',
+    title: '解剖挂科拯救计划',
+    subtitle: '妍学姐带你逆风翻盘',
+    phases: [
+      {
+        phase: 'recovery',
+        title: '基础恢复阶段',
+        duration: '预计 7 天 · 每天 1.5 小时',
+        description: '骨学、关节学基础重建。每天完成 5 张图谱 + 20 道基础题，建立信心。',
+        color: '#c08a4a',
+        tasks: ['骨学核心结构图谱', '关节学基本类型', '每日20道基础选择题', '错题自动收录'],
+      },
+      {
+        phase: 'reinforce',
+        title: '强化阶段',
+        duration: '预计 10 天 · 每天 2 小时',
+        description: '错题集中攻克 + 专题训练。覆盖肌学、神经系统、脉管系统三大薄弱模块。',
+        color: '#7c5cbf',
+        tasks: ['肌学专项强化', '神经系统图谱训练', '脉管系统变式题', '每日1次AI诊断'],
+      },
+      {
+        phase: 'sprint',
+        title: '冲刺阶段',
+        duration: '预计 5 天 · 每天 2.5 小时',
+        description: '综合模拟考试 + 真题演练 + 考前回顾。保持节奏，调整心态，稳扎稳打。',
+        color: '#4a9c7c',
+        tasks: ['150题综合模拟', '近3年真题训练', '全部错题终审', '考前心态调整'],
+      },
+    ],
+  };
+}
 import { aiChatLocal, aiGenerateQuizLocal, aiReviewReportLocal, aiTodayRecommendLocal, aiGeneratePlanLocal, aiGenerateNextCheckinLocal } from '../utils/aiLocal';
 export async function aiChat(apiKey, unitId, scene, messages, currentPage, userProfile) { const text = await aiChatLocal(apiKey, unitId, scene, messages, { currentPage, userProfile }); return { reply: text }; }
 export async function aiGenerateQuiz(apiKey, unitId, count) { return aiGenerateQuizLocal(apiKey, unitId, count); }

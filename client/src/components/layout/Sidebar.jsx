@@ -14,6 +14,10 @@ function calcRemaining(targetISO) {
 }
 
 const NAV_ITEMS = [
+  { key: 'home', label: '总览', path: '/', icon: '🧠' },
+  { key: 'chat', label: '学姐', path: '/chat', icon: '👩‍🎓' },
+  { key: 'portrait', label: '画像', path: '/portrait', icon: '📊' },
+  { key: 'path', label: '路径', path: '/path/sprint', icon: '🗺️' },
   { key: 'systems', label: '系统', path: '/modules', icon: '🧬' },
   { key: 'review', label: '复习', path: '/review', icon: '📖' },
   { key: 'exam', label: '考试', path: '/exam', icon: '📝' },
@@ -47,6 +51,9 @@ export default function Sidebar() {
   function getActiveKey() {
     const p = location.pathname;
     if (p === '/' || p === '') return 'home';
+    if (p === '/chat') return 'chat';
+    if (p === '/portrait') return 'portrait';
+    if (p.startsWith('/path')) return 'path';
     if (p.startsWith('/modules') || p.startsWith('/sections') || p.startsWith('/learn') || p.startsWith('/quiz')) return 'systems';
     if (p.startsWith('/review') || p === '/review') return 'review';
     if (p.startsWith('/exam') || p.startsWith('/test') || p.startsWith('/finalexam') || p.startsWith('/practice')) return 'exam';

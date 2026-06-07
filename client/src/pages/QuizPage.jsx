@@ -16,7 +16,7 @@ export default function QuizPage() {
   const [questions, setQuestions] = useState([]);
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(true);
-  const { autoPilotEnabled, registerActivityComplete } = useAIContext();
+  const { autoPilotEnabled, registerActivityComplete, pushAgentMessage } = useAIContext();
 
   useEffect(() => {
     if (!unitId) return;
@@ -31,6 +31,22 @@ export default function QuizPage() {
     const res = await api.post(`/units/${encodeURIComponent(unitId)}/quiz/submit`, { answers });
     setResult(res);
     if (autoPilotEnabled) registerActivityComplete({ type: 'quiz', unitId, result: res });
+
+    // Agent: 测验完成后主动推送
+    const pct = res?.score || 0;
+    if (pct >= 80) {
+      pushAgentMessage({
+        message: `测验完成！正确率 ${pct}%，很棒 🎉\n\n建议进入自动回顾，巩固薄弱点。`,
+        actionLabel: '去回顾',
+        actionRoute: `/review/${encodeURIComponent(unitId)}`,
+      });
+    } else {
+      pushAgentMessage({
+        message: `测验完成，正确率 ${pct}%。\n\n有些知识点还需加强，建议先回顾错题再继续。`,
+        actionLabel: '查看错题',
+        actionRoute: '/review',
+      });
+    }
   }
 
   function handleReview() {

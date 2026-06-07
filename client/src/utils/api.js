@@ -90,6 +90,11 @@ async function localDispatch(method, s, body, rawPath) {
   if (s[0] === 'motion' && s[1] === 'practice-pool') { const u = new URL(rawPath, 'http://x'); return b.getMotionPracticePool(u.searchParams.get('chapter') || 'chapter-01'); }
   if (s[0] === 'motion' && s[1] === 'error-card-refs') return b.getMotionErrorCardRefs(body.chapter || 'chapter-01', body.errors);
 
+  // learning center routes
+  if (s[0] === 'learning-center') return b.getLearningCenterData();
+  if (s[0] === 'learning-portrait') return b.getLearningPortrait();
+  if (s[0] === 'learning-path') return b.getLearningPath(s[1]);
+
   throw { code: 'NOT_FOUND', message: `Unknown: ${method} /${s.join('/')}` };
 }
 

@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>妍学姐学习中心 — 解剖闪背 UI 原型</title>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<style>
+/* ====== 全局 ====== */
+:root {
+  --c-primary: #7c5cbf;
+  --c-primary-light: #a78bda;
+  --c-primary-dark: #5a3d96;
+  --c-bg: #f5f2fa;
+  --c-card: rgba(255,255,255,0.72);
+  --c-text: #2d2040;
+  --c-text2: #6b5e7a;
+  --c-hint: #9689aa;
+  --c-success: #4a9c7c;
+  --c-error: #c0554a;
+  --c-warning: #c08a4a;
+  --c-info: #5a6ec0;
+  --glass: rgba(255,255,255,0.72);
+  --glass-blur: blur(12px);
+  --glass-shadow: 0 2px 16px rgba(124,92,191,0.08), 0 0 0 0.5px rgba(124,92,191,0.06);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-lg: 16px;
+  --font: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-display: 'Noto Serif SC', 'Songti SC', Georgia, serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--font);
+  background: #e8e3f0;
+  display: flex; justify-content: center; align-items: center;
+  min-height: 100vh; padding: 20px;
+  background-image:
+    radial-gradient(ellipse at 30% 20%, rgba(167,139,218,0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 70%, rgba(124,92,191,0.1) 0%, transparent 50%);
+}
+.scroll-inner { overflow-y: auto; height: 100%; padding: 16px; scroll-behavior: smooth; }
+.scroll-inner::-webkit-scrollbar { width: 0; }
+
+/* ====== iPhone 边框 ====== */
+.iphone-wrap {
+  display: inline-block; padding: 12px; background: #1a1a2e;
+  border-radius: 48px;
+  box-shadow: 0 0 0 2px #2d2d44, 0 20px 60px rgba(0,0,0,0.35);
+}
+.iphone-screen {
+  position: relative; width: 375px; height: 750px;
+  border-radius: 36px; overflow: hidden; background: var(--c-bg);
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(167,139,218,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 90%, rgba(124,92,191,0.06) 0%, transparent 50%);
+}
+.dynamic-island {
+  position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+  width: 120px; height: 33px; background: #000; border-radius: 999px; z-index: 30;
+}
+.status-bar {
+  position: absolute; top: 0; left: 0; right: 0; height: 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 28px 0 28px; font-size: 14px; font-weight: 600;
+  font-family: -apple-system, 'SF Pro Text', sans-serif; z-index: 20;
+  pointer-events: none; color: #000;
+}
+.status-icons { display: flex; align-items: center; gap: 5px; }
+.signal { display: flex; align-items: flex-end; gap: 1.5px; height: 10px; }
+.signal-bar { width: 2.5px; background: #000; border-radius: 1px; }
+.battery-icon {
+  width: 22px; height: 11px; border: 1.5px solid #000; border-radius: 2.5px;
+  padding: 1.5px; position: relative; opacity: 0.8;
+}
+.battery-fill { height: 100%; background: #000; border-radius: 1px; }
+.battery-cap {
+  position: absolute; top: 3px; right: -3px; width: 1.5px; height: 5px;
+  background: #000; border-radius: 0 1px 1px 0;
+}
+.home-indicator {
+  position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);
+  width: 134px; height: 5px; background: rgba(0,0,0,0.25); border-radius: 999px; z-index: 10;
+}
+.content-area {
+  position: absolute; top: 48px; left: 0; right: 0; bottom: 28px;
+  overflow: hidden; display: flex; flex-direction: column;
+}
+
+/* ====== Tab Bar ====== */
+.tab-bar {
+  display: flex; background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(124,92,191,0.1);
+  padding: 6px 0 0;
+}
+.tab-btn {
+  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 6px 0 8px; background: none; border: none; cursor: pointer;
+  font-family: var(--font); font-size: 10px; color: var(--c-hint);
+  transition: color 0.2s;
+}
+.tab-btn--active { color: var(--c-primary); }
+.tab-btn__icon { font-size: 20px; }
+.tab-btn__dot {
+  width: 4px; height: 4px; border-radius: 50%; background: var(--c-primary);
+  margin-top: -1px; opacity: 0; transition: opacity 0.2s;
+}
+.tab-btn--active .tab-btn__dot { opacity: 1; }
+
+/* ====== 共用组件 ====== */
+.card {
+  background: var(--glass); backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-lg); padding: 16px;
+  box-shadow: var(--glass-shadow);
+  border: 1px solid rgba(255,255,255,0.5);
+}
+.card--sm { padding: 12px; border-radius: var(--radius); }
+.section-title {
+  font-size: 15px; font-weight: 700; color: var(--c-text);
+  margin-bottom: 12px; font-family: var(--font-display);
+  letter-spacing: 0.02em;
+}
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 6px; padding: 10px 20px; border-radius: var(--radius-sm);
+  font-size: 14px; font-weight: 600; cursor: pointer; border: none;
+  font-family: var(--font); transition: all 0.2s;
+}
+.btn--primary {
+  background: linear-gradient(135deg, var(--c-primary), var(--c-primary-light));
+  color: #fff; box-shadow: 0 2px 8px rgba(124,92,191,0.3);
+}
+.btn--primary:active { transform: scale(0.97); }
+.btn--outline {
+  background: transparent; color: var(--c-primary);
+  border: 1.5px solid rgba(124,92,191,0.3);
+}
+.btn--sm { padding: 6px 14px; font-size: 12px; }
+.btn--block { width: 100%; }
+.btn--ghost { background: rgba(124,92,191,0.08); color: var(--c-primary); }
+
+/* ====== Page Header ====== */
+.page-header { text-align: center; padding: 4px 0 12px; }
+.page-header__greeting { font-size: 12px; color: var(--c-hint); }
+.page-header__title {
+  font-size: 20px; font-weight: 700; color: var(--c-text);
+  font-family: var(--font-display); margin-top: 2px;
+}
+.page-header__subtitle { font-size: 11px; color: var(--c-primary); margin-top: 2px; }
+
+/* ====== Stat Cards ====== */
+.stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+.stat-card { text-align: center; padding: 14px 10px; }
+.stat-card__value { font-size: 28px; font-weight: 800; color: var(--c-primary-dark); }
+.stat-card__value--accent { color: var(--c-primary); }
+.stat-card__label { font-size: 11px; color: var(--c-hint); margin-top: 4px; }
+
+/* ====== Heatmap ====== */
+.heatmap-item { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.heatmap-item__name { width: 64px; font-size: 13px; color: var(--c-text2); text-align: right; }
+.heatmap-item__bar-wrap { flex: 1; height: 22px; background: rgba(124,92,191,0.08); border-radius: 999px; overflow: hidden; }
+.heatmap-item__bar {
+  height: 100%; border-radius: 999px;
+  background: linear-gradient(90deg, var(--c-primary), var(--c-primary-light));
+  transition: width 0.6s ease;
+  display: flex; align-items: center; justify-content: flex-end; padding-right: 8px;
+}
+.heatmap-item__bar--high { background: linear-gradient(90deg, #4a9c7c, #6bc4a0); }
+.heatmap-item__bar--mid { background: linear-gradient(90deg, var(--c-primary), var(--c-primary-light)); }
+.heatmap-item__bar--low { background: linear-gradient(90deg, #c08a4a, #e0a85c); }
+.heatmap-item__bar--critical { background: linear-gradient(90deg, #c0554a, #e0706a); }
+.heatmap-item__pct { font-size: 11px; font-weight: 700; color: #fff; min-width: 32px; text-align: right; }
+
+/* ====== AI Suggestion ====== */
+.suggestion-card {
+  background: linear-gradient(135deg, rgba(124,92,191,0.06), rgba(167,139,218,0.12));
+  border: 1.5px solid rgba(124,92,191,0.2);
+}
+.suggestion-card__header {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
+}
+.suggestion-card__avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--c-primary), var(--c-primary-light));
+  display: flex; align-items: center; justify-content: center;
+}
+.suggestion-card__name { font-size: 13px; font-weight: 700; color: var(--c-primary-dark); }
+.suggestion-card__text { font-size: 13px; color: var(--c-text2); line-height: 1.6; margin-bottom: 10px; }
+.suggestion-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 12px; margin-bottom: 6px;
+  background: rgba(255,255,255,0.7); border-radius: var(--radius-sm);
+  font-size: 12px; color: var(--c-text); cursor: pointer;
+  border: 1px solid rgba(124,92,191,0.1);
+  transition: transform 0.15s;
+}
+.suggestion-item:active { transform: scale(0.98); }
+.suggestion-item__num {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--c-primary); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; flex-shrink: 0;
+}
+
+/* ====== Portrait ====== */
+.module-group { margin-bottom: 12px; }
+.module-group__label { font-size: 11px; color: var(--c-hint); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+.module-card {
+  display: flex; align-items: center; gap: 10px; padding: 10px 12px;
+  margin-bottom: 6px; background: rgba(255,255,255,0.6);
+  border-radius: var(--radius-sm); border: 1px solid rgba(124,92,191,0.08);
+}
+.module-card__icon { font-size: 28px; }
+.module-card__info { flex: 1; }
+.module-card__name { font-size: 13px; font-weight: 600; color: var(--c-text); }
+.module-card__sub { font-size: 11px; color: var(--c-hint); }
+.module-card__pct { font-size: 20px; font-weight: 800; }
+.module-card__pct--high { color: #4a9c7c; }
+.module-card__pct--low { color: #c0554a; }
+
+.trait-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.trait-bar__label { width: 80px; font-size: 11px; color: var(--c-text2); text-align: right; }
+.trait-bar__track { flex: 1; height: 8px; background: rgba(124,92,191,0.08); border-radius: 999px; overflow: hidden; }
+.trait-bar__fill { height: 100%; border-radius: 999px; }
+.trait-bar__score { width: 32px; font-size: 12px; font-weight: 700; color: var(--c-text); }
+
+/* ====== Trend Mini Chart ====== */
+.mini-chart { display: flex; align-items: flex-end; gap: 3px; height: 80px; padding: 4px 0; }
+.mini-chart__bar {
+  flex: 1; border-radius: 2px 2px 0 0;
+  background: linear-gradient(180deg, var(--c-primary), var(--c-primary-light));
+  opacity: 0.7; min-height: 4px;
+}
+
+/* ====== Error Distribution ====== */
+.error-dist { display: flex; gap: 8px; }
+.error-dist__item {
+  flex: 1; text-align: center; padding: 10px 6px;
+  background: rgba(255,255,255,0.6); border-radius: var(--radius-sm);
+}
+.error-dist__num { font-size: 22px; font-weight: 800; color: var(--c-error); }
+.error-dist__label { font-size: 10px; color: var(--c-hint); margin-top: 2px; }
+
+/* ====== Path Timeline ====== */
+.timeline { position: relative; padding-left: 20px; }
+.timeline::before {
+  content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px;
+  width: 2px; background: linear-gradient(180deg, var(--c-primary), rgba(124,92,191,0.1));
+}
+.day-card {
+  position: relative; padding: 12px 14px; margin-bottom: 10px;
+  background: rgba(255,255,255,0.65); border-radius: var(--radius);
+  border: 1px solid rgba(124,92,191,0.1);
+}
+.day-card::before {
+  content: ''; position: absolute; left: -16px; top: 16px;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--c-primary); border: 2px solid #fff;
+  box-shadow: 0 0 0 2px rgba(124,92,191,0.2);
+}
+.day-card__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+.day-card__day { font-size: 14px; font-weight: 700; color: var(--c-primary-dark); }
+.day-card__date { font-size: 11px; color: var(--c-hint); }
+.day-card__tasks { display: flex; flex-wrap: wrap; gap: 4px; }
+.day-card__tag {
+  padding: 3px 8px; border-radius: 999px;
+  font-size: 10px; font-weight: 600;
+  background: rgba(124,92,191,0.1); color: var(--c-primary-dark);
+}
+
+/* ====== Error Detail ====== */
+.error-question {
+  padding: 12px; background: rgba(197,85,74,0.06);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--c-error);
+  margin-bottom: 10px;
+}
+.error-question__stem { font-size: 14px; font-weight: 600; color: var(--c-text); margin-bottom: 4px; }
+.error-question__answers { font-size: 12px; color: var(--c-text2); }
+.error-question__wrong { color: var(--c-error); text-decoration: line-through; }
+.error-question__correct { color: #4a9c7c; }
+
+.analysis-box {
+  padding: 12px; background: rgba(124,92,191,0.05);
+  border-radius: var(--radius-sm); margin-bottom: 10px;
+  border: 1px solid rgba(124,92,191,0.12);
+}
+.analysis-box__title { font-size: 12px; font-weight: 700; color: var(--c-primary); margin-bottom: 4px; }
+.analysis-box__text { font-size: 13px; color: var(--c-text2); line-height: 1.5; }
+
+.reco-atlas {
+  display: flex; gap: 8px; margin-bottom: 10px; overflow-x: auto;
+}
+.reco-atlas__card {
+  flex-shrink: 0; width: 100px; height: 80px;
+  background: rgba(124,92,191,0.08);
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; color: var(--c-hint);
+  border: 1px dashed rgba(124,92,191,0.2);
+}
+
+/* ====== Agent Toast ====== */
+.agent-toast {
+  position: absolute; bottom: 16px; left: 16px; right: 16px;
+  background: var(--glass); backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-lg); padding: 14px;
+  box-shadow: 0 8px 32px rgba(124,92,191,0.2), 0 0 0 1px rgba(124,92,191,0.1);
+  animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 50;
+}
+.agent-toast__row { display: flex; align-items: flex-start; gap: 10px; }
+.agent-toast__avatar {
+  width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--c-primary), var(--c-primary-light));
+  display: flex; align-items: center; justify-content: center;
+}
+.agent-toast__bubble { flex: 1; }
+.agent-toast__name { font-size: 12px; font-weight: 700; color: var(--c-primary-dark); }
+.agent-toast__msg { font-size: 13px; color: var(--c-text2); line-height: 1.5; margin: 4px 0 8px; }
+.agent-toast__actions { display: flex; gap: 6px; }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== FAB ====== */
+.fab {
+  position: absolute; bottom: 20px; right: 16px;
+  width: 48px; height: 48px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--c-primary), var(--c-primary-light));
+  color: #fff; font-size: 24px; border: none; cursor: pointer;
+  box-shadow: 0 4px 16px rgba(124,92,191,0.35);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 40; transition: transform 0.2s;
+}
+.fab:active { transform: scale(0.92); }
+
+/* ====== Phase Badge for Rescue Path ====== */
+.phase-card {
+  padding: 14px; margin-bottom: 8px;
+  border-radius: var(--radius);
+  border-left: 3px solid var(--c-primary);
+}
+.phase-card--recovery { border-color: #c08a4a; background: rgba(192,138,74,0.05); }
+.phase-card--reinforce { border-color: var(--c-primary); background: rgba(124,92,191,0.05); }
+.phase-card--sprint { border-color: #4a9c7c; background: rgba(74,156,124,0.05); }
+.phase-card__title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.phase-card__meta { font-size: 11px; color: var(--c-hint); margin-bottom: 6px; }
+.phase-card__desc { font-size: 12px; color: var(--c-text2); line-height: 1.5; }
+
+/* ====== Portrait Agent demo overlay ====== */
+.portrait-demo-label {
+  position: absolute; top: 8px; right: 12px;
+  font-size: 9px; color: var(--c-hint); background: rgba(255,255,255,0.6);
+  padding: 2px 6px; border-radius: 999px; z-index: 50;
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState, useEffect, useRef } = React;
+
+// ====== IosFrame ======
+const iosFrameStyles = {
+  wrapper: { display:'inline-block', padding:10, background:'#1a1a2e', borderRadius:44, boxShadow:'0 0 0 2px #2d2d44, 0 20px 60px rgba(0,0,0,0.35)' },
+  screen: { position:'relative', borderRadius:32, overflow:'hidden' },
+  statusBar: { position:'absolute', top:0, left:0, right:0, height:44, display:'flex', alignItems:'center', justifyContent:'space-between', padding:'0 26px', fontSize:14, fontWeight:600, fontFamily:'-apple-system,"SF Pro Text",sans-serif', zIndex:20, pointerEvents:'none' },
+  dynamicIsland: { position:'absolute', top:8, left:'50%', transform:'translateX(-50%)', width:120, height:33, background:'#000', borderRadius:999, zIndex:30 },
+  signalIcon: { display:'flex', alignItems:'flex-end', gap:1.5, height:10 },
+  batteryIcon: { width:22, height:11, border:'1.5px solid currentColor', borderRadius:2.5, padding:1.5, position:'relative', opacity:0.8 },
+  batteryCap: { position:'absolute', top:3, right:-3, width:1.5, height:5, background:'currentColor', borderRadius:'0 1px 1px 0' },
+  content: { position:'absolute', top:44, left:0, right:0, bottom:24, overflow:'hidden' },
+  homeIndicator: { position:'absolute', bottom:6, left:'50%', transform:'translateX(-50%)', width:134, height:5, background:'rgba(0,0,0,0.25)', borderRadius:999, zIndex:10 },
+};
+
+function IosFrame({ children, width=375, height=750, time='9:41', battery=85, darkMode=false }) {
+  const tc = darkMode ? '#fff' : '#000';
+  return (
+    <div style={iosFrameStyles.wrapper}>
+      <div style={{...iosFrameStyles.screen, width, height, background: darkMode?'#000':'var(--c-bg)'}}>
+        <div style={iosFrameStyles.dynamicIsland} />
+        <div style={{...iosFrameStyles.statusBar, color:tc}}>
+          <span>{time}</span>
+          <div style={{display:'flex',alignItems:'center',gap:5}}>
+            <div style={iosFrameStyles.signalIcon}>
+              {[4,6,9,11].map((h,i)=><div key={i} style={{width:2.5,height:h,background:tc,borderRadius:1}}/>)}
+            </div>
+            <svg width="14" height="11" viewBox="0 0 16 12" fill="none"><path d="M8 11.5a1 1 0 100-2 1 1 0 000 2z" fill={tc}/><path d="M3 7.5a7 7 0 0110 0" stroke={tc} strokeWidth="1.3" fill="none" strokeLinecap="round"/><path d="M1 4.5a11 11 0 0114 0" stroke={tc} strokeWidth="1.3" fill="none" strokeLinecap="round" opacity="0.7"/></svg>
+            <div style={iosFrameStyles.batteryIcon}>
+              <div style={{width:`${battery}%`,height:'100%',background:tc,borderRadius:1,opacity:0.9}}/>
+              <div style={iosFrameStyles.batteryCap}/>
+            </div>
+          </div>
+        </div>
+        <div style={iosFrameStyles.content}>{children}</div>
+        <div style={iosFrameStyles.homeIndicator}/>
+      </div>
+    </div>
+  );
+}
+
+// ====== SVG Icons ======
+function AvatarIcon({ size=32 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+      <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-7 8-7s8 3 8 7"/>
+    </svg>
+  );
+}
+
+// ====== Tab Bar ======
+const TABS = [
+  { key:'center', icon:'🧠', label:'学习中心' },
+  { key:'portrait', icon:'📊', label:'学习画像' },
+  { key:'path', icon:'🗺️', label:'学习路径' },
+  { key:'error', icon:'🎯', label:'错题强化' },
+  { key:'agent', icon:'💬', label:'学姐消息' },
+];
+
+// ========================
+// SCREEN 1: 学习中心
+// ========================
+function LearningCenterScreen() {
+  const sections = [
+    { name:'骨学', pct:92, cls:'high' },
+    { name:'关节学', pct:88, cls:'high' },
+    { name:'肌学', pct:75, cls:'mid' },
+    { name:'神经系统', pct:61, cls:'low' },
+    { name:'脉管系统', pct:54, cls:'critical' },
+  ];
+
+  return (
+    <div className="scroll-inner">
+      <div className="page-header">
+        <div className="page-header__greeting">下午好，今天也要加油 💪</div>
+        <div className="page-header__title">妍学姐学习中心</div>
+        <div className="page-header__subtitle">你已经连续学习 7 天了！</div>
+      </div>
+
+      <div className="stat-row">
+        <div className="card stat-card">
+          <div className="stat-card__value">7<span style={{fontSize:14}}>天</span></div>
+          <div className="stat-card__label">🔥 连续学习</div>
+        </div>
+        <div className="card stat-card">
+          <div className="stat-card__value stat-card__value--accent">5.3<span style={{fontSize:14}}>h</span></div>
+          <div className="stat-card__label">⏱ 本周学习时长</div>
+        </div>
+        <div className="card stat-card">
+          <div className="stat-card__value">128<span style={{fontSize:14}}>题</span></div>
+          <div className="stat-card__label">📝 完成测试</div>
+        </div>
+        <div className="card stat-card">
+          <div className="stat-card__value stat-card__value--accent">76<span style={{fontSize:14}}>%</span></div>
+          <div className="stat-card__label">🎯 当前掌握度</div>
+        </div>
+      </div>
+
+      <div className="card" style={{marginBottom:12}}>
+        <div className="section-title">知识掌握热力图</div>
+        {sections.map(s => (
+          <div className="heatmap-item" key={s.name}>
+            <span className="heatmap-item__name">{s.name}</span>
+            <div className="heatmap-item__bar-wrap">
+              <div className={`heatmap-item__bar heatmap-item__bar--${s.cls}`} style={{width:`${s.pct}%`}}>
+                <span className="heatmap-item__pct">{s.pct}%</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="card suggestion-card" style={{marginBottom:12}}>
+        <div className="suggestion-card__header">
+          <div className="suggestion-card__avatar"><AvatarIcon size={18}/></div>
+          <span className="suggestion-card__name">妍学姐建议</span>
+        </div>
+        <div className="suggestion-card__text">
+          你在<strong>脉管系统</strong>连续出现错误。股动脉、股神经的解剖位置关系是你目前的薄弱点。
+        </div>
+        <div className="suggestion-item">
+          <span className="suggestion-item__num">①</span> 股三角区域图谱复习
+        </div>
+        <div className="suggestion-item">
+          <span className="suggestion-item__num">②</span> 股动脉&amp;股神经专项训练
+        </div>
+        <div className="suggestion-item">
+          <span className="suggestion-item__num">③</span> 完成10道脉管系统测试题
+        </div>
+      </div>
+
+      <button className="btn btn--primary btn--block" style={{fontSize:15,padding:'12px 0'}}>
+        💬 找学姐聊聊
+      </button>
+      <div style={{height:12}}/>
+    </div>
+  );
+}
+
+// ========================
+// SCREEN 2: AI 学习画像
+// ========================
+function LearningPortraitScreen() {
+  const strengths = [
+    { icon:'🦴', name:'运动系统', sub:'骨学 · 关节学', pct:90 },
+    { icon:'💪', name:'肌学', sub:'各肌群起止点', pct:88 },
+  ];
+  const weaknesses = [
+    { icon:'🫀', name:'脉管系统', sub:'动静脉走行', pct:58 },
+    { icon:'🧠', name:'神经系统', sub:'脑神经核团', pct:61 },
+  ];
+  const traits = [
+    { label:'结构定位能力', score:92, color:'#4a9c7c' },
+    { label:'记忆准确度', score:78, color:'#7c5cbf' },
+    { label:'图谱识别能力', score:68, color:'#7c5cbf' },
+    { label:'答题速度', score:60, color:'#c08a4a' },
+    { label:'临床关联能力', score:45, color:'#c0554a' },
+  ];
+  const dailyData = [68,72,65,70,75,78,73,80,82,77,85,88,82,90,86,92,88,85,90,87,93,89,91,88,86,90,85,88,92,87];
+  const maxVal = Math.max(...dailyData);
+
+  return (
+    <div className="scroll-inner">
+      <div className="page-header">
+        <div className="page-header__title">AI 学习画像</div>
+        <div className="page-header__subtitle">基于你的128次答题数据生成</div>
+      </div>
+
+      <div className="module-group">
+        <div className="module-group__label">🏆 优势模块</div>
+        {strengths.map(m => (
+          <div className="module-card" key={m.name}>
+            <span className="module-card__icon">{m.icon}</span>
+            <div className="module-card__info">
+              <div className="module-card__name">{m.name}</div>
+              <div className="module-card__sub">{m.sub}</div>
+            </div>
+            <span className="module-card__pct module-card__pct--high">{m.pct}%</span>
+          </div>
+        ))}
+      </div>
+
+      <div className="module-group">
+        <div className="module-group__label">⚠️ 待强化模块</div>
+        {weaknesses.map(m => (
+          <div className="module-card" key={m.name}>
+            <span className="module-card__icon">{m.icon}</span>
+            <div className="module-card__info">
+              <div className="module-card__name">{m.name}</div>
+              <div className="module-card__sub">{m.sub}</div>
+            </div>
+            <span className="module-card__pct module-card__pct--low">{m.pct}%</span>
+          </div>
+        ))}
+      </div>
+
+      <div className="card" style={{marginBottom:12}}>
+        <div className="section-title">📊 学习特点</div>
+        {traits.map(t => (
+          <div className="trait-bar" key={t.label}>
+            <span className="trait-bar__label">{t.label}</span>
+            <div className="trait-bar__track">
+              <div className="trait-bar__fill" style={{width:`${t.score}%`,background:t.color}}/>
+            </div>
+            <span className="trait-bar__score" style={{color:t.color}}>{t.score}</span>
+          </div>
+        ))}
+      </div>
+
+      <div className="card" style={{marginBottom:12}}>
+        <div className="section-title">📈 近30天正确率趋势</div>
+        <div className="mini-chart">
+          {dailyData.map((v,i) => (
+            <div key={i} className="mini-chart__bar"
+              style={{height:`${(v/maxVal)*100}%`,opacity:0.5+(v/maxVal)*0.5}}/>
+          ))}
+        </div>
+        <div style={{display:'flex',justifyContent:'space-between',fontSize:10,color:'var(--c-hint)',marginTop:4}}>
+          <span>Day 1</span><span>Day 15</span><span>Day 30</span>
+        </div>
+      </div>
+
+      <div className="card" style={{marginBottom:12}}>
+        <div className="section-title">📝 错误分布（近30天）</div>
+        <div className="error-dist">
+          <div className="error-dist__item">
+            <div className="error-dist__num">28</div>
+            <div className="error-dist__label">填空题</div>
+          </div>
+          <div className="error-dist__item">
+            <div className="error-dist__num">12</div>
+            <div className="error-dist__label">选择题</div>
+          </div>
+          <div className="error-dist__item">
+            <div className="error-dist__num">8</div>
+            <div className="error-dist__label">名词解释</div>
+          </div>
+          <div className="error-dist__item">
+            <div className="error-dist__num">5</div>
+            <div className="error-dist__label">判断题</div>
+          </div>
+        </div>
+      </div>
+      <div style={{height:12}}/>
+    </div>
+  );
+}
+
+// ========================
+// SCREEN 3: 学习路径
+// ========================
+function LearningPathScreen() {
+  const [mode, setMode] = useState('sprint');
+  const sprintDays = [
+    { day:1, date:'6月8日', tasks:['骨学综合复习','图谱训练（颅骨）','50道选择题'] },
+    { day:2, date:'6月9日', tasks:['关节学强化','专项测试（肩/肘/髋）','错题回顾'] },
+    { day:3, date:'6月10日', tasks:['肌学复习','图谱训练（四肢肌）','30道填空题'] },
+    { day:4, date:'6月11日', tasks:['神经系统图谱','脑神经核团记忆','专项测试'] },
+    { day:5, date:'6月12日', tasks:['脉管系统强化','动静脉走行图谱','错题集中攻克'] },
+    { day:6, date:'6月13日', tasks:['综合模拟考','150题全真模拟','AI批改+分析'] },
+    { day:7, date:'6月14日', tasks:['错题终极大回顾','重点图谱速览','休息调整心态'] },
+  ];
+
+  return (
+    <div className="scroll-inner">
+      <div className="page-header">
+        <div className="page-header__title">学习路径推荐</div>
+        <div className="page-header__subtitle">妍学姐为你量身规划</div>
+      </div>
+
+      <div style={{display:'flex',gap:8,marginBottom:14}}>
+        <button
+          className={`btn ${mode==='sprint'?'btn--primary':'btn--outline'}`}
+          style={{flex:1,fontSize:13}}
+          onClick={()=>setMode('sprint')}
+        >🏃 考前7天冲刺</button>
+        <button
+          className={`btn ${mode==='rescue'?'btn--primary':'btn--outline'}`}
+          style={{flex:1,fontSize:13}}
+          onClick={()=>setMode('rescue')}
+        >🆘 挂科拯救计划</button>
+      </div>
+
+      {mode === 'sprint' ? (
+        <div className="timeline">
+          {sprintDays.map(d => (
+            <div className="day-card" key={d.day}>
+              <div className="day-card__header">
+                <span className="day-card__day">Day {d.day}</span>
+                <span className="day-card__date">{d.date}</span>
+              </div>
+              <div className="day-card__tasks">
+                {d.tasks.map((t,i)=><span className="day-card__tag" key={i}>{t}</span>)}
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div>
+          <div className="phase-card phase-card--recovery">
+            <div className="phase-card__title">阶段一：基础恢复</div>
+            <div className="phase-card__meta">⏱ 预计 7 天 · 每天 1.5 小时</div>
+            <div className="phase-card__desc">骨学、关节学基础重建。每天完成 5 张图谱 + 20 道基础题，建立信心。</div>
+          </div>
+          <div className="phase-card phase-card--reinforce">
+            <div className="phase-card__title">阶段二：强化阶段</div>
+            <div className="phase-card__meta">⏱ 预计 10 天 · 每天 2 小时</div>
+            <div className="phase-card__desc">错题集中攻克 + 专题训练。覆盖肌学、神经系统、脉管系统三大薄弱模块。</div>
+          </div>
+          <div className="phase-card phase-card--sprint">
+            <div className="phase-card__title">阶段三：冲刺阶段</div>
+            <div className="phase-card__meta">⏱ 预计 5 天 · 每天 2.5 小时</div>
+            <div className="phase-card__desc">综合模拟考试 + 真题演练 + 考前回顾。保持节奏，调整心态，稳扎稳打。</div>
+          </div>
+        </div>
+      )}
+
+      <button className="btn btn--primary btn--block" style={{marginTop:8,fontSize:15,padding:'12px 0'}}>
+        🚀 开始执行计划
+      </button>
+      <div style={{height:12}}/>
+    </div>
+  );
+}
+
+// ========================
+// SCREEN 4: 错题强化
+// ========================
+function ErrorReinforceScreen() {
+  return (
+    <div className="scroll-inner">
+      <div className="page-header">
+        <div className="page-header__title">错题强化训练</div>
+        <div className="page-header__subtitle">AI 精准定位薄弱点</div>
+      </div>
+
+      <div className="error-question">
+        <div className="error-question__stem">❌ 题目：股神经在股三角内位于股动脉的哪一侧？</div>
+        <div className="error-question__answers" style={{marginTop:4}}>
+          你的回答：<span className="error-question__wrong">内侧</span>
+          &nbsp;&nbsp;正确答案：<span className="error-question__correct">外侧</span>
+        </div>
+        <div style={{fontSize:11,color:'var(--c-hint)',marginTop:4}}>你已经连续 3 次在这道题上出错</div>
+      </div>
+
+      <div className="analysis-box">
+        <div className="analysis-box__title">🧠 妍学姐 AI 错误分析</div>
+        <div className="analysis-box__text">
+          <strong>错误原因：</strong>你容易将<strong>股神经</strong>与<strong>股动脉</strong>在股三角内的位置关系混淆。<br/><br/>
+          记忆口诀：从外侧到内侧依次是——<strong>N</strong>erve（神经）→ <strong>A</strong>rtery（动脉）→ <strong>V</strong>ein（静脉）→ <strong>L</strong>ymph（淋巴），即「NAVL」。
+        </div>
+      </div>
+
+      <div style={{marginBottom:10}}>
+        <div className="section-title" style={{fontSize:13}}>📷 妍学姐推荐：图谱闪卡</div>
+        <div className="reco-atlas">
+          <div className="reco-atlas__card">
+            <div style={{textAlign:'center'}}>
+              <div style={{fontSize:28}}>🔍</div>
+              <div>股三角前面观</div>
+            </div>
+          </div>
+          <div className="reco-atlas__card">
+            <div style={{textAlign:'center'}}>
+              <div style={{fontSize:28}}>📍</div>
+              <div>股神经·股动脉</div>
+            </div>
+          </div>
+          <div className="reco-atlas__card">
+            <div style={{textAlign:'center'}}>
+              <div style={{fontSize:28}}>🫀</div>
+              <div>NAVL断面图</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="card suggestion-card" style={{marginBottom:12}}>
+        <div className="suggestion-card__header">
+          <div className="suggestion-card__avatar"><AvatarIcon size={18}/></div>
+          <span className="suggestion-card__name">妍学姐强化建议</span>
+        </div>
+        <div className="suggestion-item">
+          <span className="suggestion-item__num">①</span> 先完成 3 张股三角图谱闪卡训练
+        </div>
+        <div className="suggestion-item">
+          <span className="suggestion-item__num">②</span> 再做 5 道同类变式题巩固
+        </div>
+        <div className="suggestion-item">
+          <span className="suggestion-item__num">③</span> 全部通过后标记为「已掌握」
+        </div>
+      </div>
+
+      <button className="btn btn--primary btn--block" style={{fontSize:15,padding:'12px 0',marginBottom:8}}>
+        🎯 开始强化训练
+      </button>
+      <button className="btn btn--outline btn--block" style={{fontSize:13}}>
+        跳过，加入错题本待复习
+      </button>
+      <div style={{height:12}}/>
+    </div>
+  );
+}
+
+// ========================
+// SCREEN 5: Agent 消息 Demo
+// ========================
+function AgentMessageScreen() {
+  const [msgs, setMsgs] = useState([]);
+  const [step, setStep] = useState(0);
+
+  const demos = [
+    {
+      name:'妍学姐',
+      msg:'骨学学习完成！正确率 92%，非常棒 🎉\n\n下一步建议进入图谱训练，巩固颅骨各结构的空间位置。',
+      action:'开始图谱训练',
+      actionStyle:'primary',
+    },
+    {
+      name:'妍学姐',
+      msg:'图谱训练完成！你在颅底内面的辨认上还有提升空间。\n\n要不要趁热打铁，做一组专项测试？',
+      action:'开始专项测试',
+      actionStyle:'primary',
+    },
+    {
+      name:'妍学姐',
+      msg:'测试结果出来啦～正确率 76%。\n\n股三角区域的题目错了 2 道，我已经帮你标记为强化目标。现在去攻克它？',
+      action:'查看错题并强化',
+      actionStyle:'outline',
+    },
+  ];
+
+  function showNext() {
+    if (step < demos.length) {
+      setMsgs(prev => [...prev, {...demos[step], id:Date.now()}]);
+      setStep(s => s+1);
+    }
+  }
+
+  useEffect(() => { showNext(); }, []);
+
+  return (
+    <div className="scroll-inner" style={{position:'relative'}}>
+      <div className="page-header">
+        <div className="page-header__title">妍学姐 · Agent 模式</div>
+        <div className="page-header__subtitle">从被动问答到主动引导</div>
+      </div>
+
+      <div className="card" style={{marginBottom:12}}>
+        <div className="section-title">🎬 模拟学习流程</div>
+        <div style={{fontSize:12,color:'var(--c-hint)',lineHeight:1.6}}>
+          以下演示了妍学姐如何在学习过程中<strong>主动推送消息</strong>，引导学生一步步完成学习闭环。点击底部按钮触发下一条消息。
+        </div>
+      </div>
+
+      <div style={{fontSize:12,color:'var(--c-hint)',textAlign:'center',padding:8}}>
+        {step >= demos.length ? '✅ 完整学习闭环演示完毕' : `已演示 ${step}/${demos.length} 步`}
+      </div>
+
+      {/* Agent toast messages stacked */}
+      <div style={{position:'relative',minHeight:280}}>
+        {msgs.map((m,i) => (
+          <div key={m.id} className="agent-toast" style={{
+            position:'relative', marginBottom:12, top:'auto',left:'auto',right:'auto',bottom:'auto',
+            animation:'slideUp 0.4s cubic-bezier(0.16,1,0.3,1)',
+            opacity: 1 - (msgs.length-1-i) * 0.15
+          }}>
+            <div className="agent-toast__row">
+              <div className="agent-toast__avatar"><AvatarIcon size={22}/></div>
+              <div className="agent-toast__bubble">
+                <div className="agent-toast__name">{m.name}</div>
+                <div className="agent-toast__msg" style={{whiteSpace:'pre-line'}}>{m.msg}</div>
+                <div className="agent-toast__actions">
+                  <button className={`btn ${m.actionStyle==='primary'?'btn--primary':'btn--outline'} btn--sm`}>
+                    {m.action}
+                  </button>
+                  <button className="btn btn--ghost btn--sm">稍后再说</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {step < demos.length && (
+        <button className="btn btn--primary btn--block" onClick={showNext}
+          style={{fontSize:14,padding:'12px 0'}}>
+          ▶ 触发下一条 Agent 消息
+        </button>
+      )}
+      {step >= demos.length && (
+        <button className="btn btn--outline btn--block" onClick={()=>{setMsgs([]);setStep(0);setTimeout(()=>showNext(),200);}}
+          style={{fontSize:14,padding:'12px 0'}}>
+          🔄 重新演示
+        </button>
+      )}
+      <div style={{height:12}}/>
+    </div>
+  );
+}
+
+// ========================
+// APP SHELL
+// ========================
+function AppPhone() {
+  const [screen, setScreen] = useState('center');
+
+  const screens = {
+    center: <LearningCenterScreen />,
+    portrait: <LearningPortraitScreen />,
+    path: <LearningPathScreen />,
+    error: <ErrorReinforceScreen />,
+    agent: <AgentMessageScreen />,
+  };
+
+  return (
+    <IosFrame time="9:41" battery={85}>
+      <div style={{display:'flex',flexDirection:'column',height:'100%'}}>
+        <div style={{flex:1,overflow:'hidden',position:'relative'}}>
+          {screens[screen]}
+        </div>
+        <div className="tab-bar">
+          {TABS.map(t => (
+            <button
+              key={t.key}
+              className={`tab-btn ${screen===t.key?'tab-btn--active':''}`}
+              onClick={()=>setScreen(t.key)}
+            >
+              <span className="tab-btn__icon">{t.icon}</span>
+              <span>{t.label}</span>
+              <div className="tab-btn__dot"/>
+            </button>
+          ))}
+        </div>
+      </div>
+    </IosFrame>
+  );
+}
+
+// ====== Render ======
+ReactDOM.createRoot(document.getElementById('root')).render(<AppPhone />);
+</script>
+</body>
+</html>
