@@ -1,4 +1,4 @@
-const CACHE = 'anatomy-flash-v1';
+const CACHE = 'anatomy-zhixue-v1';
 
 const PRECACHE = [
   '/',

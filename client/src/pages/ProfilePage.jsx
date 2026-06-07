@@ -219,7 +219,7 @@ export default function ProfilePage() {
 
       <div className="settings-section">
         <h3 className="settings-section__title">关于</h3>
-        <p className="settings-hint">解剖闪背 v0.3 — 医学生解剖学学习系统</p>
+        <p className="settings-hint">解剖智学 v0.5 — 医学生解剖学学习系统</p>
         <p className="settings-hint" style={{ marginTop: 4, fontSize: 11 }}>9大系统 · 338张知识闪卡 · 91张图谱 · 1789道题库</p>
       </div>
     </div>

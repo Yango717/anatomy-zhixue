@@ -92,7 +92,7 @@ export default function SettingsPage() {
 
       <div className="settings-section">
         <h3 className="settings-section__title">关于</h3>
-        <p className="settings-hint">解剖闪背 v0.1 — 医学生解剖学复习工具</p>
+        <p className="settings-hint">解剖智学 v0.5 — 医学生解剖学学习系统</p>
       </div>
     </div>
   );

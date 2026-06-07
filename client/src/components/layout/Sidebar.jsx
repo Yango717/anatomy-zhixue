@@ -71,7 +71,7 @@ export default function Sidebar() {
         {/* Logo */}
         <div className="sidebar__logo" onClick={() => navigate('/')}>
           <span className="sidebar__logo-icon">解</span>
-          <span className="sidebar__logo-text">解剖闪背</span>
+          <span className="sidebar__logo-text">解剖智学</span>
         </div>
 
         {/* Countdown */}

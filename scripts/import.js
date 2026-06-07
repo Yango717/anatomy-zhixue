@@ -78,7 +78,7 @@ chapterDirs.forEach(d => {
 console.log('Building content structure...');
 
 // Build new chapters.json
-const chaptersData = { app: { name: '解剖闪背', subtitle: '背解剖，不该只是死记硬背' }, chapters: [] };
+const chaptersData = { app: { name: '解剖智学', subtitle: '背解剖，不该只是死记硬背' }, chapters: [] };
 const chapterOrder = Object.entries(structure).sort((a, b) => {
   const infoA = Object.values(SYSTEM_TO_CHAPTER).find(c => c.id === a[0]);
   const infoB = Object.values(SYSTEM_TO_CHAPTER).find(c => c.id === b[0]);

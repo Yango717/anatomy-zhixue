@@ -1,10 +1,10 @@
 @echo off
 chcp 65001 >nul
-title 解剖闪背 - Anatomy Flash
+title 解剖智学 - Anatomy Flash
 
 echo.
 echo   ╔══════════════════════════════╗
-echo   ║     解 剖 闪 背            ║
+echo   ║     解 剖 智 学            ║
 echo   ║   Anatomy Flash v1.0       ║
 echo   ╚══════════════════════════════╝
 echo.
@@ -21,11 +21,11 @@ for /f "tokens=5" %%a in ('netstat -ano ^| findstr ":5173" ^| findstr "LISTENING
 timeout /t 1 /nobreak >nul
 
 echo 🚀 正在启动后端服务...
-start "解剖闪背-后端" /MIN cmd /c "node server\index.js"
+start "解剖智学-后端" /MIN cmd /c "node server\index.js"
 timeout /t 2 /nobreak >nul
 
 echo 🎨 正在启动前端服务...
-start "解剖闪背-前端" /MIN cmd /c "cd client && npx vite --host"
+start "解剖智学-前端" /MIN cmd /c "cd client && npx vite --host"
 
 echo.
 echo ⏳ 等待服务就绪...

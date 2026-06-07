@@ -1,14 +1,14 @@
 {
-  "name": "解剖闪背 - 系统解剖学",
-  "short_name": "解剖闪背",
+  "name": "解剖智学 - 系统解剖学",
+  "short_name": "解剖智学",
   "description": "系统解剖学学习与复习工具，五阶段学习法助你通过期末考",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#fafbfc",
-  "theme_color": "#1a3a4a",
+  "background_color": "#f5f2fa",
+  "theme_color": "#7c5cbf",
   "orientation": "portrait-primary",
   "lang": "zh-CN",
   "icons": [
-    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
   ]
 }
