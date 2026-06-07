@@ -13,6 +13,8 @@ const errorbookRouter = require('../server/routes/errorbook');
 const recommendRouter = require('../server/routes/recommend');
 const practiceRouter = require('../server/routes/practice');
 const motionRouter = require('../server/routes/motion');
+const resetRouter = require('../server/routes/reset');
+const analyticsRouter = require('../server/routes/analytics');
 
 const app = express();
 
@@ -29,6 +31,8 @@ app.use('/api/v1', errorbookRouter);
 app.use('/api/v1', recommendRouter);
 app.use('/api/v1', practiceRouter);
 app.use('/api/v1/motion', motionRouter);
+app.use('/api/v1/reset', resetRouter);
+app.use('/api/v1', analyticsRouter);
 
 app.get('/api/v1/health', (_req, res) => {
   res.json({ success: true, data: { status: 'ok' }, timestamp: new Date().toISOString() });
