@@ -29,7 +29,19 @@ function AvatarIcon() {
 export default function AISuggestion({ suggestions }) {
   const navigate = useNavigate();
 
-  if (!suggestions || suggestions.length === 0) return null;
+  if (!suggestions || suggestions.length === 0) {
+    return (
+      <div className="lc-suggestion">
+        <div className="lc-suggestion__header">
+          <div className="lc-suggestion__avatar">
+            <AvatarIcon />
+          </div>
+          <span className="lc-suggestion__name">妍学姐建议</span>
+        </div>
+        <div className="lc-suggestion__text">开始学习吧，妍学姐会根据你的进度给出建议！</div>
+      </div>
+    );
+  }
 
   function handleAction(action) {
     if (action.type === 'atlas') {

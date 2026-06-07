@@ -6,7 +6,16 @@ function getBarClass(pct) {
 }
 
 export default function KnowledgeHeatmap({ sections }) {
-  if (!sections || sections.length === 0) return null;
+  if (!sections || sections.length === 0) {
+    return (
+      <div className="lc-heatmap">
+        <h3 className="lc-heatmap__title">知识掌握热力图</h3>
+        <p style={{ textAlign: 'center', color: 'var(--color-text-hint)', padding: 16, fontSize: 13 }}>
+          完成学习后这里会显示你的掌握热力图
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="lc-heatmap">

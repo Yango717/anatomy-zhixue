@@ -95,6 +95,9 @@ async function localDispatch(method, s, body, rawPath) {
   if (s[0] === 'learning-portrait') return b.getLearningPortrait();
   if (s[0] === 'learning-path') return b.getLearningPath(s[1]);
 
+  // reset routes
+  if (s[0] === 'reset' && s[1] === 'learning-data') return b.resetAllLearningData();
+
   throw { code: 'NOT_FOUND', message: `Unknown: ${method} /${s.join('/')}` };
 }
 

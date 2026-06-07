@@ -12,21 +12,28 @@ function ModuleGroup({ label, modules, pctClass }) {
   return (
     <div className="lp-module-group">
       <div className="lp-module-group__label">{label}</div>
-      {modules.map((m, i) => (
-        <div className="lp-module-card" key={m.chapterId || i}>
-          <span className="lp-module-card__icon">{ICONS[m.name] || '📘'}</span>
-          <div className="lp-module-card__info">
-            <div className="lp-module-card__name">{m.name}</div>
-            {m.sub && <div className="lp-module-card__sub">{m.sub}</div>}
+      {modules.length === 0 ? (
+        <p style={{ textAlign: 'center', color: 'var(--color-text-hint)', padding: 8, fontSize: 13 }}>
+          暂无数据，开始学习后将显示
+        </p>
+      ) : (
+        modules.map((m, i) => (
+          <div className="lp-module-card" key={m.chapterId || i}>
+            <span className="lp-module-card__icon">{ICONS[m.name] || '📘'}</span>
+            <div className="lp-module-card__info">
+              <div className="lp-module-card__name">{m.name}</div>
+              {m.sub && <div className="lp-module-card__sub">{m.sub}</div>}
+            </div>
+            <span className={`lp-module-card__pct ${pctClass}`}>{m.pct}%</span>
           </div>
-          <span className={`lp-module-card__pct ${pctClass}`}>{m.pct}%</span>
-        </div>
-      ))}
+        ))
+      )}
     </div>
   );
 }
 
 function TraitsCard({ traits }) {
+  if (!traits || traits.length === 0) return null;
   return (
     <div className="lp-traits-card">
       <h3 className="lp-traits-card__title">📊 学习特点</h3>
@@ -50,6 +57,16 @@ function TraitsCard({ traits }) {
 
 function AccuracyTrend({ dailyAccuracy }) {
   const validValues = dailyAccuracy.filter(v => v !== null);
+  if (validValues.length === 0) {
+    return (
+      <div className="lp-trend">
+        <h3 className="lp-trend__title">📈 近30天正确率趋势</h3>
+        <p style={{ textAlign: 'center', color: 'var(--color-text-hint)', padding: 8, fontSize: 13 }}>
+          完成测验后这里会显示正确率趋势
+        </p>
+      </div>
+    );
+  }
   const maxVal = Math.max(...validValues, 1);
 
   return (
@@ -77,9 +94,15 @@ function AccuracyTrend({ dailyAccuracy }) {
 }
 
 function ErrorDistribution({ errorDist }) {
+  const totalCount = errorDist.reduce((s, e) => s + e.count, 0);
   return (
     <div className="lp-error-dist">
       <h3 className="lp-error-dist__title">📝 错误分布（近30天）</h3>
+      {totalCount === 0 ? (
+        <p style={{ textAlign: 'center', color: 'var(--color-text-hint)', padding: 8, fontSize: 13 }}>
+          暂无错题数据
+        </p>
+      ) : (
       <div className="lp-error-dist__grid">
         {errorDist.map((e) => (
           <div className="lp-error-dist__item" key={e.type}>
@@ -88,6 +111,7 @@ function ErrorDistribution({ errorDist }) {
           </div>
         ))}
       </div>
+      )}
     </div>
   );
 }

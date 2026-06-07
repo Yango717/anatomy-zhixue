@@ -223,7 +223,7 @@ const CHAPTER_MOTION_CONFIG = {
   },
 };
 
-function ChapterMotionFlow({ chapterId, navigate }) {
+function ChapterMotionFlow({ chapterId, navigate, progress, chapterData }) {
   const cfg = CHAPTER_MOTION_CONFIG[chapterId];
   if (!cfg) return null;
 
@@ -231,42 +231,66 @@ function ChapterMotionFlow({ chapterId, navigate }) {
   const totalGroups = cfg.groups.length;
   const totalSubs = cfg.groups.reduce((s, g) => s + g.subs.length, 0);
 
+  // 根据 chapterData 中的 sections 数据计算每个 section 的加权掌握率
+  function getSectionPct(sectionTitle) {
+    if (!chapterData) return 0;
+    const section = (chapterData.sections || []).find(s => s.title === sectionTitle);
+    if (!section) return 0;
+    let total = 0, weighted = 0;
+    for (const sub of section.subsections || []) {
+      for (const part of sub.parts || []) {
+        total++;
+        const uid = `${sub.id}-part-${part.id}`;
+        const phase = progress[uid] || 0;
+        weighted += phase / 5; // phase 0→0%, 1→20%, 2→40%, 3→60%, 4→80%, 5→100%
+      }
+    }
+    return total > 0 ? Math.round(weighted / total * 100) : 0;
+  }
+
   return (
     <div style={{ padding: "12px 16px" }}>
       <div style={{ fontSize: 13, color: "var(--color-text-hint)", marginBottom: 12, display: "flex", alignItems: "center", gap: 6 }}>
         <span>📚 {totalGroups} 个模块 · {totalSubs} 个子分类 · {totalKC} 张知识闪卡</span>
       </div>
-      {cfg.groups.map(grp => (
-        <div key={grp.section} style={{ marginBottom: 16 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 8 }}>
-            <span style={{ fontSize: 15, fontWeight: 600, color: "var(--color-text-primary)" }}>
-              {grp.icon} {grp.section}
-            </span>
-            <button
-              className="btn btn--outline btn--sm"
-              style={{ marginLeft: "auto", borderRadius: 8, fontSize: 11, padding: "2px 10px" }}
-              onClick={() => navigate(`/motion-flow?chapter=${chapterId}&section=${encodeURIComponent(grp.section)}`)}
-            >
-              全部
-            </button>
-          </div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-            {grp.subs.map(sub => (
+      {cfg.groups.map(grp => {
+        const sectionPct = getSectionPct(grp.section);
+        return (
+          <div key={grp.section} style={{ marginBottom: 16 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 8 }}>
+              <span style={{ fontSize: 15, fontWeight: 600, color: "var(--color-text-primary)" }}>
+                {grp.icon} {grp.section}
+              </span>
+              <SystemProgressRing pct={sectionPct} size={22} />
               <button
-                key={sub.key}
-                className="system-part"
-                style={{ flex: "0 0 auto", padding: "10px 14px", borderRadius: 10, border: "1px solid var(--color-border)", background: "var(--color-card)", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 2, transition: "border-color .15s, box-shadow .15s" }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--color-primary)"; e.currentTarget.style.boxShadow = "var(--shadow-sm)"; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--color-border)"; e.currentTarget.style.boxShadow = "none"; }}
-                onClick={() => navigate(`/motion-flow?chapter=${chapterId}&section=${encodeURIComponent(grp.section)}&subsection=${encodeURIComponent(sub.key)}`)}
+                className="btn btn--outline btn--sm"
+                style={{ marginLeft: "auto", borderRadius: 8, fontSize: 11, padding: "2px 10px" }}
+                onClick={() => navigate(`/motion-flow?chapter=${chapterId}&section=${encodeURIComponent(grp.section)}`)}
               >
-                <span style={{ fontSize: 13, fontWeight: 500, color: "var(--color-text-primary)" }}>{sub.label}</span>
-                <span style={{ fontSize: 11, color: "var(--color-text-hint)" }}>{sub.cards} 张闪卡</span>
+                全部
               </button>
-            ))}
+            </div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+              {grp.subs.map(sub => (
+                <button
+                  key={sub.key}
+                  className="system-part"
+                  style={{ flex: "0 0 auto", padding: "10px 14px", borderRadius: 10, border: "1px solid var(--color-border)", background: "var(--color-card)", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 2, transition: "border-color .15s, box-shadow .15s" }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--color-primary)"; e.currentTarget.style.boxShadow = "var(--shadow-sm)"; }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--color-border)"; e.currentTarget.style.boxShadow = "none"; }}
+                  onClick={() => navigate(`/motion-flow?chapter=${chapterId}&section=${encodeURIComponent(grp.section)}&subsection=${encodeURIComponent(sub.key)}`)}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                    <span style={{ fontSize: 13, fontWeight: 500, color: "var(--color-text-primary)" }}>{sub.label}</span>
+                    <SystemProgressRing pct={sectionPct} size={16} />
+                  </div>
+                  <span style={{ fontSize: 11, color: "var(--color-text-hint)" }}>{sub.cards} 张闪卡</span>
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }
@@ -286,14 +310,15 @@ export default function ModulesPage() {
   }, []);
 
   const loadProgress = useCallback(async (chapterId) => {
-    if (progress[chapterId]) return;
     try {
       const data = await api.get(`/progress/chapter/${chapterId}`);
       const map = {};
-      (data || []).forEach((item) => { map[item.unitId] = item.currentPhase; });
+      // data 可能是 { units: [...] } 或直接是数组
+      const items = Array.isArray(data) ? data : (data?.units || []);
+      items.forEach((item) => { map[item.unitId] = item.phase ?? item.currentPhase ?? 0; });
       setProgress((prev) => ({ ...prev, [chapterId]: map }));
     } catch {}
-  }, [progress]);
+  }, []);
 
   async function toggle(chapterId) {
     if (!expanded[chapterId]) {
@@ -331,7 +356,7 @@ export default function ModulesPage() {
               {isOpen && (
                 <div className="system-accordion__body">
               {isOpen && CHAPTER_MOTION_CONFIG[ch.chapterId] ? (
-                <ChapterMotionFlow chapterId={ch.chapterId} navigate={navigate} />
+                <ChapterMotionFlow chapterId={ch.chapterId} navigate={navigate} progress={chProgress} chapterData={ch} />
               ) : (
                   (ch.sections || []).map((sec) => (
                     <div key={sec.id} className="system-section">

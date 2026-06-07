@@ -32,7 +32,9 @@ export default function LearningCenterPage() {
         <h1 className="learning-center__title">妍学姐学习中心</h1>
         {data && (
           <div className="learning-center__subtitle">
-            你已经连续学习 {data.streak} 天了！
+            {data.streak > 0
+              ? `你已经连续学习 ${data.streak} 天了！`
+              : '开始你的第一次学习吧！'}
           </div>
         )}
       </div>

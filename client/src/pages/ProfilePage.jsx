@@ -68,13 +68,22 @@ export default function ProfilePage() {
 
   async function handleReset() {
     if (!resetting) { setResetting(true); return; }
-    await api.put('/countdown', {
-      name: '距离解剖学期末考试',
-      target: new Date(Date.now() + 60 * 24 * 3600 * 1000).toISOString(),
-    });
-    setName('距离解剖学期末考试');
-    setTarget('');
-    setResetting(false);
+    try {
+      await api.post('/reset/learning-data');
+      // 同时重置倒计时
+      await api.put('/countdown', {
+        name: '距离解剖学期末考试',
+        target: new Date(Date.now() + 60 * 24 * 3600 * 1000).toISOString(),
+      });
+      setName('距离解剖学期末考试');
+      const newTarget = new Date(Date.now() + 60 * 24 * 3600 * 1000).toISOString();
+      setTarget(newTarget.slice(0, 16));
+      setStats(null);
+      setResetting(false);
+    } catch (err) {
+      console.error('Reset failed:', err);
+      setResetting(false);
+    }
   }
 
   return (
@@ -194,7 +203,7 @@ export default function ProfilePage() {
           <button className="btn btn--outline btn--block" onClick={handleReset}>重置数据</button>
         ) : (
           <div className="settings-confirm">
-            <p style={{ color: 'var(--color-error)', fontSize: 'var(--font-size-sm)', marginBottom: 'var(--spacing-md)' }}>确认重置？所有进度和错题将被删除。</p>
+            <p style={{ color: 'var(--color-error)', fontSize: 'var(--font-size-sm)', marginBottom: 'var(--spacing-md)' }}>确认重置？所有学习进度、测验记录、错题本将被永久删除，此操作不可撤销。</p>
             <div style={{ display: 'flex', gap: 'var(--spacing-sm)' }}>
               <button className="btn btn--outline btn--sm" onClick={() => setResetting(false)}>取消</button>
               <button className="btn btn--danger btn--sm" onClick={handleReset}>确认重置</button>
