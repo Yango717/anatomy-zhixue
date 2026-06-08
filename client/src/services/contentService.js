@@ -32,13 +32,15 @@ function unitPrefix(unitId) { return (unitId || '').replace(/-part-.*$/, ''); }
 
 function getContentPath(subId, filename) {
   const e = pathIndex?.get(subId);
-  return e ? `/content/${e.cd}/${e.sd}/${e.subd}/${filename}` : null;
+  if (!e) return null;
+  // encodeURI 对中文路径编码，确保 Cloudflare 等静态托管能正确 fetch
+  return encodeURI(`/content/${e.cd}/${e.sd}/${e.subd}/${filename}`);
 }
 
 function resolveChapterDir(chapterId) {
   if (!chaptersCache) return null;
   const ch = chaptersCache.chapters.find(c => c.chapterId === chapterId);
-  return ch ? `${chapterId}-${ch.title}` : null;
+  return ch ? encodeURI(`${chapterId}-${ch.title}`) : null;
 }
 
 // --- Public API ---
@@ -136,7 +138,8 @@ export async function resolveUnitAsset(unitId, relativePath) {
   const dir = getContentPath(subId, 'dummy');
   if (!dir) return relativePath;
   const baseDir = dir.replace(/\/dummy$/, '');
-  return encodeURI(`${baseDir}/${relativePath}`);
+  // dir already encodeURI'd by getContentPath, only encode the relativePath part
+  return `${baseDir}/${encodeURIComponent(relativePath)}`;
 }
 
 export async function getUnitFlashcards(unitId) {
